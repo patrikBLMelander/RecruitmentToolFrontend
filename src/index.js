@@ -10,6 +10,7 @@ import AddListBtn from './components/AddListBtn';
 
 
 const Container = styled.div`
+  background-image: linear-gradient(#82ad8e, #cbf2d6);
   display: flex;
   margin-left: 163px;
 `;
@@ -106,7 +107,7 @@ class App extends React.Component {
   render() {
     return (
       
-      <DragDropContext onDragEnd={this.onDragEnd}>
+      <DragDropContext onDragEnd={this.onDragEnd} style= "background-image: linear-gradient(#82ad8e, #cbf2d6);">
         <Navbar/>
         <Header/>
         <Droppable

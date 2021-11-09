@@ -47,10 +47,10 @@ export default class AddListBtn extends React.Component {
       }
     
       handleSubmit(event) {
-        alert('An essay was submitted: ' + this.state.value);
+        alert('Added new list with name: ' + this.state.value);
         event.preventDefault();
 
-        //TODO Fica så man lägger till en tom column i initial state
+        //TODO Skicka info till databasen för att skapa en ny lista
       }
     
       render() {
