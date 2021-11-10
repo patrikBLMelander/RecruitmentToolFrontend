@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components'
 
-const Container = styled.div`
-    padding: 8px;
-    margin-bottom: 8px;
-    margin-top: 8px;
-    background-color: orange;
-`;
-
 const StyledInputButton = styled.input`
   display: flex;
   background-color: black;

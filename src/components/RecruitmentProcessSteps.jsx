@@ -25,12 +25,7 @@ const TaskList = styled.div`
 `;
 
 function InnerList (props){
-  const shouldComponentUpdate = (nextProps) => {
-    if (nextProps.tasks === props.tasks) {
-      return false;
-    }
-    return true;
-  }
+
 
   return props.tasks.map((task, index) => (
     <Task key={task.id} task={task} index={index} />
