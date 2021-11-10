@@ -22,16 +22,15 @@ const H3 = styled.h3`
 
 
 
-export default class Header extends React.Component {
-    render() {
-      return (
-        <Container>
-            <H3>Company Name</H3>
-            <H3>Name of the role you are recruting</H3>
+ function Header () {
 
-        </Container>
-        )
-    }   
+    return (
+    <Container>
+        <H3>Company Name</H3>
+        <H3>Name of the role you are recruting</H3>
+    </Container>
+    )
+       
 }
 
-
+export default Header

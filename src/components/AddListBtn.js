@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -30,36 +30,33 @@ const Input = styled.input`
 
 
 
-export default class AddListBtn extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          value: '',
-          placeholder: 'Title'
-        };
+function AddListBtn (props) {
+
+    const [value, setvalue] = useState("")  
+                        
+    const handleChange = (event) => {
+        setvalue(event.target.value);
+    }
     
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-      }
-    
-      handleChange(event) {
-        this.setState({value: event.target.value});
-      }
-    
-      handleSubmit(event) {
-        alert('Added new list with name: ' + this.state.value);
-        event.preventDefault();
+    const handleSubmit = (event) => {
+    alert('Added new list with name: ' + value);
+    event.preventDefault();
 
         //TODO Skicka info till databasen för att skapa en ny lista
       }
     
-      render() {
         return (
-          <form onSubmit={this.handleSubmit}>
-                <Input value={this.state.value} onChange={this.handleChange} placeholder={this.state.placeholder} />
+            <>
+          <form onSubmit={handleSubmit}>
+                <Input value={value} onChange={handleChange} placeholder="Title" />
+
                 <br/>
                 <StyledInputButton type="submit" value="Add" />
           </form>
+          {/* <pre>{JSON.stringify(value, null, 1)}</pre> */}
+          </>
         );
-      }
+
     }
+
+    export default AddListBtn
