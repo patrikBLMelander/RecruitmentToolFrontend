@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 import recruitmentStepsTestData from './testData/recruitmentStepsTestData'
+import applicantTestData from './testData/applicantTestData'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import RecruitmentProcessSteps from './components/RecruitmentProcessSteps';
 import Navbar from './components/Navbar';
@@ -18,6 +19,7 @@ const Container = styled.div`
 function App (){
 
     const [recruitmentSteps, setRecruitmentSteps] = useState(recruitmentStepsTestData);
+    const [applicantState, setApplicantState] = useState(applicantTestData);
 
      const onDragEnd = result => {
         console.log(recruitmentStepsTestData)
@@ -42,7 +44,17 @@ function App (){
                   
                   return(
            
-                  <RecruitmentProcessSteps title = {recruitmentStepsInMap.title} id={recruitmentStepsInMap.id} applicants={recruitmentStepsInMap.applicantIds} key={recruitmentStepsInMap.id} index={index}recruitmentSteps={recruitmentSteps} setRecruitmentSteps={setRecruitmentSteps}/>
+                  <RecruitmentProcessSteps title = 
+                  {recruitmentStepsInMap.title} 
+                    id={recruitmentStepsInMap.id} 
+                    applicants={recruitmentStepsInMap.applicantIds} 
+                    key={recruitmentStepsInMap.id}
+                    index={index}
+                    recruitmentSteps={recruitmentSteps} 
+                    setRecruitmentSteps={setRecruitmentSteps}
+                    applicantState={applicantState}
+                    setApplicantState={setApplicantState} 
+                    />
                 
                   );
                 })}

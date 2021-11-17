@@ -46,7 +46,13 @@ const ApplicantCardList = styled.div`
                   
                   return(
            
-                  <ApplicantCard applicantId={applicant} index={index} key={applicant}/>
+                  <ApplicantCard 
+                    applicantId={applicant} 
+                    index={index} 
+                    key={applicant}
+                    applicantState={props.applicantState}
+                    setApplicantState={props.setApplicantState} 
+                    />
                     
 
                   );

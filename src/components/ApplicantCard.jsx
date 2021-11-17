@@ -12,7 +12,7 @@ const Container = styled.div`
 `;
 
 function ApplicantCard (props) {
-  const [applicant, setApplicant] = useState(applicantTestData);
+  //const [applicant, setApplicant] = useState(applicantTestData);
       
  
     return (
@@ -24,7 +24,7 @@ function ApplicantCard (props) {
             ref={provided.innerRef}
             isDragging={snapshot.isDragging}
           >
-          {applicant.map( applicant => {
+          {props.applicantState.map( applicant => {
             if(applicant.id===props.applicantId){
               return <h3 key={applicant.id}>{applicant.name}</h3>
             }
