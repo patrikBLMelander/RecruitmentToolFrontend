@@ -62,16 +62,13 @@ function App (){
 
             return;
         }
-        
-        //................................................. över detta säker
-
 
         const home = source.droppableId;
         const foreign = destination.droppableId;
 
 
 
-            // Om man flyttar kort i samma lista
+        // Om man flyttar kort i samma lista
         if (home === foreign) {
             let RecToReorder;
             recruitmentSteps.map(recruitmentStep =>{
@@ -88,10 +85,27 @@ function App (){
             return;
         }
         //Flytta kort mellan listor
+        let RecFrom;
+        recruitmentSteps.map(recruitmentStep =>{
+            if(recruitmentStep.id === source.droppableId){
+                RecFrom=recruitmentStep
+                return RecFrom;
+            }
+        })
+        let RecTo;
+        recruitmentSteps.map(recruitmentStep =>{
+            if(recruitmentStep.id === destination.droppableId){
+                RecTo=recruitmentStep
+                return RecTo;
+            }
+        })
+
+        RecFrom.applicantIds.splice(source.index, 1);
+        RecTo.applicantIds.splice(destination.index, 0, draggableId);
 
 
-
-
+        setRecruitmentSteps(recruitmentSteps)
+        return null;
      }
 
     return (
