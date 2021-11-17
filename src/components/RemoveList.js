@@ -13,6 +13,7 @@ const TrashBtn = styled.button`
     margin: 10px 10px;
     cursor: pointer;
     align-content: center;
+    
 `;
 
 
@@ -21,13 +22,32 @@ function RemoveListBtn (props) {
 
     const removeList = (event) => {
         event.preventDefault();
-
+        console.log(props.id)
+        props.recruitmentSteps.map(rec => {
+            if(rec.id === props.id && rec.applicantIds.length > 0) {
+                console.log("should not remove")
+                return;
+            }
+        })
        props.setRecruitmentSteps(props.recruitmentSteps.filter(recruitmentStep => recruitmentStep.id !== props.id))
     }
+    console.log(props)
+
+    let btnDisabler = false;
+    props.recruitmentSteps.map(rec => {
+        if(rec.id === props.id && rec.applicantIds.length > 0) {
+            console.log("disable btn")
+            btnDisabler = true
+            return;
+        }
+    })
+        
+
+    console.log(btnDisabler)
 
     return (
         <form onSubmit={removeList}>
-            <TrashBtn type="submit" value="Remove" id={props}><BsFillTrashFill/></TrashBtn>
+            <TrashBtn disabled={btnDisabler} type="submit" value="Remove" id={props.id}><BsFillTrashFill/></TrashBtn>
         </form>
     
     );
