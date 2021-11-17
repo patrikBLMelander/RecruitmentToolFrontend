@@ -17,12 +17,81 @@ const Container = styled.div`
 `;
 
 function App (){
-
-    const [recruitmentSteps, setRecruitmentSteps] = useState(recruitmentStepsTestData);
     const [applicantState, setApplicantState] = useState(applicantTestData);
+    const [recruitmentSteps, setRecruitmentSteps] = useState(recruitmentStepsTestData);
+    
 
      const onDragEnd = result => {
-        console.log(recruitmentStepsTestData)
+        const { destination, source, draggableId, type } = result;
+        console.log(destination)
+        console.log(source)
+        console.log(draggableId)
+        console.log(type)
+
+        //If you dop outside dropzone
+        if (!destination) {
+            return;
+        }
+
+        //If you pick up and drop on the same place
+        if (
+            destination.droppableId === source.droppableId &&
+            destination.index === source.index
+            ) {
+            return;
+        }
+
+        //If you drag a list
+        if (type === 'column') {
+
+            const newRecruitmentSteps = [].concat(recruitmentSteps)
+
+            let RecInfoToPutIn;
+            recruitmentSteps.map(recruitmentStep =>{
+                if(recruitmentStep.id ===draggableId){
+                    RecInfoToPutIn=recruitmentStep
+                    return RecInfoToPutIn;
+                }
+                
+            })
+
+            newRecruitmentSteps.splice(source.index, 1);
+            newRecruitmentSteps.splice(destination.index, 0, RecInfoToPutIn);
+
+            setRecruitmentSteps(newRecruitmentSteps)
+
+            return;
+        }
+        
+        //................................................. över detta säker
+
+
+        const home = source.droppableId;
+        const foreign = destination.droppableId;
+
+
+
+            // Om man flyttar kort i samma lista
+        if (home === foreign) {
+            let RecToReorder;
+            recruitmentSteps.map(recruitmentStep =>{
+                if(recruitmentStep.id === source.droppableId){
+                    RecToReorder=recruitmentStep
+                    return RecToReorder;
+                }
+            })
+
+            RecToReorder.applicantIds.splice(source.index, 1);
+            RecToReorder.applicantIds.splice(destination.index, 0, draggableId);
+
+            setRecruitmentSteps(recruitmentSteps)
+            return;
+        }
+        //Flytta kort mellan listor
+
+
+
+
      }
 
     return (

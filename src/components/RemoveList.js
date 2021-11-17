@@ -19,10 +19,8 @@ const TrashBtn = styled.button`
 
 function RemoveListBtn (props) {
 
-    console.log(props.recruitmentSteps)
     const removeList = (event) => {
         event.preventDefault();
-       console.log(props.recruitmentSteps)
 
        props.setRecruitmentSteps(props.recruitmentSteps.filter(recruitmentStep => recruitmentStep.id !== props.id))
     }

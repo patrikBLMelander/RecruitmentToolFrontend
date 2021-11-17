@@ -29,7 +29,7 @@ const Input = styled.input`
 
 
 function AddListBtn ({recruitmentSteps, setRecruitmentSteps}) {
-    console.log(recruitmentSteps)
+    
     const [value, setvalue] = useState("")  
                         
     const handleChange = (event) => {
