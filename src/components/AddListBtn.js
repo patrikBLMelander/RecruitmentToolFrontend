@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import styled from 'styled-components'
+import styled from 'styled-components';
+import applicantTestData from '../testData/applicantTestData'
+import recruitmentStepsTestData from '../testData/recruitmentStepsTestData'
+
+let counter = 5;
+let newId = "recruitmentStep-" + counter;
 
 const StyledInputButton = styled.input`
   display: flex;
@@ -23,33 +28,36 @@ const Input = styled.input`
 
 
 
-function AddListBtn (props) {
-
+function AddListBtn ({recruitmentSteps, setRecruitmentSteps}) {
+    console.log(recruitmentSteps)
     const [value, setvalue] = useState("")  
                         
     const handleChange = (event) => {
         setvalue(event.target.value);
     }
     
-    const handleSubmit = (event) => {
-    alert('Added new list with name: ' + value);
-    event.preventDefault();
+    const addList = (event) => {
+        event.preventDefault();
+        
+        counter = counter + 1;
+        newId = "recruitmentStep-" + counter
 
-        //TODO Skicka info till databasen för att skapa en ny lista
-      }
+        setRecruitmentSteps(prevRecruitmentSteps => (
+        [...prevRecruitmentSteps, {id:newId, title: value, applicantIds:[]}]
+        ))
+    };
     
-        return (
-            <>
-          <form onSubmit={handleSubmit}>
-                <Input value={value} onChange={handleChange} placeholder="Title" />
+    
+    return (
 
-                <br/>
-                <StyledInputButton type="submit" value="Add" />
-          </form>
-          {/* <pre>{JSON.stringify(value, null, 1)}</pre> */}
-          </>
-        );
+      <form onSubmit={addList}>
+            <Input value={value} onChange={handleChange} placeholder="Title" />
+            <br/>
+            <StyledInputButton type="submit" value="Add" />
+      </form>
 
-    }
+    );
+
+  }
 
     export default AddListBtn

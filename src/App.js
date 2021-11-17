@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
+import recruitmentStepsTestData from './testData/recruitmentStepsTestData'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import initialData from './initial-data';
-import Column from './components/RecruitmentProcessSteps';
+import RecruitmentProcessSteps from './components/RecruitmentProcessSteps';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import AddListBtn from './components/AddListBtn';
+
 
 
 const Container = styled.div`
@@ -14,98 +15,15 @@ const Container = styled.div`
   margin-left: 163px;
 `;
 
-function InnerList (props) {
-    const { column, taskMap, index } = props;
-    const tasks = column.taskIds.map(taskId => taskMap[taskId]);
-    return <Column column={column} tasks={tasks} index={index} />;
-  
-}
+function App (){
 
-function App (props){
-    const [state, setState] = useState(initialData);
+    const [recruitmentSteps, setRecruitmentSteps] = useState(recruitmentStepsTestData);
 
-    const onDragEnd = result => {
-        const { destination, source, draggableId, type } = result;
-
-        if (!destination) {
-        return;
-        }
-
-        if (
-        destination.droppableId === source.droppableId &&
-        destination.index === source.index
-        ) {
-        return;
-        }
-
-        if (type === 'column') {
-        const newColumnOrder = Array.from(state.columnOrder);
-        newColumnOrder.splice(source.index, 1);
-        newColumnOrder.splice(destination.index, 0, draggableId);
-
-        const newState = {
-            ...state,
-            columnOrder: newColumnOrder,
-        };
-        setState(newState);
-        return;
-        }
-    
-
-        const home = state.columns[source.droppableId];
-        const foreign = state.columns[destination.droppableId];
-
-        if (home === foreign) {
-        const newTaskIds = Array.from(home.taskIds);
-        newTaskIds.splice(source.index, 1);
-        newTaskIds.splice(destination.index, 0, draggableId);
-
-        const newHome = {
-            ...home,
-            taskIds: newTaskIds,
-        };
-
-        const newState = {
-            ...state,
-            columns: {
-            ...state.columns,
-            [newHome.id]: newHome,
-            },
-        };
-
-        setState(newState);
-        return;
-        }
-    
-
-        // moving from one list to another
-        const homeTaskIds = Array.from(home.taskIds);
-        homeTaskIds.splice(source.index, 1);
-        const newHome = {
-        ...home,
-        taskIds: homeTaskIds,
-        };
-
-        const foreignTaskIds = Array.from(foreign.taskIds);
-        foreignTaskIds.splice(destination.index, 0, draggableId);
-        const newForeign = {
-        ...foreign,
-        taskIds: foreignTaskIds,
-        };
-
-        const newState = {
-        ...state,
-        columns: {
-            ...state.columns,
-            [newHome.id]: newHome,
-            [newForeign.id]: newForeign,
-        },
-        };
-        setState(newState);
-    }
+     const onDragEnd = result => {
+        console.log(recruitmentStepsTestData)
+     }
 
     return (
-        
         <DragDropContext onDragEnd={onDragEnd} >
         <Navbar/>
         <Header/>
@@ -120,20 +38,17 @@ function App (props){
                 ref={provided.innerRef}
             >
 
-                {state.columnOrder.map((columnId, index) => {
-                const column = state.columns[columnId];
-                return (
-                    <InnerList
-                    key={column.id}
-                    column={column}
-                    taskMap={state.tasks}
-                    index={index}
-                    />
-                );
+                {recruitmentSteps.map((recruitmentStepsInMap, index) =>{
+                  
+                  return(
+           
+                  <RecruitmentProcessSteps title = {recruitmentStepsInMap.title} id={recruitmentStepsInMap.id} applicants={recruitmentStepsInMap.applicantIds} key={recruitmentStepsInMap.id} index={index}recruitmentSteps={recruitmentSteps} setRecruitmentSteps={setRecruitmentSteps}/>
+                
+                  );
                 })}
                 
                 {provided.placeholder}
-                <AddListBtn/>
+                <AddListBtn recruitmentSteps={recruitmentSteps} setRecruitmentSteps={setRecruitmentSteps}/>
             </Container>
             )}
         </Droppable>

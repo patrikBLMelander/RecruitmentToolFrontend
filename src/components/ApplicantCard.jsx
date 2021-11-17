@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from "react";
 import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
+import applicantTestData from '../testData/applicantTestData'
 
 const Container = styled.div`
   border: 1px solid lightgrey;
@@ -10,10 +11,12 @@ const Container = styled.div`
   background-color: ${props => (props.isDragging ? 'lightgreen' : '#afc9b6')};
 `;
 
-function Task (props) {
+function ApplicantCard (props) {
+  const [applicant, setApplicant] = useState(applicantTestData);
+      
  
     return (
-      <Draggable draggableId={props.task.id} index={props.index}>
+      <Draggable draggableId={props.applicantId} index={props.index}>
          {(provided, snapshot) => (
           <Container
             {...provided.draggableProps}
@@ -21,7 +24,13 @@ function Task (props) {
             ref={provided.innerRef}
             isDragging={snapshot.isDragging}
           >
-            {props.task.content}
+          {applicant.map( applicant => {
+            if(applicant.id===props.applicantId){
+              return <h3 key={applicant.id}>{applicant.name}</h3>
+            }
+
+          })}
+
           </Container>
         )}
       </Draggable>
@@ -29,4 +38,4 @@ function Task (props) {
   
 }
 
-export default Task
+export default ApplicantCard;
