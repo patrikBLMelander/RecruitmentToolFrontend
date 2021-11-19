@@ -23,10 +23,6 @@ function App (){
 
      const onDragEnd = result => {
         const { destination, source, draggableId, type } = result;
-        console.log(destination)
-        console.log(source)
-        console.log(draggableId)
-        console.log(type)
 
         //If you dop outside dropzone
         if (!destination) {
@@ -58,7 +54,7 @@ function App (){
             newRecruitmentSteps.splice(source.index, 1);
             newRecruitmentSteps.splice(destination.index, 0, RecInfoToPutIn);
 
-            setRecruitmentSteps(newRecruitmentSteps)
+            setRecruitmentSteps([...newRecruitmentSteps])
 
             return;
         }
@@ -81,7 +77,7 @@ function App (){
             RecToReorder.applicantIds.splice(source.index, 1);
             RecToReorder.applicantIds.splice(destination.index, 0, draggableId);
 
-            setRecruitmentSteps(recruitmentSteps)
+            setRecruitmentSteps([...recruitmentSteps])
             return;
         }
         //Flytta kort mellan listor
@@ -104,9 +100,10 @@ function App (){
         RecTo.applicantIds.splice(destination.index, 0, draggableId);
 
 
-        setRecruitmentSteps(recruitmentSteps)
+        setRecruitmentSteps([...recruitmentSteps])
         return null;
      }
+
 
     return (
         <DragDropContext onDragEnd={onDragEnd} >

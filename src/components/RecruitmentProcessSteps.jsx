@@ -27,6 +27,7 @@ const ApplicantCardList = styled.div`
 `;
 
  function RecruitmentProcessStep (props) {
+  
   return (
     <Draggable draggableId={props.id} index={props.index}>
       {provided => (
@@ -64,7 +65,7 @@ const ApplicantCardList = styled.div`
               </ApplicantCardList>
             )}
           </Droppable>
-          <RemoveBtn id={props.id} recruitmentSteps={props.recruitmentSteps} setRecruitmentSteps={props.setRecruitmentSteps}></RemoveBtn>
+          <RemoveBtn id={props.id} recruitmentSteps={props.recruitmentSteps} setRecruitmentSteps={props.setRecruitmentSteps}applicants={props.applicants.length}></RemoveBtn>
         </Container>
         
       )}

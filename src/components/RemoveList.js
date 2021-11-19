@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { BsFillTrashFill } from "react-icons/bs";
 
@@ -22,32 +22,24 @@ function RemoveListBtn (props) {
 
     const removeList = (event) => {
         event.preventDefault();
-        console.log(props.id)
-        props.recruitmentSteps.map(rec => {
-            if(rec.id === props.id && rec.applicantIds.length > 0) {
-                console.log("should not remove")
-                return;
-            }
-        })
-       props.setRecruitmentSteps(props.recruitmentSteps.filter(recruitmentStep => recruitmentStep.id !== props.id))
+        props.setRecruitmentSteps(props.recruitmentSteps.filter(recruitmentStep => recruitmentStep.id !== props.id))
     }
-    console.log(props)
 
-    let btnDisabler = false;
-    props.recruitmentSteps.map(rec => {
-        if(rec.id === props.id && rec.applicantIds.length > 0) {
-            console.log("disable btn")
-            btnDisabler = true
-            return;
+    
+
+    
+    const [isBtnDisabled, setisBtnDisabled]= useState(true) 
+    useEffect( ()=> {
+        if (props.applicants>0) {
+            setisBtnDisabled(true)  ; //button remains disabled
+        } else {
+            setisBtnDisabled(false); //button is enabled
         }
-    })
         
-
-    console.log(btnDisabler)
-
+   },[props.applicants])
     return (
         <form onSubmit={removeList}>
-            <TrashBtn disabled={btnDisabler} type="submit" value="Remove" id={props.id}><BsFillTrashFill/></TrashBtn>
+            <TrashBtn disabled= {isBtnDisabled} type="submit" value="Remove" id={props.id}><BsFillTrashFill/></TrashBtn>
         </form>
     
     );
