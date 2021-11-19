@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
+import ApplicantCardModal from './Modal/ApplicantCardModal'
 
 const Container = styled.div`
   border: 1px solid lightgrey;
@@ -22,11 +23,14 @@ function ApplicantCard (props) {
             {...provided.dragHandleProps}
             ref={provided.innerRef}
             isDragging={snapshot.isDragging}
+
           >
           {props.applicantState.map( applicant => {
             if(applicant.id===props.applicantId){
-              return <h3 key={applicant.id}>{applicant.name}</h3>
-            }
+              return (
+                <ApplicantCardModal key={applicant.id} applicant = {applicant}/>
+
+              );}
 
           })}
 
