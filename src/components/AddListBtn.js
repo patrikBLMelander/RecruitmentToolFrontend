@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import applicantTestData from '../testData/applicantTestData'
-import recruitmentStepsTestData from '../testData/recruitmentStepsTestData'
 
 let counter = 5;
 let newId = "recruitmentStep-" + counter;
