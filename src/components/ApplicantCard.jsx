@@ -8,7 +8,8 @@ const Container = styled.div`
   border-radius: 2px;
   padding: 8px;
   margin-bottom: 8px;
-  background-color: ${props => (props.isDragging ? 'lightgreen' : '#afc9b6')};
+  color: #edf0f2;
+  background-color: ${props => (props.isDragging ? '#adc3e0' : '#6ea0e0')};
 `;
 
 function ApplicantCard (props) {
@@ -30,7 +31,8 @@ function ApplicantCard (props) {
               return (
                 <ApplicantCardModal key={applicant.id} applicant = {applicant}/>
 
-              );}
+              )
+            }else{ return null}
 
           })}
 

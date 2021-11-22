@@ -15,7 +15,7 @@ const customStyles = {
 const Container = styled.div`
   margin: 8px;
   border: 1px solid lightgrey;
-  background-color:#a5d6a7;
+  background-color:#d7dbe0;
   border-radius: 10px;
 
 
@@ -85,14 +85,14 @@ function ApplicantCardModal(props) {
         //onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="CV modal"
       >
         <Container>
             <StyledH4>Presentation</StyledH4>
             <StyledP>{props.applicant.presentation}</StyledP>
             <StyledH4>Arbetslivserfarenhet</StyledH4>
             {props.applicant.experience.map(experience =>(
-                <div>
+                <div key = {experience}>
                     <StyledH5>{experience.title}</StyledH5>
                     <StyledH5>{experience.period}</StyledH5>
                     <StyledP>{experience.description}</StyledP>
