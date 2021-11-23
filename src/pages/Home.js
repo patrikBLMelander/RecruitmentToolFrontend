@@ -19,8 +19,8 @@ const H3 = styled.h3`
 
     return (
     <Container>
-        <H3>Welcome FIRSTNAME LASTNAME</H3>
-        
+        <H3>Welcome Patrik Melander</H3>
+
 
     </Container>
     )

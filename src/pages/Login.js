@@ -1,16 +1,66 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useNavigate } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import styled from 'styled-components'
 
 const Container = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-    margin-left: 160px;
+    height: 300px;
+    width: 300px;
+
 
 `;
 
+
 function Login() {
+
+    const [email, setEmail] = useState("")  
+    const [password, setPassword] = useState("")
+    
+    const navigate = useNavigate();
+
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    }
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    }
+
+    const tryLogin = (event) => {
+        event.preventDefault();
+        
+        if(email ==="Patrikjmelander@gmail.com" && password ==="1234"){
+            console.log("trying to log in...")
+            navigate("/home")
+        }
+
+        
+    };
+
     return(
-        <Container>
-            <h1>LOGIN</h1>
+        <Container  className="shadow-lg p-3 mb-5 bg-white rounded">
+            <Form onSubmit={tryLogin}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Control value={email} onChange={handleEmailChange} type="email" placeholder="Enter email" />
+                <Form.Text className="text-muted">
+                We'll never share your email with anyone else.
+                </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+
+                <Form.Control value={password} onChange={handlePasswordChange} type="password" placeholder="Password" />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+                Submit
+            </Button>
+            </Form>
         </Container>
     )
 }
