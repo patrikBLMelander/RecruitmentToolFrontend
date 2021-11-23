@@ -14,7 +14,7 @@ background-image: linear-gradient(#f5f5f5, #e6e6e6);
     margin-left: 163px;
 `;
 
-function RecruitmentPage (){
+function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
     const [applicantState, setApplicantState] = useState(applicantTestData);
     const [recruitmentSteps, setRecruitmentSteps] = useState(recruitmentStepsTestData);
     

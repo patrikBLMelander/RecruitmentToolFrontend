@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import logo from '../logoipsum-logo-46.svg'
 
 const Container = styled.div`
     display: flex;
@@ -20,14 +21,22 @@ const H3 = styled.h3`
     font-family: 'Trebuchet MS', sans-serif;
 `;
 
+const Img = styled.img`
+    display: flex;
+    margin-left: 50px;
+    margin-right: 400px;
 
 
- function Header () {
+`;
+
+
+
+ function Header ({activeJob}) {
 
     return (
     <Container>
-        <H3>Company LOGO</H3>
-        <H3>ROLE</H3>
+        <Img src={logo} alt="React Logo" />
+        <H3>{activeJob.title}</H3>
     </Container>
     )
        
