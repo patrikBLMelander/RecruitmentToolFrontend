@@ -26,7 +26,8 @@ const Input = styled.input`
 
 
 
-function AddListBtn ({recruitmentSteps, setRecruitmentSteps}) {
+function AddListBtn ({jobOfferings, setJobOfferings, jobOfferingId}) {
+
     
     const [value, setvalue] = useState("")  
                         
@@ -36,13 +37,33 @@ function AddListBtn ({recruitmentSteps, setRecruitmentSteps}) {
     
     const addList = (event) => {
         event.preventDefault();
-        
         counter = counter + 1;
         newId = "recruitmentStep-" + counter
 
-        setRecruitmentSteps(prevRecruitmentSteps => (
-        [...prevRecruitmentSteps, {id:newId, title: value, applicantIds:[]}]
-        ))
+
+        let test
+        jobOfferings.map((jobOfferingInMap, index) =>{
+          if(jobOfferingInMap.id===jobOfferingId){
+
+            jobOfferings[index].recruitmentSteps = [...jobOfferingInMap.recruitmentSteps, {id:newId, title: value, applicantIds:[]}]
+            test=[...jobOfferings]
+          }
+         
+        })
+        setJobOfferings(test);
+
+
+        // setJobOfferings(prevJobOfferings => {
+        //   return jobOfferings.map(jobOfferingInMap =>{
+        //     if(jobOfferingInMap.id===jobOfferingId){
+        //       console.log(jobOfferingInMap)
+        //       return(
+        //         [...prevJobOfferings, {jobOfferingInMap: {recruitmentSteps:[{id:newId, title: value, applicantIds:[]}]}}]
+        //       )
+        //   }
+        //   })})
+
+
     };
     
     

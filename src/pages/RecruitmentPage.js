@@ -103,6 +103,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
      }
 
 
+     let jobOfferingId;
     return (
         <DragDropContext onDragEnd={onDragEnd} >
         <Droppable
@@ -116,27 +117,37 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
                 ref={provided.innerRef}
             >
 
-                {recruitmentSteps.map((recruitmentStepsInMap, index) =>{
-                  
-                  return(
-           
-                  <RecruitmentProcessSteps title = 
-                  {recruitmentStepsInMap.title} 
-                    id={recruitmentStepsInMap.id} 
-                    applicants={recruitmentStepsInMap.applicantIds} 
-                    key={recruitmentStepsInMap.id}
-                    index={index}
-                    recruitmentSteps={recruitmentSteps} 
-                    setRecruitmentSteps={setRecruitmentSteps}
-                    applicantState={applicantState}
-                    setApplicantState={setApplicantState} 
-                    />
-                
-                  );
-                })}
+                {jobOfferings.map((jobOfferingsInMap, index)=>{
+
+                    
+                    
+                    if(jobOfferingsInMap.id === activeJob.id){
+                        jobOfferingId = jobOfferingsInMap.id;
+
+                        
+                        return jobOfferingsInMap.recruitmentSteps.map((recruitmentStepsInMap, index) =>(
+                                <RecruitmentProcessSteps 
+                                title = {recruitmentStepsInMap.title} 
+                                id={recruitmentStepsInMap.id} 
+                                applicants={recruitmentStepsInMap.applicantIds} 
+                                key={recruitmentStepsInMap.id}
+                                index={index}
+                                jobOfferings={jobOfferings} 
+                                setJobOfferings={setJobOfferings}
+                                applicantState={applicantState}
+                                setApplicantState={setApplicantState}
+                                jobOfferingId={jobOfferingId}
+                                />
+                            )
+
+                        )
+                    }
+                    
+                } 
+                )}
                 
                 {provided.placeholder}
-                <AddListBtn recruitmentSteps={recruitmentSteps} setRecruitmentSteps={setRecruitmentSteps}/>
+                <AddListBtn jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} jobOfferingId={jobOfferingId} />
             </Container>
             )}
         </Droppable>

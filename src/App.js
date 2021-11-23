@@ -16,16 +16,16 @@ function App() {
 
     return(
         <Router> 
-                <Navbar jobOfferings={jobOfferings}/>
-                <Header activeJob={activeJob}/>
-                <div>
-                    <Routes>
-                        <Route path="/home" element= {<Home jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} setActiveJob={setActiveJob} activeJob={activeJob}/>}/>
-                        <Route path="/recruitment-page" element= {<RecruitmentPage jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} activeJob={activeJob}/>}/> 
-                        <Route path="/settings" element= {<Settings/>}/> 
-                        <Route path="/" exect element= {<Login/>}/> 
-                    </Routes>
-                </div>
+            <Navbar jobOfferings={jobOfferings}/>
+            <Header activeJob={activeJob}/>
+            <div>
+                <Routes>
+                    <Route path="/home" element= {<Home jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} setActiveJob={setActiveJob} activeJob={activeJob}/>}/>
+                    <Route path="/recruitment-page" element= {<RecruitmentPage jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} activeJob={activeJob}/>}/> 
+                    <Route path="/settings" element= {<Settings/>}/> 
+                    <Route path="/" exect element= {<Login/>}/> 
+                </Routes>
+            </div>
         </Router>
     )
 }

@@ -27,7 +27,6 @@ const ApplicantCardList = styled.div`
 `;
 
  function RecruitmentProcessStep (props) {
-  
   return (
     <Draggable draggableId={props.id} index={props.index}>
       {provided => (
@@ -44,7 +43,7 @@ const ApplicantCardList = styled.div`
               >
                
                {props.applicants.map((applicant, index) =>{
-                  
+  
                   return(
            
                   <ApplicantCard 
@@ -65,7 +64,7 @@ const ApplicantCardList = styled.div`
               </ApplicantCardList>
             )}
           </Droppable>
-          <RemoveBtn id={props.id} recruitmentSteps={props.recruitmentSteps} setRecruitmentSteps={props.setRecruitmentSteps}applicants={props.applicants.length}></RemoveBtn>
+          <RemoveBtn id={props.id} jobOfferings={props.jobOfferings} setJobOfferings={props.setJobOfferings}applicants={props.applicants.length} jobOfferingId={props.jobOfferingId}></RemoveBtn>
         </Container>
         
       )}

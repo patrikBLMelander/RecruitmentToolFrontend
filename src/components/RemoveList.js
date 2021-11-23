@@ -20,9 +20,23 @@ const TrashBtn = styled.button`
 
 function RemoveListBtn (props) {
 
+
     const removeList = (event) => {
         event.preventDefault();
-        props.setRecruitmentSteps(props.recruitmentSteps.filter(recruitmentStep => recruitmentStep.id !== props.id))
+
+        
+        let test;
+        props.jobOfferings.map((jobOfferingsInMap, index)=>{
+            if(jobOfferingsInMap.id===props.jobOfferingId){
+
+                props.jobOfferings[index].recruitmentSteps = [...props.jobOfferings[index].recruitmentSteps.filter(recruitmentStep => recruitmentStep.id !== props.id)]
+                test=[...props.jobOfferings]
+            }
+        }
+        
+        )
+
+        props.setJobOfferings(test)
     }
 
     
@@ -36,7 +50,7 @@ function RemoveListBtn (props) {
             setisBtnDisabled(false); //button is enabled
         }
         
-   },[props.applicants])
+    },[props.applicants])
     return (
         <form onSubmit={removeList}>
             <TrashBtn disabled= {isBtnDisabled} type="submit" value="Remove" id={props.id}><BsFillTrashFill/></TrashBtn>
