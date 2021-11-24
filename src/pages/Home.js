@@ -20,6 +20,20 @@ const H3 = styled.h3`
     font-family: 'Trebuchet MS', sans-serif;
 `;
 
+const PNew = styled.p`
+    color: #17913c;
+`;
+
+const PTotal = styled.p`
+    color: #3b3d40;
+`;
+
+const PExpire = styled.p`
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #3b3d40;
+`;
+
  function Home ({jobOfferings, setJobOfferings, setActiveJob, activeJob}) {
 
     const navigate = useNavigate();
@@ -39,6 +53,19 @@ const H3 = styled.h3`
         <H3>Welcome Patrik Melander</H3>
         <Row xs={1} md={3} className="g-4">
         {jobOfferings.map((jobOfferingsInMap, index) =>{
+            let totalApplicants = 0;
+            jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
+                totalApplicants += recruitmentStepInMap.applicantIds.length
+            
+                console.log(totalApplicants)
+                })
+
+            
+
+            jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
+            console.log(recruitmentStepInMap.applicantIds.length)
+            })
+
              return(
                 <Col key={index}>
                     <Card style={{ width: '18rem' }}>
@@ -46,9 +73,26 @@ const H3 = styled.h3`
                         <Card.Body>
                             <Card.Title>{jobOfferingsInMap.title}</Card.Title>
                             <Card.Text>
-                            {jobOfferingsInMap.description}
+                            <PExpire>Expire</PExpire>
+                            <PExpire>{jobOfferingsInMap.applyDate}</PExpire>
+                            
                             </Card.Text>
-                            <Button onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">Handle Applicants</Button>
+                            <div className="d-grid gap-2">
+                            <Button onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">Handle</Button>
+                            </div>
+                            <Row xs={2}>
+                            <Col sm={5}>
+                            <Card.Text className="ms-4">
+                                <PNew> New: {jobOfferingsInMap.recruitmentSteps[0].applicantIds.length}</PNew>
+                            </Card.Text>
+                            </Col>
+                            <Col sm={5}>
+                            <Card.Text  className="ms-4">
+                            <PTotal> Total: {totalApplicants}</PTotal>
+                            </Card.Text>
+                            </Col>
+                            </Row>
+
                         </Card.Body>
                     </Card>
                 </Col>

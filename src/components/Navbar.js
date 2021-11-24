@@ -80,7 +80,7 @@ const StyledPeopleTeamAddBtn = styled(PeopleTeamAdd)`
         <h1><StyledPersonSearchBtn /></h1>
         </Link>
 
-        <Link to="/add-new-recruitment">
+        <Link to="/add-job-offer-page">
         <h1><StyledPeopleTeamAddBtn /></h1>
         </Link>
 
