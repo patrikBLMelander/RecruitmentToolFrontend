@@ -8,6 +8,8 @@ import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 
+let counter = 6;
+let newId = "jobOffering-" + counter;
 
 const Container = styled.div`
 
@@ -45,9 +47,11 @@ function AddNewJobOffer(props) {
         if (form.checkValidity() === false) {;
           event.stopPropagation();
         }else{
+            counter = counter + 1;
+            newId = "jobOffering-" + counter
 
             const newJobOffering = [...props.jobOfferings, {
-                id: "jobOffering-7",
+                id: newId,
                 title: form.titleInputGrid.value,
                 location: form.locationInputGrid.value,
                 publishDate: form.dateInputGrid.value,

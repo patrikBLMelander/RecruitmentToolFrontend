@@ -13,12 +13,12 @@ const jobOfferingsTestData = [
       {
         id: 'recruitmentStep-1',
         title: 'Applied',
-        applicantIds: ['applicant-1', 'applicant-2', 'applicant-3', 'applicant-4'],
+        applicantIds: ['applicant-1', 'applicant-2', 'applicant-3', ],
         },
         {
           id: 'recruitmentStep-2',
           title: 'Interesting',
-          applicantIds: [],
+          applicantIds: ['applicant-4'],
         },
         {
           id: 'recruitmentStep-3',
@@ -56,7 +56,7 @@ const jobOfferingsTestData = [
         {
           id: 'recruitmentStep-2',
           title: 'Interesting',
-          applicantIds: [],
+          applicantIds: ['applicant-4'],
         },
         {
           id: 'recruitmentStep-3',
@@ -127,7 +127,7 @@ const jobOfferingsTestData = [
       {
         id: 'recruitmentStep-1',
         title: 'Applied',
-        applicantIds: ['applicant-7', 'applicant-8', 'applicant-3', 'applicant-4'],
+        applicantIds: ['applicant-7', 'applicant-8', 'applicant-6'],
         },
         {
           id: 'recruitmentStep-2',
@@ -137,7 +137,7 @@ const jobOfferingsTestData = [
         {
           id: 'recruitmentStep-3',
           title: 'Interview',
-          applicantIds: [],
+          applicantIds: ['applicant-3', 'applicant-4'],
         },
         {
           id: 'recruitmentStep-4',

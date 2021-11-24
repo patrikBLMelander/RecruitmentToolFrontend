@@ -27,7 +27,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
 
             //If you dop outside dropzone
             if (!destination) {
-                return;
+                return null;
             }
 
             //If you pick up and drop on the same place
@@ -35,7 +35,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
                 destination.droppableId === source.droppableId &&
                 destination.index === source.index
                 ) {
-                return;
+                return null;
             }
 
             //If you drag a list
@@ -57,7 +57,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
 
                 setJobOfferings([...newJobOfferings])
 
-                return;
+                return null;
             }
 
             const home = source.droppableId;
@@ -79,7 +79,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
                 RecToReorder.applicantIds.splice(destination.index, 0, draggableId);
 
                 setJobOfferings([...jobOfferings])
-                return;
+                return null;
             }
             //Flytta kort mellan listor
             let RecFrom;
@@ -104,13 +104,13 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
             setJobOfferings([...jobOfferings])
             return null;
             }
+            return null;
         })
 
- 
-     }
+        return null;
+    }
 
 
-     let jobOfferingId;
     return (
         <DragDropContext onDragEnd={onDragEnd} >
         <Droppable
@@ -129,7 +129,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
                     
                     
                     if(jobOfferingsInMap.id === activeJob.id){
-                        jobOfferingId = jobOfferingsInMap.id;
+                        
 
                         
                         return jobOfferingsInMap.recruitmentSteps.map((recruitmentStepsInMap, index) =>(
@@ -149,7 +149,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
 
                         )
                     }
-                    
+                    return null;
                 } 
                 )}
                 

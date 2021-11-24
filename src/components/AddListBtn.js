@@ -48,7 +48,7 @@ function AddListBtn ({jobOfferings, setJobOfferings, activeJobId}) {
             jobOfferings[index].recruitmentSteps = [...jobOfferingInMap.recruitmentSteps, {id:newId, title: value, applicantIds:[]}]
             test=[...jobOfferings]
           }
-         
+          return null
         })
         setJobOfferings(test);
 

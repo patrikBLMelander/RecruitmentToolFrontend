@@ -32,6 +32,7 @@ function RemoveListBtn (props) {
                 props.jobOfferings[index].recruitmentSteps = [...props.jobOfferings[index].recruitmentSteps.filter(recruitmentStep => recruitmentStep.id !== props.id)]
                 test=[...props.jobOfferings]
             }
+            return null;
         }
         
         )

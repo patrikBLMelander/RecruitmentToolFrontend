@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from 'styled-components'
 import Card from 'react-bootstrap/Card';
@@ -56,7 +56,7 @@ const PExpire = styled.p`
             let totalApplicants = 0;
             jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
                 totalApplicants += recruitmentStepInMap.applicantIds.length
-    
+                return null;
                 })
 
              return(
@@ -65,24 +65,23 @@ const PExpire = styled.p`
                         <Card.Img variant="top" src={jobOfferingsInMap.imageUrl} />
                         <Card.Body>
                             <Card.Title>{jobOfferingsInMap.title}</Card.Title>
-                            <Card.Text>
-                            <PExpire>Expire</PExpire>
-                            <PExpire>{jobOfferingsInMap.applyDate}</PExpire>
+                            <PExpire>
+                            Expire: {jobOfferingsInMap.applyDate}
                             
-                            </Card.Text>
+                            </PExpire>
                             <div className="d-grid gap-2">
                             <Button onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">Handle</Button>
                             </div>
                             <Row xs={2}>
                             <Col sm={5}>
-                            <Card.Text className="ms-4">
-                                <PNew> New: {jobOfferingsInMap.recruitmentSteps[0].applicantIds.length}</PNew>
-                            </Card.Text>
+                            <PNew>
+                                New: {jobOfferingsInMap.recruitmentSteps[0].applicantIds.length}
+                            </PNew>
                             </Col>
                             <Col sm={5}>
-                            <Card.Text  className="ms-4">
-                            <PTotal> Total: {totalApplicants}</PTotal>
-                            </Card.Text>
+                            <PTotal>
+                            Total: {totalApplicants}
+                            </PTotal>
                             </Col>
                             </Row>
 
