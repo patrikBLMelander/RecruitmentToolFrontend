@@ -14,6 +14,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 function App() {
     const [jobOfferings, setJobOfferings] = useState(jobOfferingsTestData);
     const [activeJob, setActiveJob] = useState({title:"",id:""})
+    const [loggedIn, setLoggedIn] = useState(false)
 
 
     return(
@@ -27,7 +28,7 @@ function App() {
                     <Route path="/add-job-offer-page" element= {<AddNewJobOffer jobOfferings={jobOfferings} setJobOfferings={setJobOfferings}/>}/> 
                     <Route path="/applicant-search" element= {<ApplicantSearch/>}/> 
                     <Route path="/settings" element= {<Settings/>}/> 
-                    <Route path="/" exect element= {<Login/>}/> 
+                    <Route path="/" exect element= {<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}/>
                 </Routes>
             </div>
         </Router>

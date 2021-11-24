@@ -17,7 +17,8 @@ const Container = styled.div`
 `;
 
 
-function Login() {
+function Login(props) {
+    props.setLoggedIn(false)
 
     const [email, setEmail] = useState("")  
     const [password, setPassword] = useState("")
@@ -36,7 +37,7 @@ function Login() {
         event.preventDefault();
         
         if(email ==="Patrikjmelander@gmail.com" && password ==="1234"){
-            console.log("trying to log in...")
+            props.setLoggedIn(true)
             navigate("/home")
         }
 
