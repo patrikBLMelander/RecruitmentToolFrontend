@@ -53,16 +53,6 @@ function AddListBtn ({jobOfferings, setJobOfferings, activeJobId}) {
         setJobOfferings(test);
 
 
-        // setJobOfferings(prevJobOfferings => {
-        //   return jobOfferings.map(jobOfferingInMap =>{
-        //     if(jobOfferingInMap.id===jobOfferingId){
-        //       console.log(jobOfferingInMap)
-        //       return(
-        //         [...prevJobOfferings, {jobOfferingInMap: {recruitmentSteps:[{id:newId, title: value, applicantIds:[]}]}}]
-        //       )
-        //   }
-        //   })})
-
 
     };
     

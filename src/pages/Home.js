@@ -56,15 +56,8 @@ const PExpire = styled.p`
             let totalApplicants = 0;
             jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
                 totalApplicants += recruitmentStepInMap.applicantIds.length
-            
-                console.log(totalApplicants)
+    
                 })
-
-            
-
-            jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
-            console.log(recruitmentStepInMap.applicantIds.length)
-            })
 
              return(
                 <Col key={index}>
