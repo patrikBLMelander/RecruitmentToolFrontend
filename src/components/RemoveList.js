@@ -27,7 +27,7 @@ function RemoveListBtn (props) {
         
         let test;
         props.jobOfferings.map((jobOfferingsInMap, index)=>{
-            if(jobOfferingsInMap.id===props.jobOfferingId){
+            if(jobOfferingsInMap.id===props.activeJobId){
 
                 props.jobOfferings[index].recruitmentSteps = [...props.jobOfferings[index].recruitmentSteps.filter(recruitmentStep => recruitmentStep.id !== props.id)]
                 test=[...props.jobOfferings]

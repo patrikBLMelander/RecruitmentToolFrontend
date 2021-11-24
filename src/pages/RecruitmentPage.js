@@ -22,84 +22,93 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
      const onDragEnd = result => {
         const { destination, source, draggableId, type } = result;
 
-        //If you dop outside dropzone
-        if (!destination) {
-            return;
-        }
 
-        //If you pick up and drop on the same place
-        if (
-            destination.droppableId === source.droppableId &&
-            destination.index === source.index
-            ) {
-            return;
-        }
+        jobOfferings.map((jobOfferingInMap, index) =>{
+            
+        if (jobOfferingInMap.id===activeJob.id){
 
-        //If you drag a list
-        if (type === 'column') {
+            //If you dop outside dropzone
+            if (!destination) {
+                return;
+            }
 
-            const newRecruitmentSteps = [].concat(recruitmentSteps)
+            //If you pick up and drop on the same place
+            if (
+                destination.droppableId === source.droppableId &&
+                destination.index === source.index
+                ) {
+                return;
+            }
 
-            let RecInfoToPutIn;
-            recruitmentSteps.map(recruitmentStep =>{
-                if(recruitmentStep.id ===draggableId){
-                    RecInfoToPutIn=recruitmentStep
-                    return RecInfoToPutIn;
-                }else{ return null}
-                
-            })
+            //If you drag a list
+            if (type === 'column') {
 
-            newRecruitmentSteps.splice(source.index, 1);
-            newRecruitmentSteps.splice(destination.index, 0, RecInfoToPutIn);
+                const newJobOfferings = [].concat(jobOfferings)
 
-            setRecruitmentSteps([...newRecruitmentSteps])
+                let RecInfoToPutIn;
+                newJobOfferings[index].recruitmentSteps.map(recruitmentStep =>{
+                    if(recruitmentStep.id ===draggableId){
+                        RecInfoToPutIn=recruitmentStep
+                        return RecInfoToPutIn;
+                    }else{ return null}
+                    
+                })
 
-            return;
-        }
+                newJobOfferings[index].recruitmentSteps.splice(source.index, 1);
+                newJobOfferings[index].recruitmentSteps.splice(destination.index, 0, RecInfoToPutIn);
 
-        const home = source.droppableId;
-        const foreign = destination.droppableId;
+                setJobOfferings([...newJobOfferings])
+
+                return;
+            }
+
+            const home = source.droppableId;
+            const foreign = destination.droppableId;
 
 
 
-        // Om man flyttar kort i samma lista
-        if (home === foreign) {
-            let RecToReorder;
-            recruitmentSteps.map(recruitmentStep =>{
+            // Om man flyttar kort i samma lista
+            if (home === foreign) {
+                let RecToReorder;
+                jobOfferings[index].recruitmentSteps.map(recruitmentStep =>{
+                    if(recruitmentStep.id === source.droppableId){
+                        RecToReorder=recruitmentStep
+                        return RecToReorder;
+                    }else{ return null}
+                })
+
+                RecToReorder.applicantIds.splice(source.index, 1);
+                RecToReorder.applicantIds.splice(destination.index, 0, draggableId);
+
+                setJobOfferings([...jobOfferings])
+                return;
+            }
+            //Flytta kort mellan listor
+            let RecFrom;
+            jobOfferings[index].recruitmentSteps.map(recruitmentStep =>{
                 if(recruitmentStep.id === source.droppableId){
-                    RecToReorder=recruitmentStep
-                    return RecToReorder;
+                    RecFrom=recruitmentStep
+                    return RecFrom;
+                }else{ return null}
+            })
+            let RecTo;
+            jobOfferings[index].recruitmentSteps.map(recruitmentStep =>{
+                if(recruitmentStep.id === destination.droppableId){
+                    RecTo=recruitmentStep
+                    return RecTo;
                 }else{ return null}
             })
 
-            RecToReorder.applicantIds.splice(source.index, 1);
-            RecToReorder.applicantIds.splice(destination.index, 0, draggableId);
+            RecFrom.applicantIds.splice(source.index, 1);
+            RecTo.applicantIds.splice(destination.index, 0, draggableId);
 
-            setRecruitmentSteps([...recruitmentSteps])
-            return;
-        }
-        //Flytta kort mellan listor
-        let RecFrom;
-        recruitmentSteps.map(recruitmentStep =>{
-            if(recruitmentStep.id === source.droppableId){
-                RecFrom=recruitmentStep
-                return RecFrom;
-            }else{ return null}
-        })
-        let RecTo;
-        recruitmentSteps.map(recruitmentStep =>{
-            if(recruitmentStep.id === destination.droppableId){
-                RecTo=recruitmentStep
-                return RecTo;
-            }else{ return null}
+
+            setJobOfferings([...jobOfferings])
+            return null;
+            }
         })
 
-        RecFrom.applicantIds.splice(source.index, 1);
-        RecTo.applicantIds.splice(destination.index, 0, draggableId);
-
-
-        setRecruitmentSteps([...recruitmentSteps])
-        return null;
+ 
      }
 
 
@@ -136,7 +145,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
                                 setJobOfferings={setJobOfferings}
                                 applicantState={applicantState}
                                 setApplicantState={setApplicantState}
-                                jobOfferingId={jobOfferingId}
+                                activeJobId={activeJob.id}
                                 />
                             )
 
@@ -147,7 +156,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
                 )}
                 
                 {provided.placeholder}
-                <AddListBtn jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} jobOfferingId={jobOfferingId} />
+                <AddListBtn jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} activeJobId={activeJob.id} />
             </Container>
             )}
         </Droppable>

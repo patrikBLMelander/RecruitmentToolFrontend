@@ -64,7 +64,7 @@ const ApplicantCardList = styled.div`
               </ApplicantCardList>
             )}
           </Droppable>
-          <RemoveBtn id={props.id} jobOfferings={props.jobOfferings} setJobOfferings={props.setJobOfferings}applicants={props.applicants.length} jobOfferingId={props.jobOfferingId}></RemoveBtn>
+          <RemoveBtn id={props.id} jobOfferings={props.jobOfferings} setJobOfferings={props.setJobOfferings}applicants={props.applicants.length} activeJobId={props.activeJobId}></RemoveBtn>
         </Container>
         
       )}

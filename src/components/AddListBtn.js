@@ -26,7 +26,7 @@ const Input = styled.input`
 
 
 
-function AddListBtn ({jobOfferings, setJobOfferings, jobOfferingId}) {
+function AddListBtn ({jobOfferings, setJobOfferings, activeJobId}) {
 
     
     const [value, setvalue] = useState("")  
@@ -43,7 +43,7 @@ function AddListBtn ({jobOfferings, setJobOfferings, jobOfferingId}) {
 
         let test
         jobOfferings.map((jobOfferingInMap, index) =>{
-          if(jobOfferingInMap.id===jobOfferingId){
+          if(jobOfferingInMap.id===activeJobId){
 
             jobOfferings[index].recruitmentSteps = [...jobOfferingInMap.recruitmentSteps, {id:newId, title: value, applicantIds:[]}]
             test=[...jobOfferings]
