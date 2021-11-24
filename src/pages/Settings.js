@@ -10,7 +10,15 @@ const Container = styled.div`
 function Settings() {
     return(
         <Container>
-            <h1>SETTINGS</h1>
+            <h1>To Do</h1>
+
+            <ul>
+            <li>Adjust "real name"/"Animal"</li>
+            <li>Adjust picture or no picture on applicant</li>
+            <li>Adjust color scheme</li>
+            <li>Add new profile (recruiter)</li>
+            <li>Set authority on profiles</li>
+            </ul>
         </Container>
     )
 }
