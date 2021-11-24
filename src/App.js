@@ -7,14 +7,17 @@ import Home from './pages/Home'
 import AddNewJobOffer from './pages/AddNewJobOffer'
 import Settings from './pages/Settings'
 import Login from './pages/Login'
+import Apply from './pages/Apply'
 import ApplicantSearch from './pages/ApplicantSearch'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import applicantTestData from './testData/applicantTestData'
 
 
 function App() {
     const [jobOfferings, setJobOfferings] = useState(jobOfferingsTestData);
     const [activeJob, setActiveJob] = useState({title:"",id:""})
     const [loggedIn, setLoggedIn] = useState(false)
+    const [applicantState, setApplicantState] = useState(applicantTestData);
 
 
     return(
@@ -23,12 +26,13 @@ function App() {
             <Header activeJob={activeJob}/>
             <div>
                 <Routes>
+                    <Route path="/" element= {<Apply applicantState={applicantState} setApplicantState={setApplicantState}/>}/>
                     <Route path="/home" element= {<Home jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} setActiveJob={setActiveJob} activeJob={activeJob}/>}/>
-                    <Route path="/recruitment-page" element= {<RecruitmentPage jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} activeJob={activeJob}/>}/> 
+                    <Route path="/recruitment-page" element= {<RecruitmentPage jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} activeJob={activeJob} applicantState={applicantState} setApplicantState={setApplicantState}/>}/> 
                     <Route path="/add-job-offer-page" element= {<AddNewJobOffer jobOfferings={jobOfferings} setJobOfferings={setJobOfferings}/>}/> 
                     <Route path="/applicant-search" element= {<ApplicantSearch/>}/> 
                     <Route path="/settings" element= {<Settings/>}/> 
-                    <Route path="/" exect element= {<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}/>
+                    <Route path="/login" exect element= {<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}/>
                 </Routes>
             </div>
         </Router>

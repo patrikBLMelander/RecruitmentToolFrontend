@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import applicantTestData from '../testData/applicantTestData'
+
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import RecruitmentProcessSteps from '../components/RecruitmentProcessSteps';
 import AddListBtn from '../components/AddListBtn';
@@ -13,8 +13,8 @@ background-image: linear-gradient(#f5f5f5, #e6e6e6);
     margin-left: 163px;
 `;
 
-function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
-    const [applicantState, setApplicantState] = useState(applicantTestData);
+function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, applicantState, setApplicantState}){
+    
     
 
      const onDragEnd = result => {

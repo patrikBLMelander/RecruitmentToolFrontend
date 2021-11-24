@@ -88,7 +88,7 @@ const StyledPeopleTeamAddBtn = styled(PeopleTeamAdd)`
         <h1><StyledSettingsBtn /></h1>
         </Link>
 
-        <Link to="/">
+        <Link to="/login">
         <h1><StyledLogOutCircleBtn /></h1>
         </Link>
 

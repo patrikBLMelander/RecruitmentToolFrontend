@@ -79,7 +79,7 @@ function ApplicantCardModal(props) {
 
   return (
     <div >
-        <h3 onClick={openModal}>{props.applicant.name}</h3>
+        <h3 onClick={openModal}>{props.applicant.nickName}</h3>
       <Modal
         isOpen={modalIsOpen}
         //onAfterOpen={afterOpenModal}

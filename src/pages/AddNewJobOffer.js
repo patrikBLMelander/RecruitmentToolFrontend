@@ -95,7 +95,7 @@ function AddNewJobOffer(props) {
         }
     
         setValidated(true);
-      };
+    };
 
 
     return(

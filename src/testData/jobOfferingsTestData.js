@@ -1,7 +1,7 @@
 const jobOfferingsTestData = [
   {
     id: "jobOffering-1",
-    title: "Senior Systemvetare",
+    title: "Senior Backend Dev",
     location: "Stockholm",
     publishDate: "2021-11-05",
     applyDate: "2021-12-05",
