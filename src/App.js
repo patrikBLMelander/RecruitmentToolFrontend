@@ -26,13 +26,13 @@ function App() {
             <Header activeJob={activeJob}/>
             <div>
                 <Routes>
-                    <Route path="/" element= {<Apply applicantState={applicantState} setApplicantState={setApplicantState}/>}/>
-                    <Route path="/home" element= {<Home jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} setActiveJob={setActiveJob} activeJob={activeJob}/>}/>
-                    <Route path="/recruitment-page" element= {<RecruitmentPage jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} activeJob={activeJob} applicantState={applicantState} setApplicantState={setApplicantState}/>}/> 
-                    <Route path="/add-job-offer-page" element= {<AddNewJobOffer jobOfferings={jobOfferings} setJobOfferings={setJobOfferings}/>}/> 
-                    <Route path="/applicant-search" element= {<ApplicantSearch/>}/> 
-                    <Route path="/settings" element= {<Settings/>}/> 
-                    <Route path="/login" exect element= {<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}/>
+                    <Route path="/applicant/register" element= {<Apply applicantState={applicantState} setApplicantState={setApplicantState}/>}/>
+                    <Route path="/admin/home" element= {<Home jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} setActiveJob={setActiveJob} activeJob={activeJob}/>}/>
+                    <Route path="/admin/recruitment-page" element= {<RecruitmentPage jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} activeJob={activeJob} applicantState={applicantState} setApplicantState={setApplicantState}/>}/> 
+                    <Route path="/admin/add-job-offer-page" element= {<AddNewJobOffer jobOfferings={jobOfferings} setJobOfferings={setJobOfferings}/>}/> 
+                    <Route path="/admin/applicant-search" element= {<ApplicantSearch/>}/> 
+                    <Route path="/admin/settings" element= {<Settings/>}/> 
+                    <Route path="/admin/login" exect element= {<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}/>
                 </Routes>
             </div>
         </Router>

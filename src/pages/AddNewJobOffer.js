@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from "react-router-dom";
 import styled from 'styled-components'
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
@@ -31,6 +31,8 @@ const Container = styled.div`
 
 function AddNewJobOffer(props) {
     const [validated, setValidated] = useState(false);
+    
+    const navigate = useNavigate();
 
     // let competences = ["test", "test2"];
 
@@ -91,7 +93,7 @@ function AddNewJobOffer(props) {
             ]
            
             props.setJobOfferings(newJobOffering);
-
+            navigate("/admin/home")
         }
     
         setValidated(true);

@@ -38,10 +38,9 @@ function Login(props) {
         
         if(email ==="Patrikjmelander@gmail.com" && password ==="1234"){
             props.setLoggedIn(true)
-            navigate("/home")
+            navigate("/admin/home")
         }
 
-        
     };
 
     return(

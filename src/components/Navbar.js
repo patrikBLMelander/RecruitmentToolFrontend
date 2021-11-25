@@ -68,27 +68,27 @@ const StyledPeopleTeamAddBtn = styled(PeopleTeamAdd)`
  
     return (
     <Container>
-        <Link to="/home">  
+        <Link to="/admin/home">  
         <h1><StyledHomeBtn /></h1>
         </Link>
 
-        <Link to="/recruitment-page">  
+        <Link to="/admin/recruitment-page">  
         <h1><StyledBearSmileBtn /></h1>
         </Link>
 
-        <Link to="/applicant-search">
+        <Link to="/admin/applicant-search">
         <h1><StyledPersonSearchBtn /></h1>
         </Link>
 
-        <Link to="/add-job-offer-page">
+        <Link to="/admin/add-job-offer-page">
         <h1><StyledPeopleTeamAddBtn /></h1>
         </Link>
 
-        <Link to="/settings">
+        <Link to="/admin/settings">
         <h1><StyledSettingsBtn /></h1>
         </Link>
 
-        <Link to="/login">
+        <Link to="/admin/login">
         <h1><StyledLogOutCircleBtn /></h1>
         </Link>
 
