@@ -61,7 +61,7 @@ function AddNewJobOffer(props) {
                 preview: form.preview.value,
                 companyDescription: form.companyDescription.value,
                 aboutRole: form.aboutTheRole.value,
-                imageUrl:"https://picsum.photos/150/150?random=7",
+                imageUrl:"https://picsum.photos/150/150?random=" + counter,
                 recruitmentSteps: [
                 {
                     id: 'recruitmentStep-1',
