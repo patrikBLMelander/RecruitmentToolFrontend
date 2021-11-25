@@ -45,7 +45,7 @@ const PExpire = styled.p`
             id: event.id
         })
          
-        navigate("/recruitment-page")
+        navigate("/admin/recruitment-page")
     }
 
     return (
