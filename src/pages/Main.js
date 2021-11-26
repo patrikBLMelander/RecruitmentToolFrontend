@@ -79,7 +79,7 @@ const RegisterBtn = styled.button`
     
 `;
 
-function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn}){
+function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn}){
 
     const Navigate = useNavigate();
 
@@ -116,7 +116,7 @@ function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn}){
                         })
 
                     return(
-                        <JobOfferCard index={index} jobOfferingsInMap={jobOfferingsInMap} totalApplicants={totalApplicants} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn}/>
+                        <JobOfferCard index={index} jobOfferingsInMap={jobOfferingsInMap} totalApplicants={totalApplicants} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
                     )})}
                 </Row>
 

@@ -67,6 +67,11 @@ const StyledButton = styled.button`
     
 `;
 
+const StyleH1 = styled.h1`
+    font-family: 'Roboto', sans-serif;      
+    margin-top: 8%;
+`;
+
 function Registrer({applicantState, setApplicantState, activeCandidate, setActiveCandidate}) {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
@@ -105,9 +110,10 @@ function Registrer({applicantState, setApplicantState, activeCandidate, setActiv
         
     return(
         <Container>
-
+            
 
             <InnerContainer>
+                <StyleH1>Our New Star? </StyleH1>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Row className="g-1 ms-5 me-5 mt-5">
                         <Col md>
@@ -126,6 +132,16 @@ function Registrer({applicantState, setApplicantState, activeCandidate, setActiv
                             </Form.Control.Feedback>
                             </FloatingLabel>      
                         </Col>
+                        <Col md>
+                            <FloatingLabel controlId="phoneInputGrid" label="phone">
+                                <Form.Control required type="Text" placeholder='"Melander"'/>
+                                <Form.Control.Feedback type="invalid">
+                                Good to have if we want to conntact you!
+                            </Form.Control.Feedback>
+                            </FloatingLabel>      
+                        </Col>
+                        </Row>
+                        <Row className="g-1 ms-5 me-5 mt-5">
                      <Col md>
                             <FloatingLabel controlId="emailInputGrid" label="email">
                                 <Form.Control required type="Email" placeholder='"Melander"'/>
@@ -142,14 +158,7 @@ function Registrer({applicantState, setApplicantState, activeCandidate, setActiv
                             </Form.Control.Feedback>
                             </FloatingLabel>      
                         </Col>
-                        <Col md>
-                            <FloatingLabel controlId="phoneInputGrid" label="phone">
-                                <Form.Control required type="Text" placeholder='"Melander"'/>
-                                <Form.Control.Feedback type="invalid">
-                                Good to have if we want to conntact you!
-                            </Form.Control.Feedback>
-                            </FloatingLabel>      
-                        </Col>
+
                     
                     </Row>
 

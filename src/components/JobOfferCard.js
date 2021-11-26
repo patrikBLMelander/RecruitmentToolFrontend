@@ -28,8 +28,10 @@ const PExpire = styled.p`
     color: #3b3d40;
 `;            
                 
-function JobOfferCard({index, jobOfferingsInMap, totalApplicants, activeJob, setActiveJob, adminLoggedIn, applicantLoggedIn}){
+function JobOfferCard({index, jobOfferingsInMap, totalApplicants, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn}){
     const navigate = useNavigate();
+
+    console.log(adminLoggedIn)
 
     let btnText = "Apply";
     if(adminLoggedIn===true){
@@ -37,7 +39,11 @@ function JobOfferCard({index, jobOfferingsInMap, totalApplicants, activeJob, set
     }
 
     function setJobToWorkWith(event){
-        if(applicantLoggedIn===true){
+        
+        if(candidateLoggedIn===false){
+            navigate("/candidate/register")
+        }
+        if(candidateLoggedIn===true){
             Swal.fire({
                 title: 'Applied!',
                 text: 'Make sure to update your experience',
