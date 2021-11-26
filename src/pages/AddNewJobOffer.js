@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 
 
 let counter = 6;
@@ -29,7 +31,7 @@ const Container = styled.div`
 
 
 
-function AddNewJobOffer(props) {
+function AddNewJobOffer({adminLoggedIn, applicantLoggedIn, jobOfferings, activeJob, setJobOfferings}) {
     const [validated, setValidated] = useState(false);
     
     const navigate = useNavigate();
@@ -52,7 +54,7 @@ function AddNewJobOffer(props) {
             counter = counter + 1;
             newId = "jobOffering-" + counter
 
-            const newJobOffering = [...props.jobOfferings, {
+            const newJobOffering = [...jobOfferings, {
                 id: newId,
                 title: form.titleInputGrid.value,
                 location: form.locationInputGrid.value,
@@ -92,8 +94,8 @@ function AddNewJobOffer(props) {
             }
             ]
            
-            props.setJobOfferings(newJobOffering);
-            navigate("/admin/home")
+            setJobOfferings(newJobOffering);
+            navigate("/home")
         }
     
         setValidated(true);
@@ -101,6 +103,9 @@ function AddNewJobOffer(props) {
 
 
     return(
+        <div>
+        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} applicantLoggedIn={applicantLoggedIn}/>
+        <Header activeJob={activeJob}/>
         <Container>
 
 
@@ -184,6 +189,7 @@ function AddNewJobOffer(props) {
                 </Button>
             </Form>
         </Container>
+        </div>
     )
 }
 

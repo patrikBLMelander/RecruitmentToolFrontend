@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import RecruitmentProcessSteps from '../components/RecruitmentProcessSteps';
 import AddListBtn from '../components/AddListBtn';
+import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 
 
 
@@ -13,7 +15,7 @@ background-image: linear-gradient(#f5f5f5, #e6e6e6);
     margin-left: 163px;
 `;
 
-function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, applicantState, setApplicantState}){
+function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, applicantState, setApplicantState, adminLoggedIn, applicantLoggedIn}){
     
     
 
@@ -112,6 +114,9 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, applicantSt
 
 
     return (
+        <div>
+        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} applicantLoggedIn={applicantLoggedIn}/>
+        <Header activeJob={activeJob}/>
         <DragDropContext onDragEnd={onDragEnd} >
         <Droppable
             droppableId="all-columns"
@@ -159,6 +164,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, applicantSt
             )}
         </Droppable>
         </DragDropContext>
+      </div>
     );
 }
 

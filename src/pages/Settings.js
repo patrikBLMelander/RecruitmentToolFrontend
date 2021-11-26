@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
+import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 
 const Container = styled.div`
 
@@ -7,11 +9,13 @@ const Container = styled.div`
 
 `;
 
-function Settings() {
+function Settings({jobOfferings, activeJob, adminLoggedIn, applicantLoggedIn}) {
     return(
+        <div>
+        <Navbar jobOfferings={jobOfferings}  adminLoggedIn={adminLoggedIn} applicantLoggedIn={applicantLoggedIn}/>
+        <Header activeJob={activeJob}/>
         <Container>
             <h1>To Do</h1>
-
             <ul>
             <li>Adjust "real name"/"Animal"</li>
             <li>Adjust picture or no picture on applicant</li>
@@ -20,6 +24,7 @@ function Settings() {
             <li>Set authority on profiles</li>
             </ul>
         </Container>
+        </div>
     )
 }
 

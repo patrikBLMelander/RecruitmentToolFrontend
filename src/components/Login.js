@@ -17,8 +17,7 @@ const Container = styled.div`
 `;
 
 
-function Login(props) {
-    props.setLoggedIn(false)
+function Login({adminLoggedIn, setAdminLoggedIn, jobOfferings, activeJob, setActiveJob,}) {
 
     const [email, setEmail] = useState("")  
     const [password, setPassword] = useState("")
@@ -37,13 +36,14 @@ function Login(props) {
         event.preventDefault();
         
         if(email ==="Patrikjmelander@gmail.com" && password ==="1234"){
-            props.setLoggedIn(true)
+            setAdminLoggedIn(true)
             navigate("/admin/home")
         }
 
     };
 
     return(
+
         <Container  className="shadow-lg p-3 mb-5 bg-white rounded">
             <Form onSubmit={tryLogin}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -65,6 +65,7 @@ function Login(props) {
             </Button>
             </Form>
         </Container>
+      
     )
 }
 
