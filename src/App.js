@@ -3,7 +3,7 @@ import jobOfferingsTestData from './testData/jobOfferingsTestData';
 import RecruitmentPage from './pages/RecruitmentPage';
 import Home from './pages/Home';
 import AddNewJobOffer from './pages/AddNewJobOffer';
-import ApplicantMyPage from './pages/ApplicantMyPage'
+import CandidateMyPage from './pages/CandidateMyPage'
 import Settings from './pages/Settings';
 import CandidateProcesses from './pages/CandidateProcesses';
 import Login from './components/Login';
@@ -11,7 +11,7 @@ import Register from './pages/Register';
 import AddResume from './components/AddResume';
 import ApplicantSearch from './pages/ApplicantSearch';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import applicantTestData from './testData/applicantTestData';
+import candidateTestData from './testData/candidateTestData';
 import Main from './pages/Main';
 
 
@@ -30,7 +30,7 @@ function App() {
     {title: 'HR- ansvarig, Department manager', period:'Jan 2016 – aug 2017', description:'I januari 2016 tog jag över HR-ansvaret för hela Decathlon Sverige. En del av mitt HR-uppdrag var att hjälpa butikschefer och avdelningschefer att jobba mer effektiv med schemaläggning för att nå en så bra fpat (försäljning per arbetad timme) som möjligt. Jag gjorde analyser på vecka, månads och säsongsbasis för att säkerställa att de planerade rätt timmar på rätt tider. Jag coachade dem i schemaläggning och såg till att de alltid följde kollektivavtal och arbetsrätt. I maj 2016 öppnade Decathlon sin tredje butik i Sverige där jag ansvarade för hela rekryteringsprocessen av både avdelningschefer och säljare. Jag skötte den löneadministration som inte outsourcades till Visma. Jag ansvarade för utbildningar i ledarskap, sälj och rekrytering. Jag hade utöver detta det övergripande ansvaret för Decathlon Sveriges produktutbud gällande alpinskidåkning, både för utrustning och kläder.'}
     ]})
     const [adminLoggedIn, setAdminLoggedIn] = useState(false)
-    const [applicantState, setApplicantState] = useState(applicantTestData);
+    const [candidateState, setCandidatetState] = useState(candidateTestData);
     const [applicantLoggedIn, setApplicantLoggedIn] = useState(true)
 
 
@@ -39,12 +39,12 @@ function App() {
             <div>
                 <Routes>
                     <Route path="/" element= {<Main adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn} jobOfferings={jobOfferings} activeJob={activeJob}/>}/>
-                    <Route path="/applicant/register" element= {<Register  setApplicantState={setApplicantState} activeCandidate={activeCandidate} setActiveCandidate={setActiveCandidate} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn}/>}/>
-                    <Route path="/applicant/add-resume" element= {<AddResume applicantState={applicantState} setApplicantState={setApplicantState} activeCandidate={activeCandidate} setActiveCandidate={setActiveCandidate} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn}/>}/>
-                    <Route path="/applicant/my-page" element= {<ApplicantMyPage activeCandidate={activeCandidate} jobOfferings={jobOfferings} activeJob={activeJob} applicantState={applicantState} setApplicantState={setApplicantState} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn}/>}/>
-                    <Route path="/applicant/in-process" element= {<CandidateProcesses activeCandidate={activeCandidate} jobOfferings={jobOfferings} activeJob={activeJob} applicantState={applicantState} setApplicantState={setApplicantState} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn}/>}/>
-                    <Route path="/home" element= {<Home jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} applicantState={applicantState} setApplicantState={setApplicantState} activeCandidate={activeCandidate} setActiveCandidate={setActiveCandidate} setActiveJob={setActiveJob} activeJob={activeJob} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn}/>}/>
-                    <Route path="/admin/recruitment-page" element= {<RecruitmentPage jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} activeJob={activeJob} applicantState={applicantState} setApplicantState={setApplicantState} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn}/>}/> 
+                    <Route path="/candidate/register" element= {<Register  setCandidatetState={setCandidatetState} activeCandidate={activeCandidate} setActiveCandidate={setActiveCandidate} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn}/>}/>
+                    <Route path="/candidate/add-resume" element= {<AddResume activeCandidate={activeCandidate} setCandidatetState={setCandidatetState} candidateState={candidateState} setActiveCandidate={setActiveCandidate} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn}/>}/>
+                    <Route path="/candidate/my-page" element= {<CandidateMyPage setCandidatetState={setCandidatetState} candidateState={candidateState} activeCandidate={activeCandidate} setActiveCandidate={setActiveCandidate} jobOfferings={jobOfferings} activeJob={activeJob} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn}/>}/>
+                    <Route path="/candidate/in-process" element= {<CandidateProcesses jobOfferings={jobOfferings} activeJob={activeJob} activeCandidate={activeCandidate} setCandidatetState={setCandidatetState} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn}/>}/>
+                    <Route path="/home" element= {<Home jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} setCandidatetState={setCandidatetState} activeCandidate={activeCandidate} setActiveCandidate={setActiveCandidate} setActiveJob={setActiveJob} activeJob={activeJob} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn}/>}/>
+                    <Route path="/admin/recruitment-page" element= {<RecruitmentPage jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} activeJob={activeJob} activeCandidate={activeCandidate} setCandidatetState={setCandidatetState} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn}/>}/> 
                     <Route path="/admin/add-job-offer-page" element= {<AddNewJobOffer jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} activeJob={activeJob} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn}/>}/> 
                     <Route path="/admin/applicant-search" element= {<ApplicantSearch activeJob={activeJob} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn} />}/> 
                     <Route path="/admin/settings" element= {<Settings jobOfferings={jobOfferings}  activeJob={activeJob} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} applicantLoggedIn={applicantLoggedIn} setApplicantLoggedIn={setApplicantLoggedIn}/>}/> 

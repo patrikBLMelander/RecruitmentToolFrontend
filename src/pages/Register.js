@@ -41,11 +41,7 @@ const PublishContainer = styled.div`
 
 `;
 
-const StyledH4 = styled.h4`
-    color: white;
-    font-family: 'Roboto', sans-serif;      
-    margin-top: 10%;
-`;
+
 const StyledButton = styled.button`
     width: 140px;
     height: 45px;
@@ -90,7 +86,7 @@ function Registrer({applicantState, setApplicantState, activeCandidate, setActiv
                 nickName: 'Cat',
                 firstName: form.firstNameInputGrid.value,
                 LastName: form.lastNameInputGrid.value,
-                presentation: form.presentation.value,
+                presentation: "",
                 email: form.emailInputGrid.value,
                 password: form.passwordInputGrid.value,
                 phone: form.phoneInputGrid.value,
@@ -157,13 +153,7 @@ function Registrer({applicantState, setApplicantState, activeCandidate, setActiv
                     
                     </Row>
 
-                    <Form.Group className="mb-3 ms-5 me-5" controlId="presentation">
-                        <StyledH4>Describe your self and why you are so assume!</StyledH4> 
-                        <Form.Control required as="textarea" rows={3} />
-                        <Form.Control.Feedback type="invalid">
-                            This will be the first impression of you, write something nice ;)
-                        </Form.Control.Feedback>
-                    </Form.Group>
+
 
                     <PublishContainer>
                         <StyledButton variant="success" type="submit" className="ms-5">

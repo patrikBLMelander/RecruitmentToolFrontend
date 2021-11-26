@@ -5,7 +5,6 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import { useNavigate } from "react-router-dom";
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 
@@ -121,19 +120,27 @@ const TitleAndPeriodDiv = styled.div`
     border-color:  #b5bcc7;
     
 `;
+const StyledH4 = styled.h4`
+    color: white;
+    font-family: 'Roboto', sans-serif;      
+    margin-top: 10%;
+`;
 
 
 
 
-function ApplicantMyPage({jobOfferings, adminLoggedIn, applicantLoggedIn, activeJob, activeCandidate}){
-
-    const Navigate = useNavigate()
+function CandidateMyPage({jobOfferings, adminLoggedIn, applicantLoggedIn, activeJob, activeCandidate, setActiveCandidate, setCandidatetState, candidateState}){
 
     const [title, setTitle] = useState("");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [description, setDescription] = useState("");
-    const [employment, setEmployment] = useState([activeCandidate]);
+    const [presentation, setPresentation] = useState(activeCandidate.presentation);
+
+
+    const handlePresentationChange = (event) => {
+        setPresentation(event.target.value);
+    }
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
@@ -151,25 +158,48 @@ function ApplicantMyPage({jobOfferings, adminLoggedIn, applicantLoggedIn, active
         setDescription(event.target.value);
     }
 
+    function SavePresentation (event){
+        event.preventDefault();
+        let newCandidateState = candidateState;
+        candidateState.map((candidateStateInMap, index) =>{
+            if(candidateStateInMap.id===activeCandidate.id){
 
+                newCandidateState[index].presentation = presentation
+               
+                setCandidatetState(newCandidateState)
+                setActiveCandidate(candidateState[index])
+          
+
+            }
+            return null;
+        })
+        
+    }
 
 
 
     function addEmployment (event){
         event.preventDefault();
-        console.log(event)
 
-        const newEmployment = [...employment, { 
-            title: title, 
-            period:startDate + " to " + endDate, 
-            description: description
-        }]
-        setEmployment(newEmployment)
+        let newCandidateState = candidateState;
+        candidateState.map((candidateStateInMap, index) =>{
+            if(candidateStateInMap.id===activeCandidate.id){
+
+                newCandidateState[index].experience = [...candidateState[index].experience, { 
+                    title: title, 
+                    period:startDate + " to " + endDate, 
+                    description: description
+                }]
+                setCandidatetState(newCandidateState)
+
+                setActiveCandidate(candidateState[index])
+          
+
+            }
+            return null;
+        })
     }
 
-    function navigateToApplicantMain (event){
-        Navigate("/applicant/Home")
-    }
 
 return(
     <div>
@@ -178,7 +208,16 @@ return(
  
     <Container>
 
+
         <InnerContainer>
+            <Form.Group className="mb-3 ms-5 me-5" controlId="presentation">
+                <StyledH4>Describe your self and why you are so assume!</StyledH4> 
+                <Form.Control required as="textarea" rows={3} value={presentation}  onChange={handlePresentationChange}/>
+                <Form.Control.Feedback type="invalid">
+                    This will be the first impression of you, write something nice ;)
+                </Form.Control.Feedback>
+            </Form.Group>
+            <StyledButton onClick={SavePresentation}> Save </StyledButton>
             <H4>Here is the place to add your experience!</H4>
         <Row className="g-2 ms-5 me-5 mt-1"> 
             <Col md>
@@ -213,28 +252,27 @@ return(
         <StyledButton onClick={addEmployment} className="ms-5">
                 Add Job
         </StyledButton>
-        <StyledButton onClick={navigateToApplicantMain} className="ms-5">
-                Skip for now
-        </StyledButton>
 
         <SeperatorDiv/>
         <H4>Your experience will be listed here</H4>
 
-        {employment.map(employmentInMap =>{
+        <H4>TODO: Gör snygg presentation av erfarenheter</H4>
+
+        {activeCandidate.experience.map(experienceInMap =>{
             
             return(
             <InsideExperienceDiv>
                 <TitleAndPeriodDiv>
                     <StyledTitle>
-                    Title: {employmentInMap.title}
+                    Title: {experienceInMap.title}
                     </StyledTitle>      
 
                     <StyledPeriod>
-                    Period: {employmentInMap.period}
+                    Period: {experienceInMap.period}
                     </StyledPeriod>      
                 </TitleAndPeriodDiv>
                 <StyledDescription>
-                    {employmentInMap.description}
+                    {experienceInMap.description}
                 </StyledDescription>
 
             </InsideExperienceDiv>
@@ -249,6 +287,6 @@ return(
 )
 
 }
-export default ApplicantMyPage
+export default CandidateMyPage
 
    

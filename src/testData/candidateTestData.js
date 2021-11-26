@@ -1,4 +1,4 @@
-const applicantTestData = [
+const candidateTestData = [
     { id: 'applicant-1', 
     nickName: 'Dog',
     firstName: "Patrik",
@@ -100,4 +100,4 @@ const applicantTestData = [
     ]},
 ]
 
-export default applicantTestData;
+export default candidateTestData;

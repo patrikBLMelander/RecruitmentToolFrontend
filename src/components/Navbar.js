@@ -126,12 +126,12 @@ const StyledAddressCardBtn = styled(AddressCard)`
                 <h1><StyledHomeBtn /></h1>
                 </Link>
         
-                <Link to="/applicant/in-process">
+                <Link to="/candidate/in-process">
                 <h1><StyledBriefcaseBtn /></h1>
                 </Link>
         
         
-                <Link to="/applicant/my-page">
+                <Link to="/candidate/my-page">
                 <h1><StyledAddressCardBtn /></h1>
                 </Link>
         
