@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from 'styled-components';
-
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import RecruitmentProcessSteps from '../components/RecruitmentProcessSteps';
 import AddListBtn from '../components/AddListBtn';

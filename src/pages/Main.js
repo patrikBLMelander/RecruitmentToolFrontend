@@ -79,8 +79,6 @@ const RegisterBtn = styled.button`
     
 `;
 
-const notLoggedInMessage = {title: ""}
-
 function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn}){
 
     const Navigate = useNavigate();

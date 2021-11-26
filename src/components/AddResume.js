@@ -126,7 +126,7 @@ const TitleAndPeriodDiv = styled.div`
 
 
 
-function AddResume(){
+function AddResume(activeCandidate, setActiveCandidate){
 
     const Navigate = useNavigate()
 

@@ -34,13 +34,6 @@ const InnerContainer = styled.div`
     
 `;
 
-const H4 = styled.h4`
-    color: white;
-    margin-left: 50px;
-    margin-top: 30px;
-
-`;
-
 const PublishContainer = styled.div`
     text-align: right;
     padding: 8px;
@@ -78,7 +71,7 @@ const StyledButton = styled.button`
     
 `;
 
-function Registrer({applicantState, setApplicantState}) {
+function Registrer({applicantState, setApplicantState, activeCandidate, setActiveCandidate}) {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
 

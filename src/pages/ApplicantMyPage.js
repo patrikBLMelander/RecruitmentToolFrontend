@@ -12,9 +12,9 @@ import Header from '../components/Header';
 
 const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
-    position: fixed;
+
     text-align: center;
-    background-color: #3b3d40;
+    background-color: #6f747a;
     height: 100%;
     width: 100%;
     z-index: 1,
@@ -125,7 +125,7 @@ const TitleAndPeriodDiv = styled.div`
 
 
 
-function ApplicantMyPage({jobOfferings, adminLoggedIn, applicantLoggedIn, activeJob}){
+function ApplicantMyPage({jobOfferings, adminLoggedIn, applicantLoggedIn, activeJob, activeCandidate}){
 
     const Navigate = useNavigate()
 
@@ -133,7 +133,7 @@ function ApplicantMyPage({jobOfferings, adminLoggedIn, applicantLoggedIn, active
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [description, setDescription] = useState("");
-    const [employment, setEmployment] = useState([]);
+    const [employment, setEmployment] = useState([activeCandidate]);
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);

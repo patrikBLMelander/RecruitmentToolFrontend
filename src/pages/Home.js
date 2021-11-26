@@ -22,7 +22,7 @@ const H3 = styled.h3`
 `;
 
 
- function Home ({jobOfferings, setActiveJob, activeJob, adminLoggedIn, applicantLoggedIn}) {
+ function Home ({jobOfferings, setActiveJob, activeJob, adminLoggedIn, applicantLoggedIn, activeCandidate, setActiveCandidate}) {
     return (
         <div>
         <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} applicantLoggedIn={applicantLoggedIn}/>
