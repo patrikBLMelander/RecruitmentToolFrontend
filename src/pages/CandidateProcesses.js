@@ -9,10 +9,10 @@ const Container = styled.div`
 
 `;
 
-function CandidateProcesses({jobOfferings, activeJob, adminLoggedIn, applicantLoggedIn}) {
+function CandidateProcesses({jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn}) {
     return(
         <div>
-        <Navbar jobOfferings={jobOfferings}  adminLoggedIn={adminLoggedIn} applicantLoggedIn={applicantLoggedIn}/>
+        <Navbar jobOfferings={jobOfferings}  adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}/>
         <Container>
             <h1>To Do</h1>

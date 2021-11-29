@@ -129,7 +129,7 @@ const StyledH4 = styled.h4`
 
 
 
-function CandidateMyPage({jobOfferings, adminLoggedIn, applicantLoggedIn, activeJob, activeCandidate, setActiveCandidate, setCandidatetState, candidateState}){
+function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, activeCandidate, setActiveCandidate, setCandidateState, candidateState}){
 
     const [title, setTitle] = useState("");
     const [startDate, setStartDate] = useState("");
@@ -166,7 +166,7 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, applicantLoggedIn, active
 
                 newCandidateState[index].presentation = presentation
                
-                setCandidatetState(newCandidateState)
+                setCandidateState(newCandidateState)
                 setActiveCandidate(candidateState[index])
           
 
@@ -190,7 +190,7 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, applicantLoggedIn, active
                     period:startDate + " to " + endDate, 
                     description: description
                 }]
-                setCandidatetState(newCandidateState)
+                setCandidateState(newCandidateState)
 
                 setActiveCandidate(candidateState[index])
           
@@ -203,7 +203,7 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, applicantLoggedIn, active
 
 return(
     <div>
-        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} applicantLoggedIn={applicantLoggedIn}/>
+        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}/>
  
     <Container>

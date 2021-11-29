@@ -13,8 +13,8 @@ background-image: linear-gradient(#f5f5f5, #e6e6e6);
     display: flex;
     margin-left: 163px;
 `;
-//Byt ut alla applicant till candidate
-function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, applicantState, setApplicantState, adminLoggedIn, applicantLoggedIn}){
+
+function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, candidateState, setCandidateState, adminLoggedIn, candidateLoggedIn}){
     
     
 
@@ -76,8 +76,8 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, applicantSt
                     }else{ return null}
                 })
 
-                RecToReorder.applicantIds.splice(source.index, 1);
-                RecToReorder.applicantIds.splice(destination.index, 0, draggableId);
+                RecToReorder.candidateIds.splice(source.index, 1);
+                RecToReorder.candidateIds.splice(destination.index, 0, draggableId);
 
                 setJobOfferings([...jobOfferings])
                 return null;
@@ -98,8 +98,8 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, applicantSt
                 }else{ return null}
             })
 
-            RecFrom.applicantIds.splice(source.index, 1);
-            RecTo.applicantIds.splice(destination.index, 0, draggableId);
+            RecFrom.candidateIds.splice(source.index, 1);
+            RecTo.candidateIds.splice(destination.index, 0, draggableId);
 
 
             setJobOfferings([...jobOfferings])
@@ -114,7 +114,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, applicantSt
 
     return (
         <div>
-        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} applicantLoggedIn={applicantLoggedIn}/>
+        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}/>
         <DragDropContext onDragEnd={onDragEnd} >
         <Droppable
@@ -137,16 +137,17 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, applicantSt
 
                         
                         return jobOfferingsInMap.recruitmentSteps.map((recruitmentStepsInMap, index) =>(
+                            
                                 <RecruitmentProcessSteps 
                                 title = {recruitmentStepsInMap.title} 
                                 id={recruitmentStepsInMap.id} 
-                                applicants={recruitmentStepsInMap.applicantIds} 
+                                candidates={recruitmentStepsInMap.candidateIds} 
                                 key={recruitmentStepsInMap.id}
                                 index={index}
                                 jobOfferings={jobOfferings} 
                                 setJobOfferings={setJobOfferings}
-                                applicantState={applicantState}
-                                setApplicantState={setApplicantState}
+                                candidateState={candidateState}
+                                setCandidateState={setCandidateState}
                                 activeJobId={activeJob.id}
                                 />
                             )

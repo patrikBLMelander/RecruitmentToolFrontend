@@ -9,16 +9,16 @@ const Container = styled.div`
 
 `;
 
-function Settings({jobOfferings, activeJob, adminLoggedIn, applicantLoggedIn}) {
+function Settings({jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn}) {
     return(
         <div>
-        <Navbar jobOfferings={jobOfferings}  adminLoggedIn={adminLoggedIn} applicantLoggedIn={applicantLoggedIn}/>
+        <Navbar jobOfferings={jobOfferings}  adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}/>
         <Container>
             <h1>To Do</h1>
             <ul>
             <li>Adjust "real name"/"Animal"</li>
-            <li>Adjust picture or no picture on applicant</li>
+            <li>Adjust picture or no picture on candidate</li>
             <li>Adjust color scheme</li>
             <li>Add new profile (recruiter)</li>
             <li>Set authority on profiles</li>

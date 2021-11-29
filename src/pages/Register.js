@@ -6,11 +6,11 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { useNavigate } from "react-router-dom";
-
+import Swal from 'sweetalert2';
 
 let counter = 9;
 let newId = "candidate-" + counter;
-
+let emailTaken=false;
 const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
     position: fixed;
@@ -72,7 +72,7 @@ const StyleH1 = styled.h1`
     margin-top: 8%;
 `;
 
-function Registrer({candidateState, setCandidatetState, activeCandidate, setActiveCandidate, setCandidateLoggedIn}) {
+function Registrer({candidateState, setCandidateState, activeCandidate, setActiveCandidate, setCandidateLoggedIn}) {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
 
@@ -83,10 +83,47 @@ function Registrer({candidateState, setCandidatetState, activeCandidate, setActi
         if (form.checkValidity() === false) {
           event.stopPropagation();
         }else{
-            counter = counter + 1;
-            newId = "candidate-" + counter
+            let emailTaken=false;
+            candidateState.map(candidateInMap =>{
+                if(candidateInMap.email==form.emailInputGrid.value){
+                    console.log("In mail alredy taken")
+                    emailTaken = true;
 
-            const newCandidateState = [...candidateState,  { 
+                }
+            })
+            if(emailTaken){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Email alredy registred',
+                    text: 'This email is already registred in our database, try to login or register whith an other email',
+                    showDenyButton: false,
+                    showCancelButton: true,
+                    confirmButtonText: 'Login',
+                    cancelButtonText:'Try again'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                        Navigate("/login")
+                    } 
+                  })
+                  event.stopPropagation();
+            }else{
+                counter = counter + 1;
+                newId = "candidate-" + counter
+    
+                const newCandidateState = [...candidateState,  { 
+                    id: newId, 
+                    nickName: 'Cat',
+                    firstName: form.firstNameInputGrid.value,
+                    LastName: form.lastNameInputGrid.value,
+                    presentation: "",
+                    email: form.emailInputGrid.value,
+                    password: form.passwordInputGrid.value,
+                    phone: form.phoneInputGrid.value,
+                    experience: []
+                }]
+      
+                setCandidateState(newCandidateState);
+                setActiveCandidate({
                 id: newId, 
                 nickName: 'Cat',
                 firstName: form.firstNameInputGrid.value,
@@ -96,27 +133,13 @@ function Registrer({candidateState, setCandidatetState, activeCandidate, setActi
                 password: form.passwordInputGrid.value,
                 phone: form.phoneInputGrid.value,
                 experience: []
-            }]
-  
-            setCandidatetState(newCandidateState);
-        }
-            
-           
-            
-        setValidated(true);
-        setActiveCandidate({
-            id: newId, 
-            nickName: 'Cat',
-            firstName: form.firstNameInputGrid.value,
-            LastName: form.lastNameInputGrid.value,
-            presentation: "",
-            email: form.emailInputGrid.value,
-            password: form.passwordInputGrid.value,
-            phone: form.phoneInputGrid.value,
-            experience: []
-        })
-        setCandidateLoggedIn(true)
-        Navigate("/home")
+            })
+                setCandidateLoggedIn(true)
+                setValidated(true);
+                Navigate("/home")
+                }
+            }
+
     };
     
         

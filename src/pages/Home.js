@@ -1,8 +1,6 @@
 import React from "react";
 import styled from 'styled-components'
-
 import Row from 'react-bootstrap/Row';
-
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import JobOfferCard from '../components/JobOfferCard'
@@ -22,10 +20,10 @@ const H3 = styled.h3`
 `;
 
 
- function Home ({jobOfferings, setJobOfferings, setActiveJob, activeJob, adminLoggedIn, applicantLoggedIn, activeCandidate, setActiveCandidate, candidateLoggedIn}) {
+ function Home ({jobOfferings, setJobOfferings, setActiveJob, activeJob, adminLoggedIn, candidateLoggedIn, activeCandidate, setActiveCandidate}) {
     return (
         <div>
-        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} applicantLoggedIn={applicantLoggedIn}/>
+        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}/>
     <Container>
         <H3>Welcome {activeCandidate.firstName} {activeCandidate.lastName}</H3>
@@ -33,7 +31,7 @@ const H3 = styled.h3`
         {jobOfferings.map((jobOfferingsInMap, index) =>{
             let totalCandidates = 0;
             jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
-                totalCandidates += recruitmentStepInMap.applicantIds.length
+                totalCandidates += recruitmentStepInMap.candidateIds.length
                 return null;
                 })
 

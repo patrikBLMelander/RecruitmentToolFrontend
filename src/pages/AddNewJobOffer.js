@@ -31,7 +31,7 @@ const Container = styled.div`
 
 
 
-function AddNewJobOffer({adminLoggedIn, applicantLoggedIn, jobOfferings, activeJob, setJobOfferings}) {
+function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJob, setJobOfferings}) {
     const [validated, setValidated] = useState(false);
     
     const navigate = useNavigate();
@@ -68,27 +68,27 @@ function AddNewJobOffer({adminLoggedIn, applicantLoggedIn, jobOfferings, activeJ
                 {
                     id: 'recruitmentStep-1',
                     title: 'Applied',
-                    applicantIds: [],
+                    candidateIds: [],
                     },
                     {
                     id: 'recruitmentStep-2',
                     title: 'Interesting',
-                    applicantIds: [],
+                    candidateIds: [],
                     },
                     {
                     id: 'recruitmentStep-3',
                     title: 'Interview',
-                    applicantIds: [],
+                    candidateIds: [],
                     },
                     {
                     id: 'recruitmentStep-4',
                     title: 'Hire',
-                    applicantIds: [],
+                    candidateIds: [],
                     },
                     {
                     id: 'recruitmentStep-5',
                     title: 'Dismiss',
-                    applicantIds: [],
+                    candidateIds: [],
                     }
                 ],
             }
@@ -104,7 +104,7 @@ function AddNewJobOffer({adminLoggedIn, applicantLoggedIn, jobOfferings, activeJ
 
     return(
         <div>
-        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} applicantLoggedIn={applicantLoggedIn}/>
+        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}/>
         <Container>
 

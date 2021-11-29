@@ -45,13 +45,13 @@ function RemoveListBtn (props) {
     
     const [isBtnDisabled, setisBtnDisabled]= useState(true) 
     useEffect( ()=> {
-        if (props.applicants>0) {
+        if (props.candidates>0) {
             setisBtnDisabled(true)  ; //button remains disabled
         } else {
             setisBtnDisabled(false); //button is enabled
         }
         
-    },[props.applicants])
+    },[props.candidates])
     return (
         <form onSubmit={removeList}>
             <TrashBtn disabled= {isBtnDisabled} type="submit" value="Remove" id={props.id}><BsFillTrashFill/></TrashBtn>

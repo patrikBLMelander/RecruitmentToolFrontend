@@ -168,8 +168,8 @@ function AddResume(activeCandidate, setActiveCandidate){
         setEmployment(newEmployment)
     }
 
-    function navigateToApplicantMain (event){
-        Navigate("/applicant/Home")
+    function navigateToCandidateMain (event){
+        Navigate("/Home")
     }
 
 return(
@@ -209,7 +209,7 @@ return(
         <StyledButton onClick={addEmployment} className="ms-5">
                 Add Job
         </StyledButton>
-        <StyledButton onClick={navigateToApplicantMain} className="ms-5">
+        <StyledButton onClick={navigateToCandidateMain} className="ms-5">
                 Skip for now
         </StyledButton>
 

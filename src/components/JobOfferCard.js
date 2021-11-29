@@ -48,7 +48,7 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
             //"activeCabdidate.id" är den sökandes id
             
             let newJobOffering = jobOfferings
-            newJobOffering[index].recruitmentSteps[0].applicantIds = [...jobOfferings[index].recruitmentSteps[0].applicantIds, activeCandidate.id]
+            newJobOffering[index].recruitmentSteps[0].candidateIds = [...jobOfferings[index].recruitmentSteps[0].candidateIds, activeCandidate.id]
 
             console.log(newJobOffering)
             setJobOfferings(newJobOffering)
@@ -89,7 +89,7 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
                 <Row xs={2}>
                 <Col sm={5}>
                     <PNew show={adminLoggedIn}>
-                        New: {jobOfferingsInMap.recruitmentSteps[0].applicantIds.length}
+                        New: {jobOfferingsInMap.recruitmentSteps[0].candidateIds.length}
                     </PNew>
                     </Col>
                 <Col sm={5}>

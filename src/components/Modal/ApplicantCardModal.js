@@ -79,7 +79,7 @@ function ApplicantCardModal(props) {
 
   return (
     <div >
-        <h3 onClick={openModal}>{props.applicant.nickName}</h3>
+        <h3 onClick={openModal}>{props.candidate.nickName}</h3>
       <Modal
         isOpen={modalIsOpen}
         //onAfterOpen={afterOpenModal}
@@ -89,9 +89,9 @@ function ApplicantCardModal(props) {
       >
         <Container>
             <StyledH4>Presentation</StyledH4>
-            <StyledP>{props.applicant.presentation}</StyledP>
+            <StyledP>{props.candidate.presentation}</StyledP>
             <StyledH4>Arbetslivserfarenhet</StyledH4>
-            {props.applicant.experience.map(experience =>(
+            {props.candidate.experience.map(experience =>(
                 <div key = {experience}>
                     <StyledH5>{experience.title}</StyledH5>
                     <StyledH5>{experience.period}</StyledH5>

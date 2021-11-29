@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-import ApplicantCard from './ApplicantCard';
+import CandidateCard from './CandidateCard';
 import RemoveBtn from './RemoveList';
 
 
@@ -18,7 +18,7 @@ const Title = styled.h3`
   color: #edf0f2;
   padding: 8px;
 `;
-const ApplicantCardList = styled.div`
+const CandidateCardList = styled.div`
   padding: 8px;
   transition: background-color 0.2s ease;
   background-color: ${props => (props.isDraggingOver ? '#6992c7' : '#c8d2e0')};
@@ -26,32 +26,31 @@ const ApplicantCardList = styled.div`
   min-height: 100px;
 `;
 
- function RecruitmentProcessStep (props) {
+ function RecruitmentProcessStep ({index, id, title, jobOfferings, setJobOfferings, activeJobId, candidates, candidateState, setCandidateState}) {
   return (
-    <Draggable draggableId={props.id} index={props.index}>
+    <Draggable draggableId={id} index={index}>
       {provided => (
         <Container {...provided.draggableProps} ref={provided.innerRef}>
           <Title {...provided.dragHandleProps}>
-            {props.title}
+            {title}
           </Title>
-          <Droppable droppableId={props.id} type="task">
+          <Droppable droppableId={id} type="task">
             {(provided, snapshot) => (
-              <ApplicantCardList
+              <CandidateCardList
                 ref={provided.innerRef}
                 {...provided.droppableProps}
                 isDraggingOver={snapshot.isDraggingOver}
               >
                
-               {props.applicants.map((applicant, index) =>{
-  
+               {candidates.map((candidate, index) =>{
                   return(
            
-                  <ApplicantCard 
-                    applicantId={applicant} 
+                  <CandidateCard 
+                    candidateId={candidate} 
                     index={index} 
-                    key={applicant}
-                    applicantState={props.applicantState}
-                    setApplicantState={props.setApplicantState} 
+                    key={candidate}
+                    candidateState={candidateState}
+                    setCandidateState={setCandidateState} 
                     />
                     
 
@@ -61,10 +60,10 @@ const ApplicantCardList = styled.div`
 
                 {provided.placeholder}
                 
-              </ApplicantCardList>
+              </CandidateCardList>
             )}
           </Droppable>
-          <RemoveBtn id={props.id} jobOfferings={props.jobOfferings} setJobOfferings={props.setJobOfferings}applicants={props.applicants.length} activeJobId={props.activeJobId}></RemoveBtn>
+          <RemoveBtn id={id} jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} candidates={candidates.length} activeJobId={activeJobId}></RemoveBtn>
         </Container>
         
       )}

@@ -55,6 +55,7 @@ const StyledP = styled.p`
 `;
 
 const RegisterBtn = styled.button`
+    margin: 3px;
     width: 140px;
     height: 45px;
     font-family: 'Roboto', sans-serif;
@@ -84,8 +85,12 @@ function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLo
     const Navigate = useNavigate();
 
     function NavToCreateProfile(){
-        Navigate("/applicant/register")
+        Navigate("/candidate/register")
     }
+    function NavToLogin(){
+        Navigate("/candidate/login")
+    }
+
     
 
     return(
@@ -105,18 +110,19 @@ function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLo
                         vel ad, pri cibo libris ea. Te inani persius duo, vim eu verear signiferumque, vel denique nominavi consequat et.
                     </StyledP>
                     <RegisterBtn onClick={NavToCreateProfile}>Register</RegisterBtn>
+                    <RegisterBtn onClick={NavToLogin}>Login</RegisterBtn>
                         
                 </TextUnderPictures>
                 <Row xs={1} md={3} className="g-4 ms-5 mt-5">
                     {jobOfferings.map((jobOfferingsInMap, index) =>{
-                        let totalApplicants = 0;
+                        let totalCandidates = 0;
                         jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
-                        totalApplicants += recruitmentStepInMap.applicantIds.length
+                            totalCandidates += recruitmentStepInMap.candidateIds.length
                         return null;
                         })
 
                     return(
-                        <JobOfferCard index={index} jobOfferingsInMap={jobOfferingsInMap} totalApplicants={totalApplicants} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
+                        <JobOfferCard key={jobOfferingsInMap.id} index={index} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
                     )})}
                 </Row>
 

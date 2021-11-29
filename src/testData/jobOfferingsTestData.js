@@ -13,27 +13,27 @@ const jobOfferingsTestData = [
       {
         id: 'recruitmentStep-1',
         title: 'Applied',
-        applicantIds: ['candidate-1', 'candidate-2', 'candidate-3', ],
+        candidateIds: ['candidate-1', 'candidate-2', 'candidate-3', ],
         },
         {
           id: 'recruitmentStep-2',
           title: 'Interesting',
-          applicantIds: ['candidate-4'],
+          candidateIds: ['candidate-4'],
         },
         {
           id: 'recruitmentStep-3',
           title: 'Interview',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-4',
           title: 'Hire',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-5',
           title: 'Dismiss',
-          applicantIds: [],
+          candidateIds: [],
         }
     ],
   },
@@ -51,27 +51,27 @@ const jobOfferingsTestData = [
       {
         id: 'recruitmentStep-1',
         title: 'Applied',
-        applicantIds: ['candidate-5', 'candidate-6', 'candidate-7', 'candidate-8'],
+        candidateIds: ['candidate-5', 'candidate-6', 'candidate-7', 'candidate-8'],
         },
         {
           id: 'recruitmentStep-2',
           title: 'Interesting',
-          applicantIds: ['candidate-4'],
+          candidateIds: ['candidate-4'],
         },
         {
           id: 'recruitmentStep-3',
           title: 'Interview',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-4',
           title: 'Hire',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-5',
           title: 'Dismiss',
-          applicantIds: [],
+          candidateIds: [],
         }
     ],
   },
@@ -89,27 +89,27 @@ const jobOfferingsTestData = [
       {
         id: 'recruitmentStep-1',
         title: 'Applied',
-        applicantIds: ['candidate-1', 'candidate-2', 'candidate-5', 'candidate-6'],
+        candidateIds: ['candidate-1', 'candidate-2', 'candidate-5', 'candidate-6'],
         },
         {
           id: 'recruitmentStep-2',
           title: 'Interesting',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-3',
           title: 'Interview',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-4',
           title: 'Hire',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-5',
           title: 'Dismiss',
-          applicantIds: [],
+          candidateIds: [],
         }
     ],
   },
@@ -127,27 +127,27 @@ const jobOfferingsTestData = [
       {
         id: 'recruitmentStep-1',
         title: 'Applied',
-        applicantIds: ['candidate-7', 'candidate-8', 'candidate-6'],
+        candidateIds: ['candidate-7', 'candidate-8', 'candidate-6'],
         },
         {
           id: 'recruitmentStep-2',
           title: 'Interesting',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-3',
           title: 'Interview',
-          applicantIds: ['candidate-3', 'candidate-4'],
+          candidateIds: ['candidate-3', 'candidate-4'],
         },
         {
           id: 'recruitmentStep-4',
           title: 'Hire',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-5',
           title: 'Dismiss',
-          applicantIds: [],
+          candidateIds: [],
         }
     ],
   },
@@ -165,27 +165,27 @@ const jobOfferingsTestData = [
       {
         id: 'recruitmentStep-1',
         title: 'Applied',
-        applicantIds: ['candidate-1', 'candidate-2', 'candidate-3', 'candidate-4','candidate-5', 'candidate-6', 'candidate-7', 'candidate-8'],
+        candidateIds: ['candidate-1', 'candidate-2', 'candidate-3', 'candidate-4','candidate-5', 'candidate-6', 'candidate-7', 'candidate-8'],
         },
         {
           id: 'recruitmentStep-2',
           title: 'Interesting',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-3',
           title: 'Interview',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-4',
           title: 'Hire',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-5',
           title: 'Dismiss',
-          applicantIds: [],
+          candidateIds: [],
         }
     ],
   },
@@ -203,27 +203,27 @@ const jobOfferingsTestData = [
       {
         id: 'recruitmentStep-1',
         title: 'Applied',
-        applicantIds: ['candidate-1', 'candidate-2', 'candidate-3', 'candidate-4'],
+        candidateIds: ['candidate-1', 'candidate-2', 'candidate-3', 'candidate-4'],
         },
         {
           id: 'recruitmentStep-2',
           title: 'Interesting',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-3',
           title: 'Interview',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-4',
           title: 'Hire',
-          applicantIds: [],
+          candidateIds: [],
         },
         {
           id: 'recruitmentStep-5',
           title: 'Dismiss',
-          applicantIds: [],
+          candidateIds: [],
         }
     ],
   },
