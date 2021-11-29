@@ -130,7 +130,7 @@ const StyledH4 = styled.h4`
 
 
 function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, activeCandidate, setActiveCandidate, setCandidateState, candidateState}){
-    console.log(activeCandidate)
+
     const [title, setTitle] = useState("");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
