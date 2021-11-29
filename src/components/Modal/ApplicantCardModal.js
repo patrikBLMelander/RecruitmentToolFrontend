@@ -2,6 +2,9 @@ import React,{useState} from "react";
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import {CloseO} from '@styled-icons/evil/CloseO';
+import { Rating } from 'react-simple-star-rating'
+
+
 
 const customStyles = {
   content: {
@@ -63,10 +66,15 @@ const StyledCloseBtn = styled(CloseO)`
 Modal.setAppElement('#root');
 
 
-function ApplicantCardModal(props) {
+function ApplicantCardModal({candidate}) {
 
-
+  const [rating, setRating] = useState(0)
   const [modalIsOpen, setIsOpen] = useState(false);
+
+  const handleRating = (rate) => {
+    setRating(rate)
+    
+  }
 
   function openModal() {
     setIsOpen(true);
@@ -79,7 +87,14 @@ function ApplicantCardModal(props) {
 
   return (
     <div >
-        <h3 onClick={openModal}>{props.candidate.nickName}</h3>
+        <div >
+          <h3 onClick={openModal}>{candidate.nickName}</h3>
+          <Rating size='31'
+        onClick={handleRating}
+        ratingValue={rating} allowHalfIcon='true'
+      />
+        </div>
+       
       <Modal
         isOpen={modalIsOpen}
         //onAfterOpen={afterOpenModal}
@@ -89,9 +104,9 @@ function ApplicantCardModal(props) {
       >
         <Container>
             <StyledH4>Presentation</StyledH4>
-            <StyledP>{props.candidate.presentation}</StyledP>
+            <StyledP>{candidate.presentation}</StyledP>
             <StyledH4>Arbetslivserfarenhet</StyledH4>
-            {props.candidate.experience.map(experience =>(
+            {candidate.experience.map(experience =>(
                 <div key = {experience}>
                     <StyledH5>{experience.title}</StyledH5>
                     <StyledH5>{experience.period}</StyledH5>
