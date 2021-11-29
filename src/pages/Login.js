@@ -1,70 +1,202 @@
-import React, {useState} from 'react';
-import { useNavigate } from "react-router-dom";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import React, { useState } from 'react';
+
 import styled from 'styled-components'
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
+let loggedIn = false;
 const Container = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    font-family: 'Roboto', sans-serif; 
+    position: fixed;
+    text-align: center;
+    background-color: #3b3d40;
+    height: 100%;
+    width: 100%;
+    z-index: 1,
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 16px;
+    InnerContainer
+`;
 
-    height: 300px;
-    width: 300px;
+const InnerContainer = styled.div`
+    font-family: 'Roboto', sans-serif; 
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    
+`;
 
+const PublishContainer = styled.div`
+    text-align: right;
+    padding: 8px;
+    margin-right:40px
 
 `;
 
 
-function Login(props) {
-    props.setLoggedIn(false)
-
-    const [email, setEmail] = useState("")  
-    const [password, setPassword] = useState("")
+const StyledButton = styled.button`
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    &:hover {
+        background-color: #2EE59D;
+        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        color: #fff;
+        transform: translateY(-7px);
+    }
     
-    const navigate = useNavigate();
+`;
 
-    const handleEmailChange = (event) => {
-        setEmail(event.target.value);
+const StyleH1 = styled.h1`
+    font-family: 'Roboto', sans-serif;      
+    margin-top: 8%;
+`;
+
+function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdminLoggedIn, setActiveAdmin, candidateLoggedIn, adminLoggedIn}) {
+    const [validated, setValidated] = useState(false);
+    const Navigate = useNavigate();
+
+    if(candidateLoggedIn===true || adminLoggedIn===true){
+        Swal.fire({
+            icon: 'info',
+            title: 'Already logged in',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: 'Home',
+            cancelButtonText:'Log out'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Navigate("/home")
+            }else{
+                setCandidateLoggedIn(false)
+                setAdminLoggedIn(false)
+            }
+        })
     }
 
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-    }
-
-    const tryLogin = (event) => {
+    
+    const handleSubmit = (event) => {
         event.preventDefault();
-        
-        if(email ==="Patrikjmelander@gmail.com" && password ==="1234"){
-            props.setLoggedIn(true)
-            navigate("/home")
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+          event.stopPropagation();
+        }else{
+            // check Admin login, this will be done properly in backend later
+            if(form.emailInputGrid.value === "adminmail@gmail.com" && form.passwordInputGrid.value === "1234"){
+                
+                setActiveAdmin({
+                    id: 'admin-1', 
+                    firstName: "Patrik",
+                    lastName: "Melander",
+                    email: "adminmail@gmail.com",
+                    password: "1234",
+                })
+                setCandidateLoggedIn(false)
+                setAdminLoggedIn(true)
+                loggedIn = true
+                Navigate("/home")
+            }else{
+                 //check CandidateLogin, this will be done properly in backend later
+                 candidateState.map(candidateInMap => {
+                     if(candidateInMap.email==form.emailInputGrid.value && form.passwordInputGrid.value===candidateInMap.password){
+                        console.log("found account")
+                        setActiveCandidate({
+                            id: candidateInMap.id, 
+                            nickName: candidateInMap.nickName,
+                            firstName: candidateInMap.firstName,
+                            LastName: candidateInMap.lastName,
+                            presentation: candidateInMap.presentation,
+                            email: candidateInMap.email,
+                            password: candidateInMap.password,
+                            phone: candidateInMap.phone ,
+                            experience: candidateInMap.experience
+                        })
+                        setCandidateLoggedIn(true)
+                        loggedIn = true
+                        setAdminLoggedIn(false)
+                        Navigate("/home")
+                    }
+                 })
+             }
+        }
+        if(loggedIn===false){
+            Swal.fire({
+                icon: 'error',
+                title: 'Could not log in...',
+                text: 'Did not find a matching email and password',
+                showDenyButton: false,
+                showCancelButton: true,
+                confirmButtonText: 'Register',
+                cancelButtonText:'Try again'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Navigate("/candidate/register")
+                } 
+            })
         }
 
-        
     };
-
+    
+        
     return(
-        <Container  className="shadow-lg p-3 mb-5 bg-white rounded">
-            <Form onSubmit={tryLogin}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Control value={email} onChange={handleEmailChange} type="email" placeholder="Enter email" />
-                <Form.Text className="text-muted">
-                Default email to use is patrikjmelander@gmail.com
-                </Form.Text>
-            </Form.Group>
+        <Container>
+            
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <InnerContainer>
+                <StyleH1> Login!   </StyleH1>
+                <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                    <Row className="g-1 ms-5 me-5 mt-5">
+                       
+                        </Row>
+                        <Row className="g-1 ms-5 me-5 mt-5">
+                     <Col md>
+                            <FloatingLabel controlId="emailInputGrid" label="email">
+                                <Form.Control required type="Email" placeholder='"Melander"'/>
+                                <Form.Control.Feedback type="invalid">
+                                This is needed to log in!
+                            </Form.Control.Feedback>
+                            </FloatingLabel>      
+                        </Col>
+                        <Col md>
+                            <FloatingLabel controlId="passwordInputGrid" label="password">
+                                <Form.Control required type="password" placeholder='"Melander"'/>
+                                <Form.Control.Feedback type="invalid">
+                                This is needed to log in!
+                            </Form.Control.Feedback>
+                            </FloatingLabel>      
+                        </Col>
 
-                <Form.Control value={password} onChange={handlePasswordChange} type="password" placeholder="Password" />
-                <Form.Text className="text-muted">
-                Default password to use is 1234
-                </Form.Text>
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-            </Form>
+                    
+                    </Row>
+
+
+
+                    <PublishContainer>
+                        <StyledButton variant="success" type="submit" className="ms-5">
+                            login
+                        </StyledButton>
+                    </PublishContainer>
+                </Form>
+            </InnerContainer>
+          
         </Container>
     )
 }

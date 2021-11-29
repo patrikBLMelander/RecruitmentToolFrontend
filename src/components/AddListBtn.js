@@ -45,7 +45,7 @@ function AddListBtn ({jobOfferings, setJobOfferings, activeJobId}) {
         jobOfferings.map((jobOfferingInMap, index) =>{
           if(jobOfferingInMap.id===activeJobId){
 
-            jobOfferings[index].recruitmentSteps = [...jobOfferingInMap.recruitmentSteps, {id:newId, title: value, applicantIds:[]}]
+            jobOfferings[index].recruitmentSteps = [...jobOfferingInMap.recruitmentSteps, {id:newId, title: value, candidateIds:[]}]
             test=[...jobOfferings]
           }
           return null

@@ -12,12 +12,10 @@ const Container = styled.div`
   background-color: ${props => (props.isDragging ? '#adc3e0' : '#6ea0e0')};
 `;
 
-function ApplicantCard (props) {
-  //const [applicant, setApplicant] = useState(applicantTestData);
-      
+function CandidateCard ({index, candidateId, candidateState}) {
  
     return (
-      <Draggable draggableId={props.applicantId} index={props.index}>
+      <Draggable draggableId={candidateId} index={index}>
          {(provided, snapshot) => (
           <Container
             {...provided.draggableProps}
@@ -26,10 +24,10 @@ function ApplicantCard (props) {
             isDragging={snapshot.isDragging}
 
           >
-          {props.applicantState.map( applicant => {
-            if(applicant.id===props.applicantId){
+          {candidateState.map( candidate => {
+            if(candidate.id===candidateId){
               return (
-                <ApplicantCardModal key={applicant.id} applicant = {applicant}/>
+                <ApplicantCardModal key={candidate.id} candidate = {candidate}/>
 
               )
             }else{ return null}
@@ -43,4 +41,4 @@ function ApplicantCard (props) {
   
 }
 
-export default ApplicantCard;
+export default CandidateCard;

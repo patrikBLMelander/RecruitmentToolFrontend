@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from 'styled-components';
-import applicantTestData from '../testData/applicantTestData'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import RecruitmentProcessSteps from '../components/RecruitmentProcessSteps';
 import AddListBtn from '../components/AddListBtn';
+import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 
 
 
@@ -13,8 +14,8 @@ background-image: linear-gradient(#f5f5f5, #e6e6e6);
     margin-left: 163px;
 `;
 
-function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
-    const [applicantState, setApplicantState] = useState(applicantTestData);
+function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, candidateState, setCandidateState, adminLoggedIn, candidateLoggedIn}){
+    
     
 
      const onDragEnd = result => {
@@ -75,8 +76,8 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
                     }else{ return null}
                 })
 
-                RecToReorder.applicantIds.splice(source.index, 1);
-                RecToReorder.applicantIds.splice(destination.index, 0, draggableId);
+                RecToReorder.candidateIds.splice(source.index, 1);
+                RecToReorder.candidateIds.splice(destination.index, 0, draggableId);
 
                 setJobOfferings([...jobOfferings])
                 return null;
@@ -97,8 +98,8 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
                 }else{ return null}
             })
 
-            RecFrom.applicantIds.splice(source.index, 1);
-            RecTo.applicantIds.splice(destination.index, 0, draggableId);
+            RecFrom.candidateIds.splice(source.index, 1);
+            RecTo.candidateIds.splice(destination.index, 0, draggableId);
 
 
             setJobOfferings([...jobOfferings])
@@ -112,6 +113,9 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
 
 
     return (
+        <div>
+        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
+        <Header activeJob={activeJob}/>
         <DragDropContext onDragEnd={onDragEnd} >
         <Droppable
             droppableId="all-columns"
@@ -133,16 +137,17 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
 
                         
                         return jobOfferingsInMap.recruitmentSteps.map((recruitmentStepsInMap, index) =>(
+                            
                                 <RecruitmentProcessSteps 
                                 title = {recruitmentStepsInMap.title} 
                                 id={recruitmentStepsInMap.id} 
-                                applicants={recruitmentStepsInMap.applicantIds} 
+                                candidates={recruitmentStepsInMap.candidateIds} 
                                 key={recruitmentStepsInMap.id}
                                 index={index}
                                 jobOfferings={jobOfferings} 
                                 setJobOfferings={setJobOfferings}
-                                applicantState={applicantState}
-                                setApplicantState={setApplicantState}
+                                candidateState={candidateState}
+                                setCandidateState={setCandidateState}
                                 activeJobId={activeJob.id}
                                 />
                             )
@@ -159,6 +164,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob}){
             )}
         </Droppable>
         </DragDropContext>
+      </div>
     );
 }
 

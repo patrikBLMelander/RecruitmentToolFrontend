@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from "react-router-dom";
 import styled from 'styled-components'
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 
 
 let counter = 6;
@@ -29,8 +31,10 @@ const Container = styled.div`
 
 
 
-function AddNewJobOffer(props) {
+function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJob, setJobOfferings}) {
     const [validated, setValidated] = useState(false);
+    
+    const navigate = useNavigate();
 
     // let competences = ["test", "test2"];
 
@@ -50,7 +54,7 @@ function AddNewJobOffer(props) {
             counter = counter + 1;
             newId = "jobOffering-" + counter
 
-            const newJobOffering = [...props.jobOfferings, {
+            const newJobOffering = [...jobOfferings, {
                 id: newId,
                 title: form.titleInputGrid.value,
                 location: form.locationInputGrid.value,
@@ -59,46 +63,49 @@ function AddNewJobOffer(props) {
                 preview: form.preview.value,
                 companyDescription: form.companyDescription.value,
                 aboutRole: form.aboutTheRole.value,
-                imageUrl:"https://picsum.photos/150/150?random=7",
+                imageUrl:"https://picsum.photos/150/150?random=" + counter,
                 recruitmentSteps: [
                 {
                     id: 'recruitmentStep-1',
                     title: 'Applied',
-                    applicantIds: [],
+                    candidateIds: [],
                     },
                     {
                     id: 'recruitmentStep-2',
                     title: 'Interesting',
-                    applicantIds: [],
+                    candidateIds: [],
                     },
                     {
                     id: 'recruitmentStep-3',
                     title: 'Interview',
-                    applicantIds: [],
+                    candidateIds: [],
                     },
                     {
                     id: 'recruitmentStep-4',
                     title: 'Hire',
-                    applicantIds: [],
+                    candidateIds: [],
                     },
                     {
                     id: 'recruitmentStep-5',
                     title: 'Dismiss',
-                    applicantIds: [],
+                    candidateIds: [],
                     }
                 ],
             }
             ]
            
-            props.setJobOfferings(newJobOffering);
-
+            setJobOfferings(newJobOffering);
+            navigate("/home")
         }
     
         setValidated(true);
-      };
+    };
 
 
     return(
+        <div>
+        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
+        <Header activeJob={activeJob}/>
         <Container>
 
 
@@ -182,6 +189,7 @@ function AddNewJobOffer(props) {
                 </Button>
             </Form>
         </Container>
+        </div>
     )
 }
 

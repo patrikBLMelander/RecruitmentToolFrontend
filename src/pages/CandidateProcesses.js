@@ -9,7 +9,7 @@ const Container = styled.div`
 
 `;
 
-function Settings({jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn}) {
+function CandidateProcesses({jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn}) {
     return(
         <div>
         <Navbar jobOfferings={jobOfferings}  adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
@@ -17,15 +17,11 @@ function Settings({jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn}) {
         <Container>
             <h1>To Do</h1>
             <ul>
-            <li>Adjust "real name"/"Animal"</li>
-            <li>Adjust picture or no picture on candidate</li>
-            <li>Adjust color scheme</li>
-            <li>Add new profile (recruiter)</li>
-            <li>Set authority on profiles</li>
+            <li>List all jobs this candidate applyed for</li>
             </ul>
         </Container>
         </div>
     )
 }
 
-export default Settings;
+export default CandidateProcesses;
