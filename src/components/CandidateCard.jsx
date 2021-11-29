@@ -12,7 +12,7 @@ const Container = styled.div`
   background-color: ${props => (props.isDragging ? '#adc3e0' : '#6ea0e0')};
 `;
 
-function CandidateCard ({index, candidateId, candidateState}) {
+function CandidateCard ({index, candidateId, candidateState, setCandidateState, activeJobId}) {
  
     return (
       <Draggable draggableId={candidateId} index={index}>
@@ -27,7 +27,7 @@ function CandidateCard ({index, candidateId, candidateState}) {
           {candidateState.map( candidate => {
             if(candidate.id===candidateId){
               return (
-                <ApplicantCardModal key={candidate.id} candidate = {candidate}/>
+                <ApplicantCardModal key={candidate.id} candidate = {candidate} candidateState={candidateState} setCandidateState={setCandidateState} activeJobId={activeJobId}/>
 
               )
             }else{ return null}

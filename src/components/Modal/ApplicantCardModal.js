@@ -66,14 +66,28 @@ const StyledCloseBtn = styled(CloseO)`
 Modal.setAppElement('#root');
 
 
-function ApplicantCardModal({candidate}) {
+function ApplicantCardModal({candidate, candidateState, setCandidateState, activeJobId}) {
+
+  //ToDo: Loopa candidateState och kolla om den aktiva kandidaten har en ranking på detta jobb
+  //sätt i så fall den rankingen som rateState
+
+  //fixa metoden som sätter rateState så den kollar om det redan finns ett state och i så fall uppdatera det, 
+  //finns det inte redan ett state ska ett nytt skapas med ett unikt id
+
 
   const [rating, setRating] = useState(0)
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const handleRating = (rate) => {
     setRating(rate)
-    
+    let newCandidateState = candidateState;
+
+    candidateState.map((candidateInMap, index) =>{
+      if(candidateInMap.id===candidate.id){
+        newCandidateState[index].rate = [...candidateInMap.rate, {id:'test1', rate:rate, jobofferId:activeJobId}]
+      }
+    })
+    console.log(newCandidateState)
   }
 
   function openModal() {

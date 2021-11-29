@@ -163,7 +163,7 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
         let newCandidateState = candidateState;
         candidateState.map((candidateStateInMap, index) =>{
             if(candidateStateInMap.id===activeCandidate.id){
-                console.log("insaide save")
+                
                 newCandidateState[index].presentation = presentation
                
                 setCandidateState(newCandidateState)

@@ -51,6 +51,7 @@ const CandidateCardList = styled.div`
                     key={candidate}
                     candidateState={candidateState}
                     setCandidateState={setCandidateState} 
+                    activeJobId={activeJobId}
                     />
                     
 
