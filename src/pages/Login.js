@@ -112,12 +112,13 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                 setCandidateLoggedIn(false)
                 setAdminLoggedIn(true)
                 loggedIn = true
+                setValidated(true)
                 Navigate("/home")
             }else{
                  //check CandidateLogin, this will be done properly in backend later
                  candidateState.map(candidateInMap => {
                      if(candidateInMap.email==form.emailInputGrid.value && form.passwordInputGrid.value===candidateInMap.password){
-                        console.log("found account")
+                        
                         setActiveCandidate({
                             id: candidateInMap.id, 
                             nickName: candidateInMap.nickName,
@@ -132,8 +133,10 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                         setCandidateLoggedIn(true)
                         loggedIn = true
                         setAdminLoggedIn(false)
+                        setValidated(true)
                         Navigate("/home")
                     }
+                    return null;
                  })
              }
         }

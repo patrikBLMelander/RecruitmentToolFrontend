@@ -260,19 +260,19 @@ return(
         <H4>TODO: Gör snygg presentation av erfarenheter</H4>
 
         {activeCandidate.experience.map(experienceInMap =>{
-            
+
             return(
-            <InsideExperienceDiv key={experienceInMap.id}>
-                <TitleAndPeriodDiv>
-                    <StyledTitle>
+            <InsideExperienceDiv key={"InsideExperienceDiv" + experienceInMap.id}>
+                <TitleAndPeriodDiv key={"TitleAndPeriodDiv" + experienceInMap.id}>
+                    <StyledTitle key={"StyledTitle" + experienceInMap.id}>
                     Title: {experienceInMap.title}
                     </StyledTitle>      
 
-                    <StyledPeriod>
+                    <StyledPeriod key={"StyledPeriod" + experienceInMap.id}>
                     Period: {experienceInMap.period}
                     </StyledPeriod>      
                 </TitleAndPeriodDiv>
-                <StyledDescription>
+                <StyledDescription key={"StyledDescription" + experienceInMap.id}>
                     {experienceInMap.description}
                 </StyledDescription>
 

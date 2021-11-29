@@ -72,10 +72,10 @@ const StyleH1 = styled.h1`
     margin-top: 8%;
 `;
 
-function Registrer({candidateState, setCandidateState, activeCandidate, setActiveCandidate, setCandidateLoggedIn}) {
+function Registrer({candidateState, setCandidateState, setActiveCandidate, setCandidateLoggedIn}) {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
-    const [animal, setsetAnimal] = useState(Animal);
+    const [animal] = useState(Animal);
     
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -83,13 +83,12 @@ function Registrer({candidateState, setCandidateState, activeCandidate, setActiv
         if (form.checkValidity() === false) {
           event.stopPropagation();
         }else{
-            let emailTaken=false;
+            
             candidateState.map(candidateInMap =>{
-                if(candidateInMap.email==form.emailInputGrid.value){
-                    console.log("In mail alredy taken")
+                if(candidateInMap.email==form.emailInputGrid.value ||form.emailInputGrid.value== "adminmail@gmail.com"){
                     emailTaken = true;
-
                 }
+                return null;
             })
             if(emailTaken){
                 Swal.fire({
