@@ -13,7 +13,7 @@ background-image: linear-gradient(#f5f5f5, #e6e6e6);
     display: flex;
     margin-left: 163px;
 `;
-
+//Byt ut alla applicant till candidate
 function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, applicantState, setApplicantState, adminLoggedIn, applicantLoggedIn}){
     
     

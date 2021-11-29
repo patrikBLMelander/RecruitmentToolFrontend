@@ -28,10 +28,8 @@ const PExpire = styled.p`
     color: #3b3d40;
 `;            
                 
-function JobOfferCard({index, jobOfferingsInMap, totalApplicants, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn}){
+function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, totalCandidates, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn, activeCandidate}){
     const navigate = useNavigate();
-
-    console.log(adminLoggedIn)
 
     let btnText = "Apply";
     if(adminLoggedIn===true){
@@ -44,6 +42,17 @@ function JobOfferCard({index, jobOfferingsInMap, totalApplicants, activeJob, set
             navigate("/candidate/register")
         }
         if(candidateLoggedIn===true){
+
+            //Lägg till kandidaten i de sökta jobbets lista 
+            //"event.id" är jobbets id
+            //"activeCabdidate.id" är den sökandes id
+            
+            let newJobOffering = jobOfferings
+            newJobOffering[index].recruitmentSteps[0].applicantIds = [...jobOfferings[index].recruitmentSteps[0].applicantIds, activeCandidate.id]
+
+            console.log(newJobOffering)
+            setJobOfferings(newJobOffering)
+
             Swal.fire({
                 title: 'Applied!',
                 text: 'Make sure to update your experience',
@@ -85,7 +94,7 @@ function JobOfferCard({index, jobOfferingsInMap, totalApplicants, activeJob, set
                     </Col>
                 <Col sm={5}>
                     <PTotal show={adminLoggedIn}>
-                    Total: {totalApplicants}
+                    Total: {totalCandidates}
                     </PTotal>
                 </Col>
                 </Row>

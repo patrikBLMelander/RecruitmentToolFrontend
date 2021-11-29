@@ -22,23 +22,23 @@ const H3 = styled.h3`
 `;
 
 
- function Home ({jobOfferings, setActiveJob, activeJob, adminLoggedIn, applicantLoggedIn, activeCandidate, setActiveCandidate}) {
+ function Home ({jobOfferings, setJobOfferings, setActiveJob, activeJob, adminLoggedIn, applicantLoggedIn, activeCandidate, setActiveCandidate, candidateLoggedIn}) {
     return (
         <div>
         <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} applicantLoggedIn={applicantLoggedIn}/>
         <Header activeJob={activeJob}/>
     <Container>
-        <H3>Welcome Patrik Melander</H3>
+        <H3>Welcome {activeCandidate.firstName} {activeCandidate.lastName}</H3>
         <Row xs={1} md={3} className="g-4">
         {jobOfferings.map((jobOfferingsInMap, index) =>{
-            let totalApplicants = 0;
+            let totalCandidates = 0;
             jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
-                totalApplicants += recruitmentStepInMap.applicantIds.length
+                totalCandidates += recruitmentStepInMap.applicantIds.length
                 return null;
                 })
 
              return(
-                <JobOfferCard index={index} jobOfferingsInMap={jobOfferingsInMap} totalApplicants={totalApplicants} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn}/>
+                <JobOfferCard key={index} index={index} jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} activeCandidate={activeCandidate}/>
             )})}
         </Row>
 

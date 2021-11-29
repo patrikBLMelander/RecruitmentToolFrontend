@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 
 let counter = 9;
-let newId = "applicant-" + counter;
+let newId = "candidate-" + counter;
 
 const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
@@ -72,7 +72,7 @@ const StyleH1 = styled.h1`
     margin-top: 8%;
 `;
 
-function Registrer({applicantState, setApplicantState, activeCandidate, setActiveCandidate}) {
+function Registrer({candidateState, setCandidatetState, activeCandidate, setActiveCandidate, setCandidateLoggedIn}) {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
 
@@ -84,9 +84,9 @@ function Registrer({applicantState, setApplicantState, activeCandidate, setActiv
           event.stopPropagation();
         }else{
             counter = counter + 1;
-            newId = "applicant-" + counter
+            newId = "candidate-" + counter
 
-            const newApplicantState = [...applicantState,  { 
+            const newCandidateState = [...candidateState,  { 
                 id: newId, 
                 nickName: 'Cat',
                 firstName: form.firstNameInputGrid.value,
@@ -97,13 +97,25 @@ function Registrer({applicantState, setApplicantState, activeCandidate, setActiv
                 phone: form.phoneInputGrid.value,
                 experience: []
             }]
-            
-            setApplicantState(newApplicantState);
+  
+            setCandidatetState(newCandidateState);
         }
             
            
             
         setValidated(true);
+        setActiveCandidate({
+            id: newId, 
+            nickName: 'Cat',
+            firstName: form.firstNameInputGrid.value,
+            LastName: form.lastNameInputGrid.value,
+            presentation: "",
+            email: form.emailInputGrid.value,
+            password: form.passwordInputGrid.value,
+            phone: form.phoneInputGrid.value,
+            experience: []
+        })
+        setCandidateLoggedIn(true)
         Navigate("/home")
     };
     

@@ -13,12 +13,12 @@ const jobOfferingsTestData = [
       {
         id: 'recruitmentStep-1',
         title: 'Applied',
-        applicantIds: ['applicant-1', 'applicant-2', 'applicant-3', ],
+        applicantIds: ['candidate-1', 'candidate-2', 'candidate-3', ],
         },
         {
           id: 'recruitmentStep-2',
           title: 'Interesting',
-          applicantIds: ['applicant-4'],
+          applicantIds: ['candidate-4'],
         },
         {
           id: 'recruitmentStep-3',
@@ -51,12 +51,12 @@ const jobOfferingsTestData = [
       {
         id: 'recruitmentStep-1',
         title: 'Applied',
-        applicantIds: ['applicant-5', 'applicant-6', 'applicant-7', 'applicant-8'],
+        applicantIds: ['candidate-5', 'candidate-6', 'candidate-7', 'candidate-8'],
         },
         {
           id: 'recruitmentStep-2',
           title: 'Interesting',
-          applicantIds: ['applicant-4'],
+          applicantIds: ['candidate-4'],
         },
         {
           id: 'recruitmentStep-3',
@@ -89,7 +89,7 @@ const jobOfferingsTestData = [
       {
         id: 'recruitmentStep-1',
         title: 'Applied',
-        applicantIds: ['applicant-1', 'applicant-2', 'applicant-5', 'applicant-6'],
+        applicantIds: ['candidate-1', 'candidate-2', 'candidate-5', 'candidate-6'],
         },
         {
           id: 'recruitmentStep-2',
@@ -127,7 +127,7 @@ const jobOfferingsTestData = [
       {
         id: 'recruitmentStep-1',
         title: 'Applied',
-        applicantIds: ['applicant-7', 'applicant-8', 'applicant-6'],
+        applicantIds: ['candidate-7', 'candidate-8', 'candidate-6'],
         },
         {
           id: 'recruitmentStep-2',
@@ -137,7 +137,7 @@ const jobOfferingsTestData = [
         {
           id: 'recruitmentStep-3',
           title: 'Interview',
-          applicantIds: ['applicant-3', 'applicant-4'],
+          applicantIds: ['candidate-3', 'candidate-4'],
         },
         {
           id: 'recruitmentStep-4',
@@ -165,7 +165,7 @@ const jobOfferingsTestData = [
       {
         id: 'recruitmentStep-1',
         title: 'Applied',
-        applicantIds: ['applicant-1', 'applicant-2', 'applicant-3', 'applicant-4','applicant-5', 'applicant-6', 'applicant-7', 'applicant-8'],
+        applicantIds: ['candidate-1', 'candidate-2', 'candidate-3', 'candidate-4','candidate-5', 'candidate-6', 'candidate-7', 'candidate-8'],
         },
         {
           id: 'recruitmentStep-2',
@@ -203,7 +203,7 @@ const jobOfferingsTestData = [
       {
         id: 'recruitmentStep-1',
         title: 'Applied',
-        applicantIds: ['applicant-1', 'applicant-2', 'applicant-3', 'applicant-4'],
+        applicantIds: ['candidate-1', 'candidate-2', 'candidate-3', 'candidate-4'],
         },
         {
           id: 'recruitmentStep-2',
