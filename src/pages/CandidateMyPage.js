@@ -130,7 +130,7 @@ const StyledH4 = styled.h4`
 
 
 function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, activeCandidate, setActiveCandidate, setCandidateState, candidateState}){
-
+    console.log(activeCandidate)
     const [title, setTitle] = useState("");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
@@ -163,13 +163,14 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
         let newCandidateState = candidateState;
         candidateState.map((candidateStateInMap, index) =>{
             if(candidateStateInMap.id===activeCandidate.id){
-
+                console.log("insaide save")
                 newCandidateState[index].presentation = presentation
                
                 setCandidateState(newCandidateState)
                 setActiveCandidate(candidateState[index])
-          
 
+                console.log(candidateState)
+          
             }
             return null;
         })
@@ -184,7 +185,7 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
         let newCandidateState = candidateState;
         candidateState.map((candidateStateInMap, index) =>{
             if(candidateStateInMap.id===activeCandidate.id){
-
+                console.log("found a candidate to update")
                 newCandidateState[index].experience = [...candidateState[index].experience, { 
                     title: title, 
                     period:startDate + " to " + endDate, 
@@ -261,7 +262,7 @@ return(
         {activeCandidate.experience.map(experienceInMap =>{
             
             return(
-            <InsideExperienceDiv>
+            <InsideExperienceDiv key={experienceInMap.id}>
                 <TitleAndPeriodDiv>
                     <StyledTitle>
                     Title: {experienceInMap.title}

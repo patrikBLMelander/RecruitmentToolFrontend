@@ -8,7 +8,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 
-
+let loggedIn = false;
 const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
     position: fixed;
@@ -70,9 +70,27 @@ const StyleH1 = styled.h1`
     margin-top: 8%;
 `;
 
-function Login({candidateState, setCandidateState, activeCandidate, setActiveCandidate, setCandidateLoggedIn, setAdminLoggedIn, setActiveAdmin, candidateLoggedIn, adminLoggedIn}) {
+function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdminLoggedIn, setActiveAdmin, candidateLoggedIn, adminLoggedIn}) {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
+
+    if(candidateLoggedIn===true || adminLoggedIn===true){
+        Swal.fire({
+            icon: 'info',
+            title: 'Already logged in',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: 'Home',
+            cancelButtonText:'Log out'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Navigate("/home")
+            }else{
+                setCandidateLoggedIn(false)
+                setAdminLoggedIn(false)
+            }
+        })
+    }
 
     
     const handleSubmit = (event) => {
@@ -93,14 +111,15 @@ function Login({candidateState, setCandidateState, activeCandidate, setActiveCan
                 })
                 setCandidateLoggedIn(false)
                 setAdminLoggedIn(true)
+                loggedIn = true
                 Navigate("/home")
             }else{
                  //check CandidateLogin, this will be done properly in backend later
                  candidateState.map(candidateInMap => {
-                     if(candidateInMap.email==form.emailInputGrid.value && form.passwordInputGrid.value=== candidateInMap.password){
-                      
+                     if(candidateInMap.email==form.emailInputGrid.value && form.passwordInputGrid.value===candidateInMap.password){
+                        console.log("found account")
                         setActiveCandidate({
-                            id: candidateInMap.newId, 
+                            id: candidateInMap.id, 
                             nickName: candidateInMap.nickName,
                             firstName: candidateInMap.firstName,
                             LastName: candidateInMap.lastName,
@@ -111,31 +130,27 @@ function Login({candidateState, setCandidateState, activeCandidate, setActiveCan
                             experience: candidateInMap.experience
                         })
                         setCandidateLoggedIn(true)
+                        loggedIn = true
                         setAdminLoggedIn(false)
                         Navigate("/home")
                     }
-
-
                  })
-                 if(candidateLoggedIn===false && adminLoggedIn===false){
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Could not log in...',
-                        text: 'Did not find a matching email and password',
-                        showDenyButton: false,
-                        showCancelButton: true,
-                        confirmButtonText: 'Register',
-                        cancelButtonText:'Try again'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            Navigate("/candidate/register")
-                        } 
-                    })
-                }
-
-
              }
-
+        }
+        if(loggedIn===false){
+            Swal.fire({
+                icon: 'error',
+                title: 'Could not log in...',
+                text: 'Did not find a matching email and password',
+                showDenyButton: false,
+                showCancelButton: true,
+                confirmButtonText: 'Register',
+                cancelButtonText:'Try again'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Navigate("/candidate/register")
+                } 
+            })
         }
 
     };

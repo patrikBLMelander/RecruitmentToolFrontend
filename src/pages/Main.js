@@ -80,7 +80,9 @@ const RegisterBtn = styled.button`
     
 `;
 
-function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn}){
+function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn, setAdminLoggedIn}){
+    setCandidateLoggedIn(false)
+    setAdminLoggedIn(false)
 
     const Navigate = useNavigate();
 
@@ -88,7 +90,7 @@ function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLo
         Navigate("/candidate/register")
     }
     function NavToLogin(){
-        Navigate("/candidate/login")
+        Navigate("/login")
     }
 
     

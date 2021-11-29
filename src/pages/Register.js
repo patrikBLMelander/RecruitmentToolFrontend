@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import Animal from '../testData/animals'
 import styled from 'styled-components'
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
@@ -75,7 +75,7 @@ const StyleH1 = styled.h1`
 function Registrer({candidateState, setCandidateState, activeCandidate, setActiveCandidate, setCandidateLoggedIn}) {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
-
+    const [animal, setsetAnimal] = useState(Animal);
     
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -109,10 +109,11 @@ function Registrer({candidateState, setCandidateState, activeCandidate, setActiv
             }else{
                 counter = counter + 1;
                 newId = "candidate-" + counter
+                const nickNameNumber = Math.floor(Math.random() * 224);
     
                 const newCandidateState = [...candidateState,  { 
                     id: newId, 
-                    nickName: 'Cat',
+                    nickName: animal[nickNameNumber],
                     firstName: form.firstNameInputGrid.value,
                     LastName: form.lastNameInputGrid.value,
                     presentation: "",
@@ -125,7 +126,7 @@ function Registrer({candidateState, setCandidateState, activeCandidate, setActiv
                 setCandidateState(newCandidateState);
                 setActiveCandidate({
                 id: newId, 
-                nickName: 'Cat',
+                nickName: animal[nickNameNumber],
                 firstName: form.firstNameInputGrid.value,
                 LastName: form.lastNameInputGrid.value,
                 presentation: "",

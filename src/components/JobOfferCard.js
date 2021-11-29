@@ -42,10 +42,6 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
             navigate("/candidate/register")
         }
         if(candidateLoggedIn===true){
-
-            //Lägg till kandidaten i de sökta jobbets lista 
-            //"event.id" är jobbets id
-            //"activeCabdidate.id" är den sökandes id
             
             let newJobOffering = jobOfferings
             newJobOffering[index].recruitmentSteps[0].candidateIds = [...jobOfferings[index].recruitmentSteps[0].candidateIds, activeCandidate.id]
