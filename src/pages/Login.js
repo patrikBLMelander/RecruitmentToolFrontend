@@ -70,7 +70,7 @@ const StyleH1 = styled.h1`
     margin-top: 8%;
 `;
 
-function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdminLoggedIn, setActiveAdmin, candidateLoggedIn, adminLoggedIn}) {
+function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdminLoggedIn, setActiveAdmin, candidateLoggedIn, adminLoggedIn, setActiveJob}) {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
 
@@ -134,6 +134,7 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                         loggedIn = true
                         setAdminLoggedIn(false)
                         setValidated(true)
+                        setActiveJob("")
                         Navigate("/home")
                     }
                     return null;

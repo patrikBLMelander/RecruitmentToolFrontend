@@ -105,6 +105,7 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
                     } 
                   })
                   event.stopPropagation();
+                  emailTaken=false
             }else{
                 counter = counter + 1;
                 newId = "candidate-" + counter
@@ -135,11 +136,11 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
                 experience: []
             })
                 setCandidateLoggedIn(true)
-                setValidated(true);
+                
                 Navigate("/home")
                 }
             }
-
+            setValidated(true);
     };
     
         

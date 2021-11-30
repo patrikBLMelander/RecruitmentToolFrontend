@@ -36,15 +36,6 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
     
     const navigate = useNavigate();
 
-    // let competences = ["test", "test2"];
-
-    // function addCompentense (event){
-    //     event.preventDefault();
-    //     console.log(event)
-
-
-    // }
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.currentTarget;

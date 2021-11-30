@@ -46,7 +46,6 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
             let newJobOffering = jobOfferings
             newJobOffering[index].recruitmentSteps[0].candidateIds = [...jobOfferings[index].recruitmentSteps[0].candidateIds, activeCandidate.id]
 
-            console.log(newJobOffering)
             setJobOfferings(newJobOffering)
 
             Swal.fire({
@@ -71,7 +70,7 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
 
     return(
         <Col key={index}>
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem', marginRight: '0px', position:'center' }}>
             <Card.Img variant="top" src={jobOfferingsInMap.imageUrl} />
             <Card.Body>
                 <Card.Title>{jobOfferingsInMap.title}</Card.Title>

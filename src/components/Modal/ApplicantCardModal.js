@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import {CloseO} from '@styled-icons/evil/CloseO';
@@ -68,26 +68,37 @@ Modal.setAppElement('#root');
 
 function ApplicantCardModal({candidate, candidateState, setCandidateState, activeJobId}) {
 
-  //ToDo: Loopa candidateState och kolla om den aktiva kandidaten har en ranking på detta jobb
-  //sätt i så fall den rankingen som rateState
+  const [rating, setRating] = useState(    candidate.rate.map(rateInMap =>{
+    if (rateInMap.jobofferId === activeJobId){
+      return rateInMap.rate
+    }else {
+      return 0;
+  }}));
 
-  //fixa metoden som sätter rateState så den kollar om det redan finns ett state och i så fall uppdatera det, 
-  //finns det inte redan ett state ska ett nytt skapas med ett unikt id
-
-
-  const [rating, setRating] = useState(0)
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const handleRating = (rate) => {
     setRating(rate)
     let newCandidateState = candidateState;
 
-    candidateState.map((candidateInMap, index) =>{
+    candidateState.map((candidateInMap, candidateIndex) =>{
       if(candidateInMap.id===candidate.id){
-        newCandidateState[index].rate = [...candidateInMap.rate, {id:'test1', rate:rate, jobofferId:activeJobId}]
+        let foundRate=false
+        candidateInMap.rate.map((rateInMap, rateIndex) =>{
+          if(rateInMap.jobofferId===activeJobId){
+            newCandidateState[candidateIndex].rate[rateIndex] = {id:rateInMap.id ,rate:rate/20, jobofferId:rateInMap.jobofferId }
+           
+            foundRate=true
+          }
+          
+        })
+        if(!foundRate){
+          newCandidateState[candidateIndex].rate = [...candidateInMap.rate, {id:'test1', rate:rate/20, jobofferId:activeJobId}]
+        }
+
       }
     })
-    console.log(newCandidateState)
+    setCandidateState(newCandidateState)
   }
 
   function openModal() {
@@ -121,7 +132,7 @@ function ApplicantCardModal({candidate, candidateState, setCandidateState, activ
             <StyledP>{candidate.presentation}</StyledP>
             <StyledH4>Arbetslivserfarenhet</StyledH4>
             {candidate.experience.map(experience =>(
-                <div key = {experience}>
+                <div key = {candidate.id + experience.id}>
                     <StyledH5>{experience.title}</StyledH5>
                     <StyledH5>{experience.period}</StyledH5>
                     <StyledP>{experience.description}</StyledP>

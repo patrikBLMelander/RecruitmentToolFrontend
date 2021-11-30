@@ -20,8 +20,6 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, candidateSt
 
      const onDragEnd = result => {
         const { destination, source, draggableId, type } = result;
-
-
         jobOfferings.map((jobOfferingInMap, index) =>{
             
         if (jobOfferingInMap.id===activeJob.id){
