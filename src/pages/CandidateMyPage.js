@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
+import Swal from 'sweetalert2';
 
 
 const Container = styled.div`
@@ -136,6 +137,7 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
     const [endDate, setEndDate] = useState("");
     const [description, setDescription] = useState("");
     const [presentation, setPresentation] = useState(activeCandidate.presentation);
+    const [jobExperienceState, setJobExperienceState]= useState(activeCandidate)
 
 
     const handlePresentationChange = (event) => {
@@ -169,7 +171,13 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
                 setCandidateState(newCandidateState)
                 setActiveCandidate(candidateState[index])
 
-                console.log(candidateState)
+                Swal.fire({
+                    title: 'Presentation Saved!',
+                    text: 'Your presentation are now updaded and can be seen on the roles you applied for!',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
           
             }
             return null;
@@ -185,15 +193,21 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
         let newCandidateState = candidateState;
         candidateState.map((candidateStateInMap, index) =>{
             if(candidateStateInMap.id===activeCandidate.id){
-                console.log("found a candidate to update")
                 newCandidateState[index].experience = [...candidateState[index].experience, { 
                     title: title, 
                     period:startDate + " to " + endDate, 
                     description: description
                 }]
                 setCandidateState(newCandidateState)
-
+                setJobExperienceState(candidateState[index])
                 setActiveCandidate(candidateState[index])
+                Swal.fire({
+                    title: 'New Experience added!',
+                    text: 'Your Experience are now updaded and can be seen on the roles you applied for!',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
           
 
             }
@@ -259,7 +273,7 @@ return(
 
         <H4>TODO: Gör snygg presentation av erfarenheter</H4>
 
-        {activeCandidate.experience.map(experienceInMap =>{
+        {jobExperienceState.experience.map(experienceInMap =>{
 
             return(
             <InsideExperienceDiv key={"InsideExperienceDiv" + experienceInMap.id}>
