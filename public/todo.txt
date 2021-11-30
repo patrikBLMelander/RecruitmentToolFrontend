@@ -1,0 +1,22 @@
+Candidate view
+-	Man ska bara kunna söka samma jobb 1 gång
+-	Få en mer detaljerad beskrivning av tjänsten när man trycker på bilden(modal)
+-   Bygg mina sökta jobb sidan.
+-   Möjlighet att ta bort Experience
+-   Möjlighet att ta bort sitt konto
+-   Möjlighet att ändra sina personuppgifter
+
+Admin view
+-   Bygg sökfuntion på candidates
+-   Bygg inställningar sidan
+    -   Adjust "real name"/"Animal"
+    -   Adjust picture or no picture on candidate
+    -   Adjust color scheme
+    -   Add new profile (recruiter)
+    -   Set authority on profiles
+
+Övergripande
+-   Bygg gdpr text när man kommer till registrera konto, visa endast en gång
+-   Cookies varning?
+-	Skapa en funktion som kollar om man är inloggad på varje page
+-   
