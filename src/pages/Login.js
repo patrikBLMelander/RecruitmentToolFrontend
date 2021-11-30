@@ -112,7 +112,6 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                 setCandidateLoggedIn(false)
                 setAdminLoggedIn(true)
                 loggedIn = true
-                setValidated(true)
                 Navigate("/home")
             }else{
                  //check CandidateLogin, this will be done properly in backend later
@@ -140,23 +139,24 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                     return null;
                  })
              }
-        }
-        if(loggedIn===false){
-            Swal.fire({
-                icon: 'error',
-                title: 'Could not log in...',
-                text: 'Did not find a matching email and password',
-                showDenyButton: false,
-                showCancelButton: true,
-                confirmButtonText: 'Register',
-                cancelButtonText:'Try again'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Navigate("/candidate/register")
-                } 
-            })
+             if(loggedIn===false){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Could not log in...',
+                    text: 'Did not find a matching email and password',
+                    showDenyButton: false,
+                    showCancelButton: true,
+                    confirmButtonText: 'Register',
+                    cancelButtonText:'Try again'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Navigate("/candidate/register")
+                    } 
+                })
+            }
         }
 
+        setValidated(true);
     };
     
         
