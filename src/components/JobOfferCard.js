@@ -42,19 +42,39 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
             navigate("/candidate/register")
         }
         if(candidateLoggedIn===true){
+            let alreadyApplied = false;
             
-            let newJobOffering = jobOfferings
-            newJobOffering[index].recruitmentSteps[0].candidateIds = [...jobOfferings[index].recruitmentSteps[0].candidateIds, activeCandidate.id]
-
-            setJobOfferings(newJobOffering)
-
-            Swal.fire({
-                title: 'Applied!',
-                text: 'Make sure to update your experience',
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 3000
+            jobOfferings[index].recruitmentSteps.map(recruitmentStepsInMap =>{
+                recruitmentStepsInMap.candidateIds.map(candidateIdsInMap=>{
+                    console.log(candidateIdsInMap)
+                    if(activeCandidate.id === candidateIdsInMap){
+                       
+                        alreadyApplied=true
+                        Swal.fire({
+                            title: 'Not Applied!',
+                            text: 'You have already applied for this role.',
+                            icon: 'warning',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                    }
+                })
             })
+            if(!alreadyApplied){
+                let newJobOffering = jobOfferings
+                newJobOffering[index].recruitmentSteps[0].candidateIds = [...jobOfferings[index].recruitmentSteps[0].candidateIds, activeCandidate.id]
+    
+                setJobOfferings(newJobOffering)
+    
+                Swal.fire({
+                    title: 'Applied!',
+                    text: 'Make sure to update your experience',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            }
+
         }
         if(adminLoggedIn===true){
             setActiveJob({...activeJob,
