@@ -85,7 +85,12 @@ const StyledAddressCardBtn = styled(AddressCard)`
     color: white;
 `; 
 
- function Navbar ({adminLoggedIn}) {
+ function Navbar ({adminLoggedIn, setCandidateLoggedIn, setAdminLoggedIn}) {
+
+    function logOut(){
+        setCandidateLoggedIn(false)
+        setAdminLoggedIn(false)
+    }
      
 
     let render;
@@ -101,7 +106,7 @@ const StyledAddressCardBtn = styled(AddressCard)`
                 <h1><StyledBearSmileBtn /></h1>
                 </Link>
         
-                <Link to="/admin/candidate-search">
+                <Link to="/admin/candidate-search" >
                 <h1><StyledPersonSearchBtn /></h1>
                 </Link>
         
@@ -113,7 +118,7 @@ const StyledAddressCardBtn = styled(AddressCard)`
                 <h1><StyledSettingsBtn /></h1>
                 </Link>
         
-                <Link to="/">
+                <Link to="/" onClick={logOut}>
                 <h1><StyledLogOutCircleBtn /></h1>
                 </Link>
         
@@ -135,7 +140,7 @@ const StyledAddressCardBtn = styled(AddressCard)`
                 <h1><StyledAddressCardBtn /></h1>
                 </Link>
         
-                <Link to="/">
+                <Link to="/" onClick={logOut}>
                 <h1><StyledLogOutCircleBtn /></h1>
                 </Link>
         

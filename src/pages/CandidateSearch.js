@@ -9,10 +9,10 @@ const Container = styled.div`
 
 `;
 
-function CandidateSearch({jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob}) {
+function CandidateSearch({jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob , setAdminLoggedIn, setCandidateLoggedIn}) {
     return(
         <div>
-        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
+        <Navbar setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}/>
         <Container>
             <h1>To Do</h1>

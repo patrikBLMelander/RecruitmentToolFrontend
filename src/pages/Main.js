@@ -81,8 +81,7 @@ const RegisterBtn = styled.button`
 `;
 
 function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn, setAdminLoggedIn}){
-    setCandidateLoggedIn(false)
-    setAdminLoggedIn(false)
+ 
 
     const Navigate = useNavigate();
 

@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from "react";
+import React,{useState} from "react";
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import {CloseO} from '@styled-icons/evil/CloseO';
@@ -90,13 +90,14 @@ function ApplicantCardModal({candidate, candidateState, setCandidateState, activ
            
             foundRate=true
           }
-          
+          return null
         })
         if(!foundRate){
           newCandidateState[candidateIndex].rate = [...candidateInMap.rate, {id:'test1', rate:rate/20, jobofferId:activeJobId}]
         }
 
       }
+      return null
     })
     setCandidateState(newCandidateState)
   }

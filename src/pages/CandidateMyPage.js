@@ -129,7 +129,7 @@ const StyledH4 = styled.h4`
 
 
 
-function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, activeCandidate, setActiveCandidate, setCandidateState, candidateState}){
+function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, activeCandidate, setActiveCandidate, setCandidateState, candidateState , setAdminLoggedIn, setCandidateLoggedIn}){
 
     const [title, setTitle] = useState("");
     const [startDate, setStartDate] = useState("");
@@ -204,7 +204,7 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
 
 return(
     <div>
-        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
+        <Navbar setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}/>
  
     <Container>

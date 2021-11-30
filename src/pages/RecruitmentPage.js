@@ -14,7 +14,7 @@ background-image: linear-gradient(#f5f5f5, #e6e6e6);
     margin-left: 163px;
 `;
 
-function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, candidateState, setCandidateState, adminLoggedIn, candidateLoggedIn}){
+function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, candidateState, setCandidateState, adminLoggedIn, candidateLoggedIn , setAdminLoggedIn, setCandidateLoggedIn}){
     
     
 
@@ -112,7 +112,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, candidateSt
 
     return (
         <div>
-        <Navbar jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
+        <Navbar setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}/>
         <DragDropContext onDragEnd={onDragEnd} >
         <Droppable
