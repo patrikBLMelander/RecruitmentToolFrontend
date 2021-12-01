@@ -76,6 +76,10 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
     const [animal] = useState(Animal);
+
+    function navigateToLogin(){
+        Navigate("/login")
+    }
     
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -203,6 +207,9 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
                     <PublishContainer>
                         <StyledButton variant="success" type="submit" className="ms-5">
                             Register
+                        </StyledButton>
+                        <StyledButton onClick={navigateToLogin} className="ms-5">
+                            Login
                         </StyledButton>
                     </PublishContainer>
                 </Form>

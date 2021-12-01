@@ -1,6 +1,5 @@
 Candidate view
--   BUGG - När man betygsätter samma candidate på två olika tjänster nollställs det
--	Få en mer detaljerad beskrivning av tjänsten när man trycker på bilden(modal)
+-   BUGG - När man betygsätter samma candidate på två olika tjänster nollställs det visuellt
 -   Bygg mina sökta jobb sidan.
 -   Möjlighet att ta bort Experience
 -   Möjlighet att ta bort sitt konto
@@ -17,6 +16,4 @@ Admin view
 
 Övergripande
 -   Bygg gdpr text när man kommer till registrera konto, visa endast en gång
--   Cookies varning?
 -	Skapa en funktion som kollar om man är inloggad på varje page
--   
