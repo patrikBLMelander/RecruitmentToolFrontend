@@ -59,8 +59,8 @@ const StyledButton = styled.button`
     cursor: pointer;
     outline: none;
     &:hover {
-        background-color: #2EE59D;
-        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        background-color: #62666e;
+        box-shadow: 0px 15px 20px #838891;
         color: #fff;
         transform: translateY(-7px);
     }
@@ -71,6 +71,14 @@ const StyleH1 = styled.h1`
     font-family: 'Roboto', sans-serif;      
     margin-top: 8%;
 `;
+
+const CheckboxDiv = styled.div`
+    font-family: 'Roboto', sans-serif;   
+    display: flex;
+    margin-left: 50px;
+    margin-top: 10px;
+    color: #b3b9c4;
+`
 
 function Registrer({candidateState, setCandidateState, setActiveCandidate, setCandidateLoggedIn}) {
     const [validated, setValidated] = useState(false);
@@ -84,6 +92,7 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.currentTarget;
+        console.log(form.termsAndConditions.value)
         if (form.checkValidity() === false) {
           event.stopPropagation();
         }else{
@@ -198,9 +207,14 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
                             </Form.Control.Feedback>
                             </FloatingLabel>      
                         </Col>
-
-                    
                     </Row>
+                    <CheckboxDiv>
+                        <Form.Group className="mb-3" controlId="termsAndConditions">
+                            <Form.Check required type="checkbox" label="Terms and conditions" />
+                        </Form.Group>
+                    </CheckboxDiv>
+          
+                    
 
 
 

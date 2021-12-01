@@ -57,8 +57,8 @@ const StyledButton = styled.button`
     cursor: pointer;
     outline: none;
     &:hover {
-        background-color: #2EE59D;
-        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        background-color: #62666e;
+        box-shadow: 0px 15px 20px #838891;
         color: #fff;
         transform: translateY(-7px);
     }
