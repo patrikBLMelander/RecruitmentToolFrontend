@@ -27,6 +27,10 @@ const PExpire = styled.p`
     margin-bottom: 0;
     color: #3b3d40;
 `;            
+
+const StyledH4 = styled.h4`
+    color: #3b3d40;
+`;   
                 
 function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, totalCandidates, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn, activeCandidate}){
     const navigate = useNavigate();
@@ -116,7 +120,7 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
         <Card  style={{ width: '18rem', marginRight: '0px', position:'center' }}>
             <Card.Img variant="top" src={jobOfferingsInMap.imageUrl} onClick={displayInfoAboutRole}/>
             <Card.Body>
-                <Card.Title>{jobOfferingsInMap.title}</Card.Title>
+                <StyledH4>{jobOfferingsInMap.title}</StyledH4>
                 <PExpire>
                 Expire: {jobOfferingsInMap.applyDate}
                 
