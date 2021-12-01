@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import {CloseO} from '@styled-icons/evil/CloseO';
 import { Rating } from 'react-simple-star-rating'
 
-
+let newId;
+let counter=0;
 
 const customStyles = {
   content: {
@@ -93,7 +94,9 @@ function ApplicantCardModal({candidate, candidateState, setCandidateState, activ
           return null
         })
         if(!foundRate){
-          newCandidateState[candidateIndex].rate = [...candidateInMap.rate, {id:'test1', rate:rate/20, jobofferId:activeJobId}]
+          counter +=1;
+          newId="rateId"+counter;
+          newCandidateState[candidateIndex].rate = [...candidateInMap.rate, {id:newId, rate:rate/20, jobofferId:activeJobId}]
         }
 
       }
