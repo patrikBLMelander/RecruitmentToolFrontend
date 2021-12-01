@@ -114,7 +114,7 @@ function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLo
                     <RegisterBtn onClick={NavToLogin}>Login</RegisterBtn>
                         
                 </TextUnderPictures>
-                <Row xs={1} md={3} className="g-4 ms-5 mt-5">
+                <Row xs={1} md={3} className="g-4 mt-5">
                     {jobOfferings.map((jobOfferingsInMap, index) =>{
                         let totalCandidates = 0;
                         jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
@@ -123,7 +123,9 @@ function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLo
                         })
 
                     return(
+                  
                         <JobOfferCard key={jobOfferingsInMap.id} index={index} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
+              
                     )})}
                 </Row>
 

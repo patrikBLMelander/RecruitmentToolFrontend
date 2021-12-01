@@ -31,6 +31,13 @@ const PExpire = styled.p`
 const StyledH4 = styled.h4`
     color: #3b3d40;
 `;   
+
+const CardDiv = styled.div`
+    display flex;
+    justify-content:center;
+    
+`;
+
                 
 function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, totalCandidates, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn, activeCandidate}){
     const navigate = useNavigate();
@@ -116,7 +123,7 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
 
 
     return(
-        <Col key={index}>
+        <CardDiv key={index}>
         <Card  style={{ width: '18rem', marginRight: '0px', position:'center' }}>
             <Card.Img variant="top" src={jobOfferingsInMap.imageUrl} onClick={displayInfoAboutRole}/>
             <Card.Body>
@@ -143,7 +150,7 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
 
             </Card.Body>
         </Card>
-    </Col>
+    </CardDiv>
 
     )
 }
