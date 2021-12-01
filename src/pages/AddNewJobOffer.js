@@ -10,7 +10,7 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 
 
-let counter = 6;
+let counter = 8;
 let newId = "jobOffering-" + counter;
 
 const Container = styled.div`

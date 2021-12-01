@@ -38,6 +38,33 @@ const CardDiv = styled.div`
     
 `;
 
+const StyledButton = styled.button`
+    margin:4px;
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #1e61d9;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px #b0bbcf;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    &:hover {
+        background-color: #1e61d9;
+        box-shadow: 0px 15px 20px #678fd6;
+        color: #3b3d40;
+        transform: translateY(-7px);
+    }
+    
+`;
+
+
                 
 function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, totalCandidates, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn, activeCandidate}){
     const navigate = useNavigate();
@@ -133,7 +160,7 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
                 
                 </PExpire>
                 <div className="d-grid gap-2">
-                <Button onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">{btnText}</Button>
+                <StyledButton onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">{btnText}</StyledButton>
                 </div>
                 <Row xs={2}>
                 <Col sm={5}>

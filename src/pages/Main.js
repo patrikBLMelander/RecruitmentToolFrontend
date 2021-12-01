@@ -114,7 +114,7 @@ function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLo
                     <RegisterBtn onClick={NavToLogin}>Login</RegisterBtn>
                         
                 </TextUnderPictures>
-                <Row xs={1} md={3} className="g-4 mt-5">
+                <Row xs={1} md={2}lg={3} xl={3} xxl={4} className="g-4 mt-5">
                     {jobOfferings.map((jobOfferingsInMap, index) =>{
                         let totalCandidates = 0;
                         jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{

@@ -6,14 +6,13 @@ import Header from '../components/Header';
 import JobOfferCard from '../components/JobOfferCard'
 
 const Container = styled.div`
-
-    margin-left: 190px;
-
+    margin-bottom: 5%;
+    margin-left 160px
 `;
 
 const H3 = styled.h3`
     display: flex;
-    color: #3b3d40;
+    color: #838891;
     margin-left: 50px;
     margin-right: 400px;
     font-family: 'Trebuchet MS', sans-serif;
@@ -27,7 +26,7 @@ const H3 = styled.h3`
         <Header activeJob={activeJob}/>
     <Container>
         <H3>Welcome {activeCandidate.firstName} {activeCandidate.lastName}</H3>
-        <Row xs={1} md={3} className="g-4">
+        <Row xs={1} md={2}lg={3} xl={3} xxl={4} className="g-4">
         {jobOfferings.map((jobOfferingsInMap, index) =>{
             let totalCandidates = 0;
             jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{

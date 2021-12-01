@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import logo from '../logoipsum-logo-46.svg'
+import logo from '../logoipsum-logo-16.svg'
 import { useNavigate } from "react-router-dom";
 
 
@@ -21,7 +21,7 @@ const AdminLoginBtn = styled.button`
 
 const Container = styled.div`
     display: flex;
-    background-image: linear-gradient(#b7cced, #dadee6);
+    background-image: #3b3d40;
     hight: 400;
     padding-top: 16px;
     margin-top: 0;

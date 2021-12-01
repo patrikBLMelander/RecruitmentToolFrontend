@@ -23,6 +23,7 @@ const Container = styled.div`
     left: 0;
     overflow-x: hidden;
     padding-top: 16px;
+    margin-top: 6%;
 `;
 const StyledHomeBtn = styled(Home)`
     cursor: pointer;
