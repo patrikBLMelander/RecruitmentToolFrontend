@@ -58,7 +58,9 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
                             timer: 3000
                         })
                     }
+                    return null;
                 })
+                return null;
             })
             if(!alreadyApplied){
                 let newJobOffering = jobOfferings

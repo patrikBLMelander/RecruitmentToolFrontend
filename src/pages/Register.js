@@ -85,7 +85,7 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
         }else{
             
             candidateState.map(candidateInMap =>{
-                if(candidateInMap.email==form.emailInputGrid.value ||form.emailInputGrid.value== "adminmail@gmail.com"){
+                if(candidateInMap.email.toLowerCase()===form.emailInputGrid.value.toLowerCase() ||form.emailInputGrid.value.toLowerCase()=== "adminmail@gmail.com"){
                     emailTaken = true;
                 }
                 return null;

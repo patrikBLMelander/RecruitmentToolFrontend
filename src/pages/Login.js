@@ -116,7 +116,7 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
             }else{
                  //check CandidateLogin, this will be done properly in backend later
                  candidateState.map(candidateInMap => {
-                     if(candidateInMap.email==form.emailInputGrid.value && form.passwordInputGrid.value===candidateInMap.password){
+                     if(candidateInMap.email.toLowerCase()===form.emailInputGrid.value.toLowerCase() && form.passwordInputGrid.value===candidateInMap.password){
                         
                         setActiveCandidate({
                             id: candidateInMap.id, 
