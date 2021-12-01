@@ -30,10 +30,32 @@ const PExpire = styled.p`
                 
 function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, totalCandidates, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn, activeCandidate}){
     const navigate = useNavigate();
-
+ 
     let btnText = "Apply";
     if(adminLoggedIn===true){
         btnText="Candidates"
+    }
+
+    function displayInfoAboutRole(){
+        if(adminLoggedIn===false){
+            Swal.fire({
+                width:'60rem',
+                title: jobOfferingsInMap.title,
+                html: '<br/><h5>Short Intro Text</h5>'+
+                jobOfferingsInMap.preview +
+                '<br/><br/><h5>Company info</h5><br/>'+
+                jobOfferingsInMap.companyDescription+
+                '<br/><br/><h5>Role description</h5><br/>'+
+                jobOfferingsInMap.aboutRole,
+                confirmButtonText: 'Apply',
+                showCancelButton: 'true'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    setJobToWorkWith()
+                }
+            })
+        }else return;
+
     }
 
     function setJobToWorkWith(event){
@@ -46,7 +68,6 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
             
             jobOfferings[index].recruitmentSteps.map(recruitmentStepsInMap =>{
                 recruitmentStepsInMap.candidateIds.map(candidateIdsInMap=>{
-                    console.log(candidateIdsInMap)
                     if(activeCandidate.id === candidateIdsInMap){
                        
                         alreadyApplied=true
@@ -92,8 +113,8 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
 
     return(
         <Col key={index}>
-        <Card style={{ width: '18rem', marginRight: '0px', position:'center' }}>
-            <Card.Img variant="top" src={jobOfferingsInMap.imageUrl} />
+        <Card  style={{ width: '18rem', marginRight: '0px', position:'center' }}>
+            <Card.Img variant="top" src={jobOfferingsInMap.imageUrl} onClick={displayInfoAboutRole}/>
             <Card.Body>
                 <Card.Title>{jobOfferingsInMap.title}</Card.Title>
                 <PExpire>
