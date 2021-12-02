@@ -148,7 +148,8 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
                 email: form.emailInputGrid.value,
                 password: form.passwordInputGrid.value,
                 phone: form.phoneInputGrid.value,
-                experience: []
+                experience: [],
+                rate: []
             })
                 setCandidateLoggedIn(true)
                 
