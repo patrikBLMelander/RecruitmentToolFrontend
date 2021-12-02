@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import styled from 'styled-components';
 import {CloseO} from '@styled-icons/evil/CloseO';
 import { Rating } from 'react-simple-star-rating'
+import Resume from '../Resume';
 
 let newId;
 let counter=0;
@@ -10,6 +11,7 @@ let counter=0;
 const customStyles = {
   content: {
     position: 'absolute',
+    width:'80%',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
@@ -18,35 +20,11 @@ const customStyles = {
 
 const Container = styled.div`
   margin: 8px;
-  border: 1px solid lightgrey;
-  background-color:#d7dbe0;
   border-radius: 10px;
-
-
   display: flex;
   flex-direction: column;
 `;
 
-const StyledH4 = styled.h4`
-    margin-block-start: 1.33em;
-    margin-block-end: 0.3em;
-    margin-inline-start: 10px;
-    margin-inline-end: 0px;
-`;
-
-const StyledH5 = styled.h5`
-    margin-block-start: 0.5em;
-    margin-block-end: 0.1em;
-    margin-inline-start: 20px;
-    margin-inline-end: 0px;
-`;
-
-
-const StyledP = styled.p`
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-top: 10px;
-`;
 
 const StyledCloseBtn = styled(CloseO)`
     
@@ -132,16 +110,8 @@ function ApplicantCardModal({candidate, candidateState, setCandidateState, activ
         contentLabel="CV modal"
       >
         <Container>
-            <StyledH4>Presentation</StyledH4>
-            <StyledP>{candidate.presentation}</StyledP>
-            <StyledH4>Arbetslivserfarenhet</StyledH4>
-            {candidate.experience.map(experience =>(
-                <div key = {candidate.id + experience.id}>
-                    <StyledH5>{experience.title}</StyledH5>
-                    <StyledH5>{experience.period}</StyledH5>
-                    <StyledP>{experience.description}</StyledP>
-                </div>
-            ))}
+
+            <Resume presentation={candidate.presentation} jobExperienceState={candidate}/>
 
 
         </Container>

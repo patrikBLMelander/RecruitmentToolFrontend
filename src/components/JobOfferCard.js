@@ -1,6 +1,5 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';    
 import styled from 'styled-components'  
 import { useNavigate } from "react-router-dom"; 
@@ -122,20 +121,24 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
                 return null;
             })
             if(!alreadyApplied){
-                let newJobOffering = jobOfferings
-                newJobOffering[index].recruitmentSteps[0].candidateIds = [...jobOfferings[index].recruitmentSteps[0].candidateIds, activeCandidate.id]
-    
-                setJobOfferings(newJobOffering)
-    
                 Swal.fire({
-                    title: 'Applied!',
-                    text: 'Make sure to update your experience',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 3000
+                    title: 'Apply?',
+                    text: 'Do you want to apply for this role',
+                    icon: 'question',
+                    showConfirmButton: true,
+                    confirmButtonText: "Apply",
+                    showCancelButton: true,
+                    cancelButtonText: "Not now"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        let newJobOffering = jobOfferings
+                        newJobOffering[index].recruitmentSteps[0].candidateIds = [...jobOfferings[index].recruitmentSteps[0].candidateIds, activeCandidate.id]
+            
+                        setJobOfferings(newJobOffering)
+                        navigate("/candidate/my-page")
+                    } 
                 })
             }
-
         }
         if(adminLoggedIn===true){
             setActiveJob({...activeJob,
@@ -144,11 +147,7 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
             })
             navigate("/admin/recruitment-page")
         }
-
-        
     }
-
-
     return(
         <CardDiv key={index}>
         <Card  style={{ width: '18rem', marginRight: '0px', position:'center' }}>
