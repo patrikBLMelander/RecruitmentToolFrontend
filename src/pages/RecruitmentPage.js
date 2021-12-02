@@ -9,10 +9,12 @@ import Header from '../components/Header';
 
 
 const Container = styled.div`
-background-image: linear-gradient(#f5f5f5, #e6e6e6);
+    background-color: #3b3d40;;
     display: flex;
     margin-left: 163px;
 `;
+
+
 
 function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, candidateState, setCandidateState, adminLoggedIn, candidateLoggedIn , setAdminLoggedIn, setCandidateLoggedIn}){
     
