@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { BsFillTrashFill } from "react-icons/bs";
+import colorPicker from '../testData/colorPicker';
 
 
 const TrashBtn = styled.button`

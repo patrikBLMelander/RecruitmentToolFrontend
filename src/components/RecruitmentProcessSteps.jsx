@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import CandidateCard from './CandidateCard';
 import RemoveBtn from './RemoveList';
+import colorPicker from '../testData/colorPicker';
 
 
 const Container = styled.div`

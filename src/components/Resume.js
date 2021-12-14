@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
+import {CloseO} from '@styled-icons/evil/CloseO';
+import colorPicker from '../testData/colorPicker';
 
 const OuterContainer = styled.div`
     color: #b5bcc7;
@@ -34,10 +36,13 @@ const Experience = styled.div`
     border-color:  #b5bcc7;
 `;
 const TitleAndPeriod = styled.div`
-    
+    display:flex;
+    margin-left:10px;
 `;
 const JobDescription = styled.div`
-    margin: 15px;
+    margin: 0px 15px 25px 15px;
+    text-align: left;    
+    
 `;
 const Skills = styled.div`
     margin-top: 8px;
@@ -83,6 +88,15 @@ const H5 = styled.h5`
 const P = styled.p`
     
 `;
+const StyledCloseBtn = styled(CloseO)`
+    display:flex;
+    margin-left: auto; 
+    margin-right: 0;
+    cursor: pointer;
+    height: 28px;
+    width: 28px;
+    color: #222;
+`; 
 
 
 function Resume ({jobExperienceState, presentation}) {
@@ -98,7 +112,7 @@ function Resume ({jobExperienceState, presentation}) {
                 </AboutMe>
             </LeftDiv>
             <RightDiv>
-                <H3>{jobExperienceState.firstName} {jobExperienceState.LastName}</H3>
+                <H3>{jobExperienceState.nickName}</H3>
                 <Experience>
                     <H5>Job Experience</H5>
                     {jobExperienceState.experience.map(experienceInMap =>{
@@ -108,6 +122,7 @@ function Resume ({jobExperienceState, presentation}) {
                         <TitleAndPeriod>
                             <H5>{experienceInMap.title}</H5>
                             <H5>{experienceInMap.period}</H5>
+                            <StyledCloseBtn/>
                         </TitleAndPeriod>
                         <JobDescription>
                             <P>{experienceInMap.description}</P>

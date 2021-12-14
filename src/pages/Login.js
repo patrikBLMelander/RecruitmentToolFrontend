@@ -7,13 +7,15 @@ import Row from 'react-bootstrap/Row';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import colorPicker from '../testData/colorPicker';
+import StyledButton from '../components/StyledButton';
 
 let loggedIn = false;
 const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
     position: fixed;
     text-align: center;
-    background-color: #3b3d40;
+    background-color: ${colorPicker.background};
     height: 100%;
     width: 100%;
     z-index: 1,
@@ -21,53 +23,25 @@ const Container = styled.div`
     left: 0;
     overflow-x: hidden;
     padding-top: 16px;
-    InnerContainer
 `;
 
 const InnerContainer = styled.div`
-    font-family: 'Roboto', sans-serif; 
     display: flex;
     justify-content: center;
     margin-top: 10%;
     
 `;
 
-const PublishContainer = styled.div`
+const BtnContainer = styled.div`
     text-align: right;
     padding: 8px;
     margin-right:40px
-
 `;
 
-
-const StyledButton = styled.button`
-    width: 140px;
-    height: 45px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    &:hover {
-        background-color: #62666e;
-        box-shadow: 0px 15px 20px #838891;
-        color: #fff;
-        transform: translateY(-7px);
-    }
-    
-`;
 
 const StyleH1 = styled.h1`
-    font-family: 'Roboto', sans-serif;      
-    margin-top: 8%;
+    color: ${colorPicker.bigText};
+    margin-top: 8%;    
 `;
 
 function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdminLoggedIn, setActiveAdmin, candidateLoggedIn, adminLoggedIn, setActiveJob}) {
@@ -165,7 +139,7 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
             
 
             <InnerContainer>
-                <StyleH1> Login!   </StyleH1>
+                <StyleH1>Login!</StyleH1>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Row className="g-1 ms-5 me-5 mt-5">
                        
@@ -193,11 +167,9 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
 
 
 
-                    <PublishContainer>
-                        <StyledButton variant="success" type="submit" className="ms-5">
-                            login
-                        </StyledButton>
-                    </PublishContainer>
+                    <BtnContainer>
+                        <StyledButton variant="success" type="submit" className="ms-5" input={"login"}/>
+                    </BtnContainer>
                 </Form>
             </InnerContainer>
           

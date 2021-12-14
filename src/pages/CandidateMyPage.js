@@ -9,11 +9,12 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Swal from 'sweetalert2';
 import Resume from '../components/Resume';
+import colorPicker from '../testData/colorPicker';
 
 const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
     text-align: center;
-    background-color: #3b3d40;
+    background-color: ${colorPicker.background};
     height: 100%;
     width: 100%;
     z-index: 1,

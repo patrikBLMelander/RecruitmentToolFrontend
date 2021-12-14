@@ -4,15 +4,17 @@ import Row from 'react-bootstrap/Row';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import JobOfferCard from '../components/JobOfferCard'
+import colorPicker from '../testData/colorPicker';
 
 const Container = styled.div`
+    background-color: ${colorPicker.background};    
     margin-bottom: 5%;
     margin-left 160px
 `;
 
 const H3 = styled.h3`
     display: flex;
-    color: #838891;
+    color: ${colorPicker.text};
     margin-left: 50px;
     margin-right: 400px;
     font-family: 'Trebuchet MS', sans-serif;

@@ -5,11 +5,12 @@ import RecruitmentProcessSteps from '../components/RecruitmentProcessSteps';
 import AddListBtn from '../components/AddListBtn';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
+import colorPicker from '../testData/colorPicker';
 
 
 
 const Container = styled.div`
-    background-color: #3b3d40;;
+    background-color: ${colorPicker.background};
     display: flex;
     margin-left: 163px;
 `;

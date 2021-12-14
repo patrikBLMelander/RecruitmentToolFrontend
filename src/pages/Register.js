@@ -7,6 +7,8 @@ import Row from 'react-bootstrap/Row';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import colorPicker from '../testData/colorPicker';
+import StyledButton from '../components/StyledButton';
 
 let counter = 9;
 let newId = "candidate-" + counter;
@@ -15,7 +17,7 @@ const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
     position: fixed;
     text-align: center;
-    background-color: #3b3d40;
+    background-color: ${colorPicker.background};
     height: 100%;
     width: 100%;
     z-index: 1,
@@ -23,7 +25,7 @@ const Container = styled.div`
     left: 0;
     overflow-x: hidden;
     padding-top: 16px;
-    InnerContainer
+    
 `;
 
 const InnerContainer = styled.div`
@@ -36,38 +38,14 @@ const InnerContainer = styled.div`
 
 const PublishContainer = styled.div`
     text-align: right;
+    display: flex;
     padding: 8px;
-    margin-right:40px
+    margin-left:40px
 
-`;
-
-
-const StyledButton = styled.button`
-    width: 140px;
-    height: 45px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    &:hover {
-        background-color: #62666e;
-        box-shadow: 0px 15px 20px #838891;
-        color: #fff;
-        transform: translateY(-7px);
-    }
-    
 `;
 
 const StyleH1 = styled.h1`
+    color: ${colorPicker.bigText};
     font-family: 'Roboto', sans-serif;      
     margin-top: 8%;
 `;
@@ -77,7 +55,7 @@ const CheckboxDiv = styled.div`
     display: flex;
     margin-left: 50px;
     margin-top: 10px;
-    color: #b3b9c4;
+    color: ${colorPicker.text};
 `
 
 function Registrer({candidateState, setCandidateState, setActiveCandidate, setCandidateLoggedIn}) {
@@ -85,10 +63,6 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
     const Navigate = useNavigate();
     const [animal] = useState(Animal);
 
-    function navigateToLogin(){
-        Navigate("/login")
-    }
-    
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.currentTarget;
@@ -222,12 +196,8 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
 
 
                     <PublishContainer>
-                        <StyledButton variant="success" type="submit" className="ms-5">
-                            Register
-                        </StyledButton>
-                        <StyledButton onClick={navigateToLogin} className="ms-5">
-                            Login
-                        </StyledButton>
+                        <StyledButton type="submit" input="Register"/>    
+                        <StyledButton navigate={"login"} input="Login"/>  
                     </PublishContainer>
                 </Form>
             </InnerContainer>

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { useNavigate } from "react-router-dom"; 
 import Row from 'react-bootstrap/Row';   
 import Swal from 'sweetalert2';
+import colorPicker from '../testData/colorPicker';
           
 
 const PNew = styled.p`
@@ -15,7 +16,7 @@ const PNew = styled.p`
 `;
 
 const PTotal = styled.p`
-    color: #3b3d40;
+    color: ${colorPicker.jobOfferCard.totalCandidates};
     visibility: ${props => (
         props.show ? "visible" : "hidden")
     };
@@ -24,17 +25,28 @@ const PTotal = styled.p`
 const PExpire = styled.p`
     margin-top: 0;
     margin-bottom: 0;
-    color: #3b3d40;
+    color: ${colorPicker.jobOfferCard.expireDate};
 `;            
 
 const StyledH4 = styled.h4`
-    color: #3b3d40;
+    color: ${colorPicker.jobOfferCard.header};
 `;   
 
 const CardDiv = styled.div`
     display flex;
     justify-content:center;
+
     
+`;
+const CardBody = styled.div`
+    background-color: ${colorPicker.jobOfferCard.backgroundColor};
+    
+`
+const BtnContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center
+
 `;
 
 const StyledButton = styled.button`
@@ -46,18 +58,18 @@ const StyledButton = styled.button`
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    color: #fff;
-    background-color: #1e61d9;
+    color: ${colorPicker.jobOfferCard.buttonText};
+    background-color: ${colorPicker.jobOfferCard.button};
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px #b0bbcf;
+    box-shadow: 0px 8px 15px ${colorPicker.jobOfferCard.buttonShadow};
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
     &:hover {
-        background-color: #1e61d9;
-        box-shadow: 0px 15px 20px #678fd6;
-        color: #3b3d40;
+        background-color: ${colorPicker.jobOfferCard.buttonHover};
+        box-shadow: 0px 15px 20px ${colorPicker.jobOfferCard.buttonHoverShadow};
+        color: ${colorPicker.jobOfferCard.buttonHoverText}
         transform: translateY(-7px);
     }
     
@@ -152,15 +164,15 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
         <CardDiv key={index}>
         <Card  style={{ width: '18rem', marginRight: '0px', position:'center' }}>
             <Card.Img variant="top" src={jobOfferingsInMap.imageUrl} onClick={displayInfoAboutRole}/>
-            <Card.Body>
+            <CardBody>
                 <StyledH4>{jobOfferingsInMap.title}</StyledH4>
                 <PExpire>
                 Expire: {jobOfferingsInMap.applyDate}
                 
                 </PExpire>
-                <div className="d-grid gap-2">
+                <BtnContainer>
                 <StyledButton onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">{btnText}</StyledButton>
-                </div>
+                </BtnContainer>
                 <Row xs={2}>
                 <Col sm={5}>
                     <PNew show={adminLoggedIn}>
@@ -174,7 +186,7 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
                 </Col>
                 </Row>
 
-            </Card.Body>
+            </CardBody>
         </Card>
     </CardDiv>
 

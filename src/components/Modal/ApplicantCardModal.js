@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import colorPicker from '../../testData/colorPicker';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import {CloseO} from '@styled-icons/evil/CloseO';
