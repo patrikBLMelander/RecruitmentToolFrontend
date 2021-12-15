@@ -1,5 +1,4 @@
 import React,{useState} from "react";
-import colorPicker from '../../testData/colorPicker';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import {CloseO} from '@styled-icons/evil/CloseO';
@@ -12,9 +11,8 @@ let counter=0;
 const customStyles = {
   content: {
     position: 'absolute',
-    hight:'80%',
-    width:'65%',
-    top: '40%',
+    width:'80%',
+    top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
   },

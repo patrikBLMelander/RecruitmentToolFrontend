@@ -100,7 +100,7 @@ const StyledCloseBtn = styled(CloseO)`
 `; 
 
 
-function Resume ({jobExperienceState, setJobExperienceState, presentation}) {
+function Resume ({jobExperienceState, setJobExperienceState, presentation, candidateState, setCandidateState, setActiveCandidate }) {
 
     function removeExperience(experienceInMap){
         Swal.fire({
@@ -110,12 +110,32 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation}) {
             showConfirmButton: true,
             showCancelButton: true,
         }).then((result) => {
+
             if (result.isConfirmed) {
-                console.log(experienceInMap);
-                let test;
-                //jobExperienceState.experience.map(experienceInMap =>{
-            }
-             
+                let test = candidateState;
+                candidateState.map((candidateStateInMap, cIndex) =>{
+
+                    if(candidateState[cIndex].id===jobExperienceState.id){
+   
+                        candidateState[cIndex].experience.map(experienceToCheck =>{
+
+                            if(experienceToCheck.id===experienceInMap.id){
+                                test[cIndex].experience = [...candidateState[cIndex].experience.filter(experience => experience.id!==experienceInMap.id)]
+    
+                                setCandidateState(test)
+                                console.log(test[cIndex])
+                                console.log(jobExperienceState)
+                                setJobExperienceState(test[cIndex])
+                                setActiveCandidate(test[cIndex])
+                            }
+
+                        })
+                    }
+                    
+                }
+                
+
+            )}
         })
     }
 

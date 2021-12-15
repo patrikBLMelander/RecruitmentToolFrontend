@@ -229,7 +229,7 @@ return(
             <SeperatorDiv/>
             <H4>Your Resume will show here</H4>
             <ResumeContainer>
-            <Resume jobExperienceState={jobExperienceState} presentation={presentation} setJobExperienceState={setJobExperienceState}/>
+            <Resume setActiveCandidate={setActiveCandidate}jobExperienceState={jobExperienceState} candidateState={candidateState} setCandidateState={setCandidateState} presentation={presentation} setJobExperienceState={setJobExperienceState}/>
             </ResumeContainer>
     </InnerContainer>
 </Container>
