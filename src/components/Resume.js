@@ -155,7 +155,7 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
                     {jobExperienceState.experience.map(experienceInMap =>{
 
                     return(
-                    <div>
+                    <div key={experienceInMap.id}>
                         <TitleAndPeriod>
                             <H5>{experienceInMap.title}</H5>
                             <H5>{experienceInMap.period}</H5>
