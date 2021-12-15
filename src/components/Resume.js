@@ -112,8 +112,10 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation}) {
         }).then((result) => {
             if (result.isConfirmed) {
                 console.log(experienceInMap);
-
-            } 
+                let test;
+                //jobExperienceState.experience.map(experienceInMap =>{
+            }
+             
         })
     }
 
