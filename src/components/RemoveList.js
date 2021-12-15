@@ -6,14 +6,22 @@ import colorPicker from '../testData/colorPicker';
 
 const TrashBtn = styled.button`
     display: flex;
-    background-color: black;
-    color: white;
+    background-color:${colorPicker.recruitmentSteps.removeBtn};
+    color: ${colorPicker.recruitmentSteps.removeBtnText};
     font-size: 15px;
     padding: 8px 80px 8px 80px;
     border-radius: 5px;
-    margin: 10px 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: auto; 
+    margin-right: auto; 
     cursor: pointer;
     align-content: center;
+    &:hover {
+        background-color: ${colorPicker.recruitmentSteps.removeBtnText};
+        box-shadow: 0px 15px 20px ${colorPicker.recruitmentSteps.removeBtnText};
+        color: ${colorPicker.recruitmentSteps.removeBtn};
+    }
     
 `;
 

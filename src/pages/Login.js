@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import colorPicker from '../testData/colorPicker';
 import StyledButton from '../components/StyledButton';
+import Footer from '../components/Footer';
 
 let loggedIn = false;
 const Container = styled.div`
@@ -172,7 +173,7 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                     </BtnContainer>
                 </Form>
             </InnerContainer>
-          
+            <Footer/>
         </Container>
     )
 }

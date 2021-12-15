@@ -9,8 +9,8 @@ const Container = styled.div`
   border-radius: 2px;
   padding: 8px;
   margin-bottom: 8px;
-  color: #edf0f2;
-  background-color: ${props => (props.isDragging ? colorPicker.candidateCard.backgroundColor : colorPicker.candidateCard.backgroundColorDrag)};
+  color: ${colorPicker.candidateCard.text};
+  background-color: ${props => (props.isDragging ? colorPicker.candidateCard.backgroundColorDrag : colorPicker.candidateCard.backgroundColor)};
 `;
 
 function CandidateCard ({index, candidateId, candidateState, setCandidateState, activeJobId}) {

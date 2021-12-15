@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components'
 import JobOfferCard from '../components/JobOfferCard';
-import Row from 'react-bootstrap/Row';
 import colorPicker from '../testData/colorPicker';
 import StyledButton from '../components/StyledButton';
+import Footer from '../components/Footer';
 
 
 const Container = styled.div`
@@ -11,15 +11,41 @@ const Container = styled.div`
     text-align: center;
     background-color: ${colorPicker.background};
     color: ${colorPicker.text};
-    height: 100%;
+    height: 95%;
     width: 100%;
     z-index: 1,
     top: 0;
     left: 0;
     overflow-x: hidden;
     padding-top: 16px;
+    padding-bottom: 50px;
     font-family: 'Roboto', sans-serif;
 `;
+
+const JobCardDiv = styled.div`
+    margin: 20px auto;
+    width: 80%;
+    min-height: 100px;
+    display: flex;
+    flex-flow: row wrap; 
+    @media (max-width: 1200px) {
+        flex: 1 1 calc(25% - 20px);
+    }
+    @media (max-width: 900px) {
+        flex: 1 1 calc(33% - 20px);
+    }
+    @media (max-width: 1200px) {
+        flex-direction: column;
+    }
+
+    @media (max-width: 750px) {
+        flex: 1 1 calc(50% - 20px)
+    }
+    @media (max-width: 550px) {
+        flex: 1 1 calc(100% - 20px)
+    }
+`;
+
 
 const BtnContainer = styled.div`
     display: flex;
@@ -64,7 +90,7 @@ const StyledP = styled.p`
 function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn, setAdminLoggedIn}){
 
     return(
-   
+        <div>
             <Container>
                 <StyleH1>Karriär</StyleH1>
                 <OuterCircleDiv>
@@ -84,21 +110,22 @@ function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLo
                     <StyledButton navigate={"login"}input={"Login"}/>
                     </BtnContainer>
                 </TextUnderPictures>
-                <Row xs={1} md={2}lg={3} xl={3} xxl={4} className="g-4 mt-5">
+                <JobCardDiv>
                     {jobOfferings.map((jobOfferingsInMap, index) =>{
                         let totalCandidates = 0;
                         jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
                             totalCandidates += recruitmentStepInMap.candidateIds.length
                         return null;
                         })
-
-                    return(
-                  
-                        <JobOfferCard key={jobOfferingsInMap.id} index={index} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
-              
-                    )})}
-                </Row>
-            </Container>
+                        return(
+                    
+                            <JobOfferCard key={jobOfferingsInMap.id} index={index} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
+                
+                        )})}
+                    </JobCardDiv>
+                </Container>
+                <Footer/>
+            </div>
     )
 }
 

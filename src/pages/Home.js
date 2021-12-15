@@ -5,10 +5,11 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import JobOfferCard from '../components/JobOfferCard'
 import colorPicker from '../testData/colorPicker';
+import Footer from '../components/Footer';
 
 const Container = styled.div`
     background-color: ${colorPicker.background};    
-    margin-bottom: 5%;
+    padding-bottom: 5%;
     margin-left 160px
 `;
 
@@ -19,6 +20,29 @@ const H3 = styled.h3`
     margin-right: 400px;
     font-family: 'Trebuchet MS', sans-serif;
 `;
+const JobCardDiv = styled.div`
+    margin: 20px auto;
+    width: 80%;
+    min-height: 100px;
+    display: flex;
+    flex-flow: row wrap; 
+    @media (max-width: 1200px) {
+        flex: 1 1 calc(25% - 20px);
+    }
+    @media (max-width: 900px) {
+        flex: 1 1 calc(33% - 20px);
+    }
+    @media (max-width: 1200px) {
+        flex-direction: column;
+    }
+
+    @media (max-width: 750px) {
+        flex: 1 1 calc(50% - 20px)
+    }
+    @media (max-width: 550px) {
+        flex: 1 1 calc(100% - 20px)
+    }
+`;
 
 
  function Home ({jobOfferings, setJobOfferings, setActiveJob, activeJob, adminLoggedIn, candidateLoggedIn, activeCandidate, setActiveCandidate , setAdminLoggedIn, setCandidateLoggedIn}) {
@@ -28,7 +52,7 @@ const H3 = styled.h3`
         <Header activeJob={activeJob}/>
     <Container>
         <H3>Welcome {activeCandidate.firstName} {activeCandidate.lastName}</H3>
-        <Row xs={1} md={2}lg={3} xl={3} xxl={4} className="g-4">
+        <JobCardDiv>
         {jobOfferings.map((jobOfferingsInMap, index) =>{
             let totalCandidates = 0;
             jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
@@ -39,10 +63,11 @@ const H3 = styled.h3`
              return(
                 <JobOfferCard key={index} index={index} jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} activeCandidate={activeCandidate}/>
             )})}
-        </Row>
+        </JobCardDiv>
 
 
     </Container>
+    <Footer/>
     </div>
     )
        

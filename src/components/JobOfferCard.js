@@ -1,14 +1,45 @@
 import React from "react";
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';    
 import styled from 'styled-components'  
 import { useNavigate } from "react-router-dom"; 
-import Row from 'react-bootstrap/Row';   
 import Swal from 'sweetalert2';
 import colorPicker from '../testData/colorPicker';
           
 
+const CardDiv = styled.div`
+    display flex;
+    flex-direction: column;
+    justify-content:center;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px ${colorPicker.jobOfferCard.buttonShadow};
+    min-width: 350px;
+    min-height: 300px;
+    max-width: 350px;
+    min-height: 300px;
+    margin: 8px 8px 8px 8px
+`;
+
+const Image = styled.img`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 45px 45px 0px 0px;
+
+`;
+
+const CardBody = styled.div`
+    background-color: ${colorPicker.jobOfferCard.backgroundColor};
+    border-radius: 0px 0px 45px 45px;
+`;
+
+const CadnidateInfoDiv = styled.div`
+    display flex;
+    justify-content: center;
+    
+`;
+
 const PNew = styled.p`
+    margin-right: 75px;
     color: #17913c;
     visibility: ${props => (
         props.show ? "visible" : "hidden")
@@ -16,6 +47,7 @@ const PNew = styled.p`
 `;
 
 const PTotal = styled.p`
+margin-left: 75px;
     color: ${colorPicker.jobOfferCard.totalCandidates};
     visibility: ${props => (
         props.show ? "visible" : "hidden")
@@ -24,30 +56,24 @@ const PTotal = styled.p`
 
 const PExpire = styled.p`
     margin-top: 0;
+    margin-left: 10px;
     margin-bottom: 0;
     color: ${colorPicker.jobOfferCard.expireDate};
 `;            
 
 const StyledH4 = styled.h4`
+    margin-top: 8px;
+    margin-left: 10px;
     color: ${colorPicker.jobOfferCard.header};
 `;   
 
-const CardDiv = styled.div`
-    display flex;
-    justify-content:center;
-
-    
-`;
-const CardBody = styled.div`
-    background-color: ${colorPicker.jobOfferCard.backgroundColor};
-    
-`
 const BtnContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center
 
 `;
+
 
 const StyledButton = styled.button`
     margin:4px;
@@ -162,32 +188,18 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
     }
     return(
         <CardDiv key={index}>
-        <Card  style={{ width: '18rem', marginRight: '0px', position:'center' }}>
-            <Card.Img variant="top" src={jobOfferingsInMap.imageUrl} onClick={displayInfoAboutRole}/>
+            <Image src={jobOfferingsInMap.imageUrl} onClick={displayInfoAboutRole}/>
             <CardBody>
                 <StyledH4>{jobOfferingsInMap.title}</StyledH4>
-                <PExpire>
-                Expire: {jobOfferingsInMap.applyDate}
-                
-                </PExpire>
+                <PExpire>Expire: {jobOfferingsInMap.applyDate}</PExpire>
                 <BtnContainer>
                 <StyledButton onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">{btnText}</StyledButton>
                 </BtnContainer>
-                <Row xs={2}>
-                <Col sm={5}>
-                    <PNew show={adminLoggedIn}>
-                        New: {jobOfferingsInMap.recruitmentSteps[0].candidateIds.length}
-                    </PNew>
-                    </Col>
-                <Col sm={5}>
-                    <PTotal show={adminLoggedIn}>
-                    Total: {totalCandidates}
-                    </PTotal>
-                </Col>
-                </Row>
-
+                <CadnidateInfoDiv>
+                    <PNew show={adminLoggedIn}>New: {jobOfferingsInMap.recruitmentSteps[0].candidateIds.length}</PNew>
+                    <PTotal show={adminLoggedIn}>Total: {totalCandidates}</PTotal>
+                </CadnidateInfoDiv>
             </CardBody>
-        </Card>
     </CardDiv>
 
     )

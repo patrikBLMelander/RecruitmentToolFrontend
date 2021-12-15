@@ -12,8 +12,9 @@ let counter=0;
 const customStyles = {
   content: {
     position: 'absolute',
-    width:'80%',
-    top: '50%',
+    hight:'80%',
+    width:'65%',
+    top: '40%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
   },

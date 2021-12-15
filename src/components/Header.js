@@ -19,7 +19,7 @@ const H3 = styled.h3`
     margin-top: 20px;
     margin-left: 50px;
     margin-right: 400px;
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: 'Roboto', sans-serif; 
 `;
 
 const Img = styled.img`

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import {CloseO} from '@styled-icons/evil/CloseO';
 import colorPicker from '../testData/colorPicker';
+import Swal from 'sweetalert2';
 
 const OuterContainer = styled.div`
     color: #b5bcc7;
@@ -95,12 +96,26 @@ const StyledCloseBtn = styled(CloseO)`
     cursor: pointer;
     height: 28px;
     width: 28px;
-    color: #222;
+    color: #fff;
 `; 
 
 
-function Resume ({jobExperienceState, presentation}) {
+function Resume ({jobExperienceState, setJobExperienceState, presentation}) {
 
+    function removeExperience(experienceInMap){
+        Swal.fire({
+            title: 'Remove Experience',
+            text: 'Do you want to remove this experience?',
+            icon: 'question',
+            showConfirmButton: true,
+            showCancelButton: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log(experienceInMap);
+
+            } 
+        })
+    }
 
     return (
         <OuterContainer key={jobExperienceState.id}>
@@ -122,7 +137,7 @@ function Resume ({jobExperienceState, presentation}) {
                         <TitleAndPeriod>
                             <H5>{experienceInMap.title}</H5>
                             <H5>{experienceInMap.period}</H5>
-                            <StyledCloseBtn/>
+                            <StyledCloseBtn onClick={() => removeExperience(experienceInMap)}/>
                         </TitleAndPeriod>
                         <JobDescription>
                             <P>{experienceInMap.description}</P>

@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import colorPicker from '../testData/colorPicker';
 import StyledButton from '../components/StyledButton';
+import Footer from '../components/Footer';
 
 let counter = 9;
 let newId = "candidate-" + counter;
@@ -135,74 +136,70 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
     
         
     return(
-        <Container>
-            
-
-            <InnerContainer>
-                <StyleH1>Our New Star? </StyleH1>
-                <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                    <Row className="g-1 ms-5 me-5 mt-5">
-                        <Col md>
-                            <FloatingLabel controlId="firstNameInputGrid" label="First name">
-                            <Form.Control required type="Text" placeholder='"Patrik"' />
-                            <Form.Control.Feedback type="invalid">
-                            Everyone have a first name, right?
-                            </Form.Control.Feedback>
-                            </FloatingLabel>
-                        </Col>
-                        <Col md>
-                            <FloatingLabel controlId="lastNameInputGrid" label="Last name">
-                                <Form.Control required type="Text" placeholder='"Melander"' />
-                                <Form.Control.Feedback type="invalid">
-                                Everyone have a last name, right?
-                            </Form.Control.Feedback>
-                            </FloatingLabel>      
-                        </Col>
-                        <Col md>
-                            <FloatingLabel controlId="phoneInputGrid" label="phone">
-                                <Form.Control required type="Text" placeholder='"Melander"'/>
-                                <Form.Control.Feedback type="invalid">
-                                Good to have if we want to conntact you!
-                            </Form.Control.Feedback>
-                            </FloatingLabel>      
-                        </Col>
-                        </Row>
+        <div>
+            <Container>
+                <InnerContainer>
+                    <StyleH1>Our New Star? </StyleH1>
+                    <Form noValidate validated={validated} onSubmit={handleSubmit}>
                         <Row className="g-1 ms-5 me-5 mt-5">
-                     <Col md>
-                            <FloatingLabel controlId="emailInputGrid" label="email">
-                                <Form.Control required type="Email" placeholder='"Melander"'/>
+                            <Col md>
+                                <FloatingLabel controlId="firstNameInputGrid" label="First name">
+                                <Form.Control required type="Text" placeholder='"Patrik"' />
                                 <Form.Control.Feedback type="invalid">
-                                This is needed to log in!
-                            </Form.Control.Feedback>
-                            </FloatingLabel>      
-                        </Col>
+                                Everyone have a first name, right?
+                                </Form.Control.Feedback>
+                                </FloatingLabel>
+                            </Col>
+                            <Col md>
+                                <FloatingLabel controlId="lastNameInputGrid" label="Last name">
+                                    <Form.Control required type="Text" placeholder='"Melander"' />
+                                    <Form.Control.Feedback type="invalid">
+                                    Everyone have a last name, right?
+                                </Form.Control.Feedback>
+                                </FloatingLabel>      
+                            </Col>
+                            <Col md>
+                                <FloatingLabel controlId="phoneInputGrid" label="phone">
+                                    <Form.Control required type="Text" placeholder='"Melander"'/>
+                                    <Form.Control.Feedback type="invalid">
+                                    Good to have if we want to conntact you!
+                                </Form.Control.Feedback>
+                                </FloatingLabel>      
+                            </Col>
+                            </Row>
+                            <Row className="g-1 ms-5 me-5 mt-5">
                         <Col md>
-                            <FloatingLabel controlId="passwordInputGrid" label="password">
-                                <Form.Control required type="password" placeholder='"Melander"'/>
-                                <Form.Control.Feedback type="invalid">
-                                This is needed to log in!
-                            </Form.Control.Feedback>
-                            </FloatingLabel>      
-                        </Col>
-                    </Row>
-                    <CheckboxDiv>
-                        <Form.Group className="mb-3" controlId="termsAndConditions">
-                            <Form.Check required type="checkbox" label="Terms and conditions" />
-                        </Form.Group>
-                    </CheckboxDiv>
-          
-                    
-
-
-
-                    <PublishContainer>
-                        <StyledButton type="submit" input="Register"/>    
-                        <StyledButton navigate={"login"} input="Login"/>  
-                    </PublishContainer>
-                </Form>
-            </InnerContainer>
-          
-        </Container>
+                                <FloatingLabel controlId="emailInputGrid" label="email">
+                                    <Form.Control required type="Email" placeholder='"Melander"'/>
+                                    <Form.Control.Feedback type="invalid">
+                                    This is needed to log in!
+                                </Form.Control.Feedback>
+                                </FloatingLabel>      
+                            </Col>
+                            <Col md>
+                                <FloatingLabel controlId="passwordInputGrid" label="password">
+                                    <Form.Control required type="password" placeholder='"Melander"'/>
+                                    <Form.Control.Feedback type="invalid">
+                                    This is needed to log in!
+                                </Form.Control.Feedback>
+                                </FloatingLabel>      
+                            </Col>
+                        </Row>
+                        <CheckboxDiv>
+                            <Form.Group className="mb-3" controlId="termsAndConditions">
+                                <Form.Check required type="checkbox" label="Terms and conditions" />
+                            </Form.Group>
+                        </CheckboxDiv>
+                        <PublishContainer>
+                            <StyledButton type="submit" input="Register"/>    
+                            <StyledButton navigate={"login"} input="Login"/>  
+                        </PublishContainer>
+                    </Form>
+                </InnerContainer>
+           
+            </Container>
+            <Footer/>
+        </div>
     )
 }
 

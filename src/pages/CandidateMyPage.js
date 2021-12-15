@@ -10,6 +10,8 @@ import Header from '../components/Header';
 import Swal from 'sweetalert2';
 import Resume from '../components/Resume';
 import colorPicker from '../testData/colorPicker';
+import Footer from '../components/Footer';
+import StyledButton from '../components/StyledButton';
 
 const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
@@ -24,7 +26,7 @@ const Container = styled.div`
 `;
 
 const InnerContainer = styled.div`
-    color: #b5bcc7;
+    color: ${colorPicker.text};
     font-family: 'Roboto', sans-serif; 
     justify-content: center;
     margin-top: 10%;
@@ -35,6 +37,7 @@ const InnerContainer = styled.div`
 
 const ResumeContainer = styled.div`
     margin-right:4%;
+    padding-bottom: 10%;
 `;
 
 const SeperatorDiv = styled.div`
@@ -47,35 +50,9 @@ const SeperatorDiv = styled.div`
 `;
 const H4 = styled.h4`
     font-family: 'Roboto', sans-serif; 
-    color: #b5bcc7;
+    color: ${colorPicker.text};
     margin-left: 50px;
     margin-top: 30px;
-
-`;
-
-const StyledButton = styled.button`
-    width: 140px;
-    height: 45px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    &:hover {
-        background-color: #2EE59D;
-        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-        color: #fff;
-        transform: translateY(-7px);
-    }
-    
 `;
 
 
@@ -207,7 +184,7 @@ return(
                         This will be the first impression of you, write something nice ;)
                     </Form.Control.Feedback>
                 </Form.Group>
-                <StyledButton variant="success" type="submit"> Save </StyledButton>
+                <StyledButton variant="success" type="submit" input={"Save"}/>
             </Form>
             <Form noValidate validated={validated} onSubmit={addEmployment}>
                 <H4>Here is the place to add your experience!</H4>
@@ -247,17 +224,16 @@ return(
                 </Form.Group>
 
 
-                <StyledButton  variant="success" type="submit">
-                        Add Job
-                </StyledButton>
+                <StyledButton  variant="success" type="submit" input={"Add Job"}/>
             </Form>
             <SeperatorDiv/>
             <H4>Your Resume will show here</H4>
             <ResumeContainer>
-            <Resume jobExperienceState={jobExperienceState} presentation={presentation}/>
+            <Resume jobExperienceState={jobExperienceState} presentation={presentation} setJobExperienceState={setJobExperienceState}/>
             </ResumeContainer>
     </InnerContainer>
 </Container>
+<Footer/>
 </div>
 )
 

@@ -4,30 +4,31 @@ import styled from 'styled-components'
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
+import colorPicker from '../testData/colorPicker';
+import StyledButton from '../components/StyledButton';
 
 
 let counter = 8;
 let newId = "jobOffering-" + counter;
 
 const Container = styled.div`
-
-    margin-left: 168px;
-
+background-color: ${colorPicker.background};
+color: ${colorPicker.text};
+align-content: center;
+position: fixed;
+padding-bottom: 100%;
+padding-left: 163px;
+padding-top: 50px;
+z-index: 0;
+width: 100%;
 `;
-
-// const CompetenceP = styled.p`
-//     border: 1px solid lightgrey;
-//     border-radius: 2px;
-//     padding: 8px;
-//     margin-bottom: 8px;
-
-
-// `;
-
+ const BtnDiv = styled.div`
+    margin-left: 40px
+ `
 
 
 
@@ -97,10 +98,7 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
         <div>
         <Navbar jobOfferings={jobOfferings} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}/>
-        <Container>
-
-
-            
+        <Container>    
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Row className="g-2 ms-5 me-5 mt-5">
                     <Col md>
@@ -128,31 +126,6 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
                         </FloatingLabel>   
                     </Col>
                 </Row>
-                {/* 
-                <Row className="g-2 ms-5 me-5 mt-5">
-                
-                    <Col >
-                            <FloatingLabel controlId="addCompetensgrid" label="Competense">
-                            <Form.Control required type="Text" placeholder='"Java utvecklare"' />
-                            </FloatingLabel>
-                    </Col>
-                    <Col >
-                        <Button variant="primary" onClick={addCompentense}>
-                        add competense
-                        </Button>
-                    </Col>
-                    </Row>
-                    <Row className="g-2 ms-5 me-5 mt-5">
-                        <p> kompetenser:  </p>
-                    {competences.map(comp =>{
-                        return (
-                            <Col>
-                                <CompetenceP>{comp}</CompetenceP>
-                            </Col>
-                        )
-                    })}
-                    </Row> */}
-
                 <Form.Group className="mb-3 ms-5 me-5" controlId="preview">
                     <Form.Label className="ms-3 mt-4">Preview text</Form.Label>
                     <Form.Control required as="textarea" rows={3} />
@@ -174,12 +147,12 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
                         Here is the place to write about the role.
                     </Form.Control.Feedback>
                 </Form.Group>
-                
-                <Button variant="primary" type="submit" className="ms-5">
-                    Publish
-                </Button>
+                <BtnDiv>   
+                <StyledButton variant="primary" type="submit" className="ms-5" input={"Publish"}></StyledButton>
+                </BtnDiv>
             </Form>
         </Container>
+        <Footer/>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import colorPicker from '../testData/colorPicker';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
@@ -17,7 +17,7 @@ const Container = styled.div`
     background-color: ${colorPicker.background};
     height: 100%;
     width: 160px;
-    z-index: 1,
+    z-index: 2;
     top: 0;
     left: 0;
     overflow-x: hidden;
