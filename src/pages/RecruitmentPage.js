@@ -11,7 +11,7 @@ import Footer from '../components/Footer';
 
 
 const Container = styled.div`
-    background-color: ${colorPicker.background};
+    background-color: ${colorPicker.primary};
     display: flex;
     position: fixed;
     z-index: 0;

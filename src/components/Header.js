@@ -5,7 +5,7 @@ import colorPicker from '../testData/colorPicker';
 
 const Container = styled.div`
     display: flex;
-    background-color: ${colorPicker.background};
+    background-color: ${colorPicker.primary};
     hight: 400;
     padding-top: 16px;
     margin-top: 0;

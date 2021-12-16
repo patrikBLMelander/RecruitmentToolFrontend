@@ -14,7 +14,7 @@ import {AddressCard} from '@styled-icons/fa-regular/AddressCard';
 const Container = styled.div`
     position: fixed;
     text-align: center;
-    background-color: ${colorPicker.background};
+    background-color: ${colorPicker.primary};
     height: 100%;
     width: 160px;
     z-index: 2;

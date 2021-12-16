@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import colorPicker from '../testData/colorPicker';
+import colorPicker, {chooseColorScheme} from '../testData/colorPicker';
 
 const Container = styled.div`
-background-color: ${colorPicker.background};
+background-color: ${colorPicker.primary};
 color: ${colorPicker.text};
 display: flex;
 position: fixed;
@@ -31,6 +31,7 @@ function Settings({jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, se
             <li>Add new profile (recruiter)</li>
             <li>Set authority on profiles</li>
             </ul>
+            <button onClick={()=> chooseColorScheme(1)}></button>
         </Container>
         <Footer/>
         </div>

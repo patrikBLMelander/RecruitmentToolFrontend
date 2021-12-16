@@ -5,12 +5,12 @@ import colorPicker from '../testData/colorPicker';
 import ApplicantCardModal from './Modal/ApplicantCardModal'
 
 const Container = styled.div`
-  border: 1px solid ${colorPicker.candidateCard.border};
+  border: 1px solid ${colorPicker.fifth};
   border-radius: 2px;
   padding: 8px;
   margin-bottom: 8px;
-  color: ${colorPicker.candidateCard.text};
-  background-color: ${props => (props.isDragging ? colorPicker.candidateCard.backgroundColorDrag : colorPicker.candidateCard.backgroundColor)};
+  color: ${colorPicker.text};
+  background-color: ${props => (props.isDragging ? colorPicker.fourth : colorPicker.secondary)};
 `;
 
 function CandidateCard ({index, candidateId, candidateState, setCandidateState, activeJobId}) {

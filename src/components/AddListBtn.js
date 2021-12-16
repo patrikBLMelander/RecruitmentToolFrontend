@@ -7,9 +7,9 @@ let counter = 5;
 let newId = "recruitmentStep-" + counter;
 
 const Input = styled.input`
-    color: ${colorPicker.input.text};
+    color: ${colorPicker.fifth};
     font-size: 1em;
-    border: 2px solid  ${colorPicker.input.border};
+    border: 2px solid  ${colorPicker.fifth};
     border-radius: 3px;
     margin: 0.5em;
     padding: 0.5em;

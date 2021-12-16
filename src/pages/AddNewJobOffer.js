@@ -16,7 +16,7 @@ let counter = 8;
 let newId = "jobOffering-" + counter;
 
 const Container = styled.div`
-background-color: ${colorPicker.background};
+background-color: ${colorPicker.primary};
 color: ${colorPicker.text};
 align-content: center;
 position: fixed;

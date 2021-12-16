@@ -8,22 +8,22 @@ import colorPicker from '../testData/colorPicker';
 
 const Container = styled.div`
   margin: 8px;
-  border: 1px solid ${colorPicker.border};
-  background-color:${colorPicker.recruitmentSteps.backgroundColor};
+  border: 1px solid ${colorPicker.fifth};
+  background-color:${colorPicker.secondary};
   border-radius: 20px;
-  box-shadow: 0px 8px 15px ${colorPicker.recruitmentSteps.backgroundColor};
+  box-shadow: 0px 8px 15px ${colorPicker.secondary};
   width: 220px;
   display: flex;
   flex-direction: column;
 `;
 const Title = styled.h3`
-  color: ${colorPicker.recruitmentSteps.text};
+  color: ${colorPicker.text};
   padding: 8px;
 `;
 const CandidateCardList = styled.div`
   padding: 8px;
   transition: background-color 0.2s ease;
-  background-color: ${props => (props.isDraggingOver ? colorPicker.recruitmentSteps.backgroundColor : colorPicker.recruitmentSteps.backgroundColorDrag)};
+  background-color: ${props => (props.isDraggingOver ? colorPicker.secondary : colorPicker.third)};
   flex-grow: 1;
   min-height: 100px;
 `;

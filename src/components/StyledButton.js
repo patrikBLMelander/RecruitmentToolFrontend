@@ -11,7 +11,7 @@ const StyledBtn = styled.button`
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    color: ${colorPicker.buttonText};
+    color: ${colorPicker.text};
     background-color: ${colorPicker.secondary};
     border: none;
     border-radius: 45px;
@@ -22,7 +22,7 @@ const StyledBtn = styled.button`
     &:hover {
         background-color: ${colorPicker.fourth};
         box-shadow: 0px 15px 20px ${colorPicker.fourth};
-        color: ${colorPicker.buttonHoverText}
+        color: ${colorPicker.text}
         transform: translateY(-7px);
     }
     

@@ -16,7 +16,7 @@ import StyledButton from '../components/StyledButton';
 const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
     text-align: center;
-    background-color: ${colorPicker.background};
+    background-color: ${colorPicker.primary};
     height: 100%;
     width: 100%;
     z-index: 1,

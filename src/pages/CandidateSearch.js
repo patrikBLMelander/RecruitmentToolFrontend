@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import colorPicker from '../testData/colorPicker';
 
 const Container = styled.div`
-background-color: ${colorPicker.background};
+background-color: ${colorPicker.primary};
 color: ${colorPicker.text};
 display: flex;
 position: fixed;

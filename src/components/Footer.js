@@ -10,7 +10,7 @@ const Container = styled.div`
     bottom: 0;
     width: 100%;
     justify-content: center;
-    background-color: ${colorPicker.footer};
+    background-color: ${colorPicker.fifth};
     hight: 400;
     padding-top: 16px;
     margin-top: 0;
@@ -22,7 +22,7 @@ const Container = styled.div`
 const H5 = styled.h5`
     font-family: 'Roboto', sans-serif; 
     display: flex;
-    color: ${colorPicker.footerText};
+    color: ${colorPicker.text};
     margin-top: 20px;
     margin-bottom: 20px;
     

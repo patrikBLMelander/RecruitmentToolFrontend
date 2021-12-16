@@ -6,8 +6,8 @@ import colorPicker from '../testData/colorPicker';
 
 const TrashBtn = styled.button`
     display: flex;
-    background-color:${colorPicker.recruitmentSteps.removeBtn};
-    color: ${colorPicker.recruitmentSteps.removeBtnText};
+    background-color:${colorPicker.third};
+    color: ${colorPicker.text};
     font-size: 15px;
     padding: 8px 80px 8px 80px;
     border-radius: 5px;
@@ -18,9 +18,9 @@ const TrashBtn = styled.button`
     cursor: pointer;
     align-content: center;
     &:hover {
-        background-color: ${colorPicker.recruitmentSteps.removeBtnText};
-        box-shadow: 0px 15px 20px ${colorPicker.recruitmentSteps.removeBtnText};
-        color: ${colorPicker.recruitmentSteps.removeBtn};
+        background-color: ${colorPicker.fourth};
+        box-shadow: 0px 15px 20px ${colorPicker.fourth};
+        color: ${colorPicker.text};
     }
     
 `;

@@ -39,9 +39,10 @@ const CadnidateInfoDiv = styled.div`
 `;
 
 const PNew = styled.p`
+    text-shadow: 2px 2px 5px green;
     font-weight: bold;
     margin-right: 75px;
-    color: ${colorPicker.fourth};
+    color: #43d148;
     visibility: ${props => (
         props.show ? "visible" : "hidden")
     };
@@ -98,7 +99,7 @@ const StyledButton = styled.button`
     &:hover {
         background-color: ${colorPicker.fourth};
         box-shadow: 0px 15px 20px ${colorPicker.fourth};
-        color: ${colorPicker.jobOfferCard.buttonHoverText}
+        color: ${colorPicker.text}
         transform: translateY(-7px);
     }
     

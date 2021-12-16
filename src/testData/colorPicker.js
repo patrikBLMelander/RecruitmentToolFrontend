@@ -1,56 +1,68 @@
-const colorPicker = 
+const colorPicker =
+[
     { 
-    id: 'color1',
-    primary: '#2F4454',
-    secondary: '#376E6F',
-    third: '#1C3334',
-    fourth: '#DA7B93',
-    fifth: '#2E151B',
-    text: '#c0cad1',
-    background: '#2f4454',
-    button: '#376E6F',
-    buttonShadow: '#376E6F',
-    buttonText: '#c0cad1',
-    buttonHover: '#2E151B',
-    buttonHoverShadow: '#2E151B',
-    buttonHoverText: '#2E151B',
-    
-    bigText: '#2E151B',
-    footer: 'Black',
-    footerText: '#c0cad1',
-    candidateCard: {
-        backgroundColor: '#DA7B93',
-        backgroundColorDrag: '#2F4454',
-        border: '#2E151B',
-        text: '#edf0f2',
+        id: 'color1',
+        primary: '#2F4454',
+        secondary: '#376E6F',
+        third: '#1C3334',
+        fourth: '#DA7B93',
+        fifth: '#2E151B',
+        text: '#c0cad1',
     },
-    recruitmentSteps: {
-        backgroundColor: '#376E6F',
-        backgroundColorDrag: '#1C3334',
-        border: '#1C3334',
-        removeBtn: '#1C3334',
-        removeBtnText: '#c0cad1',
-        text: '#edf0f2',
+    { 
+        id: 'color2',
+        primary: '#6b705c',
+        secondary: '#ddbea9',
+        third: '#cb997e',
+        fourth: '#b7b7a4',
+        fifth: '#a5a58d',
+        text: '#ffe8d6',
     },
-    jobOfferCard: {
-        backgroundColor: '#376E6F',
-        header: '#2E151B',
-        newCandidates: '#17913c',
-        totalCandidates: '#2E151B',
-        expireDate: '#2E151B',
-        border: '#',
-        button: '#2E151B',
-        buttonShadow: '#2E151B',
-        buttonText: '#c8e2e3',
-        buttonHover: '#DA7B93',
-        buttonHoverShadow: '#DA7B93',
-        buttonHoverText: '#2E151B',
+    { 
+        id: 'color3',
+        primary: '#1a111b',
+        secondary: '#577b69',
+        third: '#235d5c',
+        fourth: '#344b6e',
+        fifth: '#33335a',
+        text: '#c0cad1',
     },
-    input: {
-        background: '#376E6F',
-        border: '2E151B',
-        text: '2E151B',},
-    }
+    { 
+        id: 'color4',
+        primary: '#7f5539',
+        secondary: '#9c6644',
+        third: '#b08968',
+        fourth: '#ddb892',
+        fifth: '#e6ccb2',
+        text: '#ede0d4',
+    },
+    { 
+        id: 'color5',
+        primary: '#a2d2ff',
+        secondary: '#cdb4db',
+        third: '#ffc8dd',
+        fourth: '#ffafcc',
+        fifth: '#bde0fe',
+        text: '#5c3b6e',
+    },
+    { 
+        id: 'color6',
+        primary: '#5d5c61',
+        secondary: '#557a95',
+        third: '#7395ae',
+        fourth: '#97959e',
+        fifth: '#b1a2296',
+        text: '#d6d5db',
+    },
+]
+
+const choise= 5
+
+export const chooseColorScheme = (input) =>{
+
+    console.log("inne i metoden")
+    choise = input;
+}
 
 
-export default colorPicker;
+export default colorPicker[choise];
