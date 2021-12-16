@@ -16,7 +16,7 @@ const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
     position: fixed;
     text-align: center;
-    background-color: ${colorPicker.background};
+    background-color: ${colorPicker.primary};
     height: 100%;
     width: 100%;
     z-index: 1,
@@ -41,7 +41,7 @@ const BtnContainer = styled.div`
 
 
 const StyleH1 = styled.h1`
-    color: ${colorPicker.bigText};
+    color: ${colorPicker.fifth};
     margin-top: 8%;    
 `;
 

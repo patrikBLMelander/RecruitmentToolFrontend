@@ -10,7 +10,7 @@ const CardDiv = styled.div`
     flex-direction: column;
     justify-content:center;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px ${colorPicker.jobOfferCard.buttonShadow};
+    box-shadow: 0px 8px 15px ${colorPicker.third};
     min-width: 350px;
     min-height: 300px;
     max-width: 350px;
@@ -28,7 +28,7 @@ const Image = styled.img`
 `;
 
 const CardBody = styled.div`
-    background-color: ${colorPicker.jobOfferCard.backgroundColor};
+    background-color: ${colorPicker.secondary};
     border-radius: 0px 0px 45px 45px;
 `;
 
@@ -39,32 +39,35 @@ const CadnidateInfoDiv = styled.div`
 `;
 
 const PNew = styled.p`
+    font-weight: bold;
     margin-right: 75px;
-    color: #17913c;
+    color: ${colorPicker.fourth};
     visibility: ${props => (
         props.show ? "visible" : "hidden")
     };
 `;
 
 const PTotal = styled.p`
-margin-left: 75px;
-    color: ${colorPicker.jobOfferCard.totalCandidates};
+    margin-left: 75px;
+    font-weight: bold;
+    color: ${colorPicker.fifth};
     visibility: ${props => (
         props.show ? "visible" : "hidden")
     };
 `;
 
 const PExpire = styled.p`
+    font-weight: bold;
     margin-top: 0;
     margin-left: 10px;
     margin-bottom: 0;
-    color: ${colorPicker.jobOfferCard.expireDate};
+    color: ${colorPicker.fifth};
 `;            
 
 const StyledH4 = styled.h4`
     margin-top: 8px;
     margin-left: 10px;
-    color: ${colorPicker.jobOfferCard.header};
+    color: ${colorPicker.fifth};
 `;   
 
 const BtnContainer = styled.div`
@@ -84,17 +87,17 @@ const StyledButton = styled.button`
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    color: ${colorPicker.jobOfferCard.buttonText};
-    background-color: ${colorPicker.jobOfferCard.button};
+    color: ${colorPicker.text};
+    background-color: ${colorPicker.third};
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px ${colorPicker.jobOfferCard.buttonShadow};
+    box-shadow: 0px 8px 15px ${colorPicker.third};
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
     &:hover {
-        background-color: ${colorPicker.jobOfferCard.buttonHover};
-        box-shadow: 0px 15px 20px ${colorPicker.jobOfferCard.buttonHoverShadow};
+        background-color: ${colorPicker.fourth};
+        box-shadow: 0px 15px 20px ${colorPicker.fourth};
         color: ${colorPicker.jobOfferCard.buttonHoverText}
         transform: translateY(-7px);
     }

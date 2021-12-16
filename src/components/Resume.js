@@ -5,19 +5,19 @@ import colorPicker from '../testData/colorPicker';
 import Swal from 'sweetalert2';
 
 const OuterContainer = styled.div`
-    color: #b5bcc7;
+    color: ${colorPicker.text};
     font-family: 'Roboto', sans-serif; 
     text-align: center;
-    background-color: #3b3d40;
+    background-color: ${colorPicker.primary};
     width: 100%;
     display: flex;
-    border-style: solid;
-    border-color:  #b5bcc7;
+    border-style: double;
+    border-color:  ${colorPicker.text};
 `;
 const LeftDiv = styled.div`
     width: 25%;
     border-right: solid;
-    border-color:  #b5bcc7;
+    border-color:  ${colorPicker.secondary};
     padding: 5px;
 `;
 const RightDiv = styled.div`
@@ -31,10 +31,11 @@ const StyledImg = styled.img`
 `;
 const AboutMe = styled.div`
     border-top: solid;
+    border-color:${colorPicker.secondary};
 `;
 const Experience = styled.div`
     border-bottom: solid;
-    border-color:  #b5bcc7;
+    border-color:${colorPicker.secondary};
 `;
 const TitleAndPeriod = styled.div`
     display:flex;
@@ -51,32 +52,32 @@ const Skills = styled.div`
 `;
 const Skill1 = styled.div`
     display: flex;
-    background-image: linear-gradient(to right, #0b234a , #769ede);
+    background-image: linear-gradient(to right, ${colorPicker.fifth} , ${colorPicker.fourth});
     width: 80%;
     margin-bottom: 4px;
 `;
 const Skill2 = styled.div`
     display: flex;
-    background-image: linear-gradient(to right, #0b234a , #769ede);
+    background-image: linear-gradient(to right, ${colorPicker.fifth} , ${colorPicker.fourth});
     width: 56%;
     margin-bottom: 4px;
 `;
 const Skill3 = styled.div`
     display: flex;    
-    background-image: linear-gradient(to right, #0b234a , #769ede);
+    background-image: linear-gradient(to right, ${colorPicker.fifth} , ${colorPicker.fourth});
     
     width: 75%;
     margin-bottom: 4px;
 `;
 const Skill4 = styled.div`
     display: flex;
-    background-image: linear-gradient(to right, #0b234a , #769ede);
+    background-image: linear-gradient(to right, ${colorPicker.fifth} , ${colorPicker.fourth});
     width: 15%;
     margin-bottom: 4px;
 `;
 const Skill5 = styled.div`
     display: flex;
-    background-image: linear-gradient(to right, #0b234a , #769ede);
+    background-image: linear-gradient(to right, ${colorPicker.fifth} , ${colorPicker.fourth});
     width: 45%;
     margin-bottom: 4px;
 `;

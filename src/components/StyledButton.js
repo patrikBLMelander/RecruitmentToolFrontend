@@ -12,16 +12,16 @@ const StyledBtn = styled.button`
     letter-spacing: 2.5px;
     font-weight: 500;
     color: ${colorPicker.buttonText};
-    background-color: ${colorPicker.button};
+    background-color: ${colorPicker.secondary};
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px ${colorPicker.buttonShadow};
+    box-shadow: 0px 8px 15px ${colorPicker.secondary};
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
     &:hover {
-        background-color: ${colorPicker.buttonHover};
-        box-shadow: 0px 15px 20px ${colorPicker.buttonHoverShadow};
+        background-color: ${colorPicker.fourth};
+        box-shadow: 0px 15px 20px ${colorPicker.fourth};
         color: ${colorPicker.buttonHoverText}
         transform: translateY(-7px);
     }
