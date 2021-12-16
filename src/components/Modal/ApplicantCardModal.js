@@ -11,7 +11,8 @@ let counter=0;
 const customStyles = {
   content: {
     position: 'absolute',
-    width:'80%',
+    width:'55%',
+    height: '80%',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
@@ -19,10 +20,7 @@ const customStyles = {
 };
 
 const Container = styled.div`
-  margin: 8px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
+  margin: 15px;
 `;
 
 
@@ -104,7 +102,6 @@ function ApplicantCardModal({candidate, candidateState, setCandidateState, activ
        
       <Modal
         isOpen={modalIsOpen}
-        //onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="CV modal"
