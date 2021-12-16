@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 const Container = styled.div`
     position: fixed;
     text-align: center;
-    background-color: ${colorPicker.background};
+    background-color: ${colorPicker.primary};
     color: ${colorPicker.text};
     height: 95%;
     width: 100%;
@@ -27,15 +27,13 @@ const JobCardDiv = styled.div`
     width: 80%;
     min-height: 100px;
     display: flex;
+    justify-content: center;
     flex-flow: row wrap; 
     @media (max-width: 1200px) {
         flex: 1 1 calc(25% - 20px);
     }
     @media (max-width: 900px) {
         flex: 1 1 calc(33% - 20px);
-    }
-    @media (max-width: 1200px) {
-        flex-direction: column;
     }
 
     @media (max-width: 750px) {

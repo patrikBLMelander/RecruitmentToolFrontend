@@ -1,6 +1,5 @@
 import React from "react";
 import styled from 'styled-components'
-import Row from 'react-bootstrap/Row';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import JobOfferCard from '../components/JobOfferCard'
@@ -8,7 +7,7 @@ import colorPicker from '../testData/colorPicker';
 import Footer from '../components/Footer';
 
 const Container = styled.div`
-    background-color: ${colorPicker.background};    
+    background-color: ${colorPicker.primary};    
     padding-bottom: 5%;
     margin-left 160px
 `;
@@ -25,15 +24,13 @@ const JobCardDiv = styled.div`
     width: 80%;
     min-height: 100px;
     display: flex;
+    justify-content: center;
     flex-flow: row wrap; 
     @media (max-width: 1200px) {
         flex: 1 1 calc(25% - 20px);
     }
     @media (max-width: 900px) {
         flex: 1 1 calc(33% - 20px);
-    }
-    @media (max-width: 1200px) {
-        flex-direction: column;
     }
 
     @media (max-width: 750px) {
