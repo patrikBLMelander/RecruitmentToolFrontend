@@ -86,6 +86,23 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
         setDescription(event.target.value);
     }
 
+
+    const handleEducationTitleChange = (event) => {
+        setTitle(event.target.value);
+    }
+
+    const handleEducationStartDateChange = (event) => {
+        setStartDate(event.target.value);
+    }
+
+    const handleEducationEndDateChange = (event) => {
+        setEndDate(event.target.value);
+    }
+
+    const handleEducationDescriptionChange = (event) => {
+        setDescription(event.target.value);
+    }
+
     function SavePresentation (event){
         event.preventDefault();
         const form = event.currentTarget;
@@ -166,6 +183,47 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
         setValidated(true);
     }
 
+    function addEducation (event){
+        event.preventDefault();
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            Swal.fire({
+                title: 'Not updated',
+                text: 'You need to fill all fields',
+                icon: 'error',
+                showConfirmButton: true,
+               
+            })
+          event.stopPropagation();
+        }else{
+            let newCandidateState = candidateState;
+            candidateState.map((candidateStateInMap, index) =>{
+                if(candidateStateInMap.id===activeCandidate.id){
+                    newCandidateState[index].education = [...candidateState[index].education, { 
+                        title: title, 
+                        period:startDate + " to " + endDate, 
+                        description: description
+                    }]
+                    setCandidateState(newCandidateState)
+                    setJobExperienceState(candidateState[index])
+                    setActiveCandidate(candidateState[index])
+                    Swal.fire({
+                        title: 'New Experience added!',
+                        text: 'Your Experience are now updaded and can be seen on the roles you applied for!',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+              
+    
+                }
+                return null;
+            })
+            
+        }
+        setValidated(true);
+    }
+
 
 return(
     <div>
@@ -187,7 +245,7 @@ return(
                 <StyledButton variant="success" type="submit" input={"Save"}/>
             </Form>
             <Form noValidate validated={validated} onSubmit={addEmployment}>
-                <H4>Here is the place to add your experience!</H4>
+                <H4>Here is the place to add your job experience!</H4>
                 <Row className="g-2 ms-3 me-5 mt-1"> 
                     <Col md>
                         <FloatingLabel controlId="TitleInputGrid" label="Title" onChange={handleTitleChange}>
@@ -225,6 +283,46 @@ return(
 
 
                 <StyledButton  variant="success" type="submit" input={"Add Job"}/>
+            </Form>
+            <Form noValidate validated={validated} onSubmit={addEducation}>
+                <H4>Here is the place to add your education experience!</H4>
+                <Row className="g-2 ms-3 me-5 mt-1"> 
+                    <Col md>
+                        <FloatingLabel controlId="TitleInputGrid" label="Title" onChange={handleEducationTitleChange}>
+                            <Form.Control required  type="Text" placeholder='"Stockholm"' />
+                            <Form.Control.Feedback type="invalid">
+                                All your education needs a title
+                            </Form.Control.Feedback>
+                        </FloatingLabel>      
+                    </Col>
+                    <Col md> 
+                        <FloatingLabel controlId="startDateInputGrid" label="Started date" onChange={handleEducationStartDateChange}>
+                            <Form.Control required type="Date" />
+                            <Form.Control.Feedback type="invalid">
+                                All your education needs a start date
+                            </Form.Control.Feedback>
+                        </FloatingLabel>   
+                    </Col>
+                    <Col md> 
+                        <FloatingLabel controlId="endDateInputGrid" label="End date" onChange={handleEducationEndDateChange}>
+                            <Form.Control required type="Date"/>
+                            <Form.Control.Feedback type="invalid">
+                                All your education needs a end date
+                            </Form.Control.Feedback>
+                        </FloatingLabel>   
+                    </Col>
+                </Row>
+
+                <Form.Group className="mb-3 ms-3 me-5" controlId="jobDescription"onChange={handleEducationDescriptionChange}>
+                    <Form.Label className="ms-3 mt-4">Description your job</Form.Label>
+                    <Form.Control required as="textarea" rows={3} />
+                    <Form.Control.Feedback type="invalid">
+                        Write about the education
+                    </Form.Control.Feedback>
+                </Form.Group>
+
+
+                <StyledButton  variant="success" type="submit" input={"Add Education"}/>
             </Form>
             <SeperatorDiv/>
             <H4>Your Resume will show here</H4>
