@@ -103,7 +103,8 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                             password: candidateInMap.password,
                             phone: candidateInMap.phone ,
                             experience: candidateInMap.experience,
-                            education: candidateInMap.education
+                            education: candidateInMap.education,
+                            personality: candidateInMap.personality
                         })
                         setCandidateLoggedIn(true)
                         loggedIn = true

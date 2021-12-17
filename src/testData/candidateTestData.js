@@ -14,7 +14,7 @@ const candidateTestData = [
     {id: 'education-2', title: 'Java Developer', period:'Sep 2020 – Maj 2022', description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet tempor tellus et ultrices. Nulla finibus, erat in scelerisque egestas, est erat tristique tortor, a semper ante augue sed ipsum. Maecenas mollis justo tellus, ac blandit leo egestas quis. Vestibulum bibendum faucibus leo. Phasellus vel lacus vel nunc mattis blandit eu ac orci. Donec consequat velit eu magna laoreet, a lacinia nisl eleifend. Sed vitae nibh ac eros pellentesque tempor. Donec a tortor in nunc cursus efficitur.'}
     ],
     competences: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-2', name:'HR', years:5},],
-    personality: [{id:'personality-1', name:'Openness', value:50}, {id:'personality-2', name:'Conscintiousness', value:50},{id:'personality-3', name:'Extroversion', value:50},{id:'personality-4', name:'Agreableness', value:50},{id:'personality-5', name:'Neuroticism', value:50},],
+    personality: [{id:'personality-1', name:'Openness', value:20}, {id:'personality-2', name:'Conscintiousness', value:60},{id:'personality-3', name:'Extroversion', value:50},{id:'personality-4', name:'Agreableness', value:70},{id:'personality-5', name:'Neuroticism', value:80},],
     rate: []},
     { id: 'candidate-2', 
     nickName: 'Cat', 

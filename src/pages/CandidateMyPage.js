@@ -12,6 +12,8 @@ import Resume from '../components/Resume';
 import colorPicker from '../testData/colorPicker';
 import Footer from '../components/Footer';
 import StyledButton from '../components/StyledButton';
+import Slider from '@mui/material/Slider';
+
 
 const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
@@ -35,6 +37,30 @@ const InnerContainer = styled.div`
     
 `;
 
+const PersonalityDiv = styled.div`
+color: ${colorPicker.text};
+font-family: 'Roboto', sans-serif; 
+justify-content: center;
+margin-left:10%;
+margin-right:10%;
+
+`;
+
+const TraitDiv = styled.div`
+color: ${colorPicker.text};
+font-family: 'Roboto', sans-serif; 
+justify-content: center;
+margin-bottom: 10%;
+`;
+
+const TraitText = styled.div`
+color: ${colorPicker.text};
+font-family: 'Roboto', sans-serif; 
+display:flex;
+justify-content: space-between;
+
+`;
+
 const ResumeContainer = styled.div`
     margin-right:4%;
     padding-bottom: 10%;
@@ -51,8 +77,11 @@ const SeperatorDiv = styled.div`
 const H4 = styled.h4`
     font-family: 'Roboto', sans-serif; 
     color: ${colorPicker.text};
-    margin-left: 50px;
-    margin-top: 30px;
+    margin-top: 7%;
+`;
+const H5 = styled.h5`
+    font-family: 'Roboto', sans-serif; 
+    color: ${colorPicker.text};
 `;
 
 
@@ -64,7 +93,14 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
     const [description, setDescription] = useState("");
     const [presentation, setPresentation] = useState(activeCandidate.presentation);
     const [jobExperienceState, setJobExperienceState]= useState(activeCandidate)
+    const [openness, setOpenness] = useState(activeCandidate.personality[0].value)
+    const [conscintiousness, setConscientiousness] = useState(activeCandidate.personality[1].value)
+    const [extroversion, setExtroversion] = useState(activeCandidate.personality[2].value)
+    const [agreableness, setAgreableness] = useState(activeCandidate.personality[3].value)
+    const [neuroticism, setNeuroticism] = useState(activeCandidate.personality[4].value)
 
+
+    console.log(candidateState)
 
     const handlePresentationChange = (event) => {
         setPresentation(event.target.value);
@@ -224,6 +260,37 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
         setValidated(true);
     }
 
+    function savePersonality (event){
+        event.preventDefault();
+        console.log(event)
+        let newCandidateState = candidateState;
+        candidateState.map((candidateStateInMap, index) =>{
+            if(candidateStateInMap.id===activeCandidate.id){
+                
+                newCandidateState[index].personality.map((personalityInMap, pIndex) =>{
+                    console.log(event.target[pIndex].value)
+                    newCandidateState[index].personality[pIndex].value=event.target[pIndex].value
+                }) 
+     
+
+                 setCandidateState(newCandidateState)
+                 setJobExperienceState(candidateState[index])
+                 setActiveCandidate(candidateState[index])
+                Swal.fire({
+                    title: 'Personality Saved',
+                    text: 'Not satifyed? Just change it',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            
+            }
+            return null;
+        })
+              
+    }
+
+
 
 return(
     <div>
@@ -231,8 +298,6 @@ return(
         <Header activeJob={activeJob}/>
  
     <Container>
-
-
         <InnerContainer>
             <Form noValidate validated={validated} onSubmit={SavePresentation}>
                 <Form.Group className="mb-3 ms-3 me-5" controlId="presentation">
@@ -272,7 +337,6 @@ return(
                         </FloatingLabel>   
                     </Col>
                 </Row>
-
                 <Form.Group className="mb-3 ms-3 me-5" controlId="jobDescription"onChange={handleDescriptionChange}>
                     <Form.Label className="ms-3 mt-4">Description your job</Form.Label>
                     <Form.Control required as="textarea" rows={3} />
@@ -280,8 +344,6 @@ return(
                         Write about the employment
                     </Form.Control.Feedback>
                 </Form.Group>
-
-
                 <StyledButton  variant="success" type="submit" input={"Add Job"}/>
             </Form>
             <Form noValidate validated={validated} onSubmit={addEducation}>
@@ -312,17 +374,73 @@ return(
                         </FloatingLabel>   
                     </Col>
                 </Row>
-
                 <Form.Group className="mb-3 ms-3 me-5" controlId="jobDescription"onChange={handleEducationDescriptionChange}>
-                    <Form.Label className="ms-3 mt-4">Description your job</Form.Label>
+                    <Form.Label className="ms-3 mt-4">Description your education</Form.Label>
                     <Form.Control required as="textarea" rows={3} />
                     <Form.Control.Feedback type="invalid">
                         Write about the education
                     </Form.Control.Feedback>
                 </Form.Group>
-
-
                 <StyledButton  variant="success" type="submit" input={"Add Education"}/>
+            </Form>
+            <H4>Personality</H4>
+            <Form onSubmit={savePersonality}>
+                <PersonalityDiv>
+                
+                <TraitDiv>
+                    <TraitText>
+                        <H5>Practical</H5>
+                        <H5>Curius</H5>
+                    </TraitText>
+                    <Slider
+                    key={`openness`}
+                    defaultValue={openness}
+                    />
+                </TraitDiv>
+                <TraitDiv>
+                    <TraitText>
+                        <H5>Impulsive</H5>
+                        <H5>Organized</H5>
+                    </TraitText>
+                    <Slider
+                    key={`conscintiousness`}
+                        defaultValue={conscintiousness}
+                    />
+                </TraitDiv>
+                <TraitDiv>
+                    <TraitText>
+                        <H5>Quiet</H5>
+                        <H5>Outgoing</H5>
+                    </TraitText>
+                    <Slider
+                    key={`extroversion`}
+                        defaultValue={extroversion}
+                        
+                    />
+                </TraitDiv>
+                <TraitDiv>
+                    <TraitText>
+                        <H5>Critical</H5>
+                        <H5>Helpful</H5>
+                    </TraitText>
+                    <Slider
+                    key={`agreableness`}
+                        defaultValue={agreableness}
+                    />
+                </TraitDiv>
+                <TraitDiv>
+                    <TraitText>
+                        <H5>Calm</H5>
+                        <H5>Anxious</H5>
+                    </TraitText>
+                    <Slider
+                    key={`neuroticism`}
+                        defaultValue={neuroticism}
+                    />
+                    <StyledButton type="submit" input={"Save Personality"}/>
+                </TraitDiv>
+                
+                </PersonalityDiv>
             </Form>
             <SeperatorDiv/>
             <H4>Your Resume will show here</H4>

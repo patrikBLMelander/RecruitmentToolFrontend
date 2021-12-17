@@ -103,7 +103,6 @@ const StyledCloseBtn = styled(CloseO)`
 
 function Resume ({jobExperienceState, setJobExperienceState, presentation, candidateState, setCandidateState, setActiveCandidate, activeCandidate}) {
 
-console.log(jobExperienceState)
 
     function removeExperience(experienceInMap){
         Swal.fire({
@@ -131,7 +130,7 @@ console.log(jobExperienceState)
 
                         })
                     }
-                    
+                    return
                 }
                 
 
