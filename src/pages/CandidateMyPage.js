@@ -93,11 +93,11 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
     const [description, setDescription] = useState("");
     const [presentation, setPresentation] = useState(activeCandidate.presentation);
     const [jobExperienceState, setJobExperienceState]= useState(activeCandidate)
-    const [openness, setOpenness] = useState(activeCandidate.personality[0].value)
-    const [conscintiousness, setConscientiousness] = useState(activeCandidate.personality[1].value)
-    const [extroversion, setExtroversion] = useState(activeCandidate.personality[2].value)
-    const [agreableness, setAgreableness] = useState(activeCandidate.personality[3].value)
-    const [neuroticism, setNeuroticism] = useState(activeCandidate.personality[4].value)
+    const [openness] = useState(activeCandidate.personality[0].value)
+    const [conscintiousness] = useState(activeCandidate.personality[1].value)
+    const [extroversion] = useState(activeCandidate.personality[2].value)
+    const [agreableness] = useState(activeCandidate.personality[3].value)
+    const [neuroticism] = useState(activeCandidate.personality[4].value)
 
 
     console.log(candidateState)
@@ -270,6 +270,7 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
                 newCandidateState[index].personality.map((personalityInMap, pIndex) =>{
                     console.log(event.target[pIndex].value)
                     newCandidateState[index].personality[pIndex].value=event.target[pIndex].value
+                    return null
                 }) 
      
 

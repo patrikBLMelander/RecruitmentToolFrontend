@@ -127,10 +127,10 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
                                 setJobExperienceState(test[cIndex])
                                 setActiveCandidate(test[cIndex])
                             }
-
+                            return null
                         })
                     }
-                    return
+                    return null
                 }
                 
 
@@ -160,10 +160,10 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
                                 setJobExperienceState(test[cIndex])
                                 setActiveCandidate(test[cIndex])
                             }
-
+                            return null
                         })
                     }
-                    
+                    return null
                 }
                 
 
