@@ -85,7 +85,7 @@ const H3 = styled.h3`
     
 `;
 const H5 = styled.h5`
-    
+    margin-right: 15px;
 `;
 const P = styled.p`
     
@@ -123,7 +123,7 @@ console.log(jobExperienceState)
 
                             if(experienceToCheck.id===experienceInMap.id){
                                 test[cIndex].experience = [...candidateState[cIndex].experience.filter(experience => experience.id!==experienceInMap.id)]
-    
+                        
                                 setCandidateState(test)
                                 setJobExperienceState(test[cIndex])
                                 setActiveCandidate(test[cIndex])
@@ -156,7 +156,7 @@ console.log(jobExperienceState)
 
                             if(educationToCheck.id===educationInMap.id){
                                 test[cIndex].education = [...candidateState[cIndex].education.filter(education => education.id!==educationInMap.id)]
-    
+                        
                                 setCandidateState(test)
                                 setJobExperienceState(test[cIndex])
                                 setActiveCandidate(test[cIndex])
