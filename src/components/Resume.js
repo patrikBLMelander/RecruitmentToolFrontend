@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {CloseO} from '@styled-icons/evil/CloseO';
 import colorPicker from '../testData/colorPicker';
 import Swal from 'sweetalert2';
+import Slider from '@mui/material/Slider';
 
 const OuterContainer = styled.div`
     color: ${colorPicker.text};
@@ -50,37 +51,7 @@ const Skills = styled.div`
     margin-top: 8px;
     margin-left: 5%;
 `;
-const Skill1 = styled.div`
-    display: flex;
-    background-image: linear-gradient(to right, ${colorPicker.fifth} , ${colorPicker.fourth});
-    width: 80%;
-    margin-bottom: 4px;
-`;
-const Skill2 = styled.div`
-    display: flex;
-    background-image: linear-gradient(to right, ${colorPicker.fifth} , ${colorPicker.fourth});
-    width: 56%;
-    margin-bottom: 4px;
-`;
-const Skill3 = styled.div`
-    display: flex;    
-    background-image: linear-gradient(to right, ${colorPicker.fifth} , ${colorPicker.fourth});
-    
-    width: 75%;
-    margin-bottom: 4px;
-`;
-const Skill4 = styled.div`
-    display: flex;
-    background-image: linear-gradient(to right, ${colorPicker.fifth} , ${colorPicker.fourth});
-    width: 15%;
-    margin-bottom: 4px;
-`;
-const Skill5 = styled.div`
-    display: flex;
-    background-image: linear-gradient(to right, ${colorPicker.fifth} , ${colorPicker.fourth});
-    width: 45%;
-    margin-bottom: 4px;
-`;
+
 const H3 = styled.h3`
     
 `;
@@ -90,6 +61,21 @@ const H5 = styled.h5`
 const P = styled.p`
     
 `;
+const TraitDiv = styled.div`
+color: ${colorPicker.text};
+font-family: 'Roboto', sans-serif; 
+justify-content: center;
+margin-bottom: 10%;
+`;
+
+const TraitText = styled.div`
+color: ${colorPicker.text};
+font-family: 'Roboto', sans-serif; 
+display:flex;
+justify-content: space-between;
+
+`;
+
 const StyledCloseBtn = styled(CloseO)`
     display:flex;
     margin-left: auto; 
@@ -99,6 +85,14 @@ const StyledCloseBtn = styled(CloseO)`
     width: 28px;
     color: #fff;
 `; 
+const PersonalityDiv = styled.div`
+color: ${colorPicker.text};
+font-family: 'Roboto', sans-serif; 
+justify-content: center;
+margin-left:10%;
+margin-right:10%;
+
+`;
 
 
 function Resume ({jobExperienceState, setJobExperienceState, presentation, candidateState, setCandidateState, setActiveCandidate, activeCandidate}) {
@@ -221,14 +215,66 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
                         )
                         })}
                 </Experience>
-                <Skills>
-                    <Skill1>HTML</Skill1>
-                    <Skill2>JavaScript</Skill2>
-                    <Skill3>Java</Skill3>
-                    <Skill4>Nice Guy</Skill4>
-                    <Skill5>SQL</Skill5>
-                </Skills>
+                <PersonalityDiv>
                 
+                <TraitDiv>
+                    <TraitText>
+                        <H5>Practical</H5>
+                        <H5>Curius</H5>
+                    </TraitText>
+                    <Slider
+                    key={`openness`}
+                    disabled defaultValue={jobExperienceState.personality[0].value}
+                    />
+                </TraitDiv>
+                <TraitDiv>
+                    <TraitText>
+                        <H5>Impulsive</H5>
+                        <H5>Organized</H5>
+                    </TraitText>
+                    <Slider
+                    key={`conscintiousness`}
+                        defaultValue={jobExperienceState.personality[1].value}
+                        disabled
+                    />
+                </TraitDiv>
+                <TraitDiv>
+                    <TraitText>
+                        <H5>Quiet</H5>
+                        <H5>Outgoing</H5>
+                    </TraitText>
+                    <Slider
+                    key={`extroversion`}
+                        defaultValue={jobExperienceState.personality[2].value}
+                        disabled
+                        
+                    />
+                </TraitDiv>
+                <TraitDiv>
+                    <TraitText>
+                        <H5>Critical</H5>
+                        <H5>Helpful</H5>
+                    </TraitText>
+                    <Slider
+                    key={`agreableness`}
+                        defaultValue={jobExperienceState.personality[3].value}
+                        disabled
+                    />
+                </TraitDiv>
+                <TraitDiv>
+                    <TraitText>
+                        <H5>Calm</H5>
+                        <H5>Anxious</H5>
+                    </TraitText>
+                    <Slider
+                    key={`neuroticism`}
+                        defaultValue={jobExperienceState.personality[4].value}
+                        disabled
+                    />
+                </TraitDiv>
+                
+                </PersonalityDiv>
+
                 
             </RightDiv>
         </OuterContainer>

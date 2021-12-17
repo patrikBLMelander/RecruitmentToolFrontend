@@ -100,8 +100,6 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
     const [neuroticism] = useState(activeCandidate.personality[4].value)
 
 
-    console.log(candidateState)
-
     const handlePresentationChange = (event) => {
         setPresentation(event.target.value);
     }
