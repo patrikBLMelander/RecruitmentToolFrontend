@@ -7,6 +7,9 @@ import Row from 'react-bootstrap/Row';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import colorPicker from '../testData/colorPicker';
+import StyledButton from '../components/StyledButton';
+import Footer from '../components/Footer';
 
 let counter = 9;
 let newId = "candidate-" + counter;
@@ -15,7 +18,7 @@ const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
     position: fixed;
     text-align: center;
-    background-color: #3b3d40;
+    background-color: ${colorPicker.primary};
     height: 100%;
     width: 100%;
     z-index: 1,
@@ -23,7 +26,7 @@ const Container = styled.div`
     left: 0;
     overflow-x: hidden;
     padding-top: 16px;
-    InnerContainer
+    
 `;
 
 const InnerContainer = styled.div`
@@ -36,38 +39,14 @@ const InnerContainer = styled.div`
 
 const PublishContainer = styled.div`
     text-align: right;
+    display: flex;
     padding: 8px;
-    margin-right:40px
+    margin-left:40px
 
-`;
-
-
-const StyledButton = styled.button`
-    width: 140px;
-    height: 45px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    &:hover {
-        background-color: #62666e;
-        box-shadow: 0px 15px 20px #838891;
-        color: #fff;
-        transform: translateY(-7px);
-    }
-    
 `;
 
 const StyleH1 = styled.h1`
+    color: ${colorPicker.fifth};
     font-family: 'Roboto', sans-serif;      
     margin-top: 8%;
 `;
@@ -77,7 +56,7 @@ const CheckboxDiv = styled.div`
     display: flex;
     margin-left: 50px;
     margin-top: 10px;
-    color: #b3b9c4;
+    color: ${colorPicker.text};
 `
 
 function Registrer({candidateState, setCandidateState, setActiveCandidate, setCandidateLoggedIn}) {
@@ -85,10 +64,6 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
     const Navigate = useNavigate();
     const [animal] = useState(Animal);
 
-    function navigateToLogin(){
-        Navigate("/login")
-    }
-    
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.currentTarget;
@@ -161,78 +136,70 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
     
         
     return(
-        <Container>
-            
-
-            <InnerContainer>
-                <StyleH1>Our New Star? </StyleH1>
-                <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                    <Row className="g-1 ms-5 me-5 mt-5">
-                        <Col md>
-                            <FloatingLabel controlId="firstNameInputGrid" label="First name">
-                            <Form.Control required type="Text" placeholder='"Patrik"' />
-                            <Form.Control.Feedback type="invalid">
-                            Everyone have a first name, right?
-                            </Form.Control.Feedback>
-                            </FloatingLabel>
-                        </Col>
-                        <Col md>
-                            <FloatingLabel controlId="lastNameInputGrid" label="Last name">
-                                <Form.Control required type="Text" placeholder='"Melander"' />
-                                <Form.Control.Feedback type="invalid">
-                                Everyone have a last name, right?
-                            </Form.Control.Feedback>
-                            </FloatingLabel>      
-                        </Col>
-                        <Col md>
-                            <FloatingLabel controlId="phoneInputGrid" label="phone">
-                                <Form.Control required type="Text" placeholder='"Melander"'/>
-                                <Form.Control.Feedback type="invalid">
-                                Good to have if we want to conntact you!
-                            </Form.Control.Feedback>
-                            </FloatingLabel>      
-                        </Col>
-                        </Row>
+        <div>
+            <Container>
+                <InnerContainer>
+                    <StyleH1>Our New Star? </StyleH1>
+                    <Form noValidate validated={validated} onSubmit={handleSubmit}>
                         <Row className="g-1 ms-5 me-5 mt-5">
-                     <Col md>
-                            <FloatingLabel controlId="emailInputGrid" label="email">
-                                <Form.Control required type="Email" placeholder='"Melander"'/>
+                            <Col md>
+                                <FloatingLabel controlId="firstNameInputGrid" label="First name">
+                                <Form.Control required type="Text" placeholder='"Patrik"' />
                                 <Form.Control.Feedback type="invalid">
-                                This is needed to log in!
-                            </Form.Control.Feedback>
-                            </FloatingLabel>      
-                        </Col>
+                                Everyone have a first name, right?
+                                </Form.Control.Feedback>
+                                </FloatingLabel>
+                            </Col>
+                            <Col md>
+                                <FloatingLabel controlId="lastNameInputGrid" label="Last name">
+                                    <Form.Control required type="Text" placeholder='"Melander"' />
+                                    <Form.Control.Feedback type="invalid">
+                                    Everyone have a last name, right?
+                                </Form.Control.Feedback>
+                                </FloatingLabel>      
+                            </Col>
+                            <Col md>
+                                <FloatingLabel controlId="phoneInputGrid" label="phone">
+                                    <Form.Control required type="Text" placeholder='"Melander"'/>
+                                    <Form.Control.Feedback type="invalid">
+                                    Good to have if we want to conntact you!
+                                </Form.Control.Feedback>
+                                </FloatingLabel>      
+                            </Col>
+                            </Row>
+                            <Row className="g-1 ms-5 me-5 mt-5">
                         <Col md>
-                            <FloatingLabel controlId="passwordInputGrid" label="password">
-                                <Form.Control required type="password" placeholder='"Melander"'/>
-                                <Form.Control.Feedback type="invalid">
-                                This is needed to log in!
-                            </Form.Control.Feedback>
-                            </FloatingLabel>      
-                        </Col>
-                    </Row>
-                    <CheckboxDiv>
-                        <Form.Group className="mb-3" controlId="termsAndConditions">
-                            <Form.Check required type="checkbox" label="Terms and conditions" />
-                        </Form.Group>
-                    </CheckboxDiv>
-          
-                    
-
-
-
-                    <PublishContainer>
-                        <StyledButton variant="success" type="submit" className="ms-5">
-                            Register
-                        </StyledButton>
-                        <StyledButton onClick={navigateToLogin} className="ms-5">
-                            Login
-                        </StyledButton>
-                    </PublishContainer>
-                </Form>
-            </InnerContainer>
-          
-        </Container>
+                                <FloatingLabel controlId="emailInputGrid" label="email">
+                                    <Form.Control required type="Email" placeholder='"Melander"'/>
+                                    <Form.Control.Feedback type="invalid">
+                                    This is needed to log in!
+                                </Form.Control.Feedback>
+                                </FloatingLabel>      
+                            </Col>
+                            <Col md>
+                                <FloatingLabel controlId="passwordInputGrid" label="password">
+                                    <Form.Control required type="password" placeholder='"Melander"'/>
+                                    <Form.Control.Feedback type="invalid">
+                                    This is needed to log in!
+                                </Form.Control.Feedback>
+                                </FloatingLabel>      
+                            </Col>
+                        </Row>
+                        <CheckboxDiv>
+                            <Form.Group className="mb-3" controlId="termsAndConditions">
+                                <Form.Check required type="checkbox" label="Terms and conditions" />
+                            </Form.Group>
+                        </CheckboxDiv>
+                        <PublishContainer>
+                            <StyledButton type="submit" input="Register"/>    
+                            <StyledButton navigate={"login"} input="Login"/>  
+                        </PublishContainer>
+                    </Form>
+                </InnerContainer>
+           
+            </Container>
+            <Footer/>
+        </div>
     )
 }
 

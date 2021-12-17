@@ -1,15 +1,16 @@
 import React from "react";
 import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
+import colorPicker from '../testData/colorPicker';
 import ApplicantCardModal from './Modal/ApplicantCardModal'
 
 const Container = styled.div`
-  border: 1px solid lightgrey;
+  border: 1px solid ${colorPicker.fifth};
   border-radius: 2px;
   padding: 8px;
   margin-bottom: 8px;
-  color: #edf0f2;
-  background-color: ${props => (props.isDragging ? '#adc3e0' : '#6ea0e0')};
+  color: ${colorPicker.text};
+  background-color: ${props => (props.isDragging ? colorPicker.fourth : colorPicker.secondary)};
 `;
 
 function CandidateCard ({index, candidateId, candidateState, setCandidateState, activeJobId}) {

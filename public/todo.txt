@@ -1,6 +1,6 @@
 Candidate view
 -   BUGG - När man betygsätter samma candidate på två olika tjänster nollställs det visuellt
--   Bygg mina sökta jobb sidan.
+-   Bygg mina sökta jobb sidan kandidat.
 -   Möjlighet att ta bort Experience
 -   Möjlighet att ta bort sitt konto
 -   Möjlighet att ändra sina personuppgifter

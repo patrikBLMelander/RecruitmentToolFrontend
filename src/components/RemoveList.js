@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { BsFillTrashFill } from "react-icons/bs";
+import colorPicker from '../testData/colorPicker';
 
 
 const TrashBtn = styled.button`
     display: flex;
-    background-color: black;
-    color: white;
+    background-color:${colorPicker.third};
+    color: ${colorPicker.text};
     font-size: 15px;
     padding: 8px 80px 8px 80px;
     border-radius: 5px;
-    margin: 10px 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: auto; 
+    margin-right: auto; 
     cursor: pointer;
     align-content: center;
+    &:hover {
+        background-color: ${colorPicker.fourth};
+        box-shadow: 0px 15px 20px ${colorPicker.fourth};
+        color: ${colorPicker.text};
+    }
     
 `;
 

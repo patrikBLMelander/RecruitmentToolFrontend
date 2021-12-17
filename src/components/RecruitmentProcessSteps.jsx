@@ -3,25 +3,27 @@ import styled from 'styled-components';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import CandidateCard from './CandidateCard';
 import RemoveBtn from './RemoveList';
+import colorPicker from '../testData/colorPicker';
 
 
 const Container = styled.div`
   margin: 8px;
-  border: 1px solid lightgrey;
-  background-color:#6ea0e0;
-  border-radius: 2px;
+  border: 1px solid ${colorPicker.fifth};
+  background-color:${colorPicker.secondary};
+  border-radius: 20px;
+  box-shadow: 0px 8px 15px ${colorPicker.secondary};
   width: 220px;
   display: flex;
   flex-direction: column;
 `;
 const Title = styled.h3`
-  color: #edf0f2;
+  color: ${colorPicker.text};
   padding: 8px;
 `;
 const CandidateCardList = styled.div`
   padding: 8px;
   transition: background-color 0.2s ease;
-  background-color: ${props => (props.isDraggingOver ? '#6992c7' : '#c8d2e0')};
+  background-color: ${props => (props.isDraggingOver ? colorPicker.secondary : colorPicker.third)};
   flex-grow: 1;
   min-height: 100px;
 `;

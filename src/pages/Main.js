@@ -1,25 +1,57 @@
 import React from 'react';
 import styled from 'styled-components'
-import { useNavigate } from "react-router-dom";
 import JobOfferCard from '../components/JobOfferCard';
-import Row from 'react-bootstrap/Row';
+import colorPicker from '../testData/colorPicker';
+import StyledButton from '../components/StyledButton';
+import Footer from '../components/Footer';
 
 
 const Container = styled.div`
     position: fixed;
     text-align: center;
-    background-color: #3b3d40;
-    color: white;
-    height: 100%;
+    background-color: ${colorPicker.primary};
+    color: ${colorPicker.text};
+    height: 95%;
     width: 100%;
     z-index: 1,
     top: 0;
     left: 0;
     overflow-x: hidden;
     padding-top: 16px;
+    padding-bottom: 50px;
+    font-family: 'Roboto', sans-serif;
+`;
+
+const JobCardDiv = styled.div`
+    margin: 20px auto;
+    width: 80%;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap; 
+    @media (max-width: 1200px) {
+        flex: 1 1 calc(25% - 20px);
+    }
+    @media (max-width: 900px) {
+        flex: 1 1 calc(33% - 20px);
+    }
+
+    @media (max-width: 750px) {
+        flex: 1 1 calc(50% - 20px)
+    }
+    @media (max-width: 550px) {
+        flex: 1 1 calc(100% - 20px)
+    }
+`;
+
+
+const BtnContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center
+
 `;
 const StyleH1 = styled.h1`
-    font-family: 'Roboto', sans-serif;      
     margin-top: 10%;
 `;
 
@@ -43,59 +75,20 @@ const StyledImg = styled.img`
 `
 
 const StyleH3 = styled.h3`
-    font-family: 'Roboto', sans-serif;
     margin-top: 8px;
 `;
 
 const StyledP = styled.p`
-    font-family: 'Roboto', sans-serif;
+
     margin-top: 15px;
     margin-left: 34%;
     margin-right: 34%;
 `;
 
-const RegisterBtn = styled.button`
-    margin: 3px;
-    width: 140px;
-    height: 45px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    &:hover {
-        background-color: #62666e;
-        box-shadow: 0px 15px 20px #838891;
-        color: #fff;
-        transform: translateY(-7px);
-    }
-    
-`;
-
 function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn, setAdminLoggedIn}){
- 
-
-    const Navigate = useNavigate();
-
-    function NavToCreateProfile(){
-        Navigate("/candidate/register")
-    }
-    function NavToLogin(){
-        Navigate("/login")
-    }
-
-    
 
     return(
-   
+        <div>
             <Container>
                 <StyleH1>Karriär</StyleH1>
                 <OuterCircleDiv>
@@ -110,30 +103,27 @@ function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLo
                         disputando. Melius utamur intellegebat mel ex, vidisse laoreet disputationi ei qui. Graeci omnesque detraxit 
                         vel ad, pri cibo libris ea. Te inani persius duo, vim eu verear signiferumque, vel denique nominavi consequat et.
                     </StyledP>
-                    <RegisterBtn onClick={NavToCreateProfile}>Register</RegisterBtn>
-                    <RegisterBtn onClick={NavToLogin}>Login</RegisterBtn>
-                        
+                    <BtnContainer>
+                    <StyledButton navigate={"register"}input={"Register"}/>
+                    <StyledButton navigate={"login"}input={"Login"}/>
+                    </BtnContainer>
                 </TextUnderPictures>
-                <Row xs={1} md={2}lg={3} xl={3} xxl={4} className="g-4 mt-5">
+                <JobCardDiv>
                     {jobOfferings.map((jobOfferingsInMap, index) =>{
                         let totalCandidates = 0;
                         jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
                             totalCandidates += recruitmentStepInMap.candidateIds.length
                         return null;
                         })
-
-                    return(
-                  
-                        <JobOfferCard key={jobOfferingsInMap.id} index={index} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
-              
-                    )})}
-                </Row>
-
-
-            </Container>
-            
-
-   
+                        return(
+                    
+                            <JobOfferCard key={jobOfferingsInMap.id} index={index} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
+                
+                        )})}
+                    </JobCardDiv>
+                </Container>
+                <Footer/>
+            </div>
     )
 }
 

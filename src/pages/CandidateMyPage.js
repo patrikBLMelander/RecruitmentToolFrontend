@@ -9,11 +9,14 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Swal from 'sweetalert2';
 import Resume from '../components/Resume';
+import colorPicker from '../testData/colorPicker';
+import Footer from '../components/Footer';
+import StyledButton from '../components/StyledButton';
 
 const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
     text-align: center;
-    background-color: #3b3d40;
+    background-color: ${colorPicker.primary};
     height: 100%;
     width: 100%;
     z-index: 1,
@@ -23,7 +26,7 @@ const Container = styled.div`
 `;
 
 const InnerContainer = styled.div`
-    color: #b5bcc7;
+    color: ${colorPicker.text};
     font-family: 'Roboto', sans-serif; 
     justify-content: center;
     margin-top: 10%;
@@ -34,6 +37,7 @@ const InnerContainer = styled.div`
 
 const ResumeContainer = styled.div`
     margin-right:4%;
+    padding-bottom: 10%;
 `;
 
 const SeperatorDiv = styled.div`
@@ -46,35 +50,9 @@ const SeperatorDiv = styled.div`
 `;
 const H4 = styled.h4`
     font-family: 'Roboto', sans-serif; 
-    color: #b5bcc7;
+    color: ${colorPicker.text};
     margin-left: 50px;
     margin-top: 30px;
-
-`;
-
-const StyledButton = styled.button`
-    width: 140px;
-    height: 45px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    &:hover {
-        background-color: #2EE59D;
-        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-        color: #fff;
-        transform: translateY(-7px);
-    }
-    
 `;
 
 
@@ -105,6 +83,23 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
     }
 
     const handleDescriptionChange = (event) => {
+        setDescription(event.target.value);
+    }
+
+
+    const handleEducationTitleChange = (event) => {
+        setTitle(event.target.value);
+    }
+
+    const handleEducationStartDateChange = (event) => {
+        setStartDate(event.target.value);
+    }
+
+    const handleEducationEndDateChange = (event) => {
+        setEndDate(event.target.value);
+    }
+
+    const handleEducationDescriptionChange = (event) => {
         setDescription(event.target.value);
     }
 
@@ -188,6 +183,47 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
         setValidated(true);
     }
 
+    function addEducation (event){
+        event.preventDefault();
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            Swal.fire({
+                title: 'Not updated',
+                text: 'You need to fill all fields',
+                icon: 'error',
+                showConfirmButton: true,
+               
+            })
+          event.stopPropagation();
+        }else{
+            let newCandidateState = candidateState;
+            candidateState.map((candidateStateInMap, index) =>{
+                if(candidateStateInMap.id===activeCandidate.id){
+                    newCandidateState[index].education = [...candidateState[index].education, { 
+                        title: title, 
+                        period:startDate + " to " + endDate, 
+                        description: description
+                    }]
+                    setCandidateState(newCandidateState)
+                    setJobExperienceState(candidateState[index])
+                    setActiveCandidate(candidateState[index])
+                    Swal.fire({
+                        title: 'New Experience added!',
+                        text: 'Your Experience are now updaded and can be seen on the roles you applied for!',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+              
+    
+                }
+                return null;
+            })
+            
+        }
+        setValidated(true);
+    }
+
 
 return(
     <div>
@@ -206,10 +242,10 @@ return(
                         This will be the first impression of you, write something nice ;)
                     </Form.Control.Feedback>
                 </Form.Group>
-                <StyledButton variant="success" type="submit"> Save </StyledButton>
+                <StyledButton variant="success" type="submit" input={"Save"}/>
             </Form>
             <Form noValidate validated={validated} onSubmit={addEmployment}>
-                <H4>Here is the place to add your experience!</H4>
+                <H4>Here is the place to add your job experience!</H4>
                 <Row className="g-2 ms-3 me-5 mt-1"> 
                     <Col md>
                         <FloatingLabel controlId="TitleInputGrid" label="Title" onChange={handleTitleChange}>
@@ -246,17 +282,56 @@ return(
                 </Form.Group>
 
 
-                <StyledButton  variant="success" type="submit">
-                        Add Job
-                </StyledButton>
+                <StyledButton  variant="success" type="submit" input={"Add Job"}/>
+            </Form>
+            <Form noValidate validated={validated} onSubmit={addEducation}>
+                <H4>Here is the place to add your education experience!</H4>
+                <Row className="g-2 ms-3 me-5 mt-1"> 
+                    <Col md>
+                        <FloatingLabel controlId="TitleInputGrid" label="Title" onChange={handleEducationTitleChange}>
+                            <Form.Control required  type="Text" placeholder='"Stockholm"' />
+                            <Form.Control.Feedback type="invalid">
+                                All your education needs a title
+                            </Form.Control.Feedback>
+                        </FloatingLabel>      
+                    </Col>
+                    <Col md> 
+                        <FloatingLabel controlId="startDateInputGrid" label="Started date" onChange={handleEducationStartDateChange}>
+                            <Form.Control required type="Date" />
+                            <Form.Control.Feedback type="invalid">
+                                All your education needs a start date
+                            </Form.Control.Feedback>
+                        </FloatingLabel>   
+                    </Col>
+                    <Col md> 
+                        <FloatingLabel controlId="endDateInputGrid" label="End date" onChange={handleEducationEndDateChange}>
+                            <Form.Control required type="Date"/>
+                            <Form.Control.Feedback type="invalid">
+                                All your education needs a end date
+                            </Form.Control.Feedback>
+                        </FloatingLabel>   
+                    </Col>
+                </Row>
+
+                <Form.Group className="mb-3 ms-3 me-5" controlId="jobDescription"onChange={handleEducationDescriptionChange}>
+                    <Form.Label className="ms-3 mt-4">Description your job</Form.Label>
+                    <Form.Control required as="textarea" rows={3} />
+                    <Form.Control.Feedback type="invalid">
+                        Write about the education
+                    </Form.Control.Feedback>
+                </Form.Group>
+
+
+                <StyledButton  variant="success" type="submit" input={"Add Education"}/>
             </Form>
             <SeperatorDiv/>
             <H4>Your Resume will show here</H4>
             <ResumeContainer>
-            <Resume jobExperienceState={jobExperienceState} presentation={presentation}/>
+            <Resume activeCandidate={activeCandidate}setActiveCandidate={setActiveCandidate}jobExperienceState={jobExperienceState} candidateState={candidateState} setCandidateState={setCandidateState} presentation={presentation} setJobExperienceState={setJobExperienceState}/>
             </ResumeContainer>
     </InnerContainer>
 </Container>
+<Footer/>
 </div>
 )
 

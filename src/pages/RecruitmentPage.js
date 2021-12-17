@@ -5,13 +5,21 @@ import RecruitmentProcessSteps from '../components/RecruitmentProcessSteps';
 import AddListBtn from '../components/AddListBtn';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
+import colorPicker from '../testData/colorPicker';
+import Footer from '../components/Footer';
 
 
 
 const Container = styled.div`
-    background-color: #3b3d40;;
+    background-color: ${colorPicker.primary};
     display: flex;
-    margin-left: 163px;
+    position: fixed;
+    z-index: 0;
+    width: 100%;
+    padding-bottom: 100%;
+    padding-left: 163px;
+    
+
 `;
 
 
@@ -164,6 +172,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, candidateSt
             )}
         </Droppable>
         </DragDropContext>
+        <Footer/>
       </div>
     );
 }

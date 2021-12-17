@@ -1,5 +1,5 @@
 import React from 'react';
-
+import colorPicker from '../testData/colorPicker';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 import {Home} from '@styled-icons/boxicons-regular/Home';
@@ -14,22 +14,21 @@ import {AddressCard} from '@styled-icons/fa-regular/AddressCard';
 const Container = styled.div`
     position: fixed;
     text-align: center;
-    background-color: #3b3d40;
-    color: white;
+    background-color: ${colorPicker.primary};
     height: 100%;
     width: 160px;
-    z-index: 1,
+    z-index: 2;
     top: 0;
     left: 0;
     overflow-x: hidden;
     padding-top: 16px;
-    margin-top: 6%;
+    padding-top: 6%;
 `;
 const StyledHomeBtn = styled(Home)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: white;
+    color: ${colorPicker.text};
 
 `; 
 
@@ -38,7 +37,7 @@ const StyledPersonSearchBtn = styled(PersonSearch)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: white;
+    color: ${colorPicker.text};
 
 `; 
 
@@ -46,22 +45,21 @@ const StyledBearSmileBtn = styled(BearSmile)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: white;
+    color: ${colorPicker.text};
 
 `; 
 const StyledSettingsBtn = styled(Settings)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: white;
-
+    color: ${colorPicker.text};
 `; 
 
 const StyledPeopleTeamAddBtn = styled(PeopleTeamAdd)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: white;
+    color: ${colorPicker.text};
 
 `;
 
@@ -69,7 +67,7 @@ const StyledLogOutCircleBtn = styled(LogOutCircle)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: white;
+    color: ${colorPicker.text};
 `; 
 
 
@@ -77,16 +75,18 @@ const StyledBriefcaseBtn = styled(Briefcase)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: white;
+    color: ${colorPicker.text};
 `; 
 const StyledAddressCardBtn = styled(AddressCard)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: white;
+    color: ${colorPicker.text};
 `; 
 
  function Navbar ({adminLoggedIn, setCandidateLoggedIn, setAdminLoggedIn}) {
+     
+    //const [colorPicker, setColorPicker] = useState(colorPicker);
 
     function logOut(){
         setCandidateLoggedIn(false)

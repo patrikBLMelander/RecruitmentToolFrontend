@@ -1,41 +1,83 @@
 import React from "react";
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';    
 import styled from 'styled-components'  
 import { useNavigate } from "react-router-dom"; 
-import Row from 'react-bootstrap/Row';   
 import Swal from 'sweetalert2';
+import colorPicker from '../testData/colorPicker';
           
 
+const CardDiv = styled.div`
+    display flex;
+    flex-direction: column;
+    justify-content:center;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px ${colorPicker.third};
+    min-width: 350px;
+    min-height: 300px;
+    max-width: 350px;
+    min-height: 300px;
+    margin: 8px 8px 8px 8px
+`;
+
+const Image = styled.img`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 45px 45px 0px 0px;
+
+`;
+
+const CardBody = styled.div`
+    background-color: ${colorPicker.secondary};
+    border-radius: 0px 0px 45px 45px;
+`;
+
+const CadnidateInfoDiv = styled.div`
+    display flex;
+    justify-content: center;
+    
+`;
+
 const PNew = styled.p`
-    color: #17913c;
+    text-shadow: 2px 2px 5px green;
+    font-weight: bold;
+    margin-right: 75px;
+    color: #43d148;
     visibility: ${props => (
         props.show ? "visible" : "hidden")
     };
 `;
 
 const PTotal = styled.p`
-    color: #3b3d40;
+    margin-left: 75px;
+    font-weight: bold;
+    color: ${colorPicker.fifth};
     visibility: ${props => (
         props.show ? "visible" : "hidden")
     };
 `;
 
 const PExpire = styled.p`
+    font-weight: bold;
     margin-top: 0;
+    margin-left: 10px;
     margin-bottom: 0;
-    color: #3b3d40;
+    color: ${colorPicker.fifth};
 `;            
 
 const StyledH4 = styled.h4`
-    color: #3b3d40;
+    margin-top: 8px;
+    margin-left: 10px;
+    color: ${colorPicker.fifth};
 `;   
 
-const CardDiv = styled.div`
-    display flex;
-    justify-content:center;
-    
+const BtnContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center
+
 `;
+
 
 const StyledButton = styled.button`
     margin:4px;
@@ -46,18 +88,18 @@ const StyledButton = styled.button`
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    color: #fff;
-    background-color: #1e61d9;
+    color: ${colorPicker.text};
+    background-color: ${colorPicker.third};
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px #b0bbcf;
+    box-shadow: 0px 8px 15px ${colorPicker.third};
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
     &:hover {
-        background-color: #1e61d9;
-        box-shadow: 0px 15px 20px #678fd6;
-        color: #3b3d40;
+        background-color: ${colorPicker.fourth};
+        box-shadow: 0px 15px 20px ${colorPicker.fourth};
+        color: ${colorPicker.text}
         transform: translateY(-7px);
     }
     
@@ -150,32 +192,18 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
     }
     return(
         <CardDiv key={index}>
-        <Card  style={{ width: '18rem', marginRight: '0px', position:'center' }}>
-            <Card.Img variant="top" src={jobOfferingsInMap.imageUrl} onClick={displayInfoAboutRole}/>
-            <Card.Body>
+            <Image src={jobOfferingsInMap.imageUrl} onClick={displayInfoAboutRole}/>
+            <CardBody>
                 <StyledH4>{jobOfferingsInMap.title}</StyledH4>
-                <PExpire>
-                Expire: {jobOfferingsInMap.applyDate}
-                
-                </PExpire>
-                <div className="d-grid gap-2">
+                <PExpire>Expire: {jobOfferingsInMap.applyDate}</PExpire>
+                <BtnContainer>
                 <StyledButton onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">{btnText}</StyledButton>
-                </div>
-                <Row xs={2}>
-                <Col sm={5}>
-                    <PNew show={adminLoggedIn}>
-                        New: {jobOfferingsInMap.recruitmentSteps[0].candidateIds.length}
-                    </PNew>
-                    </Col>
-                <Col sm={5}>
-                    <PTotal show={adminLoggedIn}>
-                    Total: {totalCandidates}
-                    </PTotal>
-                </Col>
-                </Row>
-
-            </Card.Body>
-        </Card>
+                </BtnContainer>
+                <CadnidateInfoDiv>
+                    <PNew show={adminLoggedIn}>New: {jobOfferingsInMap.recruitmentSteps[0].candidateIds.length}</PNew>
+                    <PTotal show={adminLoggedIn}>Total: {totalCandidates}</PTotal>
+                </CadnidateInfoDiv>
+            </CardBody>
     </CardDiv>
 
     )
