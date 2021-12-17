@@ -1,6 +1,15 @@
 const colorPicker =
 [
     { 
+        id: 'color0',
+        primary: '#5d5c61',
+        secondary: '#557a95',
+        third: '#7395ae',
+        fourth: '#97959e',
+        fifth: '#b1a2296',
+        text: '#d6d5db',
+    },
+    { 
         id: 'color1',
         primary: '#2F4454',
         secondary: '#376E6F',
@@ -38,31 +47,16 @@ const colorPicker =
     },
     { 
         id: 'color5',
-        primary: '#a2d2ff',
-        secondary: '#cdb4db',
-        third: '#ffc8dd',
-        fourth: '#ffafcc',
-        fifth: '#bde0fe',
-        text: '#5c3b6e',
+        primary: '#6d6875',
+        secondary: '#e5989b',
+        third: '#b5838d',
+        fourth: '#ffb4a2',
+        fifth: '#ffcdb2',
+        text: '#574c45',
     },
-    { 
-        id: 'color6',
-        primary: '#5d5c61',
-        secondary: '#557a95',
-        third: '#7395ae',
-        fourth: '#97959e',
-        fifth: '#b1a2296',
-        text: '#d6d5db',
-    },
+   
 ]
 
-const choise= 5
-
-export const chooseColorScheme = (input) =>{
-
-    console.log("inne i metoden")
-    choise = input;
-}
 
 
-export default colorPicker[choise];
+export default colorPicker[3];

@@ -101,7 +101,9 @@ const StyledCloseBtn = styled(CloseO)`
 `; 
 
 
-function Resume ({jobExperienceState, setJobExperienceState, presentation, candidateState, setCandidateState, setActiveCandidate }) {
+function Resume ({jobExperienceState, setJobExperienceState, presentation, candidateState, setCandidateState, setActiveCandidate, activeCandidate}) {
+
+console.log(jobExperienceState)
 
     function removeExperience(experienceInMap){
         Swal.fire({
@@ -115,7 +117,6 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
             if (result.isConfirmed) {
                 let test = candidateState;
                 candidateState.map((candidateStateInMap, cIndex) =>{
-
                     if(candidateState[cIndex].id===jobExperienceState.id){
    
                         candidateState[cIndex].experience.map(experienceToCheck =>{
@@ -124,8 +125,6 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
                                 test[cIndex].experience = [...candidateState[cIndex].experience.filter(experience => experience.id!==experienceInMap.id)]
     
                                 setCandidateState(test)
-                                console.log(test[cIndex])
-                                console.log(jobExperienceState)
                                 setJobExperienceState(test[cIndex])
                                 setActiveCandidate(test[cIndex])
                             }
@@ -139,6 +138,43 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
             )}
         })
     }
+    function removeEducation(educationInMap){
+        Swal.fire({
+            title: 'Remove Education',
+            text: 'Do you want to remove this education?',
+            icon: 'question',
+            showConfirmButton: true,
+            showCancelButton: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let test = candidateState;
+                candidateState.map((candidateStateInMap, cIndex) =>{
+
+                    if(candidateState[cIndex].id===jobExperienceState.id){
+   
+                        candidateState[cIndex].education.map(educationToCheck =>{
+
+                            if(educationToCheck.id===educationInMap.id){
+                                test[cIndex].education = [...candidateState[cIndex].education.filter(education => education.id!==educationInMap.id)]
+    
+                                setCandidateState(test)
+                                setJobExperienceState(test[cIndex])
+                                setActiveCandidate(test[cIndex])
+                            }
+
+                        })
+                    }
+                    
+                }
+                
+
+            )}
+        })
+    }
+
+
+
+
 
     return (
         <OuterContainer key={jobExperienceState.id}>
@@ -170,14 +206,21 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
                     })}
                 </Experience>
                 <Experience>
-                    <H5>Education</H5>
-                    <TitleAndPeriod>
-                        <H5>Placeholder Title</H5>
-                        <H5>Placeholder Period from - to</H5>
-                    </TitleAndPeriod>
-                    <JobDescription>
-                        <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac tincidunt lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi ut rutrum augue. Duis ac magna quis nunc sagittis commodo sit amet non dui. Donec porta neque tellus. Quisque quis bibendum est, id egestas nisi. Curabitur pharetra malesuada laoreet. Sed eu elit elementum, laoreet sapien a, pretium magna. Etiam vitae lorem eleifend, consectetur mauris nec, elementum lectus. Phasellus dapibus leo at ante fringilla tempus.</P>
-                    </JobDescription>
+                <H5>Education</H5>
+                    {jobExperienceState.education.map(educationsInMap =>{
+                        return(
+                            <div key={educationsInMap.id}>
+                                <TitleAndPeriod>
+                                    <H5>{educationsInMap.title}</H5>
+                                    <H5>{educationsInMap.period}</H5>
+                                    <StyledCloseBtn onClick={() => removeEducation(educationsInMap)}/>
+                                </TitleAndPeriod>
+                                <JobDescription>
+                                    <P>{educationsInMap.description}</P>
+                                </JobDescription>
+                            </div>
+                        )
+                        })}
                 </Experience>
                 <Skills>
                     <Skill1>HTML</Skill1>
