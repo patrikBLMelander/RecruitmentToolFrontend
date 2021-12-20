@@ -32,6 +32,11 @@ const StyledImg = styled.img`
 `;
 const AboutMe = styled.div`
     border-top: solid;
+    border-bottom: solid;
+    border-color:${colorPicker.secondary};
+`;
+
+const Skills = styled.div`
     border-color:${colorPicker.secondary};
 `;
 const Experience = styled.div`
@@ -47,15 +52,15 @@ const JobDescription = styled.div`
     text-align: left;    
     
 `;
-const Skills = styled.div`
-    margin-top: 8px;
-    margin-left: 5%;
-`;
 
 const H3 = styled.h3`
     
 `;
 const H5 = styled.h5`
+    margin-right: 15px;
+    margin-top: 10px;
+`;
+const H6 = styled.h6`
     margin-right: 15px;
 `;
 const P = styled.p`
@@ -65,7 +70,6 @@ const TraitDiv = styled.div`
 color: ${colorPicker.text};
 font-family: 'Roboto', sans-serif; 
 justify-content: center;
-margin-bottom: 10%;
 `;
 
 const TraitText = styled.div`
@@ -177,6 +181,14 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
                     <H5>About me</H5>
                     <P>{presentation}</P>
                 </AboutMe>
+                <Skills>
+                    <H5>Competencies</H5>
+                    <P>Java 5 years</P>
+                    <P>HTML 3 years</P>
+                    <P>Javascript 3 years</P>
+                    <P>Css 3 years</P>
+                    <P>React 1 years</P>
+                </Skills>
             </LeftDiv>
             <RightDiv>
                 <H3>{jobExperienceState.nickName}</H3>
@@ -216,11 +228,11 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
                         })}
                 </Experience>
                 <PersonalityDiv>
-                
+                <H5>Personality</H5>
                 <TraitDiv>
                     <TraitText>
-                        <H5>Practical</H5>
-                        <H5>Curius</H5>
+                        <H6>Practical</H6>
+                        <H6>Curius</H6>
                     </TraitText>
                     <Slider
                     key={`openness`}
@@ -229,8 +241,8 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
                 </TraitDiv>
                 <TraitDiv>
                     <TraitText>
-                        <H5>Impulsive</H5>
-                        <H5>Organized</H5>
+                        <H6>Impulsive</H6>
+                        <H6>Organized</H6>
                     </TraitText>
                     <Slider
                     key={`conscintiousness`}
@@ -240,8 +252,8 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
                 </TraitDiv>
                 <TraitDiv>
                     <TraitText>
-                        <H5>Quiet</H5>
-                        <H5>Outgoing</H5>
+                        <H6>Quiet</H6>
+                        <H6>Outgoing</H6>
                     </TraitText>
                     <Slider
                     key={`extroversion`}
@@ -252,8 +264,8 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
                 </TraitDiv>
                 <TraitDiv>
                     <TraitText>
-                        <H5>Critical</H5>
-                        <H5>Helpful</H5>
+                        <H6>Critical</H6>
+                        <H6>Helpful</H6>
                     </TraitText>
                     <Slider
                     key={`agreableness`}
@@ -263,8 +275,8 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
                 </TraitDiv>
                 <TraitDiv>
                     <TraitText>
-                        <H5>Calm</H5>
-                        <H5>Anxious</H5>
+                        <H6>Calm</H6>
+                        <H6>Anxious</H6>
                     </TraitText>
                     <Slider
                     key={`neuroticism`}
