@@ -66,6 +66,12 @@ const ResumeContainer = styled.div`
     padding-bottom: 10%;
 `;
 
+const CompetenceDiv = styled.div`
+    display: flex;
+    margin-right: 10px;
+    justify-content: center;
+`;
+
 const SeperatorDiv = styled.div`
     justify-content: center;
     margin-top: 5%;
@@ -98,6 +104,15 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
     const [extroversion] = useState(activeCandidate.personality[2].value)
     const [agreableness] = useState(activeCandidate.personality[3].value)
     const [neuroticism] = useState(activeCandidate.personality[4].value)
+    const [competenceValue, setCompetenceValue] = useState("")
+    const [yearsValue, setYearsValue] = useState("")
+
+    const handleCompetenceValue = (event) => {
+        setCompetenceValue(event.target.value);
+    }
+    const handleYearsValue = (event) => {
+        setYearsValue(event.target.value);
+    }
 
 
     const handlePresentationChange = (event) => {
@@ -135,6 +150,50 @@ function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, active
 
     const handleEducationDescriptionChange = (event) => {
         setDescription(event.target.value);
+    }
+
+    function saveCompetence(event){
+        event.preventDefault();
+        console.log(competenceValue)
+        console.log(yearsValue)
+        if (competenceValue===""|| yearsValue==="") {
+            Swal.fire({
+                title: 'Information missing',
+                text: 'Pleas fill bouth fields and try again',
+                icon: 'error',
+                showConfirmButton: true,
+               
+            })
+          event.stopPropagation();
+        }else{
+            let newCandidateState = candidateState;
+            candidateState.map((candidateStateInMap, index) =>{
+                if(candidateStateInMap.id===activeCandidate.id){
+                    newCandidateState[index].competencies = [...candidateState[index].competencies, { 
+                        id: 1, 
+                        name: competenceValue,
+                        years: yearsValue
+                    }]
+                    setCandidateState(newCandidateState)
+                    setJobExperienceState(candidateState[index])
+                    setActiveCandidate(candidateState[index])
+                    Swal.fire({
+                        title: 'New Competence added!',
+                        text: 'Your Competence are now updaded and can be seen on the roles you applied for!',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+              
+    
+                }
+                return null;
+            })
+
+        }
+
+        setCompetenceValue("")
+        setYearsValue("")
     }
 
     function SavePresentation (event){
@@ -311,7 +370,7 @@ return(
             <Form noValidate validated={validated} onSubmit={addEmployment}>
                 <H4>Here is the place to add your job experience!</H4>
                 <Row className="g-2 ms-3 me-5 mt-1"> 
-                    <Col md>
+                    <Col>
                         <FloatingLabel controlId="TitleInputGrid" label="Title" onChange={handleTitleChange}>
                             <Form.Control required  type="Text" placeholder='"Stockholm"' />
                             <Form.Control.Feedback type="invalid">
@@ -319,7 +378,7 @@ return(
                             </Form.Control.Feedback>
                         </FloatingLabel>      
                     </Col>
-                    <Col md> 
+                    <Col> 
                         <FloatingLabel controlId="startDateInputGrid" label="Started date" onChange={handleStartDateChange}>
                             <Form.Control required type="Date" />
                             <Form.Control.Feedback type="invalid">
@@ -327,7 +386,7 @@ return(
                             </Form.Control.Feedback>
                         </FloatingLabel>   
                     </Col>
-                    <Col md> 
+                    <Col> 
                         <FloatingLabel controlId="endDateInputGrid" label="End date" onChange={handleEndDateChange}>
                             <Form.Control required type="Date"/>
                             <Form.Control.Feedback type="invalid">
@@ -441,6 +500,32 @@ return(
                 
                 </PersonalityDiv>
             </Form>
+            <H4>Competence</H4>
+            <Form noValidate validated={validated} onSubmit={saveCompetence}>
+                <CompetenceDiv>
+                    <Col xs={5}>
+                    <FloatingLabel controlId="TitleInputGrid" label="Competence" onChange={handleCompetenceValue}>
+                            <Form.Control required  type="Text" placeholder='"Stockholm"' />
+                            <Form.Control.Feedback type="invalid">
+                                Pleas fill the name of you competence
+                            </Form.Control.Feedback>
+                        </FloatingLabel>    
+                        </Col>
+                        <Col xs={1}>
+                        <FloatingLabel controlId="TitleInputGrid" label="Years" onChange={handleYearsValue}>
+                            <Form.Control required  type="Number" placeholder='""' />
+                            <Form.Control.Feedback type="invalid">
+                                How many years experience do you have of this?
+                            </Form.Control.Feedback>
+                        </FloatingLabel>     
+                        </Col>
+                        <Col> 
+                    <StyledButton type="submit" input={"Save Competence"}/>
+                    </Col>
+                </CompetenceDiv>
+            </Form>
+
+
             <SeperatorDiv/>
             <H4>Your Resume will show here</H4>
             <ResumeContainer>

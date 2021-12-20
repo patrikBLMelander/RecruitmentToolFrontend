@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
-import {CloseO} from '@styled-icons/evil/CloseO';
 import colorPicker from '../testData/colorPicker';
-import Swal from 'sweetalert2';
-import Slider from '@mui/material/Slider';
+
 
 
 const Container = styled.div`
