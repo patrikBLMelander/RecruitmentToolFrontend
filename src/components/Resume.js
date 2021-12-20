@@ -183,11 +183,13 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
                 </AboutMe>
                 <Skills>
                     <H5>Competencies</H5>
-                    <P>Java 5 years</P>
-                    <P>HTML 3 years</P>
-                    <P>Javascript 3 years</P>
-                    <P>Css 3 years</P>
-                    <P>React 1 years</P>
+                    {jobExperienceState.competencies.map(experienceInMap =>{
+                return(
+                    
+                    <P key={experienceInMap.id}>{experienceInMap.name} - {experienceInMap.years} years</P>
+
+                )})}
+                   
                 </Skills>
             </LeftDiv>
             <RightDiv>

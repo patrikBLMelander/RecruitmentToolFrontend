@@ -104,7 +104,8 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                             phone: candidateInMap.phone ,
                             experience: candidateInMap.experience,
                             education: candidateInMap.education,
-                            personality: candidateInMap.personality
+                            personality: candidateInMap.personality,
+                            competencies:candidateInMap.competencies
                         })
                         setCandidateLoggedIn(true)
                         loggedIn = true
