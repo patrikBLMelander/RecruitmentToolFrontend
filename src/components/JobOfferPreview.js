@@ -78,7 +78,7 @@ function JobOfferPreview ({jobOffer}) {
                         if(jobOffer.competencies[0]===""){
                             return <p>no competencies specified</p>
                         }else{
-                            return (<Competence>{competenceInmap.name} - {competenceInmap.years} years</Competence>)
+                            return (<Competence key={competenceInmap.id}>{competenceInmap.name} - {competenceInmap.years} years</Competence>)
                         }
                 
                 
