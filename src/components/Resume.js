@@ -105,7 +105,7 @@ margin-right:10%;
 `;
 
 
-function Resume ({jobExperienceState, setJobExperienceState, presentation, candidateState, setCandidateState, setActiveCandidate, activeCandidate}) {
+function Resume ({jobExperienceState, setJobExperienceState, presentation, candidateState, setCandidateState, setActiveCandidate, activeCandidate, candidateView}) {
 
 
     function removeExperience(experienceInMap){
@@ -208,12 +208,10 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
         })
     }
 
-
-
-
-
-    return (
-        <OuterContainer key={jobExperienceState.id}>
+    let render;
+    if(candidateView===true){
+        render = (
+            <OuterContainer key={jobExperienceState.id}>
             <LeftDiv>
                 <StyledImg src="https://picsum.photos/150?grayscale"></StyledImg>
                 <AboutMe>
@@ -333,6 +331,130 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
             </RightDiv>
         </OuterContainer>
     )
+        
+    }else{ 
+        render = (
+            <OuterContainer key={jobExperienceState.id}>
+            <LeftDiv>
+                <StyledImg src="https://picsum.photos/150?grayscale"></StyledImg>
+                <AboutMe>
+                    <H5>About me</H5>
+                    <P>{presentation}</P>
+                </AboutMe>
+                <Skills>
+                    <H5>Competencies</H5>
+                    {jobExperienceState.competencies.map(competenceInMap =>{
+                return(
+                    <CompetenceDiv key={competenceInMap.id}>
+                    <P >{competenceInMap.name} - {competenceInMap.years} years</P>
+                    </CompetenceDiv>
+                )})}
+                   
+                </Skills>
+            </LeftDiv>
+            <RightDiv>
+                <H3>{jobExperienceState.nickName}</H3>
+                <Experience>
+                    <H5>Job Experience</H5>
+                    {jobExperienceState.experience.map(experienceInMap =>{
+
+                    return(
+                    <div key={experienceInMap.id}>
+                        <TitleAndPeriod>
+                            <H5>{experienceInMap.title}</H5>
+                            <H5>{experienceInMap.period}</H5>
+                        </TitleAndPeriod>
+                        <JobDescription>
+                            <P>{experienceInMap.description}</P>
+                        </JobDescription>
+                    </div>
+                    )
+                    })}
+                </Experience>
+                <Experience>
+                <H5>Education</H5>
+                    {jobExperienceState.education.map(educationsInMap =>{
+                        return(
+                            <div key={educationsInMap.id}>
+                                <TitleAndPeriod>
+                                    <H5>{educationsInMap.title}</H5>
+                                    <H5>{educationsInMap.period}</H5>
+                                </TitleAndPeriod>
+                                <JobDescription>
+                                    <P>{educationsInMap.description}</P>
+                                </JobDescription>
+                            </div>
+                        )
+                        })}
+                </Experience>
+                <PersonalityDiv>
+                <H5>Personality</H5>
+                <TraitDiv>
+                    <TraitText>
+                        <H6>Practical</H6>
+                        <H6>Curius</H6>
+                    </TraitText>
+                    <Slider
+                    key={`openness`}
+                    disabled defaultValue={jobExperienceState.personality[0].value}
+                    />
+                </TraitDiv>
+                <TraitDiv>
+                    <TraitText>
+                        <H6>Impulsive</H6>
+                        <H6>Organized</H6>
+                    </TraitText>
+                    <Slider
+                    key={`conscintiousness`}
+                        defaultValue={jobExperienceState.personality[1].value}
+                        disabled
+                    />
+                </TraitDiv>
+                <TraitDiv>
+                    <TraitText>
+                        <H6>Quiet</H6>
+                        <H6>Outgoing</H6>
+                    </TraitText>
+                    <Slider
+                    key={`extroversion`}
+                        defaultValue={jobExperienceState.personality[2].value}
+                        disabled
+                        
+                    />
+                </TraitDiv>
+                <TraitDiv>
+                    <TraitText>
+                        <H6>Critical</H6>
+                        <H6>Helpful</H6>
+                    </TraitText>
+                    <Slider
+                    key={`agreableness`}
+                        defaultValue={jobExperienceState.personality[3].value}
+                        disabled
+                    />
+                </TraitDiv>
+                <TraitDiv>
+                    <TraitText>
+                        <H6>Calm</H6>
+                        <H6>Anxious</H6>
+                    </TraitText>
+                    <Slider
+                    key={`neuroticism`}
+                        defaultValue={jobExperienceState.personality[4].value}
+                        disabled
+                    />
+                </TraitDiv>
+                
+                </PersonalityDiv>
+
+                
+            </RightDiv>
+        </OuterContainer>
+    )
+
+    }
+    return render
+       
     
 }
 
