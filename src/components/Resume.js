@@ -52,6 +52,12 @@ const JobDescription = styled.div`
     text-align: left;    
     
 `;
+const CompetenceDiv = styled.div`
+    display: flex;
+    margin: 0px 15px 25px 15px;
+    text-align: left;    
+    
+`;
 
 const H3 = styled.h3`
     
@@ -135,6 +141,39 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
             )}
         })
     }
+    function removeCompetence(competenceInMap){
+        Swal.fire({
+            title: 'Remove Conmpetence',
+            text: 'Do you want to remove this competence?',
+            icon: 'question',
+            showConfirmButton: true,
+            showCancelButton: true,
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+                let test = candidateState;
+                candidateState.map((candidateStateInMap, cIndex) =>{
+                    if(candidateState[cIndex].id===jobExperienceState.id){
+   
+                        candidateState[cIndex].competencies.map(competenciesToCheck =>{
+
+                            if(competenciesToCheck.id===competenceInMap.id){
+                                test[cIndex].competencies = [...candidateState[cIndex].competencies.filter(competencies => competencies.id!==competenceInMap.id)]
+                        
+                                setCandidateState(test)
+                                setJobExperienceState(test[cIndex])
+                                setActiveCandidate(test[cIndex])
+                            }
+                            return null
+                        })
+                    }
+                    return null
+                }
+                
+
+            )}
+        })
+    }
     function removeEducation(educationInMap){
         Swal.fire({
             title: 'Remove Education',
@@ -183,11 +222,12 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
                 </AboutMe>
                 <Skills>
                     <H5>Competencies</H5>
-                    {jobExperienceState.competencies.map(experienceInMap =>{
+                    {jobExperienceState.competencies.map(competenceInMap =>{
                 return(
-                    
-                    <P key={experienceInMap.id}>{experienceInMap.name} - {experienceInMap.years} years</P>
-
+                    <CompetenceDiv key={competenceInMap.id}>
+                    <P >{competenceInMap.name} - {competenceInMap.years} years</P>
+                    <StyledCloseBtn onClick={() => removeCompetence(competenceInMap)}/>
+                    </CompetenceDiv>
                 )})}
                    
                 </Skills>

@@ -13,6 +13,8 @@ const jobOfferingsTestData = [
       {id:"competence-1", name: "Java", years: 3},
       {id:"competence-2", name: "Javascript", years: 1},
       {id:"competence-3", name: "CSS", years: 2},
+      {id:"competence-4", name: "C", years: 2},
+      {id:"competence-5", name: "HTML", years: 2},
     ],
     recruitmentSteps: [
       {

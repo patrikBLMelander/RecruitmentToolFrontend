@@ -56,6 +56,11 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
                 companyDescription: form.companyDescription.value,
                 aboutRole: form.aboutTheRole.value,
                 imageUrl:"https://picsum.photos/150/150?random=" + counter,
+                competencies: [{id: "competence-1", name: form.competence1.value, years: form.competenceYear1.value},
+                {id: "competence-2", name: form.competence2.value, years: form.competenceYear2.value},
+                {id: "competence-3", name: form.competence3.value, years: form.competenceYear3.value},
+                {id: "competence-4", name: form.competence4.value, years: form.competenceYear4.value},
+                {id: "competence-5", name: form.competence5.value, years: form.competenceYear5.value},],
                 recruitmentSteps: [
                 {
                     id: 'recruitmentStep-1',
@@ -85,7 +90,7 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
                 ],
             }
             ]
-           
+            console.log(newJobOffering)
             setJobOfferings(newJobOffering);
             navigate("/home")
         }
@@ -147,6 +152,60 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
                         Here is the place to write about the role.
                     </Form.Control.Feedback>
                 </Form.Group>
+                <Row className="g-2 ms-5 me-5 mt-5">
+                    <Col md>
+                        <FloatingLabel controlId="competence1" label="Competence 1">
+                        <Form.Control required type="Text" placeholder='"Java utvecklare"' />
+                        </FloatingLabel>
+                    </Col>
+                    <Col md>
+                        <FloatingLabel controlId="competence2" label="Competence 2">
+                        <Form.Control required type="Text" placeholder='"Java utvecklare"' />
+                        </FloatingLabel>
+                    </Col>
+                    <Col md>
+                        <FloatingLabel controlId="competence3" label="Competence 3">
+                        <Form.Control required type="Text" placeholder='"Java utvecklare"' />
+                        </FloatingLabel>
+                    </Col>
+                    <Col md>
+                        <FloatingLabel controlId="competence4" label="Competence 4">
+                            <Form.Control required type="Text" placeholder='"Java utvecklare"' />
+                        </FloatingLabel>      
+                    </Col>
+                    <Col>
+                        <FloatingLabel controlId="competence5" label="Competence 5">
+                            <Form.Control required type="Text" placeholder='"Java utvecklare"' />
+                        </FloatingLabel>   
+                    </Col>
+                </Row>
+                <Row className="g-2 ms-5 me-5 mt-1 mb-1">
+                    <Col md>
+                        <FloatingLabel controlId="competenceYear1" label="Years of experience">
+                        <Form.Control required type="Number" placeholder='"Java utvecklare"' />
+                        </FloatingLabel>
+                    </Col>
+                    <Col md>
+                        <FloatingLabel controlId="competenceYear2" label="Years of experience">
+                        <Form.Control required type="Number" placeholder='"Java utvecklare"' />
+                        </FloatingLabel>
+                    </Col>
+                    <Col md>
+                        <FloatingLabel controlId="competenceYear3" label="Years of experience">
+                        <Form.Control required type="Number" placeholder='"Java utvecklare"' />
+                        </FloatingLabel>
+                    </Col>
+                    <Col md>
+                        <FloatingLabel controlId="competenceYear4" label="Years of experience">
+                            <Form.Control required type="Number" placeholder='"Java utvecklare"' />
+                        </FloatingLabel>      
+                    </Col>
+                    <Col>
+                        <FloatingLabel controlId="competenceYear5" label="Years of experience">
+                            <Form.Control required type="Number" placeholder='"Java utvecklare"' />
+                        </FloatingLabel>   
+                    </Col>
+                </Row>
                 <BtnDiv>   
                 <StyledButton variant="primary" type="submit" className="ms-5" input={"Publish"}></StyledButton>
                 </BtnDiv>
