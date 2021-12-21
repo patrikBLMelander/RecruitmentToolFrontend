@@ -1,9 +1,23 @@
-import React from "react";
+import React,{useState} from "react";
 import styled from 'styled-components'  
 import { useNavigate } from "react-router-dom"; 
 import Swal from 'sweetalert2';
 import colorPicker from '../testData/colorPicker';
-          
+import Modal from 'react-modal';
+import JobOfferPreview from './JobOfferPreview'
+         
+
+const customStyles = {
+    content: {
+        backgroundColor: colorPicker.primary,
+      position: 'absolute',
+      width:'70%',
+      height: '80%',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
 
 const CardDiv = styled.div`
     display flex;
@@ -77,6 +91,12 @@ const BtnContainer = styled.div`
     justify-content: center
 
 `;
+const BtnModalContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+`;
 
 
 const StyledButton = styled.button`
@@ -109,32 +129,17 @@ const StyledButton = styled.button`
                 
 function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, totalCandidates, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn, activeCandidate}){
     const navigate = useNavigate();
+    const [modalIsOpen, setIsOpen] = useState(false);
+    function openModal() {
+      setIsOpen(true);
+    }
+    function closeModal() {
+      setIsOpen(false);
+    }
  
     let btnText = "Apply";
     if(adminLoggedIn===true){
         btnText="Candidates"
-    }
-
-    function displayInfoAboutRole(){
-        if(adminLoggedIn===false){
-            Swal.fire({
-                width:'60rem',
-                title: jobOfferingsInMap.title,
-                html: '<br/><h5>Short Intro Text</h5>'+
-                jobOfferingsInMap.preview +
-                '<br/><br/><h5>Company info</h5><br/>'+
-                jobOfferingsInMap.companyDescription+
-                '<br/><br/><h5>Role description</h5><br/>'+
-                jobOfferingsInMap.aboutRole,
-                confirmButtonText: 'Apply',
-                showCancelButton: 'true'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    setJobToWorkWith()
-                }
-            })
-        }else return;
-
     }
 
     function setJobToWorkWith(event){
@@ -192,7 +197,7 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
     }
     return(
         <CardDiv key={index}>
-            <Image src={jobOfferingsInMap.imageUrl} onClick={displayInfoAboutRole}/>
+            <Image src={jobOfferingsInMap.imageUrl} onClick={openModal}/>
             <CardBody>
                 <StyledH4>{jobOfferingsInMap.title}</StyledH4>
                 <PExpire>Expire: {jobOfferingsInMap.applyDate}</PExpire>
@@ -204,6 +209,18 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, 
                     <PTotal show={adminLoggedIn}>Total: {totalCandidates}</PTotal>
                 </CadnidateInfoDiv>
             </CardBody>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="JobOffer modal"
+            >
+                    <JobOfferPreview jobOffer={jobOfferingsInMap}/>
+                    <BtnModalContainer>
+                        <StyledButton onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">{btnText}</StyledButton>
+                        <StyledButton onClick={closeModal} variant="primary">{"Close"}</StyledButton>
+                    </BtnModalContainer>
+            </Modal>
     </CardDiv>
 
     )
