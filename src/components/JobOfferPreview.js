@@ -22,6 +22,7 @@ const LeftDiv = styled.div`
     border-right: solid;
     border-color:  ${colorPicker.secondary};
     padding: 5px;
+    margin: 5px;
 `;
 const RightDiv = styled.div`
     padding: 5px;
@@ -30,6 +31,12 @@ const RightDiv = styled.div`
 
 const Preview = styled.div`
     border-bottom: solid;
+    border-color:${colorPicker.secondary};
+`;
+
+const ContactInfo = styled.div`
+    border-bottom: solid;
+    border-top: solid;
     border-color:${colorPicker.secondary};
 `;
 const Title = styled.h1`
@@ -62,39 +69,56 @@ const StyledImg = styled.img`
 
 
 function JobOfferPreview ({jobOffer}) {
+
+    console.log(jobOffer)
+    let toRender;
+
+    if (jobOffer===""){
+        console.log("Renderar inget")
+        toRender=(
+            <div>
+            </div>
+        )
+    }else{
+        console.log("Renderar preview")
+        toRender = (
+
+            <Container>
+                <LeftDiv>
+                    <StyledImg src={jobOffer.imageUrl}></StyledImg>
+                    <ContactInfo> 
+                        <H5>Contact</H5>
+                        <p>Patrik Melander</p>
+                        <p>Tel: 0704 01 11 19</p>
+                        <p>PatrikJMelander@gmail.com</p>
+                    </ContactInfo> 
+    
+                    <Competencies> 
+                        <H5>Requested Competencies</H5>
+                        {jobOffer.competencies.map(competenceInmap =>{
+                            if(jobOffer.competencies[0]===""){
+                                return <p>no competencies specified</p>
+                            }else{
+                                return (<Competence key={competenceInmap.id}>{competenceInmap.name} - {competenceInmap.years} years</Competence>)
+                            }     
+                })} 
+                </Competencies>
+                </LeftDiv>
+                <RightDiv>
+                
+                    <Title>{jobOffer.title}</Title>
+                    <Preview>{jobOffer.preview} </Preview>
+                    <H5>About the Company</H5>
+                <p>{jobOffer.companyDescription} </p>
+                <H5>Your Role</H5>
+                <Role>{jobOffer.aboutRole}</Role>
+                </RightDiv>
+            </Container>
+    
+        )
+    }
+   return toRender;
    
-    return (
-
-        <Container>
-            <LeftDiv>
-                <StyledImg src={jobOffer.imageUrl}></StyledImg>
-                <Preview>{jobOffer.preview} </Preview>
-
-                <Competencies> 
-                    <H5>Requested Competencies</H5>
-                    {jobOffer.competencies.map(competenceInmap =>{
-                        if(jobOffer.competencies[0]===""){
-                            return <p>no competencies specified</p>
-                        }else{
-                            return (<Competence key={competenceInmap.id}>{competenceInmap.name} - {competenceInmap.years} years</Competence>)
-                        }
-                
-                
-            })}
-            
-            </Competencies>
-
-            </LeftDiv>
-            <RightDiv>
-                <Title>{jobOffer.title}</Title>
-                <H5>About the Company</H5>
-            <p>{jobOffer.companyDescription} </p>
-            <H5>Your Role</H5>
-            <Role>{jobOffer.aboutRole}</Role>
-            </RightDiv>
-        </Container>
-
-    )
 }
 
 export default JobOfferPreview;

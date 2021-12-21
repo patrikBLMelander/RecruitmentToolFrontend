@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
 import styled from 'styled-components'
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
@@ -10,6 +9,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import colorPicker from '../testData/colorPicker';
 import StyledButton from '../components/StyledButton';
+import JobOfferPreview from '../components/JobOfferPreview';
 
 
 let counter = 8;
@@ -19,7 +19,6 @@ const Container = styled.div`
 background-color: ${colorPicker.primary};
 color: ${colorPicker.text};
 align-content: center;
-position: fixed;
 padding-bottom: 100%;
 padding-left: 163px;
 padding-top: 50px;
@@ -34,8 +33,7 @@ width: 100%;
 
 function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJob, setJobOfferings, setAdminLoggedIn, setCandidateLoggedIn}) {
     const [validated, setValidated] = useState(false);
-    
-    const navigate = useNavigate();
+    const [activeJobOffer, setActiveJobOffer]=useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -90,11 +88,24 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
                 ],
             }
             ]
-            console.log(newJobOffering)
+            setActiveJobOffer({
+                id: newId,
+                title: form.titleInputGrid.value,
+                location: form.locationInputGrid.value,
+                publishDate: form.dateInputGrid.value,
+                applyDate: form.dateInputGrid.value,
+                preview: form.preview.value,
+                companyDescription: form.companyDescription.value,
+                aboutRole: form.aboutTheRole.value,
+                imageUrl:"https://picsum.photos/150/150?random=" + counter,
+                competencies: [{id: "competence-1", name: form.competence1.value, years: form.competenceYear1.value},
+                {id: "competence-2", name: form.competence2.value, years: form.competenceYear2.value},
+                {id: "competence-3", name: form.competence3.value, years: form.competenceYear3.value},
+                {id: "competence-4", name: form.competence4.value, years: form.competenceYear4.value},
+                {id: "competence-5", name: form.competence5.value, years: form.competenceYear5.value},],
+            })
             setJobOfferings(newJobOffering);
-            navigate("/home")
         }
-    
         setValidated(true);
     };
 
@@ -210,7 +221,9 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
                 <StyledButton variant="primary" type="submit" className="ms-5" input={"Publish"}></StyledButton>
                 </BtnDiv>
             </Form>
+            <JobOfferPreview jobOffer={activeJobOffer}/>
         </Container>
+        
         <Footer/>
         </div>
     )
