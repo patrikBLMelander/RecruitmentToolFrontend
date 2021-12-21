@@ -9,13 +9,11 @@ const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
     text-align: center;
     background-color: ${colorPicker.primary};
-    width: 80%;
+    width: 100%;
     display: flex;
     border-style: double;
     border-color:  ${colorPicker.text};
-    margin-bottom: 10%;
-    margin-left: 10%;
-    margin-top: 10%;
+
 `;
 const LeftDiv = styled.div`
     width: 25%;
@@ -69,8 +67,8 @@ const StyledImg = styled.img`
 
 
 function JobOfferPreview ({jobOffer}) {
+    
 
-    console.log(jobOffer)
     let toRender;
 
     if (jobOffer===""){
@@ -80,7 +78,7 @@ function JobOfferPreview ({jobOffer}) {
             </div>
         )
     }else{
-        console.log("Renderar preview")
+       
         toRender = (
 
             <Container>
@@ -116,7 +114,11 @@ function JobOfferPreview ({jobOffer}) {
             </Container>
     
         )
+        
     }
+
+
+        
    return toRender;
    
 }
