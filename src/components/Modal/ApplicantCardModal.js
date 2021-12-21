@@ -1,15 +1,16 @@
 import React,{useState} from "react";
 import Modal from 'react-modal';
 import styled from 'styled-components';
-import {CloseO} from '@styled-icons/evil/CloseO';
 import { Rating } from 'react-simple-star-rating'
 import Resume from '../Resume';
+import colorPicker from '../../testData/colorPicker';
 
 let newId;
 let counter=0;
 
 const customStyles = {
   content: {
+    backgroundColor: colorPicker.primary,
     position: 'absolute',
     width:'55%',
     height: '80%',
@@ -24,21 +25,38 @@ const Container = styled.div`
 `;
 
 
-const StyledCloseBtn = styled(CloseO)`
-    
-    top: 10px;     
+const StyledButton = styled.button`
+    margin:4px;
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: ${colorPicker.text};
+    background-color: ${colorPicker.third};
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px ${colorPicker.third};
+    transition: all 0.3s ease 0s;
     cursor: pointer;
-    height: 28px;
-    width: 28px;
-    opacity: 1;
-    position: absolute;    
-    z-index: 999;
-    right: 10px;
-    color: #222;
-    text-decoration: none;
-    text-align: center;
-    line-height: 28px;
-`; 
+    outline: none;
+    &:hover {
+        background-color: ${colorPicker.fourth};
+        box-shadow: 0px 15px 20px ${colorPicker.fourth};
+        color: ${colorPicker.text}
+        transform: translateY(-7px);
+    }
+    
+`;
+
+const BtnModalContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+`;
 
 Modal.setAppElement('#root');
 
@@ -107,13 +125,11 @@ function ApplicantCardModal({candidate, candidateState, setCandidateState, activ
         contentLabel="CV modal"
       >
         <Container>
-
-            <Resume presentation={candidate.presentation} jobExperienceState={candidate}/>
-
-
+          <Resume presentation={candidate.presentation} jobExperienceState={candidate} candidateView={false}/>
         </Container>
-
-        <StyledCloseBtn onClick={closeModal}></StyledCloseBtn>
+        <BtnModalContainer>
+          <StyledButton onClick={closeModal}>Close</StyledButton>
+        </BtnModalContainer>
       </Modal>
     </div>
   );
