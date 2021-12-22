@@ -109,7 +109,10 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
                     password: form.passwordInputGrid.value,
                     phone: form.phoneInputGrid.value,
                     experience: [],
+                    education: [],
                     rate: [],
+                    personality: [{id:'personality-1', name:'Openness', value:50}, {id:'personality-2', name:'Conscintiousness', value:50},{id:'personality-3', name:'Extroversion', value:50},{id:'personality-4', name:'Agreableness', value:70},{id:'personality-5', name:'Neuroticism', value:50},],
+                    competencies: []
 
                 }]
       
@@ -124,7 +127,10 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
                 password: form.passwordInputGrid.value,
                 phone: form.phoneInputGrid.value,
                 experience: [],
-                rate: []
+                education: [],
+                rate: [],
+                personality: [{id:'personality-1', name:'Openness', value:50}, {id:'personality-2', name:'Conscintiousness', value:50},{id:'personality-3', name:'Extroversion', value:50},{id:'personality-4', name:'Agreableness', value:70},{id:'personality-5', name:'Neuroticism', value:50},],
+                competencies: []
             })
                 setCandidateLoggedIn(true)
                 
