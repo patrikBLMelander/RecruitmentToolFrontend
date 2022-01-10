@@ -11,55 +11,17 @@ import colorPicker from '../testData/colorPicker';
 import StyledButton from '../components/StyledButton';
 import Footer from '../components/Footer';
 
+import { useRecoilState } from "recoil";
+import {atomUser, atomCandidates} from "../atoms/atomStates";
+
 let counter = 9;
 let newId = "candidate-" + counter;
 let emailTaken=false;
-const Container = styled.div`
-    font-family: 'Roboto', sans-serif; 
-    position: fixed;
-    text-align: center;
-    background-color: ${colorPicker.primary};
-    height: 100%;
-    width: 100%;
-    z-index: 1,
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    padding-top: 16px;
-    
-`;
 
-const InnerContainer = styled.div`
-    font-family: 'Roboto', sans-serif; 
-    display: flex;
-    justify-content: center;
-    margin-top: 10%;
-    
-`;
 
-const PublishContainer = styled.div`
-    text-align: right;
-    display: flex;
-    padding: 8px;
-    margin-left:40px
-
-`;
-
-const StyleH1 = styled.h1`
-    color: ${colorPicker.fifth};
-    font-family: 'Roboto', sans-serif;      
-    margin-top: 8%;
-`;
-
-const CheckboxDiv = styled.div`
-    font-family: 'Roboto', sans-serif;   
-    display: flex;
-    margin-left: 50px;
-    margin-top: 10px;
-    color: ${colorPicker.text};
-`
-
-function Registrer({candidateState, setCandidateState, setActiveCandidate, setCandidateLoggedIn}) {
+function Registrer() {
+    const [user, setUser] = useRecoilState(atomUser);
+    const [candidates, setCandidates] = useRecoilState(atomCandidates);
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
     const [animal] = useState(Animal);
@@ -72,7 +34,7 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
           event.stopPropagation();
         }else{
             
-            candidateState.map(candidateInMap =>{
+            candidates.candidateTestData.map(candidateInMap =>{
                 if(candidateInMap.email.toLowerCase()===form.emailInputGrid.value.toLowerCase() ||form.emailInputGrid.value.toLowerCase()=== "adminmail@gmail.com"){
                     emailTaken = true;
                 }
@@ -99,9 +61,9 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
                 newId = "candidate-" + counter
                 const nickNameNumber = Math.floor(Math.random() * 224);
     
-                const newCandidateState = [...candidateState,  { 
-                    id: newId, 
-                    nickName: animal[nickNameNumber],
+                const newCandidateState = [...candidates.candidateTestData,  { 
+                    id: newId, //Detta ska skapas i backend
+                    nickName: animal[nickNameNumber], // ska bara generera numret om man vill kunna ställa in tex huvudstäder/djur/länder mm
                     firstName: form.firstNameInputGrid.value,
                     LastName: form.lastNameInputGrid.value,
                     presentation: "",
@@ -111,13 +73,13 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
                     experience: [],
                     education: [],
                     rate: [],
-                    personality: [{id:'personality-1', name:'Openness', value:50}, {id:'personality-2', name:'Conscintiousness', value:50},{id:'personality-3', name:'Extroversion', value:50},{id:'personality-4', name:'Agreableness', value:70},{id:'personality-5', name:'Neuroticism', value:50},],
+                    personality: [{id:'personality-1', name:'Openness', value:50}, {id:'personality-2', name:'Conscintiousness', value:50},{id:'personality-3', name:'Extroversion', value:50},{id:'personality-4', name:'Agreableness', value:50},{id:'personality-5', name:'Neuroticism', value:50},],
                     competencies: []
 
                 }]
       
-                setCandidateState(newCandidateState);
-                setActiveCandidate({
+                setCandidates(newCandidateState);
+                setUser({
                 id: newId, 
                 nickName: animal[nickNameNumber],
                 firstName: form.firstNameInputGrid.value,
@@ -132,7 +94,6 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
                 personality: [{id:'personality-1', name:'Openness', value:50}, {id:'personality-2', name:'Conscintiousness', value:50},{id:'personality-3', name:'Extroversion', value:50},{id:'personality-4', name:'Agreableness', value:70},{id:'personality-5', name:'Neuroticism', value:50},],
                 competencies: []
             })
-                setCandidateLoggedIn(true)
                 
                 Navigate("/home")
                 }
@@ -210,3 +171,48 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
 }
 
 export default Registrer;
+
+const Container = styled.div`
+    font-family: 'Roboto', sans-serif; 
+    position: fixed;
+    text-align: center;
+    background-color: ${colorPicker.primary};
+    height: 100%;
+    width: 100%;
+    z-index: 1,
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 16px;
+    
+`;
+
+const InnerContainer = styled.div`
+    font-family: 'Roboto', sans-serif; 
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    
+`;
+
+const PublishContainer = styled.div`
+    text-align: right;
+    display: flex;
+    padding: 8px;
+    margin-left:40px
+
+`;
+
+const StyleH1 = styled.h1`
+    color: ${colorPicker.fifth};
+    font-family: 'Roboto', sans-serif;      
+    margin-top: 8%;
+`;
+
+const CheckboxDiv = styled.div`
+    font-family: 'Roboto', sans-serif;   
+    display: flex;
+    margin-left: 50px;
+    margin-top: 10px;
+    color: ${colorPicker.text};
+`
