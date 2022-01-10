@@ -12,6 +12,11 @@ export const atomUser = atom({
 
 export const atomAdmin = atom({
   key: "atomAdmin",
+  default: {},
+});
+
+export const atomIsAdmin = atom({
+  key: "atomIsAdmin",
   default: false,
 });
 
@@ -23,6 +28,11 @@ export const atomCandidates = atom({
 export const atomJobOffers = atom({
   key: "atomJobOffers",
   default: {jobOfferTestData},
+});
+
+export const atomActiveJob = atom({
+  key: "atomActiveJob",
+  default: {},
 });
 
 export const atomColorPicker = atom({

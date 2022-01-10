@@ -6,6 +6,126 @@ import colorPicker from '../testData/colorPicker';
 import Modal from 'react-modal';
 import JobOfferPreview from './JobOfferPreview'
          
+import { useRecoilState } from "recoil";
+import { atomUser, atomJobOffers, atomCandidates, atomAdmin, atomActiveJob, atomIsAdmin } from "../atoms/atomStates";
+
+
+
+                
+function JobOfferCard({index, jobOfferingsInMap, totalCandidates}){
+    
+    const [user, setUser] = useRecoilState(atomUser);
+    const [admin, setAdmin] = useRecoilState(atomAdmin);
+    const [jobOffers, setJobOffers] = useRecoilState(atomJobOffers);
+    const [activeJob, setActiveJob] = useRecoilState(atomActiveJob);
+    const [isAdmin, setIsAdmin] = useRecoilState(atomIsAdmin);
+    
+    
+    const navigate = useNavigate();
+    const [modalIsOpen, setIsOpen] = useState(false);
+    function openModal() {
+      setIsOpen(true);
+    }
+    function closeModal() {
+      setIsOpen(false);
+    }
+
+    function setBtnText(){
+
+        if(isAdmin){
+            return "Candidate"
+        }else { return "Apply"}
+        
+    }
+
+
+    function setJobToWorkWith(event){
+        
+        if(isAdmin){
+            setActiveJob({...activeJob,
+                title: event.title,
+                id: event.id
+            })
+            navigate("/admin/recruitment-page")
+        }
+        
+        if(user.id === null){
+            navigate("/candidate/register")
+        }
+        else{
+            let alreadyApplied = false;
+            
+            jobOffers.jobOfferTestData[index].recruitmentSteps.map(recruitmentStepsInMap =>{
+                recruitmentStepsInMap.candidateIds.map(candidateIdsInMap=>{
+                    if(user.id === candidateIdsInMap){
+                       
+                        alreadyApplied=true
+                        Swal.fire({
+                            title: 'Not Applied!',
+                            text: 'You have already applied for this role.',
+                            icon: 'warning',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                    }
+                    return null;
+                })
+                return null;
+            })
+            if(!alreadyApplied){
+                Swal.fire({
+                    title: 'Apply?',
+                    text: 'Do you want to apply for this role',
+                    icon: 'question',
+                    showConfirmButton: true,
+                    confirmButtonText: "Apply",
+                    showCancelButton: true,
+                    cancelButtonText: "Not now"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        let newJobOffering = jobOffers.jobOfferTestData
+                        newJobOffering[index].recruitmentSteps[0].candidateIds = [...jobOffers.jobOfferTestData[index].recruitmentSteps[0].candidateIds, user.id]
+            
+                        setJobOffers.jobOfferTestData(newJobOffering)
+                        navigate("/candidate/my-page")
+                    } 
+                })
+            }
+        }
+
+    }
+    return(
+        <CardDiv key={index}>
+            <Image src={jobOffers.jobOfferTestData[index].imageUrl} onClick={openModal}/>
+            <CardBody>
+                <StyledH4>{jobOffers.jobOfferTestData[index].title}</StyledH4>
+                <PExpire>Expire: {jobOffers.jobOfferTestData[index].applyDate}</PExpire>
+                <BtnContainer>
+                <StyledButton onClick={() => setJobToWorkWith(jobOffers.jobOfferTestData[index])} variant="primary" >{setBtnText()}</StyledButton>
+                </BtnContainer>
+                <CadnidateInfoDiv>
+                    <PNew show={isAdmin}>New: {jobOffers.jobOfferTestData[index].recruitmentSteps[0].candidateIds.length}</PNew>
+                    <PTotal show={isAdmin}>Total: {totalCandidates}</PTotal>
+                </CadnidateInfoDiv>
+            </CardBody>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="JobOffer modal"
+            >
+                    <JobOfferPreview jobOffer={jobOfferingsInMap}/>
+                    <BtnModalContainer>
+                        <StyledButton onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">{setBtnText()}</StyledButton>
+                        <StyledButton onClick={closeModal} variant="primary">{"Close"}</StyledButton>
+                    </BtnModalContainer>
+            </Modal>
+    </CardDiv>
+
+    )
+}
+
+export default JobOfferCard;
 
 const customStyles = {
     content: {
@@ -124,108 +244,5 @@ const StyledButton = styled.button`
     }
     
 `;
-
-
-                
-function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, totalCandidates, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn, activeCandidate}){
-    const navigate = useNavigate();
-    const [modalIsOpen, setIsOpen] = useState(false);
-    function openModal() {
-      setIsOpen(true);
-    }
-    function closeModal() {
-      setIsOpen(false);
-    }
- 
-    let btnText = "Apply";
-    if(adminLoggedIn===true){
-        btnText="Candidates"
-    }
-
-    function setJobToWorkWith(event){
-        
-        if(candidateLoggedIn===false){
-            navigate("/candidate/register")
-        }
-        if(candidateLoggedIn===true){
-            let alreadyApplied = false;
-            
-            jobOfferings[index].recruitmentSteps.map(recruitmentStepsInMap =>{
-                recruitmentStepsInMap.candidateIds.map(candidateIdsInMap=>{
-                    if(activeCandidate.id === candidateIdsInMap){
-                       
-                        alreadyApplied=true
-                        Swal.fire({
-                            title: 'Not Applied!',
-                            text: 'You have already applied for this role.',
-                            icon: 'warning',
-                            showConfirmButton: false,
-                            timer: 3000
-                        })
-                    }
-                    return null;
-                })
-                return null;
-            })
-            if(!alreadyApplied){
-                Swal.fire({
-                    title: 'Apply?',
-                    text: 'Do you want to apply for this role',
-                    icon: 'question',
-                    showConfirmButton: true,
-                    confirmButtonText: "Apply",
-                    showCancelButton: true,
-                    cancelButtonText: "Not now"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        let newJobOffering = jobOfferings
-                        newJobOffering[index].recruitmentSteps[0].candidateIds = [...jobOfferings[index].recruitmentSteps[0].candidateIds, activeCandidate.id]
-            
-                        setJobOfferings(newJobOffering)
-                        navigate("/candidate/my-page")
-                    } 
-                })
-            }
-        }
-        if(adminLoggedIn===true){
-            setActiveJob({...activeJob,
-                title: event.title,
-                id: event.id
-            })
-            navigate("/admin/recruitment-page")
-        }
-    }
-    return(
-        <CardDiv key={index}>
-            <Image src={jobOfferingsInMap.imageUrl} onClick={openModal}/>
-            <CardBody>
-                <StyledH4>{jobOfferingsInMap.title}</StyledH4>
-                <PExpire>Expire: {jobOfferingsInMap.applyDate}</PExpire>
-                <BtnContainer>
-                <StyledButton onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">{btnText}</StyledButton>
-                </BtnContainer>
-                <CadnidateInfoDiv>
-                    <PNew show={adminLoggedIn}>New: {jobOfferingsInMap.recruitmentSteps[0].candidateIds.length}</PNew>
-                    <PTotal show={adminLoggedIn}>Total: {totalCandidates}</PTotal>
-                </CadnidateInfoDiv>
-            </CardBody>
-            <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                style={customStyles}
-                contentLabel="JobOffer modal"
-            >
-                    <JobOfferPreview jobOffer={jobOfferingsInMap}/>
-                    <BtnModalContainer>
-                        <StyledButton onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">{btnText}</StyledButton>
-                        <StyledButton onClick={closeModal} variant="primary">{"Close"}</StyledButton>
-                    </BtnModalContainer>
-            </Modal>
-    </CardDiv>
-
-    )
-}
-
-export default JobOfferCard;
                 
         

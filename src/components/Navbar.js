@@ -12,7 +12,7 @@ import {Briefcase} from '@styled-icons/boxicons-solid/Briefcase';
 import {AddressCard} from '@styled-icons/fa-regular/AddressCard';
 
 import { useRecoilState } from "recoil";
-import { atomUser, atomAdmin} from "../atoms/atomStates";
+import { atomUser, atomAdmin, atomIsAdmin} from "../atoms/atomStates";
 
 
 
@@ -20,10 +20,12 @@ import { atomUser, atomAdmin} from "../atoms/atomStates";
 
     const [admin, setAdmin] = useRecoilState(atomAdmin);
     const [user, setUser] = useRecoilState(atomUser);
+    const [isadmin, setIsAdmin] = useRecoilState(atomIsAdmin);
 
     function logOut(){
         setUser({})
         setAdmin({})
+        setIsAdmin(false)
     }
      
 

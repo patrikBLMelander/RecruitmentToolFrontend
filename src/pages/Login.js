@@ -12,7 +12,7 @@ import StyledButton from '../components/StyledButton';
 import Footer from '../components/Footer';
 
 import { useRecoilState } from "recoil";
-import { atomUser, atomJobOffers, atomCandidates, atomColorPicker, atomAdmin} from "../atoms/atomStates";
+import { atomUser, atomJobOffers, atomCandidates, atomColorPicker, atomAdmin, atomIsAdmin} from "../atoms/atomStates";
 
 let loggedIn = false;
 
@@ -21,6 +21,7 @@ function Login() {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
 
+    const [isadmin, setIsAdmin] = useRecoilState(atomIsAdmin);
     const [admin, setAdmin] = useRecoilState(atomAdmin);
     const [user, setUser] = useRecoilState(atomUser);
     const [candidates, setCandidates] = useRecoilState(atomCandidates);
@@ -62,6 +63,7 @@ function Login() {
                     password: "1234",
                 })
                 loggedIn=true;
+                setIsAdmin(true)
                 Navigate("/home")
             }else{
                  //check CandidateLogin, this will be done properly in backend later
