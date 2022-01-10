@@ -11,45 +11,25 @@ import colorPicker from '../testData/colorPicker';
 import StyledButton from '../components/StyledButton';
 import Footer from '../components/Footer';
 
+import { useRecoilState } from "recoil";
+import { atomUser, atomJobOffers, atomCandidates, atomColorPicker, atomAdmin} from "../atoms/atomStates";
+
 let loggedIn = false;
-const Container = styled.div`
-    font-family: 'Roboto', sans-serif; 
-    position: fixed;
-    text-align: center;
-    background-color: ${colorPicker.primary};
-    height: 100%;
-    width: 100%;
-    z-index: 1,
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    padding-top: 16px;
-`;
-
-const InnerContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    margin-top: 10%;
-    
-`;
-
-const BtnContainer = styled.div`
-    text-align: right;
-    padding: 8px;
-    margin-right:40px
-`;
 
 
-const StyleH1 = styled.h1`
-    color: ${colorPicker.fifth};
-    margin-top: 8%;    
-`;
-
-function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdminLoggedIn, setActiveAdmin, candidateLoggedIn, adminLoggedIn, setActiveJob}) {
+function Login() {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
 
-    if(candidateLoggedIn===true || adminLoggedIn===true){
+    const [admin, setAdmin] = useRecoilState(atomAdmin);
+    const [user, setUser] = useRecoilState(atomUser);
+    const [jobOffers, setJobOffers] = useRecoilState(atomJobOffers);
+    const [candidates, setCandidates] = useRecoilState(atomCandidates);
+    const [colorPicker, setColorPicker] = useRecoilState(atomColorPicker);
+
+    if(user.id=== null || admin.id=== null){
+        console.log(user)
+        console.log(admin)
         Swal.fire({
             icon: 'info',
             title: 'Already logged in',
@@ -61,8 +41,7 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
             if (result.isConfirmed) {
                 Navigate("/home")
             }else{
-                setCandidateLoggedIn(false)
-                setAdminLoggedIn(false)
+                Navigate("/")
             }
         })
     }
@@ -77,23 +56,21 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
             // check Admin login, this will be done properly in backend later
             if(form.emailInputGrid.value === "adminmail@gmail.com" && form.passwordInputGrid.value === "1234"){
                 
-                setActiveAdmin({
+                setAdmin({
                     id: 'admin-1', 
                     firstName: "Patrik",
                     lastName: "Melander",
                     email: "adminmail@gmail.com",
                     password: "1234",
                 })
-                setCandidateLoggedIn(false)
-                setAdminLoggedIn(true)
-                loggedIn = true
+                loggedIn=true;
                 Navigate("/home")
             }else{
                  //check CandidateLogin, this will be done properly in backend later
-                 candidateState.map(candidateInMap => {
+                 candidates.candidateTestData.map(candidateInMap => {
                      if(candidateInMap.email.toLowerCase()===form.emailInputGrid.value.toLowerCase() && form.passwordInputGrid.value===candidateInMap.password){
                         
-                        setActiveCandidate({
+                        setUser({
                             id: candidateInMap.id, 
                             nickName: candidateInMap.nickName,
                             firstName: candidateInMap.firstName,
@@ -107,11 +84,8 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                             personality: candidateInMap.personality,
                             competencies:candidateInMap.competencies
                         })
-                        setCandidateLoggedIn(true)
-                        loggedIn = true
-                        setAdminLoggedIn(false)
                         setValidated(true)
-                        setActiveJob("")
+                        loggedIn=true;
                         Navigate("/home")
                     }
                     return null;
@@ -182,3 +156,36 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
 }
 
 export default Login;
+
+const Container = styled.div`
+    font-family: 'Roboto', sans-serif; 
+    position: fixed;
+    text-align: center;
+    background-color: ${colorPicker.primary};
+    height: 100%;
+    width: 100%;
+    z-index: 1,
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 16px;
+`;
+
+const InnerContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    
+`;
+
+const BtnContainer = styled.div`
+    text-align: right;
+    padding: 8px;
+    margin-right:40px
+`;
+
+
+const StyleH1 = styled.h1`
+    color: ${colorPicker.fifth};
+    margin-top: 8%;    
+`;
