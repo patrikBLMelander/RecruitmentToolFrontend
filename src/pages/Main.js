@@ -3,8 +3,58 @@ import styled from 'styled-components'
 import JobOfferCard from '../components/JobOfferCard';
 import colorPicker from '../testData/colorPicker';
 import StyledButton from '../components/StyledButton';
-import Footer from '../components/Footer';
 
+
+import Footer from '../components/Footer';
+import { useRecoilState } from "recoil";
+import { atomUser, atomJobOffers, atomCandidates, atomColorPicker } from "../atoms/atomStates";
+
+function Main(){
+    const [user, setUser] = useRecoilState(atomUser);
+    const [jobOffers, setJobOffers] = useRecoilState(atomJobOffers);
+    const [candidates, setCandidates] = useRecoilState(atomCandidates);
+    const [colorPicker, setColorPicker] = useRecoilState(atomColorPicker);
+    return(
+        <div>
+            <Container>
+                <StyleH1>Karriär</StyleH1>
+                <OuterCircleDiv>
+                    <StyledImg src="https://picsum.photos/id/0/200"/>
+                    <StyledImg src="https://picsum.photos/id/1067/200"/>
+                    <StyledImg src="https://picsum.photos/id/192/200"/>
+                </OuterCircleDiv>
+                <TextUnderPictures>
+                    <StyleH3>The Melander Company</StyleH3>
+                    <StyledP>
+                        Lorem ipsum dolor sit amet, aperiam reprehendunt sit et, veniam blandit apeirian id duo. Sea ex purto 
+                        disputando. Melius utamur intellegebat mel ex, vidisse laoreet disputationi ei qui. Graeci omnesque detraxit 
+                        vel ad, pri cibo libris ea. Te inani persius duo, vim eu verear signiferumque, vel denique nominavi consequat et.
+                    </StyledP>
+                    <BtnContainer>
+                    <StyledButton navigate={"register"}input={"Register"}/>
+                    <StyledButton navigate={"login"}input={"Login"}/>
+                    </BtnContainer>
+                </TextUnderPictures>
+                <JobCardDiv>
+                    {jobOffers.jobOfferTestData.map((jobOfferingsInMap, index) =>{
+                        let totalCandidates = 0;
+                        jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
+                            totalCandidates += recruitmentStepInMap.candidateIds.length
+                        return null;
+                        })
+                        return(
+                    
+                            <JobOfferCard key={jobOfferingsInMap.id} index={index} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates}/>
+                
+                        )})}
+                    </JobCardDiv>
+                </Container>
+                <Footer/>
+            </div>
+    )
+}
+
+export default Main;
 
 const Container = styled.div`
     position: fixed;
@@ -84,47 +134,3 @@ const StyledP = styled.p`
     margin-left: 34%;
     margin-right: 34%;
 `;
-
-function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn, setAdminLoggedIn}){
-
-    return(
-        <div>
-            <Container>
-                <StyleH1>Karriär</StyleH1>
-                <OuterCircleDiv>
-                    <StyledImg src="https://picsum.photos/id/0/200"/>
-                    <StyledImg src="https://picsum.photos/id/1067/200"/>
-                    <StyledImg src="https://picsum.photos/id/192/200"/>
-                </OuterCircleDiv>
-                <TextUnderPictures>
-                    <StyleH3>The Melander Company</StyleH3>
-                    <StyledP>
-                        Lorem ipsum dolor sit amet, aperiam reprehendunt sit et, veniam blandit apeirian id duo. Sea ex purto 
-                        disputando. Melius utamur intellegebat mel ex, vidisse laoreet disputationi ei qui. Graeci omnesque detraxit 
-                        vel ad, pri cibo libris ea. Te inani persius duo, vim eu verear signiferumque, vel denique nominavi consequat et.
-                    </StyledP>
-                    <BtnContainer>
-                    <StyledButton navigate={"register"}input={"Register"}/>
-                    <StyledButton navigate={"login"}input={"Login"}/>
-                    </BtnContainer>
-                </TextUnderPictures>
-                <JobCardDiv>
-                    {jobOfferings.map((jobOfferingsInMap, index) =>{
-                        let totalCandidates = 0;
-                        jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
-                            totalCandidates += recruitmentStepInMap.candidateIds.length
-                        return null;
-                        })
-                        return(
-                    
-                            <JobOfferCard key={jobOfferingsInMap.id} index={index} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
-                
-                        )})}
-                    </JobCardDiv>
-                </Container>
-                <Footer/>
-            </div>
-    )
-}
-
-export default Main;
