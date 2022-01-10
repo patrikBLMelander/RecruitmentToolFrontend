@@ -6,6 +6,47 @@ import JobOfferCard from '../components/JobOfferCard'
 import colorPicker from '../testData/colorPicker';
 import Footer from '../components/Footer';
 
+import { useRecoilState } from "recoil";
+import { atomUser, atomJobOffers, atomCandidates, atomAdmin, atomActiveJob } from "../atoms/atomStates";
+
+
+
+
+ function Home () {
+    const [user, setUser] = useRecoilState(atomUser);
+    const [jobOffers, setJobOffers] = useRecoilState(atomJobOffers);
+    const [activeJob, setActiveJob] = useRecoilState(atomAdmin);
+
+
+    return (
+        <div>
+        <Navbar/>
+        <Header/>
+    <Container>
+        <H3>Welcome {user.firstName} {user.lastName}</H3>
+        <JobCardDiv>
+        {jobOffers.jobOfferTestData.map((jobOfferingsInMap, index) =>{
+            let totalCandidates = 0;
+            jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
+                totalCandidates += recruitmentStepInMap.candidateIds.length
+                return null;
+                })
+
+             return(
+                <JobOfferCard key={index} index={index} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates} activeJob={activeJob}/>
+            )})}
+        </JobCardDiv>
+
+
+    </Container>
+    <Footer/>
+    </div>
+    )
+       
+}
+
+export default Home
+
 const Container = styled.div`
     background-color: ${colorPicker.primary};    
     padding-bottom: 5%;
@@ -40,34 +81,3 @@ const JobCardDiv = styled.div`
         flex: 1 1 calc(100% - 20px)
     }
 `;
-
-
- function Home ({jobOfferings, setJobOfferings, setActiveJob, activeJob, adminLoggedIn, candidateLoggedIn, activeCandidate, setActiveCandidate , setAdminLoggedIn, setCandidateLoggedIn}) {
-    return (
-        <div>
-        <Navbar setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
-        <Header activeJob={activeJob}/>
-    <Container>
-        <H3>Welcome {activeCandidate.firstName} {activeCandidate.lastName}</H3>
-        <JobCardDiv>
-        {jobOfferings.map((jobOfferingsInMap, index) =>{
-            let totalCandidates = 0;
-            jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
-                totalCandidates += recruitmentStepInMap.candidateIds.length
-                return null;
-                })
-
-             return(
-                <JobOfferCard key={index} index={index} jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} activeCandidate={activeCandidate}/>
-            )})}
-        </JobCardDiv>
-
-
-    </Container>
-    <Footer/>
-    </div>
-    )
-       
-}
-
-export default Home
