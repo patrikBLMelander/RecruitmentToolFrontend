@@ -4,11 +4,11 @@ import logo from '../logoipsum-logo-16.svg'
 import colorPicker from '../testData/colorPicker';
 
 import { useRecoilState } from "recoil";
-import {atomAdmin} from "../atoms/atomStates";
+import {atomActiveJob} from "../atoms/atomStates";
 
 
  function Header () {
-    const [activeJob, setActiveJob] = useRecoilState(atomAdmin);
+    const [activeJob, setActiveJob] = useRecoilState(atomActiveJob);
 
     return (
     <Container>
