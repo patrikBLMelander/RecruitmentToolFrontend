@@ -72,7 +72,7 @@ function Login() {
                             id: candidateInMap.id, 
                             nickName: candidateInMap.nickName,
                             firstName: candidateInMap.firstName,
-                            LastName: candidateInMap.lastName,
+                            lastName: candidateInMap.lastName,
                             presentation: candidateInMap.presentation,
                             email: candidateInMap.email,
                             password: candidateInMap.password,
