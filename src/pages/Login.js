@@ -23,9 +23,7 @@ function Login() {
 
     const [admin, setAdmin] = useRecoilState(atomAdmin);
     const [user, setUser] = useRecoilState(atomUser);
-    const [jobOffers, setJobOffers] = useRecoilState(atomJobOffers);
     const [candidates, setCandidates] = useRecoilState(atomCandidates);
-    const [colorPicker, setColorPicker] = useRecoilState(atomColorPicker);
 
     if(user.id=== null || admin.id=== null){
         console.log(user)
