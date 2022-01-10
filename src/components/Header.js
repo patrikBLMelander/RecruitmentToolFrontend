@@ -3,6 +3,24 @@ import styled from 'styled-components'
 import logo from '../logoipsum-logo-16.svg'
 import colorPicker from '../testData/colorPicker';
 
+import { useRecoilState } from "recoil";
+import {atomAdmin} from "../atoms/atomStates";
+
+
+ function Header () {
+    const [activeJob, setActiveJob] = useRecoilState(atomAdmin);
+
+    return (
+    <Container>
+        <Img src={logo} alt="React Logo" />
+        <H3>{activeJob.title}</H3>
+    </Container>
+    )
+       
+}
+
+export default Header
+
 const Container = styled.div`
     display: flex;
     background-color: ${colorPicker.primary};
@@ -30,17 +48,3 @@ const Img = styled.img`
 
 `;
 
-
-
- function Header ({activeJob, loggedIn}) {
-
-    return (
-    <Container>
-        <Img src={logo} alt="React Logo" />
-        <H3>{activeJob.title}</H3>
-    </Container>
-    )
-       
-}
-
-export default Header
