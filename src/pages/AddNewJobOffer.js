@@ -9,7 +9,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import colorPicker from '../testData/colorPicker';
 import StyledButton from '../components/StyledButton';
-import JobOfferPreview from '../components/JobOfferPreview';
+import JobOfferPreview from '../components/Modal/JobOfferPreview';
 
 
 let counter = 8;
