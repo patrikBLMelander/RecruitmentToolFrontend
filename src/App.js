@@ -17,16 +17,16 @@ function App() {
     const [jobOfferings, setJobOfferings] = useState(jobOfferingsTestData);
     const [activeJob, setActiveJob] = useState({title:"",id:""})
     const [activeCandidate, setActiveCandidate] = useState("")
-    const [adminLoggedIn, setAdminLoggedIn] = useState(false)
     const [candidateState, setCandidateState] = useState(candidateTestData);
     const [candidateLoggedIn, setCandidateLoggedIn] = useState(false)
+    const [adminLoggedIn, setAdminLoggedIn] = useState(false)
 
 
     return(
         <Router> 
             <div>
                 <Routes>
-                    <Route path="/" element= {<Main adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} candidateLoggedIn={candidateLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} jobOfferings={jobOfferings}/>}/>
+                    <Route path="/" element= {<Main adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} jobOfferings={jobOfferings}/>}/>
                     <Route path="/candidate/register" element= {<Register setCandidateState={setCandidateState} candidateState={candidateState} activeCandidate={activeCandidate} setActiveCandidate={setActiveCandidate} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} candidateLoggedIn={candidateLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}/>}/>
                     <Route path="/candidate/my-page" element= {<CandidateMyPage  setCandidateState={setCandidateState} candidateState={candidateState} activeCandidate={activeCandidate} setActiveCandidate={setActiveCandidate} jobOfferings={jobOfferings} activeJob={activeJob} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} candidateLoggedIn={candidateLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}/>}/>
                     <Route path="/candidate/in-process" element= {<CandidateProcesses jobOfferings={jobOfferings} activeJob={activeJob} activeCandidate={activeCandidate} setCandidateState={setCandidateState} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} candidateLoggedIn={candidateLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}/>}/>
