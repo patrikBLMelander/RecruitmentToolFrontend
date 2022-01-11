@@ -15,80 +15,7 @@ import StyledButton from '../components/StyledButton';
 import Slider from '@mui/material/Slider';
 
 
-const Container = styled.div`
-    font-family: 'Roboto', sans-serif; 
-    text-align: center;
-    background-color: ${colorPicker.primary};
-    height: 100%;
-    width: 100%;
-    z-index: 1,
-    overflow-x: hidden;
-    padding-top: 16px;
-    margin-left: 160px
-`;
 
-const InnerContainer = styled.div`
-    color: ${colorPicker.text};
-    font-family: 'Roboto', sans-serif; 
-    justify-content: center;
-    margin-top: 10%;
-    margin-left:10%;
-    margin-right:10%;
-    
-`;
-
-const PersonalityDiv = styled.div`
-color: ${colorPicker.text};
-font-family: 'Roboto', sans-serif; 
-justify-content: center;
-margin-left:10%;
-margin-right:10%;
-
-`;
-
-const TraitDiv = styled.div`
-color: ${colorPicker.text};
-font-family: 'Roboto', sans-serif; 
-justify-content: center;
-margin-bottom: 10%;
-`;
-
-const TraitText = styled.div`
-color: ${colorPicker.text};
-font-family: 'Roboto', sans-serif; 
-display:flex;
-justify-content: space-between;
-
-`;
-
-const ResumeContainer = styled.div`
-    margin-right:4%;
-    padding-bottom: 10%;
-`;
-
-const CompetenceDiv = styled.div`
-    display: flex;
-    margin-right: 10px;
-    justify-content: center;
-`;
-
-const SeperatorDiv = styled.div`
-    justify-content: center;
-    margin-top: 5%;
-    margin-right:4%;
-    border-style: solid;
-    border-color:  #b5bcc7;
-    
-`;
-const H4 = styled.h4`
-    font-family: 'Roboto', sans-serif; 
-    color: ${colorPicker.text};
-    margin-top: 7%;
-`;
-const H5 = styled.h5`
-    font-family: 'Roboto', sans-serif; 
-    color: ${colorPicker.text};
-`;
 
 
 function CandidateMyPage({jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, activeCandidate, setActiveCandidate, setCandidateState, candidateState , setAdminLoggedIn, setCandidateLoggedIn}){
@@ -539,5 +466,80 @@ return(
 
 }
 export default CandidateMyPage
+
+const Container = styled.div`
+    font-family: 'Roboto', sans-serif; 
+    text-align: center;
+    background-color: ${colorPicker.primary};
+    height: 100%;
+    width: 100%;
+    z-index: 1,
+    overflow-x: hidden;
+    padding-top: 16px;
+    margin-left: 160px
+`;
+
+const InnerContainer = styled.div`
+    color: ${colorPicker.text};
+    font-family: 'Roboto', sans-serif; 
+    justify-content: center;
+    margin-top: 10%;
+    margin-left:10%;
+    margin-right:10%;
+    
+`;
+
+const PersonalityDiv = styled.div`
+color: ${colorPicker.text};
+font-family: 'Roboto', sans-serif; 
+justify-content: center;
+margin-left:10%;
+margin-right:10%;
+
+`;
+
+const TraitDiv = styled.div`
+color: ${colorPicker.text};
+font-family: 'Roboto', sans-serif; 
+justify-content: center;
+margin-bottom: 10%;
+`;
+
+const TraitText = styled.div`
+color: ${colorPicker.text};
+font-family: 'Roboto', sans-serif; 
+display:flex;
+justify-content: space-between;
+
+`;
+
+const ResumeContainer = styled.div`
+    margin-right:4%;
+    padding-bottom: 10%;
+`;
+
+const CompetenceDiv = styled.div`
+    display: flex;
+    margin-right: 10px;
+    justify-content: center;
+`;
+
+const SeperatorDiv = styled.div`
+    justify-content: center;
+    margin-top: 5%;
+    margin-right:4%;
+    border-style: solid;
+    border-color:  #b5bcc7;
+    
+`;
+const H4 = styled.h4`
+    font-family: 'Roboto', sans-serif; 
+    color: ${colorPicker.text};
+    margin-top: 7%;
+`;
+const H5 = styled.h5`
+    font-family: 'Roboto', sans-serif; 
+    color: ${colorPicker.text};
+`;
 
    

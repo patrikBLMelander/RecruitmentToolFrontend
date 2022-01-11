@@ -5,17 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import colorPicker from '../testData/colorPicker';
 
-const Container = styled.div`
-background-color: ${colorPicker.primary};
-color: ${colorPicker.text};
-display: flex;
-position: fixed;
-padding-bottom: 100%;
-padding-left: 163px;
-padding-top: 50px;
-z-index: 0;
-width: 100%;
-`;
+
 
 function CandidateSearch({jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob , setAdminLoggedIn, setCandidateLoggedIn}) {
     return(
@@ -36,3 +26,15 @@ function CandidateSearch({jobOfferings, adminLoggedIn, candidateLoggedIn, active
 }
 
 export default CandidateSearch;
+
+const Container = styled.div`
+background-color: ${colorPicker.primary};
+color: ${colorPicker.text};
+display: flex;
+position: fixed;
+padding-bottom: 100%;
+padding-left: 163px;
+padding-top: 50px;
+z-index: 0;
+width: 100%;
+`;

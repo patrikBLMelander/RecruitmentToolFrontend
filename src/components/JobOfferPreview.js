@@ -4,6 +4,67 @@ import colorPicker from '../testData/colorPicker';
 
 
 
+
+
+function JobOfferPreview ({jobOffer}) {
+    
+
+    let toRender;
+
+    if (jobOffer===""){
+        console.log("Renderar inget")
+        toRender=(
+            <div>
+            </div>
+        )
+    }else{
+       
+        toRender = (
+
+            <Container>
+                <LeftDiv>
+                    <StyledImg src={jobOffer.imageUrl}></StyledImg>
+                    <ContactInfo> 
+                        <H5>Contact</H5>
+                        <p>Patrik Melander</p>
+                        <p>Tel: 0704 01 11 19</p>
+                        <p>PatrikJMelander@gmail.com</p>
+                    </ContactInfo> 
+    
+                    <Competencies> 
+                        <H5>Requested Competencies</H5>
+                        {jobOffer.competencies.map(competenceInmap =>{
+                            if(jobOffer.competencies[0]===""){
+                                return <p>no competencies specified</p>
+                            }else{
+                                return (<Competence key={competenceInmap.id}>{competenceInmap.name} - {competenceInmap.years} years</Competence>)
+                            }     
+                })} 
+                </Competencies>
+                </LeftDiv>
+                <RightDiv>
+                
+                    <Title>{jobOffer.title}</Title>
+                    <Preview>{jobOffer.preview} </Preview>
+                    <H5>About the Company</H5>
+                <p>{jobOffer.companyDescription} </p>
+                <H5>Your Role</H5>
+                <Role>{jobOffer.aboutRole}</Role>
+                </RightDiv>
+            </Container>
+    
+        )
+        
+    }
+
+
+        
+   return toRender;
+   
+}
+
+export default JobOfferPreview;
+
 const Container = styled.div`
     color: ${colorPicker.text};
     font-family: 'Roboto', sans-serif; 
@@ -65,62 +126,3 @@ const StyledImg = styled.img`
     margin: 15px;
 `;
 
-
-function JobOfferPreview ({jobOffer}) {
-    
-
-    let toRender;
-
-    if (jobOffer===""){
-        console.log("Renderar inget")
-        toRender=(
-            <div>
-            </div>
-        )
-    }else{
-       
-        toRender = (
-
-            <Container>
-                <LeftDiv>
-                    <StyledImg src={jobOffer.imageUrl}></StyledImg>
-                    <ContactInfo> 
-                        <H5>Contact</H5>
-                        <p>Patrik Melander</p>
-                        <p>Tel: 0704 01 11 19</p>
-                        <p>PatrikJMelander@gmail.com</p>
-                    </ContactInfo> 
-    
-                    <Competencies> 
-                        <H5>Requested Competencies</H5>
-                        {jobOffer.competencies.map(competenceInmap =>{
-                            if(jobOffer.competencies[0]===""){
-                                return <p>no competencies specified</p>
-                            }else{
-                                return (<Competence key={competenceInmap.id}>{competenceInmap.name} - {competenceInmap.years} years</Competence>)
-                            }     
-                })} 
-                </Competencies>
-                </LeftDiv>
-                <RightDiv>
-                
-                    <Title>{jobOffer.title}</Title>
-                    <Preview>{jobOffer.preview} </Preview>
-                    <H5>About the Company</H5>
-                <p>{jobOffer.companyDescription} </p>
-                <H5>Your Role</H5>
-                <Role>{jobOffer.aboutRole}</Role>
-                </RightDiv>
-            </Container>
-    
-        )
-        
-    }
-
-
-        
-   return toRender;
-   
-}
-
-export default JobOfferPreview;

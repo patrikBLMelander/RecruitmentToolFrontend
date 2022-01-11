@@ -24,8 +24,11 @@ const Container = styled.div`
 
 
 
-function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, candidateState, setCandidateState, adminLoggedIn, candidateLoggedIn , setAdminLoggedIn, setCandidateLoggedIn}){
-    
+function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, setActiveJob, candidateState, setCandidateState, adminLoggedIn, candidateLoggedIn , setAdminLoggedIn, setCandidateLoggedIn}){
+    console.log(jobOfferings)
+    console.log(activeJob)
+    console.log(candidateState)
+    console.log(adminLoggedIn)
     
 
      const onDragEnd = result => {
@@ -122,7 +125,7 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, candidateSt
 
     return (
         <div>
-        <Navbar setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
+        <Navbar setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} setActiveJob={setActiveJob}/>
         <Header activeJob={activeJob}/>
         <DragDropContext onDragEnd={onDragEnd} >
         <Droppable
@@ -135,15 +138,8 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, candidateSt
                 {...provided.droppableProps}
                 ref={provided.innerRef}
             >
-
                 {jobOfferings.map((jobOfferingsInMap, index)=>{
-
-                    
-                    
                     if(jobOfferingsInMap.id === activeJob.id){
-                        
-
-                        
                         return jobOfferingsInMap.recruitmentSteps.map((recruitmentStepsInMap, index) =>(
                             
                                 <RecruitmentProcessSteps 

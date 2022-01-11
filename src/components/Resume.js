@@ -5,107 +5,10 @@ import colorPicker from '../testData/colorPicker';
 import Swal from 'sweetalert2';
 import Slider from '@mui/material/Slider';
 
-const OuterContainer = styled.div`
-    color: ${colorPicker.text};
-    font-family: 'Roboto', sans-serif; 
-    text-align: center;
-    background-color: ${colorPicker.primary};
-    width: 100%;
-    display: flex;
-    border-style: double;
-    border-color:  ${colorPicker.text};
-`;
-const LeftDiv = styled.div`
-    width: 25%;
-    border-right: solid;
-    border-color:  ${colorPicker.secondary};
-    padding: 5px;
-`;
-const RightDiv = styled.div`
-    padding: 5px;
-    width: 75%;
-`;
-const StyledImg = styled.img`
-    border-radius: 100%;
-    text-align: center;
-    margin: 15px;
-`;
-const AboutMe = styled.div`
-    border-top: solid;
-    border-bottom: solid;
-    border-color:${colorPicker.secondary};
-`;
-
-const Skills = styled.div`
-    border-color:${colorPicker.secondary};
-`;
-const Experience = styled.div`
-    border-bottom: solid;
-    border-color:${colorPicker.secondary};
-`;
-const TitleAndPeriod = styled.div`
-    display:flex;
-    margin-left:10px;
-`;
-const JobDescription = styled.div`
-    margin: 0px 15px 25px 15px;
-    text-align: left;    
-    
-`;
-const CompetenceDiv = styled.div`
-    display: flex;
-    margin: 0px 15px 25px 15px;
-    text-align: left;    
-    
-`;
-
-const H3 = styled.h3`
-    
-`;
-const H5 = styled.h5`
-    margin-right: 15px;
-    margin-top: 10px;
-`;
-const H6 = styled.h6`
-    margin-right: 15px;
-`;
-const P = styled.p`
-    
-`;
-const TraitDiv = styled.div`
-color: ${colorPicker.text};
-font-family: 'Roboto', sans-serif; 
-justify-content: center;
-`;
-
-const TraitText = styled.div`
-color: ${colorPicker.text};
-font-family: 'Roboto', sans-serif; 
-display:flex;
-justify-content: space-between;
-
-`;
-
-const StyledCloseBtn = styled(CloseO)`
-    display:flex;
-    margin-left: auto; 
-    margin-right: 0;
-    cursor: pointer;
-    height: 28px;
-    width: 28px;
-    color: #fff;
-`; 
-const PersonalityDiv = styled.div`
-color: ${colorPicker.text};
-font-family: 'Roboto', sans-serif; 
-justify-content: center;
-margin-left:10%;
-margin-right:10%;
-
-`;
 
 
-function Resume ({jobExperienceState, setJobExperienceState, presentation, candidateState, setCandidateState, setActiveCandidate, activeCandidate, candidateView}) {
+
+function Resume ({jobExperienceState, setJobExperienceState, presentation, candidateState, setCandidateState, setActiveCandidate, candidateView}) {
 
 
     function removeExperience(experienceInMap){
@@ -459,3 +362,102 @@ function Resume ({jobExperienceState, setJobExperienceState, presentation, candi
 }
 
 export default Resume;
+
+const OuterContainer = styled.div`
+    color: ${colorPicker.text};
+    font-family: 'Roboto', sans-serif; 
+    text-align: center;
+    background-color: ${colorPicker.primary};
+    width: 100%;
+    display: flex;
+    border-style: double;
+    border-color:  ${colorPicker.text};
+`;
+const LeftDiv = styled.div`
+    width: 25%;
+    border-right: solid;
+    border-color:  ${colorPicker.secondary};
+    padding: 5px;
+`;
+const RightDiv = styled.div`
+    padding: 5px;
+    width: 75%;
+`;
+const StyledImg = styled.img`
+    border-radius: 100%;
+    text-align: center;
+    margin: 15px;
+`;
+const AboutMe = styled.div`
+    border-top: solid;
+    border-bottom: solid;
+    border-color:${colorPicker.secondary};
+`;
+
+const Skills = styled.div`
+    border-color:${colorPicker.secondary};
+`;
+const Experience = styled.div`
+    border-bottom: solid;
+    border-color:${colorPicker.secondary};
+`;
+const TitleAndPeriod = styled.div`
+    display:flex;
+    margin-left:10px;
+`;
+const JobDescription = styled.div`
+    margin: 0px 15px 25px 15px;
+    text-align: left;    
+    
+`;
+const CompetenceDiv = styled.div`
+    display: flex;
+    margin: 0px 15px 25px 15px;
+    text-align: left;    
+    
+`;
+
+const H3 = styled.h3`
+    
+`;
+const H5 = styled.h5`
+    margin-right: 15px;
+    margin-top: 10px;
+`;
+const H6 = styled.h6`
+    margin-right: 15px;
+`;
+const P = styled.p`
+    
+`;
+const TraitDiv = styled.div`
+color: ${colorPicker.text};
+font-family: 'Roboto', sans-serif; 
+justify-content: center;
+`;
+
+const TraitText = styled.div`
+color: ${colorPicker.text};
+font-family: 'Roboto', sans-serif; 
+display:flex;
+justify-content: space-between;
+
+`;
+
+const StyledCloseBtn = styled(CloseO)`
+    display:flex;
+    margin-left: auto; 
+    margin-right: 0;
+    cursor: pointer;
+    height: 28px;
+    width: 28px;
+    color: #fff;
+`; 
+const PersonalityDiv = styled.div`
+color: ${colorPicker.text};
+font-family: 'Roboto', sans-serif; 
+justify-content: center;
+margin-left:10%;
+margin-right:10%;
+
+`;

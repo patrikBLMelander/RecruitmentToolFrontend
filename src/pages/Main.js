@@ -33,15 +33,8 @@ function Main({jobOfferings, adminLoggedIn, candidateLoggedIn}){
                 </TextUnderPictures>
                 <JobCardDiv>
                     {jobOfferings.map((jobOfferingsInMap, index) =>{
-                        let totalCandidates = 0;
-                        jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
-                            totalCandidates += recruitmentStepInMap.candidateIds.length
-                        return null;
-                        })
                         return(
-                    
-                            <JobOfferCard key={jobOfferingsInMap.id} index={index} jobOfferings={jobOfferings} totalCandidates={totalCandidates} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
-                
+                            <JobOfferCard key={jobOfferingsInMap.id} index={index} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
                         )})}
                     </JobCardDiv>
                 </Container>

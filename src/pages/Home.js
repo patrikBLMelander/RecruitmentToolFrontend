@@ -42,23 +42,17 @@ const JobCardDiv = styled.div`
 `;
 
 
- function Home ({jobOfferings, setJobOfferings, setActiveJob, activeJob, adminLoggedIn, candidateLoggedIn, activeCandidate, setActiveCandidate , setAdminLoggedIn, setCandidateLoggedIn}) {
+ function Home ({jobOfferings, setJobOfferings, setActiveJob, activeJob, adminLoggedIn, candidateLoggedIn, activeCandidate , setAdminLoggedIn, setCandidateLoggedIn}) {
     return (
         <div>
-        <Navbar setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
+        <Navbar setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} setActiveJob={setActiveJob}/>
         <Header activeJob={activeJob}/>
     <Container>
         <H3>Welcome {activeCandidate.firstName} {activeCandidate.lastName}</H3>
         <JobCardDiv>
         {jobOfferings.map((jobOfferingsInMap, index) =>{
-            let totalCandidates = 0;
-            jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
-                totalCandidates += recruitmentStepInMap.candidateIds.length
-                return null;
-                })
-
              return(
-                <JobOfferCard key={index} index={index} jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} activeCandidate={activeCandidate}/>
+                <JobOfferCard key={index} index={index} jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} activeCandidate={activeCandidate}/>
             )})}
         </JobCardDiv>
 

@@ -13,13 +13,12 @@ import {AddressCard} from '@styled-icons/fa-regular/AddressCard';
 
 
 
- function Navbar ({adminLoggedIn, setCandidateLoggedIn, setAdminLoggedIn}) {
-     
-    //const [colorPicker, setColorPicker] = useState(colorPicker);
+ function Navbar ({adminLoggedIn, setCandidateLoggedIn, setAdminLoggedIn, setActiveJob}) {
 
     function logOut(){
         setCandidateLoggedIn(false)
         setAdminLoggedIn(false)
+        setActiveJob("")
     }
      
 

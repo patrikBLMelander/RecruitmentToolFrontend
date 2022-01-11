@@ -12,7 +12,7 @@ import StyledButton from '../components/StyledButton';
 import Footer from '../components/Footer';
 
 
-function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdminLoggedIn, candidateLoggedIn, adminLoggedIn, setActiveJob}) {
+function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdminLoggedIn, candidateLoggedIn, adminLoggedIn}) {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
     let succeessfulLogin = false;
@@ -51,7 +51,7 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                             id: candidateInMap.id, 
                             nickName: candidateInMap.nickName,
                             firstName: candidateInMap.firstName,
-                            LastName: candidateInMap.lastName,
+                            lastName: candidateInMap.lastName,
                             presentation: candidateInMap.presentation,
                             email: candidateInMap.email,
                             password: candidateInMap.password,
@@ -64,22 +64,17 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                         setCandidateLoggedIn(true)
                         setAdminLoggedIn(false)
                         setValidated(true)
-                        setActiveJob("")
                         Navigate("/home")
                     }else{ 
                         setCandidateLoggedIn(false)
                         setAdminLoggedIn(true)
                         setValidated(true)
-                        setActiveJob("")
                         Navigate("/home")
                     }
                     succeessfulLogin=true;
                 }
             return null;
             })
-
-             console.log(candidateLoggedIn)
-             console.log(adminLoggedIn)
              if(!succeessfulLogin){
                 Swal.fire({
                     icon: 'error',

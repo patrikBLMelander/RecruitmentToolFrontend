@@ -15,19 +15,7 @@ import JobOfferPreview from '../components/JobOfferPreview';
 let counter = 8;
 let newId = "jobOffering-" + counter;
 
-const Container = styled.div`
-background-color: ${colorPicker.primary};
-color: ${colorPicker.text};
-align-content: center;
-padding-bottom: 100%;
-padding-left: 163px;
-padding-top: 50px;
-z-index: 0;
-width: 100%;
-`;
- const BtnDiv = styled.div`
-    margin-left: 40px
- `
+
 
 
 
@@ -230,3 +218,18 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
 }
 
 export default AddNewJobOffer;
+
+const Container = styled.div`
+    background-color: ${colorPicker.primary};
+    color: ${colorPicker.text};
+    align-content: center;
+    padding-bottom: 100%;
+    padding-left: 163px;
+    padding-top: 50px;
+    z-index: 0;
+    width: 100%;`
+;
+
+const BtnDiv = styled.div`
+    margin-left: 40px`
+;

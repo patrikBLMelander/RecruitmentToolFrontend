@@ -10,16 +10,18 @@ import JobOfferPreview from './JobOfferPreview'
 
 
                 
-function JobOfferCard({index, jobOfferings, setJobOfferings, totalCandidates, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, activeCandidate}){
+function JobOfferCard({index, jobOfferings, setJobOfferings, setActiveJob, adminLoggedIn, candidateLoggedIn, activeCandidate}){
     const navigate = useNavigate();
     const [modalIsOpen, setIsOpen] = useState(false);
-    console.log(index)
-    console.log(jobOfferings)
-    console.log(totalCandidates)
-    console.log(activeJob)
-    console.log(adminLoggedIn)
-    console.log(candidateLoggedIn)
-    console.log(activeCandidate)
+
+    function totalCandidates(jobOffer){
+        let totalCandidates =0;
+        jobOffer.recruitmentSteps.map(recruitmentStepInMap =>{
+            totalCandidates += recruitmentStepInMap.candidateIds.length
+            return null
+        })
+        return totalCandidates
+    }
 
 
 
@@ -81,7 +83,7 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, totalCandidates, ac
             }
         }
         if(adminLoggedIn===true){
-            setActiveJob({...activeJob,
+            setActiveJob({
                 title: event.title,
                 id: event.id
             })
@@ -99,7 +101,7 @@ function JobOfferCard({index, jobOfferings, setJobOfferings, totalCandidates, ac
                 </BtnContainer>
                 <CadnidateInfoDiv>
                     <PNew show={adminLoggedIn}>New: {jobOfferings[index].recruitmentSteps[0].candidateIds.length}</PNew>
-                    <PTotal show={adminLoggedIn}>Total: {totalCandidates}</PTotal>
+                    <PTotal show={adminLoggedIn}>Total: {totalCandidates(jobOfferings[index])}</PTotal>
                 </CadnidateInfoDiv>
             </CardBody>
             <Modal
