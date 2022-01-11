@@ -21,7 +21,7 @@ function Login() {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
 
-    const [isadmin, setIsAdmin] = useRecoilState(atomIsAdmin);
+    const [isAdmin, setIsAdmin] = useRecoilState(atomIsAdmin);
     const [admin, setAdmin] = useRecoilState(atomAdmin);
     const [user, setUser] = useRecoilState(atomUser);
     const [candidates, setCandidates] = useRecoilState(atomCandidates);

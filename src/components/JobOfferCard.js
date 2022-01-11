@@ -5,21 +5,17 @@ import Swal from 'sweetalert2';
 import colorPicker from '../testData/colorPicker';
 import Modal from 'react-modal';
 import JobOfferPreview from './JobOfferPreview'
-         
+
 import { useRecoilState } from "recoil";
-import { atomUser, atomJobOffers, atomCandidates, atomAdmin, atomActiveJob, atomIsAdmin } from "../atoms/atomStates";
+import {atomIsAdmin } from "../atoms/atomStates";
+         
+
 
 
 
                 
-function JobOfferCard({index, jobOfferingsInMap, totalCandidates}){
-    
-    const [user, setUser] = useRecoilState(atomUser);
-    const [admin, setAdmin] = useRecoilState(atomAdmin);
-    const [jobOffers, setJobOffers] = useRecoilState(atomJobOffers);
-    const [activeJob, setActiveJob] = useRecoilState(atomActiveJob);
+function JobOfferCard({index, jobOfferings, setJobOfferings, jobOfferingsInMap, totalCandidates, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn, activeCandidate}){
     const [isAdmin, setIsAdmin] = useRecoilState(atomIsAdmin);
-    
     
     const navigate = useNavigate();
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -29,18 +25,14 @@ function JobOfferCard({index, jobOfferingsInMap, totalCandidates}){
     function closeModal() {
       setIsOpen(false);
     }
-
-    function setBtnText(){
-
-        if(isAdmin){
-            return "Candidate"
-        }else { return "Apply"}
-        
+ 
+    let btnText = "Apply";
+    if(isAdmin){
+        btnText="Candidates"
     }
 
-
     function setJobToWorkWith(event){
-        
+
         if(isAdmin){
             setActiveJob({...activeJob,
                 title: event.title,
@@ -49,15 +41,15 @@ function JobOfferCard({index, jobOfferingsInMap, totalCandidates}){
             navigate("/admin/recruitment-page")
         }
         
-        if(user.id === null){
+        else if(candidateLoggedIn===false){
             navigate("/candidate/register")
         }
-        else{
+        else if(candidateLoggedIn===true){
             let alreadyApplied = false;
             
-            jobOffers.jobOfferTestData[index].recruitmentSteps.map(recruitmentStepsInMap =>{
+            jobOfferings[index].recruitmentSteps.map(recruitmentStepsInMap =>{
                 recruitmentStepsInMap.candidateIds.map(candidateIdsInMap=>{
-                    if(user.id === candidateIdsInMap){
+                    if(activeCandidate.id === candidateIdsInMap){
                        
                         alreadyApplied=true
                         Swal.fire({
@@ -83,10 +75,10 @@ function JobOfferCard({index, jobOfferingsInMap, totalCandidates}){
                     cancelButtonText: "Not now"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        let newJobOffering = jobOffers.jobOfferTestData
-                        newJobOffering[index].recruitmentSteps[0].candidateIds = [...jobOffers.jobOfferTestData[index].recruitmentSteps[0].candidateIds, user.id]
+                        let newJobOffering = jobOfferings
+                        newJobOffering[index].recruitmentSteps[0].candidateIds = [...jobOfferings[index].recruitmentSteps[0].candidateIds, activeCandidate.id]
             
-                        setJobOffers.jobOfferTestData(newJobOffering)
+                        setJobOfferings(newJobOffering)
                         navigate("/candidate/my-page")
                     } 
                 })
@@ -96,15 +88,15 @@ function JobOfferCard({index, jobOfferingsInMap, totalCandidates}){
     }
     return(
         <CardDiv key={index}>
-            <Image src={jobOffers.jobOfferTestData[index].imageUrl} onClick={openModal}/>
+            <Image src={jobOfferingsInMap.imageUrl} onClick={openModal}/>
             <CardBody>
-                <StyledH4>{jobOffers.jobOfferTestData[index].title}</StyledH4>
-                <PExpire>Expire: {jobOffers.jobOfferTestData[index].applyDate}</PExpire>
+                <StyledH4>{jobOfferingsInMap.title}</StyledH4>
+                <PExpire>Expire: {jobOfferingsInMap.applyDate}</PExpire>
                 <BtnContainer>
-                <StyledButton onClick={() => setJobToWorkWith(jobOffers.jobOfferTestData[index])} variant="primary" >{setBtnText()}</StyledButton>
+                <StyledButton onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">{btnText}</StyledButton>
                 </BtnContainer>
                 <CadnidateInfoDiv>
-                    <PNew show={isAdmin}>New: {jobOffers.jobOfferTestData[index].recruitmentSteps[0].candidateIds.length}</PNew>
+                    <PNew show={isAdmin}>New: {jobOfferingsInMap.recruitmentSteps[0].candidateIds.length}</PNew>
                     <PTotal show={isAdmin}>Total: {totalCandidates}</PTotal>
                 </CadnidateInfoDiv>
             </CardBody>
@@ -116,7 +108,7 @@ function JobOfferCard({index, jobOfferingsInMap, totalCandidates}){
             >
                     <JobOfferPreview jobOffer={jobOfferingsInMap}/>
                     <BtnModalContainer>
-                        <StyledButton onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">{setBtnText()}</StyledButton>
+                        <StyledButton onClick={() => setJobToWorkWith(jobOfferingsInMap)} variant="primary">{btnText}</StyledButton>
                         <StyledButton onClick={closeModal} variant="primary">{"Close"}</StyledButton>
                     </BtnModalContainer>
             </Modal>
@@ -125,7 +117,7 @@ function JobOfferCard({index, jobOfferingsInMap, totalCandidates}){
     )
 }
 
-export default JobOfferCard;
+export default JobOfferCard;    
 
 const customStyles = {
     content: {
@@ -158,7 +150,6 @@ const Image = styled.img`
     justify-content: center;
     cursor: pointer;
     border-radius: 45px 45px 0px 0px;
-
 `;
 
 const CardBody = styled.div`
@@ -209,7 +200,6 @@ const BtnContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center
-
 `;
 const BtnModalContainer = styled.div`
     display: flex;
@@ -244,5 +234,3 @@ const StyledButton = styled.button`
     }
     
 `;
-                
-        

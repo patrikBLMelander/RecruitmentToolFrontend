@@ -10,17 +10,6 @@ import Footer from '../components/Footer';
 
 
 
-const Container = styled.div`
-    background-color: ${colorPicker.primary};
-    display: flex;
-    position: fixed;
-    z-index: 0;
-    width: 100%;
-    padding-bottom: 100%;
-    padding-left: 163px;
-    
-
-`;
 
 
 
@@ -179,3 +168,14 @@ function RecruitmentPage ({jobOfferings, setJobOfferings, activeJob, candidateSt
 
 
 export default RecruitmentPage;
+
+const Container = styled.div`
+    background-color: ${colorPicker.primary};
+    display: flex;
+    position: fixed;
+    z-index: 0;
+    width: 100%;
+    padding-bottom: 100%;
+    padding-left: 163px;
+    
+`;

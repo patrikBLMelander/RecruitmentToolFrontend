@@ -7,15 +7,16 @@ import colorPicker from '../testData/colorPicker';
 import Footer from '../components/Footer';
 
 import { useRecoilState } from "recoil";
-import { atomUser, atomJobOffers, atomCandidates, atomAdmin, atomActiveJob } from "../atoms/atomStates";
+import { atomUser, atomJobOffers, atomCandidates, atomAdmin, atomActiveJob, atomIsAdmin } from "../atoms/atomStates";
 
 
 
 
- function Home () {
+ function Home ({jobOfferings, setJobOfferings, adminLoggedIn, candidateLoggedIn, activeCandidate, setActiveCandidate , setAdminLoggedIn, setCandidateLoggedIn}) {
     const [user, setUser] = useRecoilState(atomUser);
     const [jobOffers, setJobOffers] = useRecoilState(atomJobOffers);
     const [activeJob, setActiveJob] = useRecoilState(atomAdmin);
+    const [isAdmin, setIsAdmin] = useRecoilState(atomIsAdmin);
 
 
     return (
@@ -25,11 +26,18 @@ import { atomUser, atomJobOffers, atomCandidates, atomAdmin, atomActiveJob } fro
     <Container>
         <H3>Welcome {user.firstName} {user.lastName}</H3>
         <JobCardDiv>
-        {jobOffers.jobOfferTestData.map((jobOfferingsInMap, index) =>{
-            return(
-                <JobOfferCard key={jobOfferingsInMap.id} index={index}/>
-            )})}
-        </JobCardDiv>
+                    {jobOfferings.map((jobOfferingsInMap, index) =>{
+                        let totalCandidates = 0;
+                        jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
+                            totalCandidates += recruitmentStepInMap.candidateIds.length
+                        return null;
+                        })
+                        return(
+                    
+                            <JobOfferCard key={jobOfferingsInMap.id} index={index} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
+                
+                        )})}
+                    </JobCardDiv>
 
 
     </Container>

@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 import { useRecoilState } from "recoil";
 import { atomUser, atomJobOffers} from "../atoms/atomStates";
 
-function Main(){
+function Main({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn, setCandidateLoggedIn, setAdminLoggedIn}){
     const [user, setUser] = useRecoilState(atomUser);
     const [jobOffers, setJobOffers] = useRecoilState(atomJobOffers);
 
@@ -34,11 +34,18 @@ function Main(){
                     </BtnContainer>
                 </TextUnderPictures>
                 <JobCardDiv>
-                    {jobOffers.jobOfferTestData.map((jobOfferingsInMap, index) =>{
+                    {jobOfferings.map((jobOfferingsInMap, index) =>{
+                        let totalCandidates = 0;
+                        jobOfferingsInMap.recruitmentSteps.map(recruitmentStepInMap =>{
+                            totalCandidates += recruitmentStepInMap.candidateIds.length
+                        return null;
+                        })
                         return(
-                            <JobOfferCard key={jobOfferingsInMap.id} index={index}/>
+                    
+                            <JobOfferCard key={jobOfferingsInMap.id} index={index} jobOfferingsInMap={jobOfferingsInMap} totalCandidates={totalCandidates} activeJob={activeJob} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
+                
                         )})}
-                </JobCardDiv>
+                    </JobCardDiv>
                 </Container>
                 <Footer/>
             </div>
