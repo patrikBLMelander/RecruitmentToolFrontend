@@ -6,14 +6,15 @@ import Swal from "sweetalert2";
 import Slider from "@mui/material/Slider";
 
 function Resume({
-    jobExperienceState,
-    setJobExperienceState,
+    activeCandidate,
+    setActiveCandidate,
     presentation,
     candidateState,
     setCandidateState,
-    setActiveCandidate,
     candidateView,
 }) {
+
+    console.log("in resume")
     function removeExperience(experienceInMap) {
         Swal.fire({
             title: "Remove Experience",
@@ -25,7 +26,7 @@ function Resume({
             if (result.isConfirmed) {
                 let test = candidateState;
                 candidateState.map((candidateStateInMap, cIndex) => {
-                    if (candidateState[cIndex].id === jobExperienceState.id) {
+                    if (candidateState[cIndex].id === activeCandidate.id) {
                         candidateState[cIndex].experience.map((experienceToCheck) => {
                             if (experienceToCheck.id === experienceInMap.id) {
                                 test[cIndex].experience = [
@@ -35,8 +36,8 @@ function Resume({
                                 ];
 
                                 setCandidateState(test);
-                                setJobExperienceState(test[cIndex]);
                                 setActiveCandidate(test[cIndex]);
+                                
                             }
                             return null;
                         });
@@ -57,7 +58,7 @@ function Resume({
             if (result.isConfirmed) {
                 let test = candidateState;
                 candidateState.map((candidateStateInMap, cIndex) => {
-                    if (candidateState[cIndex].id === jobExperienceState.id) {
+                    if (candidateState[cIndex].id === activeCandidate.id) {
                         candidateState[cIndex].competencies.map((competenciesToCheck) => {
                             if (competenciesToCheck.id === competenceInMap.id) {
                                 test[cIndex].competencies = [
@@ -67,7 +68,6 @@ function Resume({
                                 ];
 
                                 setCandidateState(test);
-                                setJobExperienceState(test[cIndex]);
                                 setActiveCandidate(test[cIndex]);
                             }
                             return null;
@@ -89,7 +89,7 @@ function Resume({
             if (result.isConfirmed) {
                 let test = candidateState;
                 candidateState.map((candidateStateInMap, cIndex) => {
-                    if (candidateState[cIndex].id === jobExperienceState.id) {
+                    if (candidateState[cIndex].id === activeCandidate.id) {
                         candidateState[cIndex].education.map((educationToCheck) => {
                             if (educationToCheck.id === educationInMap.id) {
                                 test[cIndex].education = [
@@ -99,7 +99,6 @@ function Resume({
                                 ];
 
                                 setCandidateState(test);
-                                setJobExperienceState(test[cIndex]);
                                 setActiveCandidate(test[cIndex]);
                             }
                             return null;
@@ -114,7 +113,7 @@ function Resume({
     let render;
     if (candidateView === true) {
         render = (
-            <OuterContainer key={jobExperienceState.id}>
+            <OuterContainer key={activeCandidate.id}>
                 <LeftDiv>
                     <StyledImg src="https://picsum.photos/150?grayscale"></StyledImg>
                     <AboutMe>
@@ -123,7 +122,7 @@ function Resume({
                     </AboutMe>
                     <Skills>
                         <H5>Competencies</H5>
-                        {jobExperienceState.competencies.map((competenceInMap) => {
+                        {activeCandidate.competencies.map((competenceInMap) => {
                             return (
                                 <CompetenceDiv key={competenceInMap.id}>
                                     <P>
@@ -138,10 +137,10 @@ function Resume({
                     </Skills>
                 </LeftDiv>
                 <RightDiv>
-                    <H3>{jobExperienceState.nickName}</H3>
+                    <H3>{activeCandidate.nickName}</H3>
                     <Experience>
                         <H5>Job Experience</H5>
-                        {jobExperienceState.experience.map((experienceInMap) => {
+                        {activeCandidate.experience.map((experienceInMap) => {
                             return (
                                 <div key={experienceInMap.id}>
                                     <TitleAndPeriod>
@@ -160,7 +159,7 @@ function Resume({
                     </Experience>
                     <Experience>
                         <H5>Education</H5>
-                        {jobExperienceState.education.map((educationsInMap) => {
+                        {activeCandidate.education.map((educationsInMap) => {
                             return (
                                 <div key={educationsInMap.id}>
                                     <TitleAndPeriod>
@@ -187,7 +186,7 @@ function Resume({
                             <Slider
                                 key={`openness`}
                                 disabled
-                                defaultValue={jobExperienceState.personality[0].value}
+                                defaultValue={activeCandidate.personality[0].value}
                             />
                         </TraitDiv>
                         <TraitDiv>
@@ -197,7 +196,7 @@ function Resume({
                             </TraitText>
                             <Slider
                                 key={`conscintiousness`}
-                                defaultValue={jobExperienceState.personality[1].value}
+                                defaultValue={activeCandidate.personality[1].value}
                                 disabled
                             />
                         </TraitDiv>
@@ -208,7 +207,7 @@ function Resume({
                             </TraitText>
                             <Slider
                                 key={`extroversion`}
-                                defaultValue={jobExperienceState.personality[2].value}
+                                defaultValue={activeCandidate.personality[2].value}
                                 disabled
                             />
                         </TraitDiv>
@@ -219,7 +218,7 @@ function Resume({
                             </TraitText>
                             <Slider
                                 key={`agreableness`}
-                                defaultValue={jobExperienceState.personality[3].value}
+                                defaultValue={activeCandidate.personality[3].value}
                                 disabled
                             />
                         </TraitDiv>
@@ -230,7 +229,7 @@ function Resume({
                             </TraitText>
                             <Slider
                                 key={`neuroticism`}
-                                defaultValue={jobExperienceState.personality[4].value}
+                                defaultValue={activeCandidate.personality[4].value}
                                 disabled
                             />
                         </TraitDiv>
@@ -240,7 +239,7 @@ function Resume({
         );
     } else {
         render = (
-            <OuterContainer key={jobExperienceState.id}>
+            <OuterContainer key={activeCandidate.id}>
                 <LeftDiv>
                     <StyledImg src="https://picsum.photos/150?grayscale"></StyledImg>
                     <AboutMe>
@@ -249,7 +248,7 @@ function Resume({
                     </AboutMe>
                     <Skills>
                         <H5>Competencies</H5>
-                        {jobExperienceState.competencies.map((competenceInMap) => {
+                        {activeCandidate.competencies.map((competenceInMap) => {
                             return (
                                 <CompetenceDiv key={competenceInMap.id}>
                                     <P>
@@ -261,10 +260,10 @@ function Resume({
                     </Skills>
                 </LeftDiv>
                 <RightDiv>
-                    <H3>{jobExperienceState.nickName}</H3>
+                    <H3>{activeCandidate.nickName}</H3>
                     <Experience>
                         <H5>Job Experience</H5>
-                        {jobExperienceState.experience.map((experienceInMap) => {
+                        {activeCandidate.experience.map((experienceInMap) => {
                             return (
                                 <div key={experienceInMap.id}>
                                     <TitleAndPeriod>
@@ -280,7 +279,7 @@ function Resume({
                     </Experience>
                     <Experience>
                         <H5>Education</H5>
-                        {jobExperienceState.education.map((educationsInMap) => {
+                        {activeCandidate.education.map((educationsInMap) => {
                             return (
                                 <div key={educationsInMap.id}>
                                     <TitleAndPeriod>
@@ -304,7 +303,7 @@ function Resume({
                             <Slider
                                 key={`openness`}
                                 disabled
-                                defaultValue={jobExperienceState.personality[0].value}
+                                defaultValue={activeCandidate.personality[0].value}
                             />
                         </TraitDiv>
                         <TraitDiv>
@@ -314,7 +313,7 @@ function Resume({
                             </TraitText>
                             <Slider
                                 key={`conscintiousness`}
-                                defaultValue={jobExperienceState.personality[1].value}
+                                defaultValue={activeCandidate.personality[1].value}
                                 disabled
                             />
                         </TraitDiv>
@@ -325,7 +324,7 @@ function Resume({
                             </TraitText>
                             <Slider
                                 key={`extroversion`}
-                                defaultValue={jobExperienceState.personality[2].value}
+                                defaultValue={activeCandidate.personality[2].value}
                                 disabled
                             />
                         </TraitDiv>
@@ -336,7 +335,7 @@ function Resume({
                             </TraitText>
                             <Slider
                                 key={`agreableness`}
-                                defaultValue={jobExperienceState.personality[3].value}
+                                defaultValue={activeCandidate.personality[3].value}
                                 disabled
                             />
                         </TraitDiv>
@@ -347,7 +346,7 @@ function Resume({
                             </TraitText>
                             <Slider
                                 key={`neuroticism`}
-                                defaultValue={jobExperienceState.personality[4].value}
+                                defaultValue={activeCandidate.personality[4].value}
                                 disabled
                             />
                         </TraitDiv>
