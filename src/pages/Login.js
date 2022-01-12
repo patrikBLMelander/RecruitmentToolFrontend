@@ -123,12 +123,7 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                             </Form.Control.Feedback>
                             </FloatingLabel>      
                         </Col>
-
-                    
                     </Row>
-
-
-
                     <BtnContainer>
                         <StyledButton variant="success" type="submit" className="ms-5" input={"login"}/>
                     </BtnContainer>
@@ -171,5 +166,5 @@ const BtnContainer = styled.div`
 
 const StyleH1 = styled.h1`
     color: ${colorPicker.fifth};
-    margin-top: 8%;    
+    margin-top: 6%;    
 `;
