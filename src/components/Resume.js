@@ -14,7 +14,6 @@ function Resume({
     candidateView,
 }) {
 
-    console.log("in resume")
     function removeExperience(experienceInMap) {
         Swal.fire({
             title: "Remove Experience",

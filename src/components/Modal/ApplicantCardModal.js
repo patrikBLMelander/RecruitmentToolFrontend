@@ -92,6 +92,7 @@ function ApplicantCardModal({
             presentation={candidate.presentation}
             jobExperienceState={candidate}
             candidateView={false}
+            activeCandidate={candidate}
           />
         </Container>
         <BtnModalContainer>
