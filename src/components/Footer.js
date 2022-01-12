@@ -2,6 +2,20 @@ import React from 'react';
 import styled from 'styled-components'
 import colorPicker from '../testData/colorPicker';
 
+
+
+ function Footer () {
+
+    return (
+    <Container>
+        <H5>Copyright &copy; Patrik Melander</H5>
+    </Container>
+    )
+       
+}
+
+export default Footer
+
 const Container = styled.div`
     display: flex;
     position:fixed;
@@ -27,15 +41,3 @@ const H5 = styled.h5`
     margin-bottom: 20px;
     
 `;
-
- function Footer () {
-
-    return (
-    <Container>
-        <H5>Copyright &copy; Patrik Melander</H5>
-    </Container>
-    )
-       
-}
-
-export default Footer

@@ -11,43 +11,11 @@ import colorPicker from '../testData/colorPicker';
 import StyledButton from '../components/StyledButton';
 import Footer from '../components/Footer';
 
-let loggedIn = false;
-const Container = styled.div`
-    font-family: 'Roboto', sans-serif; 
-    position: fixed;
-    text-align: center;
-    background-color: ${colorPicker.primary};
-    height: 100%;
-    width: 100%;
-    z-index: 1,
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    padding-top: 16px;
-`;
 
-const InnerContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    margin-top: 10%;
-    
-`;
-
-const BtnContainer = styled.div`
-    text-align: right;
-    padding: 8px;
-    margin-right:40px
-`;
-
-
-const StyleH1 = styled.h1`
-    color: ${colorPicker.fifth};
-    margin-top: 8%;    
-`;
-
-function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdminLoggedIn, setActiveAdmin, candidateLoggedIn, adminLoggedIn, setActiveJob}) {
+function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdminLoggedIn, candidateLoggedIn, adminLoggedIn}) {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
+    let succeessfulLogin = false;
 
     if(candidateLoggedIn===true || adminLoggedIn===true){
         Swal.fire({
@@ -74,30 +42,16 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
         if (form.checkValidity() === false) {
           event.stopPropagation();
         }else{
-            // check Admin login, this will be done properly in backend later
-            if(form.emailInputGrid.value === "adminmail@gmail.com" && form.passwordInputGrid.value === "1234"){
-                
-                setActiveAdmin({
-                    id: 'admin-1', 
-                    firstName: "Patrik",
-                    lastName: "Melander",
-                    email: "adminmail@gmail.com",
-                    password: "1234",
-                })
-                setCandidateLoggedIn(false)
-                setAdminLoggedIn(true)
-                loggedIn = true
-                Navigate("/home")
-            }else{
-                 //check CandidateLogin, this will be done properly in backend later
-                 candidateState.map(candidateInMap => {
-                     if(candidateInMap.email.toLowerCase()===form.emailInputGrid.value.toLowerCase() && form.passwordInputGrid.value===candidateInMap.password){
-                        
+            
+            //check CandidateLogin, this will be done properly in backend later
+            candidateState.map(candidateInMap => {
+                if(candidateInMap.email.toLowerCase()===form.emailInputGrid.value.toLowerCase() && form.passwordInputGrid.value===candidateInMap.password){
+                    if(candidateInMap.role==="candidate"){
                         setActiveCandidate({
                             id: candidateInMap.id, 
                             nickName: candidateInMap.nickName,
                             firstName: candidateInMap.firstName,
-                            LastName: candidateInMap.lastName,
+                            lastName: candidateInMap.lastName,
                             presentation: candidateInMap.presentation,
                             email: candidateInMap.email,
                             password: candidateInMap.password,
@@ -108,16 +62,20 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                             competencies:candidateInMap.competencies
                         })
                         setCandidateLoggedIn(true)
-                        loggedIn = true
                         setAdminLoggedIn(false)
                         setValidated(true)
-                        setActiveJob("")
+                        Navigate("/home")
+                    }else{ 
+                        setCandidateLoggedIn(false)
+                        setAdminLoggedIn(true)
+                        setValidated(true)
                         Navigate("/home")
                     }
-                    return null;
-                 })
-             }
-             if(loggedIn===false){
+                    succeessfulLogin=true;
+                }
+            return null;
+            })
+             if(!succeessfulLogin){
                 Swal.fire({
                     icon: 'error',
                     title: 'Could not log in...',
@@ -165,12 +123,7 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                             </Form.Control.Feedback>
                             </FloatingLabel>      
                         </Col>
-
-                    
                     </Row>
-
-
-
                     <BtnContainer>
                         <StyledButton variant="success" type="submit" className="ms-5" input={"login"}/>
                     </BtnContainer>
@@ -182,3 +135,36 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
 }
 
 export default Login;
+
+const Container = styled.div`
+    font-family: 'Roboto', sans-serif; 
+    position: fixed;
+    text-align: center;
+    background-color: ${colorPicker.primary};
+    height: 100%;
+    width: 100%;
+    z-index: 1,
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 16px;
+`;
+
+const InnerContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    
+`;
+
+const BtnContainer = styled.div`
+    text-align: right;
+    padding: 8px;
+    margin-right:40px
+`;
+
+
+const StyleH1 = styled.h1`
+    color: ${colorPicker.fifth};
+    margin-top: 6%;    
+`;

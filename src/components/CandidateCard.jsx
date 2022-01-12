@@ -4,14 +4,7 @@ import { Draggable } from 'react-beautiful-dnd';
 import colorPicker from '../testData/colorPicker';
 import ApplicantCardModal from './Modal/ApplicantCardModal'
 
-const Container = styled.div`
-  border: 1px solid ${colorPicker.fifth};
-  border-radius: 2px;
-  padding: 8px;
-  margin-bottom: 8px;
-  color: ${colorPicker.text};
-  background-color: ${props => (props.isDragging ? colorPicker.fourth : colorPicker.secondary)};
-`;
+
 
 function CandidateCard ({index, candidateId, candidateState, setCandidateState, activeJobId}) {
  
@@ -43,3 +36,12 @@ function CandidateCard ({index, candidateId, candidateState, setCandidateState, 
 }
 
 export default CandidateCard;
+
+const Container = styled.div`
+  border: 1px solid ${colorPicker.fifth};
+  border-radius: 2px;
+  padding: 8px;
+  margin-bottom: 8px;
+  color: ${colorPicker.text};
+  background-color: ${props => (props.isDragging ? colorPicker.fourth : colorPicker.secondary)};
+`;

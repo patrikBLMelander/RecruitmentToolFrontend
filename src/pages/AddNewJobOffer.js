@@ -9,25 +9,13 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import colorPicker from '../testData/colorPicker';
 import StyledButton from '../components/StyledButton';
-import JobOfferPreview from '../components/JobOfferPreview';
+import JobOfferPreview from '../components/Modal/JobOfferPreview';
 
 
 let counter = 8;
 let newId = "jobOffering-" + counter;
 
-const Container = styled.div`
-background-color: ${colorPicker.primary};
-color: ${colorPicker.text};
-align-content: center;
-padding-bottom: 100%;
-padding-left: 163px;
-padding-top: 50px;
-z-index: 0;
-width: 100%;
-`;
- const BtnDiv = styled.div`
-    margin-left: 40px
- `
+
 
 
 
@@ -221,7 +209,9 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
                 <StyledButton variant="primary" type="submit" className="ms-5" input={"Publish"}></StyledButton>
                 </BtnDiv>
             </Form>
-            <JobOfferPreview jobOffer={activeJobOffer}/>
+            <JobOfferPreviewDiv>
+                <JobOfferPreview jobOffer={activeJobOffer}/>
+            </JobOfferPreviewDiv>
         </Container>
         
         <Footer/>
@@ -230,3 +220,29 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
 }
 
 export default AddNewJobOffer;
+
+const Container = styled.div`
+    background-color: ${colorPicker.primary};
+    color: ${colorPicker.text};
+    align-content: center;
+    padding-bottom: 100%;
+    padding-left: 163px;
+    padding-top: 50px;
+    z-index: 0;
+    width: 100%;`
+;
+
+const JobOfferPreviewDiv = styled.div`
+    background-color: ${colorPicker.primary};
+    color: ${colorPicker.text};
+    align-content: center;
+    padding-bottom: 100%;
+    padding-left: 163px;
+    padding-top: 50px;
+    z-index: 0;
+    width: 100%;`
+;
+
+const BtnDiv = styled.div`
+    margin-left: 40px`
+;

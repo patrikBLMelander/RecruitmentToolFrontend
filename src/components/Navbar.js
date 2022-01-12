@@ -11,6 +11,77 @@ import {PeopleTeamAdd} from '@styled-icons/fluentui-system-regular/PeopleTeamAdd
 import {Briefcase} from '@styled-icons/boxicons-solid/Briefcase';
 import {AddressCard} from '@styled-icons/fa-regular/AddressCard';
 
+
+
+ function Navbar ({adminLoggedIn, setCandidateLoggedIn, setAdminLoggedIn, setActiveJob}) {
+
+    function logOut(){
+        setCandidateLoggedIn(false)
+        setAdminLoggedIn(false)
+        setActiveJob("")
+    }
+     
+
+    let render;
+
+    if(adminLoggedIn===true){
+        render = (
+            <Container>
+                <Link to="/home">  
+                <h1><StyledHomeBtn /></h1>
+                </Link>
+        
+                <Link to="/admin/recruitment-page">  
+                <h1><StyledBearSmileBtn /></h1>
+                </Link>
+        
+                <Link to="/admin/candidate-search" >
+                <h1><StyledPersonSearchBtn /></h1>
+                </Link>
+        
+                <Link to="/admin/add-job-offer-page">
+                <h1><StyledPeopleTeamAddBtn /></h1>
+                </Link>
+        
+                <Link to="/admin/settings">
+                <h1><StyledSettingsBtn /></h1>
+                </Link>
+        
+                <Link to="/" onClick={logOut}>
+                <h1><StyledLogOutCircleBtn /></h1>
+                </Link>
+        
+            </Container>
+            )
+    }else{
+        render = ( 
+            <Container>
+                <Link to="/home">  
+                <h1><StyledHomeBtn /></h1>
+                </Link>
+        
+                <Link to="/candidate/in-process">
+                <h1><StyledBriefcaseBtn /></h1>
+                </Link>
+        
+        
+                <Link to="/candidate/my-page">
+                <h1><StyledAddressCardBtn /></h1>
+                </Link>
+        
+                <Link to="/" onClick={logOut}>
+                <h1><StyledLogOutCircleBtn /></h1>
+                </Link>
+        
+            </Container>
+            )    
+    }
+    return render;
+    
+}
+
+export default Navbar;
+
 const Container = styled.div`
     position: fixed;
     text-align: center;
@@ -83,73 +154,3 @@ const StyledAddressCardBtn = styled(AddressCard)`
     width: 40;
     color: ${colorPicker.text};
 `; 
-
- function Navbar ({adminLoggedIn, setCandidateLoggedIn, setAdminLoggedIn}) {
-     
-    //const [colorPicker, setColorPicker] = useState(colorPicker);
-
-    function logOut(){
-        setCandidateLoggedIn(false)
-        setAdminLoggedIn(false)
-    }
-     
-
-    let render;
-
-    if(adminLoggedIn===true){
-        render = (
-            <Container>
-                <Link to="/home">  
-                <h1><StyledHomeBtn /></h1>
-                </Link>
-        
-                <Link to="/admin/recruitment-page">  
-                <h1><StyledBearSmileBtn /></h1>
-                </Link>
-        
-                <Link to="/admin/candidate-search" >
-                <h1><StyledPersonSearchBtn /></h1>
-                </Link>
-        
-                <Link to="/admin/add-job-offer-page">
-                <h1><StyledPeopleTeamAddBtn /></h1>
-                </Link>
-        
-                <Link to="/admin/settings">
-                <h1><StyledSettingsBtn /></h1>
-                </Link>
-        
-                <Link to="/" onClick={logOut}>
-                <h1><StyledLogOutCircleBtn /></h1>
-                </Link>
-        
-            </Container>
-            )
-    }else{
-        render = ( 
-            <Container>
-                <Link to="/home">  
-                <h1><StyledHomeBtn /></h1>
-                </Link>
-        
-                <Link to="/candidate/in-process">
-                <h1><StyledBriefcaseBtn /></h1>
-                </Link>
-        
-        
-                <Link to="/candidate/my-page">
-                <h1><StyledAddressCardBtn /></h1>
-                </Link>
-        
-                <Link to="/" onClick={logOut}>
-                <h1><StyledLogOutCircleBtn /></h1>
-                </Link>
-        
-            </Container>
-            )    
-    }
-    return render;
-    
-}
-
-export default Navbar;

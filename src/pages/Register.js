@@ -14,50 +14,6 @@ import Footer from '../components/Footer';
 let counter = 9;
 let newId = "candidate-" + counter;
 let emailTaken=false;
-const Container = styled.div`
-    font-family: 'Roboto', sans-serif; 
-    position: fixed;
-    text-align: center;
-    background-color: ${colorPicker.primary};
-    height: 100%;
-    width: 100%;
-    z-index: 1,
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    padding-top: 16px;
-    
-`;
-
-const InnerContainer = styled.div`
-    font-family: 'Roboto', sans-serif; 
-    display: flex;
-    justify-content: center;
-    margin-top: 10%;
-    
-`;
-
-const PublishContainer = styled.div`
-    text-align: right;
-    display: flex;
-    padding: 8px;
-    margin-left:40px
-
-`;
-
-const StyleH1 = styled.h1`
-    color: ${colorPicker.fifth};
-    font-family: 'Roboto', sans-serif;      
-    margin-top: 8%;
-`;
-
-const CheckboxDiv = styled.div`
-    font-family: 'Roboto', sans-serif;   
-    display: flex;
-    margin-left: 50px;
-    margin-top: 10px;
-    color: ${colorPicker.text};
-`
 
 function Registrer({candidateState, setCandidateState, setActiveCandidate, setCandidateLoggedIn}) {
     const [validated, setValidated] = useState(false);
@@ -204,3 +160,48 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
 }
 
 export default Registrer;
+
+const Container = styled.div`
+    font-family: 'Roboto', sans-serif; 
+    position: fixed;
+    text-align: center;
+    background-color: ${colorPicker.primary};
+    height: 100%;
+    width: 100%;
+    z-index: 1,
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 16px;
+    
+`;
+
+const InnerContainer = styled.div`
+    font-family: 'Roboto', sans-serif; 
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    
+`;
+
+const PublishContainer = styled.div`
+    text-align: right;
+    display: flex;
+    padding: 8px;
+    margin-left:40px
+
+`;
+
+const StyleH1 = styled.h1`
+    color: ${colorPicker.fifth};
+    font-family: 'Roboto', sans-serif;      
+    margin-top: 8%;
+`;
+
+const CheckboxDiv = styled.div`
+    font-family: 'Roboto', sans-serif;   
+    display: flex;
+    margin-left: 50px;
+    margin-top: 10px;
+    color: ${colorPicker.text};
+`
