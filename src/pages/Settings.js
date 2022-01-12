@@ -5,8 +5,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import colorPicker from '../testData/colorPicker';
 import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import StyledButton from '../components/StyledButton';
 import Swal from 'sweetalert2';
@@ -15,7 +13,7 @@ let counter = 9;
 let newId = "candidate-" + counter;
 let emailTaken=false;
 
-function Settings({jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, setAdminLoggedIn, setCandidateLoggedIn, candidateState, setCandidateState}) {
+function Settings({jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, setAdminLoggedIn, setCandidateLoggedIn, candidateState, setCandidateState, setActiveJob}) {
     const [validated, setValidated] = useState(false);
     //ADJUST NAME
     const [radioButtonsName, setRadioButtonsName]=useState([true, false, false])
@@ -114,12 +112,12 @@ function Settings({jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, se
 
     return(
         <div>
-        <Navbar setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}jobOfferings={jobOfferings}  adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
+        <Navbar setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}jobOfferings={jobOfferings}  adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}/>
         <Container>
             <H3>Settings</H3>
             <AdjustCandidateNameDiv>
-                <H5>How do you want your Candidtes to be shown?</H5>
+                <H5>How do you want your Candidates to be shown?</H5>
                 <form>
                     <RadioDiv>
                     <label>
@@ -142,7 +140,7 @@ function Settings({jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, se
                         <input type="radio" value="option3" 
                                     checked={radioButtonsName[2]} 
                                     onChange={handleCitiesChange} />
-                        Countrys
+                        Counties
                     </label>
                     </RadioDiv>
                 </form>
@@ -256,8 +254,8 @@ function Settings({jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, se
             <ToDoDiv>
             <h1>To Do</h1>
             <ul>
-            <li>Add new profile (recruiter)</li>
-            <li>Set authority on profiles</li>
+            <li>Remove Admin</li>
+            <li>Show Admin</li>
             </ul>
             </ToDoDiv>
 

@@ -10,15 +10,19 @@ import {Settings} from '@styled-icons/evaicons-solid/Settings';
 import {PeopleTeamAdd} from '@styled-icons/fluentui-system-regular/PeopleTeamAdd';
 import {Briefcase} from '@styled-icons/boxicons-solid/Briefcase';
 import {AddressCard} from '@styled-icons/fa-regular/AddressCard';
+import { useNavigate } from "react-router-dom";
 
 
 
  function Navbar ({adminLoggedIn, setCandidateLoggedIn, setAdminLoggedIn, setActiveJob}) {
 
+    const Navigate = useNavigate();
+
     function logOut(){
         setCandidateLoggedIn(false)
         setAdminLoggedIn(false)
         setActiveJob("")
+        Navigate("/")
     }
      
 
@@ -47,9 +51,9 @@ import {AddressCard} from '@styled-icons/fa-regular/AddressCard';
                 <h1><StyledSettingsBtn /></h1>
                 </Link>
         
-                <Link to="/" onClick={logOut}>
+                <a onClick={logOut}>
                 <h1><StyledLogOutCircleBtn /></h1>
-                </Link>
+                </a>
         
             </Container>
             )
@@ -69,9 +73,9 @@ import {AddressCard} from '@styled-icons/fa-regular/AddressCard';
                 <h1><StyledAddressCardBtn /></h1>
                 </Link>
         
-                <Link to="/" onClick={logOut}>
+                <a onClick={logOut}>
                 <h1><StyledLogOutCircleBtn /></h1>
-                </Link>
+                </a>
         
             </Container>
             )    

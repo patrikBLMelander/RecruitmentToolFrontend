@@ -186,7 +186,7 @@ const CadnidateInfoDiv = styled.div`
 `;
 
 const PNew = styled.p`
-  text-shadow: 2px 2px 5px green;
+  text-shadow: 1px 1px 2px green;
   font-weight: bold;
   margin-right: 75px;
   color: #43d148;

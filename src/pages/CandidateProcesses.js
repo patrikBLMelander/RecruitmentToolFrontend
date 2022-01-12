@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components'
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
@@ -9,8 +9,7 @@ import JobOfferCard from '../components/JobOfferCard';
 
 
 function CandidateProcesses({jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn , setAdminLoggedIn, setCandidateLoggedIn, activeCandidate}) {
-    const candidateId= activeCandidate.id;
-    const [activeCandidateJobOffers, setActiveCandidateJobOffers]=useState("");
+
 
     return(
         <div>
