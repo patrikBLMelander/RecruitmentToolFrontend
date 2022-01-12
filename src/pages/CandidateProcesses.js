@@ -8,12 +8,12 @@ import JobOfferCard from '../components/JobOfferCard';
 
 
 
-function CandidateProcesses({jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn , setAdminLoggedIn, setCandidateLoggedIn, activeCandidate}) {
+function CandidateProcesses({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn , setAdminLoggedIn, setCandidateLoggedIn, activeCandidate}) {
 
 
     return(
         <div>
-        <Navbar setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
+        <Navbar setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}/>
         <Container>
         <H3>{activeCandidate.firstName} {activeCandidate.lastName} Here's your active processes</H3>

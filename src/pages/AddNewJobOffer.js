@@ -19,7 +19,7 @@ let newId = "jobOffering-" + counter;
 
 
 
-function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJob, setJobOfferings, setAdminLoggedIn, setCandidateLoggedIn}) {
+function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJob, setJobOfferings, setAdminLoggedIn, setCandidateLoggedIn, setActiveJob}) {
     const [validated, setValidated] = useState(false);
     const [activeJobOffer, setActiveJobOffer]=useState("");
 
@@ -100,7 +100,7 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
 
     return(
         <div>
-        <Navbar jobOfferings={jobOfferings} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
+        <Navbar setActiveJob={setActiveJob} jobOfferings={jobOfferings} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}/>
         <Container>    
             <Form noValidate validated={validated} onSubmit={handleSubmit}>

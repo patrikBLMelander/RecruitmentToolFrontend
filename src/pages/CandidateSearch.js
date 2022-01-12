@@ -7,10 +7,10 @@ import colorPicker from '../testData/colorPicker';
 
 
 
-function CandidateSearch({jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob , setAdminLoggedIn, setCandidateLoggedIn}) {
+function CandidateSearch({jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, setActiveJob, setAdminLoggedIn, setCandidateLoggedIn}) {
     return(
         <div>
-        <Navbar setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
+        <Navbar setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}/>
         <Container>
             <h1>To Do</h1>

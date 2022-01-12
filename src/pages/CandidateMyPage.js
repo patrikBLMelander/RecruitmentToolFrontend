@@ -19,7 +19,7 @@ import Modal from "react-modal";
 
 
 
-function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, activeCandidate, setActiveCandidate, setCandidateState, candidateState, setAdminLoggedIn, setCandidateLoggedIn }) {
+function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, setActiveJob, activeCandidate, setActiveCandidate, setCandidateState, candidateState, setAdminLoggedIn, setCandidateLoggedIn }) {
 
 
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -312,7 +312,7 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
 
     return (
         <div>
-            <Navbar setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} />
+            <Navbar setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} />
             <Header activeJob={activeJob} />
 
             <Container>
