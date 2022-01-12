@@ -35,7 +35,7 @@ const StyledBtn = styled.button`
     background-color: ${colorPicker.secondary};
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px ${colorPicker.secondary};
+    box-shadow: 0px 8px 15px ${colorPicker.third};
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;

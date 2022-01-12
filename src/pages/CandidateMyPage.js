@@ -474,31 +474,30 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                     <H4>Competence</H4>
                     <Form noValidate validated={validated} onSubmit={saveCompetence}>
                         <CompetenceDiv>
-                            <Col xs={5}>
+                            <CompetenceCol>
                                 <FloatingLabel controlId="TitleInputGrid" label="Competence" >
                                     <Form.Control required type="Text" placeholder='"Stockholm"' value={competenceValue} onChange={handleCompetenceValue} />
                                     <Form.Control.Feedback type="invalid">
                                         Pleas fill the name of you competence
                                     </Form.Control.Feedback>
                                 </FloatingLabel>
-                            </Col>
-                            <Col xs={1}>
+                            </CompetenceCol>
+                            <YearCol>
                                 <FloatingLabel controlId="TitleInputGrid" label="Years" >
                                     <Form.Control required type="Number" placeholder='""' value={yearsValue} onChange={handleYearsValue} />
                                     <Form.Control.Feedback type="invalid">
                                         How many years experience do you have of this?
                                     </Form.Control.Feedback>
                                 </FloatingLabel>
-                            </Col>
-                            <Col>
+                            </YearCol>
+                            <BtnCol>
                                 <StyledButton type="submit" input={"Save Competence"} />
-                            </Col>
+                            </BtnCol>
                         </CompetenceDiv>
                     </Form>
 
 
                     <SeperatorDiv />
-                    <H4>Your Resume will show here</H4>
                     <ModalButton onClick={openModal}>Resume</ModalButton>
 
                 </InnerContainer>
@@ -593,6 +592,7 @@ const SeperatorDiv = styled.div`
     justify-content: center;
     margin-top: 5%;
     margin-right:4%;
+    margin-bottom: 5%;
     border-style: solid;
     border-color:  #b5bcc7;
     
@@ -636,7 +636,7 @@ const ModalButton = styled.button`
     letter-spacing: 2.5px;
     font-weight: 500;
     color: ${colorPicker.text};
-    background-color: ${colorPicker.third};
+    background-color: ${colorPicker.secondary};
     border: none;
     border-radius: 45px;
     box-shadow: 0px 8px 15px ${colorPicker.third};
@@ -650,4 +650,16 @@ const ModalButton = styled.button`
         transform: translateY(-7px);
     }
     
+`;
+
+const CompetenceCol = styled.div`
+    width: 55%;
+    margin: 10px;
+`;
+const YearCol = styled.div`
+    width: 140px;
+    margin: 10px;
+`;
+const BtnCol = styled.div`
+    margin: 10px;
 `;
