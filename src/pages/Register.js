@@ -59,13 +59,17 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
                     id: newId, 
                     nickName: animal[nickNameNumber],
                     firstName: form.firstNameInputGrid.value,
-                    LastName: form.lastNameInputGrid.value,
+                    lastName: form.lastNameInputGrid.value,
                     presentation: "",
                     email: form.emailInputGrid.value,
                     password: form.passwordInputGrid.value,
                     phone: form.phoneInputGrid.value,
                     experience: [],
+                    education: [],
+                    competencies: [],
+                    personality: [{id:'personality-1', name:'Openness', value:50}, {id:'personality-2', name:'Conscintiousness', value:50},{id:'personality-3', name:'Extroversion', value:50},{id:'personality-4', name:'Agreableness', value:50},{id:'personality-5', name:'Neuroticism', value:50},],
                     rate: [],
+                    role: "candidate",
 
                 }]
       

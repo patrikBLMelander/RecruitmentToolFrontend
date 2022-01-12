@@ -17,6 +17,8 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
     const Navigate = useNavigate();
     let succeessfulLogin = false;
 
+    console.log(candidateState)
+
     if(candidateLoggedIn===true || adminLoggedIn===true){
         Swal.fire({
             icon: 'info',
