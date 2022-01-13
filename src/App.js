@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import jobOfferingsTestData from './testData/jobOfferingsTestData';
+import Animals from './testData/animals';
 import RecruitmentPage from './pages/RecruitmentPage';
 import Home from './pages/Home';
 import AddNewJobOffer from './pages/AddNewJobOffer';
@@ -20,6 +21,7 @@ function App() {
     const [candidateState, setCandidateState] = useState(candidateTestData);
     const [candidateLoggedIn, setCandidateLoggedIn] = useState(false)
     const [adminLoggedIn, setAdminLoggedIn] = useState(false)
+    const [nickName, setNickName] = useState(Animals)
 
 
     return(
@@ -31,10 +33,10 @@ function App() {
                     <Route path="/candidate/my-page" element= {<CandidateMyPage setActiveJob={setActiveJob}  setCandidateState={setCandidateState} candidateState={candidateState} activeCandidate={activeCandidate} setActiveCandidate={setActiveCandidate} jobOfferings={jobOfferings} activeJob={activeJob} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} candidateLoggedIn={candidateLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}/>}/>
                     <Route path="/candidate/in-process" element= {<CandidateProcesses setActiveJob={setActiveJob}jobOfferings={jobOfferings} activeJob={activeJob} activeCandidate={activeCandidate} setCandidateState={setCandidateState} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} candidateLoggedIn={candidateLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}/>}/>
                     <Route path="/home" element= {<Home  activeCandidate={activeCandidate} jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} setCandidateState={setCandidateState} setActiveCandidate={setActiveCandidate} setActiveJob={setActiveJob} activeJob={activeJob} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} candidateLoggedIn={candidateLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}/>}/>
-                    <Route path="/admin/recruitment-page" element= {<RecruitmentPage  jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} activeJob={activeJob} setActiveJob={setActiveJob} activeCandidate={activeCandidate} candidateState={candidateState} setCandidateState={setCandidateState} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} candidateLoggedIn={candidateLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}/>}/> 
+                    <Route path="/admin/recruitment-page" element= {<RecruitmentPage  nickName={nickName} jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} activeJob={activeJob} setActiveJob={setActiveJob} activeCandidate={activeCandidate} candidateState={candidateState} setCandidateState={setCandidateState} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} candidateLoggedIn={candidateLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}/>}/> 
                     <Route path="/admin/add-job-offer-page" element= {<AddNewJobOffer setActiveJob={setActiveJob} jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} activeJob={activeJob} adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} candidateLoggedIn={candidateLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}/>}/> 
                     <Route path="/admin/candidate-search" element= {<CandidateSearch  activeJob={activeJob} setActiveJob={setActiveJob}adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} candidateLoggedIn={candidateLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} />}/> 
-                    <Route path="/admin/settings" element=  {<Settings setCandidateState={setCandidateState} candidateState={candidateState}  jobOfferings={jobOfferings}  activeJob={activeJob} adminLoggedIn={adminLoggedIn} setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} candidateLoggedIn={candidateLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}/>}/> 
+                    <Route path="/admin/settings" element=  {<Settings setNickName={setNickName} setCandidateState={setCandidateState} candidateState={candidateState}  jobOfferings={jobOfferings}  activeJob={activeJob} adminLoggedIn={adminLoggedIn} setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} candidateLoggedIn={candidateLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}/>}/> 
                     <Route path="/login" exect element= {<Login adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} candidateLoggedIn={candidateLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} jobOfferings={jobOfferings} activeJob={activeJob} setActiveJob={setActiveJob}candidateState={candidateState} setActiveCandidate={setActiveCandidate}/>}/>
                 </Routes>
             </div>

@@ -15,6 +15,7 @@ function ApplicantCardModal({
   candidateState,
   setCandidateState,
   activeJobId,
+  nickName
 }) {
   const [rating, setRating] = useState(
     candidate.rate.map((rateInMap) => {
@@ -72,7 +73,7 @@ function ApplicantCardModal({
   return (
     <div>
       <div>
-        <h3 onClick={openModal}>{candidate.nickName}</h3>
+        <h3 onClick={openModal}>{nickName[candidate.nickName]}</h3>
         <Rating
           size="31"
           onClick={handleRating}

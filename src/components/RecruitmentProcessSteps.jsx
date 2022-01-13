@@ -15,6 +15,7 @@ function RecruitmentProcessStep({
   candidates,
   candidateState,
   setCandidateState,
+  nickName
 }) {
   return (
     <Draggable draggableId={id} index={index}>
@@ -37,6 +38,7 @@ function RecruitmentProcessStep({
                       candidateState={candidateState}
                       setCandidateState={setCandidateState}
                       activeJobId={activeJobId}
+                      nickName={nickName}
                     />
                   );
                 })}

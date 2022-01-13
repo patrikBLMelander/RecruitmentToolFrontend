@@ -19,6 +19,7 @@ function RecruitmentPage({
   candidateLoggedIn,
   setAdminLoggedIn,
   setCandidateLoggedIn,
+  nickName
 }) {
 
   const onDragEnd = (result) => {
@@ -150,6 +151,7 @@ function RecruitmentPage({
                         candidateState={candidateState}
                         setCandidateState={setCandidateState}
                         activeJobId={activeJob.id}
+                        nickName={nickName}
                       />
                     )
                   );

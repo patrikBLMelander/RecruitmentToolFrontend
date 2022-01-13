@@ -9,24 +9,30 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import StyledButton from '../components/StyledButton';
 import Swal from 'sweetalert2';
 import { CloseO } from "@styled-icons/evil/CloseO";
+import Animals from '../testData/animals'
+import Countries from '../testData/countries'
+import Cities from '../testData/capitals'
 
 let counter = 9;
 let newId = "candidate-" + counter;
 let emailTaken = false;
 
-function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, setAdminLoggedIn, setCandidateLoggedIn, candidateState, setCandidateState, setActiveJob }) {
+function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, setAdminLoggedIn, setCandidateLoggedIn, candidateState, setCandidateState, setActiveJob, setNickName }) {
     const [validated, setValidated] = useState(false);
 
     //ADJUST NAME
     const [radioButtonsName, setRadioButtonsName] = useState([true, false, false])
     function handleAnimalChange() {
         setRadioButtonsName([true, false, false])
+        setNickName(Animals)
     }
     function handleCountryChange() {
         setRadioButtonsName([false, true, false])
+        setNickName(Countries)
     }
     function handleCitiesChange() {
         setRadioButtonsName([false, false, true])
+        setNickName(Cities)
     }
     //ADJUST COLOR
     const [radioButtonsColor, setRadioButtonsColor] = useState([true, false, false, false, false, false])
@@ -153,7 +159,7 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
                                     <input type="radio" value="option2"
                                         checked={radioButtonsName[1]}
                                         onChange={handleCountryChange} />
-                                    Cities
+                                    Countries
                                 </label>
                             </RadioCol>
                             <RadioCol>
@@ -161,7 +167,7 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
                                     <input type="radio" value="option3"
                                         checked={radioButtonsName[2]}
                                         onChange={handleCitiesChange} />
-                                    Counties
+                                    Cities
                                 </label>
                             </RadioCol>
                         </form>

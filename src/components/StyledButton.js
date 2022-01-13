@@ -42,8 +42,8 @@ const StyledBtn = styled.button`
     &:hover {
         background-color: ${colorPicker.fourth};
         box-shadow: 0px 15px 20px ${colorPicker.fourth};
-        color: ${colorPicker.text}
-        transform: translateY(-7px);
+        color: ${colorPicker.text};
+        transform: translateY(-3px);
     }
     
 `;

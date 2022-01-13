@@ -6,7 +6,7 @@ import ApplicantCardModal from './Modal/ApplicantCardModal'
 
 
 
-function CandidateCard ({index, candidateId, candidateState, setCandidateState, activeJobId}) {
+function CandidateCard ({index, candidateId, candidateState, setCandidateState, activeJobId, nickName}) {
  
     return (
       <Draggable draggableId={candidateId} index={index}>
@@ -21,7 +21,7 @@ function CandidateCard ({index, candidateId, candidateState, setCandidateState, 
           {candidateState.map( candidate => {
             if(candidate.id===candidateId){
               return (
-                <ApplicantCardModal key={candidate.id} candidate = {candidate} candidateState={candidateState} setCandidateState={setCandidateState} activeJobId={activeJobId}/>
+                <ApplicantCardModal key={candidate.id} candidate = {candidate} candidateState={candidateState} setCandidateState={setCandidateState} activeJobId={activeJobId} nickName={nickName}/>
 
               )
             }else{ return null}
