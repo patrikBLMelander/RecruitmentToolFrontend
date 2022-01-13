@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 function Main({jobOfferings, adminLoggedIn, candidateLoggedIn, colorScheme}){
     const Navigate = useNavigate();
-
+    console.log(colorScheme)
     function login(){
         Navigate("/login");
     }
@@ -22,7 +22,7 @@ function Main({jobOfferings, adminLoggedIn, candidateLoggedIn, colorScheme}){
 
     return(
         <div>
-            <Container style={{backgroundColor: colorScheme.primary, color: colorScheme.text}}>
+            <Container inputColor={colorScheme}>
                 <StyleH1>Karriär</StyleH1>
                 <OuterCircleDiv>
                     <StyledImg src="https://picsum.photos/id/0/200"/>
@@ -48,7 +48,7 @@ function Main({jobOfferings, adminLoggedIn, candidateLoggedIn, colorScheme}){
                         )})}
                     </JobCardDiv>
                 </Container>
-                <Footer/>
+                <Footer colorScheme={colorScheme}/>
             </div>
     )
 }
@@ -56,6 +56,8 @@ function Main({jobOfferings, adminLoggedIn, candidateLoggedIn, colorScheme}){
 export default Main;
 
 const Container = styled.div`
+    background-color: ${props => props.inputColor.primary || "palevioletred"};
+    color: ${props => props.inputColor.text || "palevioletred"};
     position: fixed;
     text-align: center;
     height: 95%;

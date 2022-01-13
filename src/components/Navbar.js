@@ -30,51 +30,51 @@ import { useNavigate } from "react-router-dom";
 
     if(adminLoggedIn===true){
         render = (
-            <Container>
+            <Container inputColor={colorScheme}>
                 <Link to="/home">  
-                <h1><StyledHomeBtn /></h1>
+                <h1><StyledHomeBtn inputColor={colorScheme}/></h1>
                 </Link>
         
-                <Link to="/admin/recruitment-page">  
-                <h1><StyledBearSmileBtn /></h1>
+                <Link to="/admin/recruitment-page" >  
+                <h1><StyledBearSmileBtn inputColor={colorScheme}/></h1>
                 </Link>
         
                 <Link to="/admin/candidate-search" >
-                <h1><StyledPersonSearchBtn /></h1>
+                <h1><StyledPersonSearchBtn inputColor={colorScheme}/></h1>
                 </Link>
         
                 <Link to="/admin/add-job-offer-page">
-                <h1><StyledPeopleTeamAddBtn /></h1>
+                <h1><StyledPeopleTeamAddBtn inputColor={colorScheme}/></h1>
                 </Link>
         
                 <Link to="/admin/settings">
-                <h1><StyledSettingsBtn /></h1>
+                <h1><StyledSettingsBtn inputColor={colorScheme}/></h1>
                 </Link>
         
                 <a onClick={logOut}>
-                <h1><StyledLogOutCircleBtn /></h1>
+                <h1><StyledLogOutCircleBtn inputColor={colorScheme}/></h1>
                 </a>
         
             </Container>
             )
     }else{
         render = ( 
-            <Container>
+            <Container inputColor={colorScheme}>
                 <Link to="/home">  
-                <h1><StyledHomeBtn /></h1>
+                <h1><StyledHomeBtn inputColor={colorScheme}/></h1>
                 </Link>
         
                 <Link to="/candidate/in-process">
-                <h1><StyledBriefcaseBtn /></h1>
+                <h1><StyledBriefcaseBtn inputColor={colorScheme}/></h1>
                 </Link>
         
         
                 <Link to="/candidate/my-page">
-                <h1><StyledAddressCardBtn /></h1>
+                <h1><StyledAddressCardBtn inputColor={colorScheme}/></h1>
                 </Link>
         
                 <a onClick={logOut}>
-                <h1><StyledLogOutCircleBtn /></h1>
+                <h1><StyledLogOutCircleBtn inputColor={colorScheme}/></h1>
                 </a>
         
             </Container>
@@ -89,7 +89,8 @@ export default Navbar;
 const Container = styled.div`
     position: fixed;
     text-align: center;
-    background-color: ${colorPicker.primary};
+    background-color: ${props => props.inputColor.primary};
+    color: ${props => props.inputColor.text};
     height: 100%;
     width: 160px;
     z-index: 2;
@@ -103,8 +104,7 @@ const StyledHomeBtn = styled(Home)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: ${colorPicker.text};
-
+    color: ${props => props.inputColor.text};
 `; 
 
 
@@ -112,37 +112,34 @@ const StyledPersonSearchBtn = styled(PersonSearch)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: ${colorPicker.text};
-
+    color: ${props => props.inputColor.text};
 `; 
 
 const StyledBearSmileBtn = styled(BearSmile)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: ${colorPicker.text};
-
+    color: ${props => props.inputColor.text};
 `; 
 const StyledSettingsBtn = styled(Settings)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: ${colorPicker.text};
+    color: ${props => props.inputColor.text};
 `; 
 
 const StyledPeopleTeamAddBtn = styled(PeopleTeamAdd)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: ${colorPicker.text};
-
+    color: ${props => props.inputColor.text};
 `;
 
 const StyledLogOutCircleBtn = styled(LogOutCircle)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: ${colorPicker.text};
+    color: ${props => props.inputColor.text};
 `; 
 
 
@@ -150,11 +147,11 @@ const StyledBriefcaseBtn = styled(Briefcase)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: ${colorPicker.text};
+    color: ${props => props.inputColor.text};
 `; 
 const StyledAddressCardBtn = styled(AddressCard)`
     cursor: pointer;
     height: 40px;
     width: 40;
-    color: ${colorPicker.text};
+    color: ${props => props.inputColor.text};
 `; 

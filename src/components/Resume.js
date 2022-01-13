@@ -113,8 +113,8 @@ function Resume({
     let render;
     if (candidateView === true) {
         render = (
-            <OuterContainer key={activeCandidate.id}>
-                <LeftDiv>
+            <OuterContainer key={activeCandidate.id} inputColor={colorScheme}>
+                <LeftDiv inputColor={colorScheme}>
                     <StyledImg src="https://picsum.photos/150?grayscale"></StyledImg>
                     <AboutMe>
                         <H5>About me</H5>
@@ -136,7 +136,7 @@ function Resume({
                         })}
                     </Skills>
                 </LeftDiv>
-                <RightDiv>
+                <RightDiv inputColor={colorScheme}>
                     <H3>{activeCandidate.nickName}</H3>
                     <Experience>
                         <H5>Job Experience</H5>
@@ -239,8 +239,8 @@ function Resume({
         );
     } else {
         render = (
-            <OuterContainer key={activeCandidate.id}>
-                <LeftDiv>
+            <OuterContainer key={activeCandidate.id} inputColor={colorScheme}>
+                <LeftDiv inputColor={colorScheme}>
                     <StyledImg src="https://picsum.photos/150?grayscale"></StyledImg>
                     <AboutMe>
                         <H5>About me</H5>
@@ -259,9 +259,9 @@ function Resume({
                         })}
                     </Skills>
                 </LeftDiv>
-                <RightDiv>
+                <RightDiv inputColor={colorScheme}>
                     <H3>{activeCandidate.nickName}</H3>
-                    <Experience>
+                    <Experience inputColor={colorScheme}>
                         <H5>Job Experience</H5>
                         {activeCandidate.experience.map((experienceInMap) => {
                             return (
@@ -277,7 +277,7 @@ function Resume({
                             );
                         })}
                     </Experience>
-                    <Experience>
+                    <Experience inputColor={colorScheme}>
                         <H5>Education</H5>
                         {activeCandidate.education.map((educationsInMap) => {
                             return (
@@ -361,24 +361,26 @@ function Resume({
 export default Resume;
 
 const OuterContainer = styled.div`
-  color: ${colorPicker.text};
+  color: ${props => props.inputColor.text};
   font-family: "Roboto", sans-serif;
   text-align: center;
-  background-color: ${colorPicker.primary};
+  background-color:${props => props.inputColor.primary};
   width: 100%;
   display: flex;
   border-style: double;
-  border-color: ${colorPicker.text};
+  border-color:${props => props.inputColor.text};
 `;
 const LeftDiv = styled.div`
   width: 25%;
   border-right: solid;
-  border-color: ${colorPicker.secondary};
+  border-color:${props => props.inputColor.secondary};
   padding: 5px;
 `;
 const RightDiv = styled.div`
   padding: 5px;
   width: 75%;
+  border-color:${props => props.inputColor.secondary};
+
 `;
 const StyledImg = styled.img`
   border-radius: 100%;
@@ -388,15 +390,12 @@ const StyledImg = styled.img`
 const AboutMe = styled.div`
   border-top: solid;
   border-bottom: solid;
-  border-color: ${colorPicker.secondary};
 `;
 
 const Skills = styled.div`
-  border-color: ${colorPicker.secondary};
 `;
 const Experience = styled.div`
   border-bottom: solid;
-  border-color: ${colorPicker.secondary};
 `;
 const TitleAndPeriod = styled.div`
   display: flex;
@@ -422,13 +421,11 @@ const H6 = styled.h6`
 `;
 const P = styled.p``;
 const TraitDiv = styled.div`
-  color: ${colorPicker.text};
   font-family: "Roboto", sans-serif;
   justify-content: center;
 `;
 
 const TraitText = styled.div`
-  color: ${colorPicker.text};
   font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: space-between;
@@ -444,7 +441,6 @@ const StyledCloseBtn = styled(CloseO)`
   color: #fff;
 `;
 const PersonalityDiv = styled.div`
-  color: ${colorPicker.text};
   font-family: "Roboto", sans-serif;
   justify-content: center;
   margin-left: 10%;

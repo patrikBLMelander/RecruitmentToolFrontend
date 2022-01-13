@@ -102,7 +102,7 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
         <div>
         <Navbar colorScheme={colorScheme} setActiveJob={setActiveJob} jobOfferings={jobOfferings} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}colorScheme={colorScheme}/>
-        <Container>    
+        <Container inputColor={colorScheme}>    
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Row className="g-2 ms-5 me-5 mt-5">
                     <Col md>
@@ -214,7 +214,7 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
             </JobOfferPreviewDiv>
         </Container>
         
-        <Footer/>
+        <Footer colorScheme={colorScheme}/>
         </div>
     )
 }
@@ -222,8 +222,8 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
 export default AddNewJobOffer;
 
 const Container = styled.div`
-    background-color: ${colorPicker.primary};
-    color: ${colorPicker.text};
+    background-color: ${props => props.inputColor.primary};
+    color: ${props => props.inputColor.text};
     align-content: center;
     padding-bottom: 100%;
     padding-left: 163px;
@@ -233,8 +233,6 @@ const Container = styled.div`
 ;
 
 const JobOfferPreviewDiv = styled.div`
-    background-color: ${colorPicker.primary};
-    color: ${colorPicker.text};
     align-content: center;
     padding-bottom: 100%;
     padding-left: 163px;

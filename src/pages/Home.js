@@ -14,7 +14,7 @@ import Footer from '../components/Footer';
         <div>
         <Navbar colorScheme={colorScheme} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} setActiveJob={setActiveJob}/>
         <Header colorScheme={colorScheme} activeJob={activeJob}/>
-    <Container>
+    <Container inputColor={colorScheme}>
         <H3>Welcome {activeCandidate.firstName} {activeCandidate.lastName}</H3>
         <JobCardDiv>
         {jobOfferings.map((jobOfferingsInMap, index) =>{
@@ -25,7 +25,7 @@ import Footer from '../components/Footer';
 
 
     </Container>
-    <Footer/>
+    <Footer colorScheme={colorScheme}/>
     </div>
     )
        
@@ -34,14 +34,14 @@ import Footer from '../components/Footer';
 export default Home
 
 const Container = styled.div`
-    background-color: ${colorPicker.primary};    
+    background-color: ${props => props.inputColor.primary};    
+    color: ${props => props.inputColor.text};
     padding-bottom: 5%;
     margin-left 160px
 `;
 
 const H3 = styled.h3`
     display: flex;
-    color: ${colorPicker.text};
     margin-left: 50px;
     margin-right: 400px;
     font-family: 'Trebuchet MS', sans-serif;

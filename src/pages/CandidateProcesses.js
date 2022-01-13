@@ -15,7 +15,7 @@ function CandidateProcesses({jobOfferings, activeJob, setActiveJob, adminLoggedI
         <div>
         <Navbar colorScheme={colorScheme}setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header activeJob={activeJob}colorScheme={colorScheme}/>
-        <Container>
+        <Container inputColor={colorScheme}>
         <H3>{activeCandidate.firstName} {activeCandidate.lastName} Here's your active processes</H3>
             <JobCardDiv>
                 {jobOfferings.map((jobOfferingsInMap, index) =>{
@@ -25,7 +25,7 @@ function CandidateProcesses({jobOfferings, activeJob, setActiveJob, adminLoggedI
                    })}
             </JobCardDiv>
         </Container>
-        <Footer/>
+        <Footer colorScheme={colorScheme}/>
         </div>
     )
 }
@@ -33,7 +33,8 @@ function CandidateProcesses({jobOfferings, activeJob, setActiveJob, adminLoggedI
 export default CandidateProcesses;
 
 const Container = styled.div`
-    background-color: ${colorPicker.primary};    
+    background-color: ${props => props.inputColor.primary};    
+    color: ${props => props.inputColor.text};
     padding-bottom: 5%;
     margin-left 160px
 `;
@@ -61,7 +62,7 @@ const JobCardDiv = styled.div`
 
 const H3 = styled.h3`
     display: flex;
-    color: ${colorPicker.text};
+    
     margin-left: 50px;
     margin-right: 400px;
     font-family: 'Trebuchet MS', sans-serif;

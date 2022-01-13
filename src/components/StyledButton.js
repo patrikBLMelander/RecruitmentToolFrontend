@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components'
 import colorPicker from '../testData/colorPicker';
-import { useNavigate } from "react-router-dom";
 
-function StyledButton({input, colorScheme, onClick, disabled}) {
+function StyledButton({input, colorScheme, onClick, disabled, isJobOfferCard}) {
+    if(isJobOfferCard===undefined){
+        isJobOfferCard=false
+    }
 
     if(disabled===undefined) {disabled=false}
 
@@ -11,7 +13,7 @@ function StyledButton({input, colorScheme, onClick, disabled}) {
 
     return(
         <div>
-            <StyledBtn onClick={() => onClick()} disabled={disabled}>{input}</StyledBtn>
+            <StyledBtn inputColor={colorScheme} onClick={() => onClick()} disabled={disabled} isJobOfferCard={isJobOfferCard}>{input}</StyledBtn>
         </div>
     )
 }
@@ -26,18 +28,18 @@ const StyledBtn = styled.button`
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    color: ${colorPicker.text};
-    background-color: ${colorPicker.secondary};
+    color: ${props => props.inputColor.text};
+    background-color: ${props => props.isJobOfferCard ? props.inputColor.third : props.inputColor.secondary};
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px ${colorPicker.third};
+    box-shadow: 0px 8px 15px ${props => props.isJobOfferCard ? props.inputColor.third : props.inputColor.secondary};
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
     &:hover {
-        background-color: ${colorPicker.fourth};
-        box-shadow: 0px 15px 20px ${colorPicker.fourth};
-        color: ${colorPicker.text};
+        background-color: ${props => props.inputColor.fourth};
+        box-shadow: 0px 15px 20px ${props => props.inputColor.fourth};
+        color: ${props => props.inputColor.text};
         transform: translateY(-3px);
     }
     

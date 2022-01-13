@@ -87,7 +87,15 @@ function ApplicantCardModal({
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        style={customStyles, {backgroundColor: colorScheme.primary,}}
+        style={{content: {
+          backgroundColor: colorScheme.primary,
+          position: "absolute",
+          width: "55%",
+          height: "80%",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}}
         contentLabel="CV modal"
       >
         <Container>
@@ -108,17 +116,6 @@ function ApplicantCardModal({
 }
 
 export default ApplicantCardModal;
-
-const customStyles = {
-  content: {
-    position: "absolute",
-    width: "55%",
-    height: "80%",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
 
 const Container = styled.div`
   margin: 15px;

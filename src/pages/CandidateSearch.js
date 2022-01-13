@@ -12,7 +12,7 @@ function CandidateSearch({jobOfferings, adminLoggedIn, candidateLoggedIn, active
         <div>
         <Navbar colorScheme={colorScheme} setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
         <Header colorScheme={colorScheme} activeJob={activeJob}/>
-        <Container>
+        <Container inputColor={colorScheme}>
             <h1>To Do</h1>
             <ul>
             <li>make search function to search for any candidates in the system</li>
@@ -20,7 +20,7 @@ function CandidateSearch({jobOfferings, adminLoggedIn, candidateLoggedIn, active
             <li>search for personal info</li>
             </ul>
         </Container>
-        <Footer/>
+        <Footer colorScheme={colorScheme}/>
         </div>
     )
 }
@@ -28,8 +28,8 @@ function CandidateSearch({jobOfferings, adminLoggedIn, candidateLoggedIn, active
 export default CandidateSearch;
 
 const Container = styled.div`
-background-color: ${colorPicker.primary};
-color: ${colorPicker.text};
+background-color: ${props => props.inputColor.primary};
+color: ${props => props.inputColor.text};
 display: flex;
 position: fixed;
 padding-bottom: 100%;

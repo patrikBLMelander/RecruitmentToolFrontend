@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components'
-import colorPicker from '../testData/colorPicker';
 
 
 
  function Footer ({colorScheme}) {
 
     return (
-    <Container>
+    <Container inputColor={colorScheme}>
         <H5>Copyright &copy; Patrik Melander</H5>
     </Container>
     )
@@ -24,7 +23,8 @@ const Container = styled.div`
     bottom: 0;
     width: 100%;
     justify-content: center;
-    background-color: ${colorPicker.fifth};
+    background-color: ${props => props.inputColor.fifth};
+    color: ${props => props.inputColor.text};
     hight: 400;
     padding-top: 16px;
     margin-top: 0;
@@ -36,7 +36,6 @@ const Container = styled.div`
 const H5 = styled.h5`
     font-family: 'Roboto', sans-serif; 
     display: flex;
-    color: ${colorPicker.text};
     margin-top: 20px;
     margin-bottom: 20px;
     

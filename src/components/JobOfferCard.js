@@ -96,25 +96,27 @@ function JobOfferCard({
     }
   }
   return (
-    <CardDiv key={index}>
+    <CardDiv key={index} inputColor={colorScheme}>
       <Image src={jobOfferings[index].imageUrl} onClick={openModal} />
-      <CardBody>
-        <StyledH4>{jobOfferings[index].title}</StyledH4>
-        <PExpire>Expire: {jobOfferings[index].applyDate}</PExpire>
+      <CardBody inputColor={colorScheme}>
+        <StyledH4 inputColor={colorScheme}>{jobOfferings[index].title}</StyledH4>
+        <PExpire inputColor={colorScheme}>Expire: {jobOfferings[index].applyDate}</PExpire>
         <BtnContainer>
           <StyledButton
             onClick={() => setJobToWorkWith(jobOfferings[index])}
             variant="primary"
             input={btnText}
+            colorScheme={colorScheme}
+            isJobOfferCard={true}
           />
             
 
         </BtnContainer>
         <CadnidateInfoDiv>
-          <PNew show={adminLoggedIn}>
+          <PNew show={adminLoggedIn} inputColor={colorScheme}>
             New: {jobOfferings[index].recruitmentSteps[0].candidateIds.length}
           </PNew>
-          <PTotal show={adminLoggedIn}>
+          <PTotal show={adminLoggedIn} inputColor={colorScheme}>
             Total: {totalCandidates(jobOfferings[index])}
           </PTotal>
         </CadnidateInfoDiv>
@@ -122,17 +124,26 @@ function JobOfferCard({
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        style={customStyles}
+        style={{content: {
+          backgroundColor: colorScheme.primary,
+          position: "absolute",
+          width: "70%",
+          height: "80%",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}}
         contentLabel="JobOffer modal"
       >
-        <JobOfferPreview jobOffer={jobOfferings[index]}colorScheme={colorScheme} />
+        <JobOfferPreview jobOffer={jobOfferings[index]} colorScheme={colorScheme} />
         <BtnModalContainer>
           <StyledButton
             onClick={() => setJobToWorkWith(jobOfferings[index])}
             variant="primary"
             input={btnText}
+            colorScheme={colorScheme}
           />
-          <StyledButton onClick={closeModal} variant="primary" input={"Close"}/>
+          <StyledButton onClick={closeModal} variant="primary" input={"Close"} colorScheme={colorScheme} />
         </BtnModalContainer>
       </Modal>
     </CardDiv>
@@ -141,27 +152,15 @@ function JobOfferCard({
 
 export default JobOfferCard;
 
-const customStyles = {
-  content: {
-    backgroundColor: colorPicker.primary,
-    position: "absolute",
-    width: "70%",
-    height: "80%",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
-
 const CardDiv = styled.div`
     display flex;
     flex-direction: column;
     justify-content:center;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px ${colorPicker.third};
-    min-width: 350px;
+    box-shadow: 0px 7px 15px ${props => props.inputColor.third};
+    min-width: 300px;
     min-height: 300px;
-    max-width: 350px;
+    max-width: 300px;
     min-height: 300px;
     margin: 8px 8px 8px 8px
 `;
@@ -172,10 +171,11 @@ const Image = styled.img`
   justify-content: center;
   cursor: pointer;
   border-radius: 45px 45px 0px 0px;
+  
 `;
 
 const CardBody = styled.div`
-  background-color: ${colorPicker.secondary};
+  background-color: ${props => props.inputColor.secondary};
   border-radius: 0px 0px 45px 45px;
 `;
 
@@ -196,7 +196,7 @@ const PNew = styled.p`
 const PTotal = styled.p`
   margin-left: 75px;
   font-weight: bold;
-  color: ${colorPicker.fifth};
+  color: ${props => props.inputColor.fifth};
   visibility: ${(props) => (props.show ? "visible" : "hidden")};
 `;
 
@@ -205,13 +205,13 @@ const PExpire = styled.p`
   margin-top: 0;
   margin-left: 10px;
   margin-bottom: 0;
-  color: ${colorPicker.fifth};
+  color: ${props => props.inputColor.fifth};
 `;
 
 const StyledH4 = styled.h4`
   margin-top: 8px;
   margin-left: 10px;
-  color: ${colorPicker.fifth};
+  color: ${props => props.inputColor.fifth};
 `;
 
 const BtnContainer = styled.div`

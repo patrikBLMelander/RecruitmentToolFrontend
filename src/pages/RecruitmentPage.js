@@ -138,7 +138,7 @@ function RecruitmentPage({
           type="column"
         >
           {(provided) => (
-            <Container {...provided.droppableProps} ref={provided.innerRef}>
+            <Container inputColor={colorScheme} {...provided.droppableProps} ref={provided.innerRef}>
               {jobOfferings.map((jobOfferingsInMap, index) => {
                 if (jobOfferingsInMap.id === activeJob.id) {
                   return jobOfferingsInMap.recruitmentSteps.map(
@@ -174,7 +174,7 @@ function RecruitmentPage({
           )}
         </Droppable>
       </DragDropContext>
-      <Footer />
+      <Footer colorScheme={colorScheme}/>
     </div>
   );
 }
@@ -182,7 +182,7 @@ function RecruitmentPage({
 export default RecruitmentPage;
 
 const Container = styled.div`
-  background-color: ${colorPicker.primary};
+  background-color: ${props => props.inputColor.primary};
   display: flex;
   position: fixed;
   z-index: 0;

@@ -132,7 +132,7 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
         const lastNameToRemove = candidateState[indexToRemove].lastName;
         const NewCandidateState = candidateState;
         NewCandidateState.splice(indexToRemove, 1);
-        setCandidateState(NewCandidateState)
+        setCandidateState([...NewCandidateState])
         Swal.fire({
             icon: 'success',
             title: 'Recruiter removed',
@@ -152,7 +152,7 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
         <div>
             <Navbar colorScheme={colorScheme} setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} />
             <Header colorScheme={colorScheme} activeJob={activeJob} />
-            <Container style={{backgroundColor: colorScheme.primary, color: colorScheme.text}}>
+            <Container inputColor={colorScheme}>
                 <H3>Settings</H3>
                 <RadioDiv>
                     <AdjustCandidateNameDiv>
@@ -333,7 +333,7 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
                     </Form>
                 </ChangePasswordDiv>
             </Container>
-            <Footer />
+            <Footer colorScheme={colorScheme}/>
         </div>
     )
 }
@@ -341,10 +341,10 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
 export default Settings;
 
 const Container = styled.div`
-    background-color: ${colorPicker.primary};    
+    background-color: ${props => props.inputColor.primary};
+    color: ${props => props.inputColor.text};
     padding-bottom: 5%;
     margin-left 160px;
-    color: ${colorPicker.text};
 `;
 
 const AdjustCandidateNameDiv = styled.div`
@@ -397,7 +397,6 @@ const ChangePasswordCol = styled.div`
 
 const H3 = styled.h3`
     display: flex;
-    color: ${colorPicker.text};
     margin-left: 50px;
     margin-right: 400px;
     font-family: 'Trebuchet MS', sans-serif;
@@ -405,7 +404,6 @@ const H3 = styled.h3`
 
 const H5 = styled.h5`
     display: flex;
-    color: ${colorPicker.text};
     margin-left: 50px;
     margin-right: 400px;
     font-family: 'Trebuchet MS', sans-serif;
@@ -418,5 +416,4 @@ const StyledCloseBtn = styled(CloseO)`
   cursor: pointer;
   height: 28px;
   width: 28px;
-  color: ${colorPicker.text};
 `;

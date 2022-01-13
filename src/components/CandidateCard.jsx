@@ -11,7 +11,7 @@ function CandidateCard ({index, candidateId, candidateState, setCandidateState, 
     return (
       <Draggable draggableId={candidateId} index={index}>
          {(provided, snapshot) => (
-          <Container
+          <Container inputColor={colorScheme}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
@@ -38,10 +38,10 @@ function CandidateCard ({index, candidateId, candidateState, setCandidateState, 
 export default CandidateCard;
 
 const Container = styled.div`
-  border: 1px solid ${colorPicker.fifth};
+  border: 1px solid ${props => props.inputColor.fifth};
   border-radius: 2px;
   padding: 8px;
   margin-bottom: 8px;
-  color: ${colorPicker.text};
-  background-color: ${props => (props.isDragging ? colorPicker.fourth : colorPicker.secondary)};
+  color:${props => props.inputColor.text};
+  background-color: ${props => (props.isDragging ? props.inputColor.fourth : props.inputColor.secondary)};
 `;

@@ -97,7 +97,7 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
     
         
     return(
-        <Container>
+        <Container inputColor={colorScheme}>
             
 
             <InnerContainer>
@@ -117,7 +117,7 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                         </Col>
                         <Col md>
                             <FloatingLabel controlId="passwordInputGrid" label="password">
-                                <Form.Control required type="password" placeholder='"Melander"'autoComplete="new-password"/>
+                                <Form.Control required type="password" placeholder='"Melander"' autoComplete="new-password"/>
                                 <Form.Control.Feedback type="invalid">
                                 This is needed to log in!
                             </Form.Control.Feedback>
@@ -129,7 +129,7 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                     </BtnContainer>
                 </Form>
             </InnerContainer>
-            <Footer/>
+            <Footer colorScheme={colorScheme}/>
         </Container>
     )
 }
@@ -140,7 +140,8 @@ const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
     position: fixed;
     text-align: center;
-    background-color: ${colorPicker.primary};
+    background-color: ${props => props.inputColor.primary};
+    color: ${props => props.inputColor.fifth};
     height: 100%;
     width: 100%;
     z-index: 1,
@@ -165,6 +166,5 @@ const BtnContainer = styled.div`
 
 
 const StyleH1 = styled.h1`
-    color: ${colorPicker.fifth};
     margin-top: 6%;    
 `;

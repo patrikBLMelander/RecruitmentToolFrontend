@@ -100,9 +100,9 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
         
     return(
         <div>
-            <Container>
+            <Container inputColor={colorScheme}>
                 <InnerContainer>
-                    <StyleH1>Our New Star? </StyleH1>
+                    <StyleH1 inputColor={colorScheme}>Our New Star? </StyleH1>
                     <Form noValidate validated={validated} onSubmit={handleSubmit}>
                         <Row className="g-1 ms-5 me-5 mt-5">
                             <Col md>
@@ -161,7 +161,7 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
                 </InnerContainer>
            
             </Container>
-            <Footer/>
+            <Footer colorScheme={colorScheme}/>
         </div>
     )
 }
@@ -172,7 +172,8 @@ const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
     position: fixed;
     text-align: center;
-    background-color: ${colorPicker.primary};
+    background-color: ${props => props.inputColor.primary};
+    color: ${props => props.inputColor.text};
     height: 100%;
     width: 100%;
     z-index: 1,
@@ -200,7 +201,7 @@ const PublishContainer = styled.div`
 `;
 
 const StyleH1 = styled.h1`
-    color: ${colorPicker.fifth};
+    color: ${props => props.inputColor.fifth};
     font-family: 'Roboto', sans-serif;      
     margin-top: 8%;
 `;
@@ -210,5 +211,4 @@ const CheckboxDiv = styled.div`
     display: flex;
     margin-left: 50px;
     margin-top: 10px;
-    color: ${colorPicker.text};
 `
