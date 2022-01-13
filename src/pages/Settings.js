@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
@@ -16,6 +16,7 @@ let emailTaken = false;
 
 function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, setAdminLoggedIn, setCandidateLoggedIn, candidateState, setCandidateState, setActiveJob }) {
     const [validated, setValidated] = useState(false);
+
     //ADJUST NAME
     const [radioButtonsName, setRadioButtonsName] = useState([true, false, false])
     function handleAnimalChange() {
@@ -109,10 +110,19 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
     };
 
     function removeAdmin(indexToRemove){
-        console.log(indexToRemove)
+        const firstNameToRemove = candidateState[indexToRemove].firstName;
+        const lastNameToRemove = candidateState[indexToRemove].lastName;
         const NewCandidateState = candidateState;
         NewCandidateState.splice(indexToRemove, 1);
         setCandidateState(NewCandidateState)
+        Swal.fire({
+            icon: 'success',
+            title: 'Recruiter removed',
+            text: firstNameToRemove + ' ' + lastNameToRemove + ' is removed',
+            showConfirmButton: true,
+            showDenyButton: false,
+            showCancelButton: false,
+        })
     }
 
 
@@ -160,7 +170,7 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
                                 <input type="radio" value="option1"
                                     checked={radioButtonsColor[0]}
                                     onChange={handleColor1Change} />
-                                Gray/Blue
+                                Steal
                             </label>
                         </RadioDiv>
                         <RadioDiv>
@@ -256,8 +266,8 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
                 {candidateState.map((candidate, index) =>{
                     if(candidate.id.includes("admin")){
                         return(
-                            <OneAdminDiv>
-                                <li>{candidate.firstName}</li>
+                            <OneAdminDiv key={candidate.id}>
+                                <li>{candidate.firstName} {candidate.lastName}</li>
                                 <StyledCloseBtn
                                 onClick={() => removeAdmin(index)}/>
                             </OneAdminDiv>
@@ -271,8 +281,6 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
                 <ToDoDiv>
                     <h1>To Do</h1>
                     <ul>
-                        <li>Remove Admin</li>
-                        <li>Show Admin</li>
                         <li>Change Password</li>
                     </ul>
                 </ToDoDiv>

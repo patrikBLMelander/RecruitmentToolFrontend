@@ -111,7 +111,7 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                         <Row className="g-1 ms-5 me-5 mt-5">
                      <Col md>
                             <FloatingLabel controlId="emailInputGrid" label="email">
-                                <Form.Control required type="Email" placeholder='"Melander"'/>
+                                <Form.Control required type="Email" placeholder='"Melander"'autoComplete="email"/>
                                 <Form.Control.Feedback type="invalid">
                                 This is needed to log in!
                             </Form.Control.Feedback>
@@ -119,7 +119,7 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                         </Col>
                         <Col md>
                             <FloatingLabel controlId="passwordInputGrid" label="password">
-                                <Form.Control required type="password" placeholder='"Melander"'/>
+                                <Form.Control required type="password" placeholder='"Melander"'autoComplete="new-password"/>
                                 <Form.Control.Feedback type="invalid">
                                 This is needed to log in!
                             </Form.Control.Feedback>
