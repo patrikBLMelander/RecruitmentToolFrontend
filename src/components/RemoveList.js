@@ -34,7 +34,7 @@ function RemoveListBtn ({activeJobId, jobOfferings, setJobOfferings, candidates,
         
     },[candidates])
     return (
-        <StyledButton disabled= {isBtnDisabled} id={id}input={"Remove"} onClick={removeList} colorScheme={colorScheme}/>
+        <StyledButton disabled= {isBtnDisabled} id={id}input={"Remove"} onClick={removeList} colorScheme={colorScheme} isJobOfferCard={true}/>
     
     );
 

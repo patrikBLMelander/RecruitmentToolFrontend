@@ -50,6 +50,7 @@ function RecruitmentProcessStep({
               </CandidateCardList>
             )}
           </Droppable>
+          <RemoveBtnDiv>
           <RemoveBtn
             id={id}
             jobOfferings={jobOfferings}
@@ -57,7 +58,8 @@ function RecruitmentProcessStep({
             candidates={candidates.length}
             activeJobId={activeJobId}
             colorScheme={colorScheme}
-          ></RemoveBtn>
+          />
+          </RemoveBtnDiv>
         </Container>
       )}
     </Draggable>
@@ -87,4 +89,10 @@ const CandidateCardList = styled.div`
     props.isDraggingOver ? props.inputColor.secondary : props.inputColor.third};
   flex-grow: 1;
   min-height: 100px;
+`;
+
+const RemoveBtnDiv = styled.div`
+  display: flex;
+  margin: 8px;
+  justify-content:center;
 `;
