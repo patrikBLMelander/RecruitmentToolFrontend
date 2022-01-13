@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Rating } from "react-simple-star-rating";
 import Resume from "../Resume";
 import colorPicker from "../../testData/colorPicker";
+import StyledButton from "../StyledButton"
 
 let newId;
 let counter = 0;
@@ -15,7 +16,8 @@ function ApplicantCardModal({
   candidateState,
   setCandidateState,
   activeJobId,
-  nickName
+  nickName,
+  colorScheme
 }) {
   const [rating, setRating] = useState(
     candidate.rate.map((rateInMap) => {
@@ -85,7 +87,7 @@ function ApplicantCardModal({
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        style={customStyles}
+        style={customStyles, {backgroundColor: colorScheme.primary,}}
         contentLabel="CV modal"
       >
         <Container>
@@ -94,6 +96,7 @@ function ApplicantCardModal({
             jobExperienceState={candidate}
             candidateView={false}
             activeCandidate={candidate}
+            colorScheme={colorScheme}
           />
         </Container>
         <BtnModalContainer>
@@ -108,7 +111,6 @@ export default ApplicantCardModal;
 
 const customStyles = {
   content: {
-    backgroundColor: colorPicker.primary,
     position: "absolute",
     width: "55%",
     height: "80%",
@@ -120,32 +122,6 @@ const customStyles = {
 
 const Container = styled.div`
   margin: 15px;
-`;
-
-const StyledButton = styled.button`
-    margin:4px;
-    width: 140px;
-    height: 45px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: ${colorPicker.text};
-    background-color: ${colorPicker.third};
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px ${colorPicker.third};
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    &:hover {
-        background-color: ${colorPicker.fourth};
-        box-shadow: 0px 15px 20px ${colorPicker.fourth};
-        color: ${colorPicker.text}
-        transform: translateY(-7px);
-    }
-    
 `;
 
 const BtnModalContainer = styled.div`

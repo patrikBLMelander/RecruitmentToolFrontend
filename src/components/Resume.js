@@ -11,7 +11,8 @@ function Resume({
     presentation,
     candidateState,
     setCandidateState,
-    candidateView,
+    candidateView, 
+    colorScheme
 }) {
 
     function removeExperience(experienceInMap) {

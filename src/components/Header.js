@@ -5,7 +5,7 @@ import colorPicker from '../testData/colorPicker';
 
 
 
- function Header ({activeJob, loggedIn}) {
+ function Header ({activeJob, colorScheme}) {
 
     return (
     <Container>

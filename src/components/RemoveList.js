@@ -1,31 +1,24 @@
 import React, { useEffect, useState } from "react";
-import styled from 'styled-components';
-import { BsFillTrashFill } from "react-icons/bs";
-import colorPicker from '../testData/colorPicker';
+import StyledButton from "./StyledButton"
 
 
 
 
-function RemoveListBtn (props) {
+function RemoveListBtn ({activeJobId, jobOfferings, setJobOfferings, candidates, id, colorScheme}) {
 
 
     const removeList = (event) => {
-        event.preventDefault();
 
-        
         let test;
-        props.jobOfferings.map((jobOfferingsInMap, index)=>{
-            if(jobOfferingsInMap.id===props.activeJobId){
+        jobOfferings.map((jobOfferingsInMap, index)=>{
+            if(jobOfferingsInMap.id===activeJobId){
 
-                props.jobOfferings[index].recruitmentSteps = [...props.jobOfferings[index].recruitmentSteps.filter(recruitmentStep => recruitmentStep.id !== props.id)]
-                test=[...props.jobOfferings]
+                jobOfferings[index].recruitmentSteps = [...jobOfferings[index].recruitmentSteps.filter(recruitmentStep => recruitmentStep.id !== id)]
+                test=[...jobOfferings]
             }
             return null;
-        }
-        
-        )
-
-        props.setJobOfferings(test)
+        })
+        setJobOfferings(test)
     }
 
     
@@ -33,17 +26,15 @@ function RemoveListBtn (props) {
     
     const [isBtnDisabled, setisBtnDisabled]= useState(true) 
     useEffect( ()=> {
-        if (props.candidates>0) {
+        if (candidates>0) {
             setisBtnDisabled(true)  ; //button remains disabled
         } else {
             setisBtnDisabled(false); //button is enabled
         }
         
-    },[props.candidates])
+    },[candidates])
     return (
-        <form onSubmit={removeList}>
-            <TrashBtn disabled= {isBtnDisabled} type="submit" value="Remove" id={props.id}><BsFillTrashFill/></TrashBtn>
-        </form>
+        <StyledButton disabled= {isBtnDisabled} value="Remove" id={id}input={"Remove"} onClick={removeList}/>
     
     );
 
@@ -51,26 +42,3 @@ function RemoveListBtn (props) {
 }
 
 export default RemoveListBtn;
-
-    
-
-const TrashBtn = styled.button`
-display: flex;
-background-color:${colorPicker.third};
-color: ${colorPicker.text};
-font-size: 15px;
-padding: 8px 80px 8px 80px;
-border-radius: 5px;
-margin-top: 8px;
-margin-bottom: 8px;
-margin-left: auto; 
-margin-right: auto; 
-cursor: pointer;
-align-content: center;
-&:hover {
-    background-color: ${colorPicker.fourth};
-    box-shadow: 0px 15px 20px ${colorPicker.fourth};
-    color: ${colorPicker.text};
-}
-
-`;

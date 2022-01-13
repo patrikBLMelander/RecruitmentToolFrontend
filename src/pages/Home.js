@@ -9,17 +9,17 @@ import Footer from '../components/Footer';
 
 
 
- function Home ({jobOfferings, setJobOfferings, setActiveJob, activeJob, adminLoggedIn, candidateLoggedIn, activeCandidate , setAdminLoggedIn, setCandidateLoggedIn}) {
+ function Home ({jobOfferings, setJobOfferings, setActiveJob, activeJob, adminLoggedIn, candidateLoggedIn, activeCandidate , setAdminLoggedIn, setCandidateLoggedIn, colorScheme}) {
     return (
         <div>
-        <Navbar setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} setActiveJob={setActiveJob}/>
-        <Header activeJob={activeJob}/>
+        <Navbar colorScheme={colorScheme} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn}adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} setActiveJob={setActiveJob}/>
+        <Header colorScheme={colorScheme} activeJob={activeJob}/>
     <Container>
         <H3>Welcome {activeCandidate.firstName} {activeCandidate.lastName}</H3>
         <JobCardDiv>
         {jobOfferings.map((jobOfferingsInMap, index) =>{
              return(
-                <JobOfferCard key={index} index={index} jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} activeCandidate={activeCandidate}/>
+                <JobOfferCard key={index} index={index} colorScheme={colorScheme} jobOfferings={jobOfferings} setJobOfferings={setJobOfferings} setActiveJob={setActiveJob} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} activeCandidate={activeCandidate}/>
             )})}
         </JobCardDiv>
 

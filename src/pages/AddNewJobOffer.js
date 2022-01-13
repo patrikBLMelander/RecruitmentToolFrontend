@@ -19,7 +19,7 @@ let newId = "jobOffering-" + counter;
 
 
 
-function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJob, setJobOfferings, setAdminLoggedIn, setCandidateLoggedIn, setActiveJob}) {
+function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJob, setJobOfferings, setAdminLoggedIn, setCandidateLoggedIn, setActiveJob, colorScheme}) {
     const [validated, setValidated] = useState(false);
     const [activeJobOffer, setActiveJobOffer]=useState("");
 
@@ -100,8 +100,8 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
 
     return(
         <div>
-        <Navbar setActiveJob={setActiveJob} jobOfferings={jobOfferings} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
-        <Header activeJob={activeJob}/>
+        <Navbar colorScheme={colorScheme} setActiveJob={setActiveJob} jobOfferings={jobOfferings} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
+        <Header activeJob={activeJob}colorScheme={colorScheme}/>
         <Container>    
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Row className="g-2 ms-5 me-5 mt-5">
@@ -206,11 +206,11 @@ function AddNewJobOffer({adminLoggedIn, candidateLoggedIn, jobOfferings, activeJ
                     </Col>
                 </Row>
                 <BtnDiv>   
-                <StyledButton variant="primary" type="submit" className="ms-5" input={"Publish"}></StyledButton>
+                <StyledButton type="submit" className="ms-5" input={"Publish"} colorScheme={colorScheme}/>
                 </BtnDiv>
             </Form>
             <JobOfferPreviewDiv>
-                <JobOfferPreview jobOffer={activeJobOffer}/>
+                <JobOfferPreview jobOffer={activeJobOffer}colorScheme={colorScheme}/>
             </JobOfferPreviewDiv>
         </Container>
         

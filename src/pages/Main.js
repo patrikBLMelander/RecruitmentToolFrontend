@@ -4,15 +4,25 @@ import JobOfferCard from '../components/JobOfferCard';
 import colorPicker from '../testData/colorPicker';
 import StyledButton from '../components/StyledButton';
 import Footer from '../components/Footer';
+import { useNavigate } from "react-router-dom";
 
 
 
 
-function Main({jobOfferings, adminLoggedIn, candidateLoggedIn}){
+function Main({jobOfferings, adminLoggedIn, candidateLoggedIn, colorScheme}){
+    const Navigate = useNavigate();
+
+    function login(){
+        Navigate("/login");
+    }
+    function register(){
+        Navigate("/candidate/register");
+    }
+
 
     return(
         <div>
-            <Container>
+            <Container style={{backgroundColor: colorScheme.primary, color: colorScheme.text}}>
                 <StyleH1>Karriär</StyleH1>
                 <OuterCircleDiv>
                     <StyledImg src="https://picsum.photos/id/0/200"/>
@@ -27,14 +37,14 @@ function Main({jobOfferings, adminLoggedIn, candidateLoggedIn}){
                         vel ad, pri cibo libris ea. Te inani persius duo, vim eu verear signiferumque, vel denique nominavi consequat et.
                     </StyledP>
                     <BtnContainer>
-                    <StyledButton navigate={"register"}input={"Register"}/>
-                    <StyledButton navigate={"login"}input={"Login"}/>
+                    <StyledButton onClick={register} input={"Register"} colorScheme={colorScheme}/>
+                    <StyledButton onClick={login} input={"Login"} colorScheme={colorScheme}/>
                     </BtnContainer>
                 </TextUnderPictures>
                 <JobCardDiv>
                     {jobOfferings.map((jobOfferingsInMap, index) =>{
                         return(
-                            <JobOfferCard key={jobOfferingsInMap.id} index={index} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
+                            <JobOfferCard key={jobOfferingsInMap.id} index={index} colorScheme={colorScheme} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
                         )})}
                     </JobCardDiv>
                 </Container>
@@ -48,8 +58,6 @@ export default Main;
 const Container = styled.div`
     position: fixed;
     text-align: center;
-    background-color: ${colorPicker.primary};
-    color: ${colorPicker.text};
     height: 95%;
     width: 100%;
     z-index: 1,

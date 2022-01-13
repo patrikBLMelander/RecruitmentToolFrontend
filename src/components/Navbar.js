@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
- function Navbar ({adminLoggedIn, setCandidateLoggedIn, setAdminLoggedIn, setActiveJob}) {
+ function Navbar ({adminLoggedIn, setCandidateLoggedIn, setAdminLoggedIn, setActiveJob, colorScheme}) {
 
     const Navigate = useNavigate();
 

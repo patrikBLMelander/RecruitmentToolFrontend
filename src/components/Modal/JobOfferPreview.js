@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import colorPicker from "../../testData/colorPicker";
 
-function JobOfferPreview({ jobOffer }) {
+function JobOfferPreview({ jobOffer, colorScheme }) {
   let toRender;
 
   if (jobOffer === "") {

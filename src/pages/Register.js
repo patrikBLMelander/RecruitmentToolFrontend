@@ -10,13 +10,18 @@ import colorPicker from '../testData/colorPicker';
 import StyledButton from '../components/StyledButton';
 import Footer from '../components/Footer';
 
+
 let counter = 9;
 let newId = "candidate-" + counter;
 let emailTaken=false;
 
-function Registrer({candidateState, setCandidateState, setActiveCandidate, setCandidateLoggedIn}) {
+function Registrer({candidateState, setCandidateState, setActiveCandidate, setCandidateLoggedIn, colorScheme}) {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
+
+    function Login(){
+        Navigate("/login")
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -149,8 +154,8 @@ function Registrer({candidateState, setCandidateState, setActiveCandidate, setCa
                             </Form.Group>
                         </CheckboxDiv>
                         <PublishContainer>
-                            <StyledButton type="submit" input="Register"/>    
-                            <StyledButton navigate={"login"} input="Login"/>  
+                            <StyledButton type="submit" input="Register" colorScheme={colorScheme}/>    
+                            <StyledButton onClick={Login} input="Login" colorScheme={colorScheme}/>  
                         </PublishContainer>
                     </Form>
                 </InnerContainer>

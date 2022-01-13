@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components'
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
@@ -12,12 +12,18 @@ import { CloseO } from "@styled-icons/evil/CloseO";
 import Animals from '../testData/animals'
 import Countries from '../testData/countries'
 import Cities from '../testData/capitals'
+import Steal from '../testData/colorSchemas/steal'
+import DarkBlue from '../testData/colorSchemas/darkBlue'
+import Brown from '../testData/colorSchemas/brown'
+import DarkGreen from '../testData/colorSchemas/darkGreen'
+import PinkPurple from '../testData/colorSchemas/pinkPurple'
+import GreenNature from '../testData/colorSchemas/greenNature'
 
 let counter = 9;
 let newId = "candidate-" + counter;
 let emailTaken = false;
 
-function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, setAdminLoggedIn, setCandidateLoggedIn, candidateState, setCandidateState, setActiveJob, setNickName }) {
+function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, setAdminLoggedIn, setCandidateLoggedIn, candidateState, setCandidateState, setActiveJob, setNickName, setColorscheme, colorScheme}) {
     const [validated, setValidated] = useState(false);
 
     //ADJUST NAME
@@ -38,21 +44,27 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
     const [radioButtonsColor, setRadioButtonsColor] = useState([true, false, false, false, false, false])
     function handleColor1Change() {
         setRadioButtonsColor([true, false, false, false, false, false])
+        setColorscheme(Steal)
     }
     function handleColor2Change() {
         setRadioButtonsColor([false, true, false, false, false, false])
+        setColorscheme(DarkBlue)
     }
     function handleColor3Change() {
         setRadioButtonsColor([false, false, true, false, false, false])
+        setColorscheme(GreenNature)
     }
     function handleColor4Change() {
         setRadioButtonsColor([false, false, false, true, false, false])
+        setColorscheme(DarkGreen)
     }
     function handleColor5Change() {
         setRadioButtonsColor([false, false, false, false, true, false])
+        setColorscheme(Brown)
     }
     function handleColor6Change() {
         setRadioButtonsColor([false, false, false, false, false, true])
+        setColorscheme(PinkPurple)
     }
     //CREATE ADMIN
     const handleSubmit = (event) => {
@@ -138,9 +150,9 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
 
     return (
         <div>
-            <Navbar setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} />
-            <Header activeJob={activeJob} />
-            <Container>
+            <Navbar colorScheme={colorScheme} setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} />
+            <Header colorScheme={colorScheme} activeJob={activeJob} />
+            <Container style={{backgroundColor: colorScheme.primary, color: colorScheme.text}}>
                 <H3>Settings</H3>
                 <RadioDiv>
                     <AdjustCandidateNameDiv>
@@ -267,7 +279,7 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
                                 </FloatingLabel>
                             </CreateRecruiterCol>
                         </CreateRecruiterRow>
-                        <StyledButton type="submit" input="Add Recruiter" />
+                        <StyledButton type="submit" input="Add Recruiter"colorScheme={colorScheme} />
                     </Form>
                 </AddRecruiterDiv>
 
@@ -294,7 +306,7 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
                         <ChangePasswordRow>
                             <ChangePasswordCol>
                                 <FloatingLabel controlId="oldPassword" label="Old Password">
-                                    <Form.Control required type="password" placeholder='""' autoComplete={false} />
+                                    <Form.Control required type="password" placeholder='""' />
                                     <Form.Control.Feedback type="invalid">
                                         You need your old password to change password!
                                     </Form.Control.Feedback>
@@ -317,7 +329,7 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
                                 </FloatingLabel>
                             </ChangePasswordCol>
                         </ChangePasswordRow>
-                        <StyledButton type="submit" input="Change Password" />
+                        <StyledButton type="submit" input="Change Password" colorScheme={colorScheme}/>
                     </Form>
                 </ChangePasswordDiv>
             </Container>

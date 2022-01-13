@@ -3,20 +3,15 @@ import styled from 'styled-components'
 import colorPicker from '../testData/colorPicker';
 import { useNavigate } from "react-router-dom";
 
-function StyledButton({navigate, input}) {
+function StyledButton({input, colorScheme, onClick, disabled}) {
 
-    const Navigate = useNavigate();
+    if(disabled===undefined) {disabled=false}
 
-    function navigateTo(){
-        if(navigate==="login") 
-        Navigate("/login")
-        if(navigate==="register") 
-        Navigate("/candidate/register")
-    }
+    if(onClick===undefined) {onClick= function test(){console.log("test")}}
 
     return(
         <div>
-            <StyledBtn onClick={navigateTo}>{input}</StyledBtn>
+            <StyledBtn onClick={() => onClick()} disabled={disabled}>{input}</StyledBtn>
         </div>
     )
 }

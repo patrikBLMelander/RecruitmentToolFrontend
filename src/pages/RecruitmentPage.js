@@ -19,7 +19,8 @@ function RecruitmentPage({
   candidateLoggedIn,
   setAdminLoggedIn,
   setCandidateLoggedIn,
-  nickName
+  nickName, 
+  colorScheme
 }) {
 
   const onDragEnd = (result) => {
@@ -126,8 +127,10 @@ function RecruitmentPage({
         adminLoggedIn={adminLoggedIn}
         candidateLoggedIn={candidateLoggedIn}
         setActiveJob={setActiveJob}
+        colorScheme={colorScheme}
       />
-      <Header activeJob={activeJob} />
+      <Header activeJob={activeJob}
+      colorScheme={colorScheme} />
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable
           droppableId="all-columns"
@@ -152,6 +155,7 @@ function RecruitmentPage({
                         setCandidateState={setCandidateState}
                         activeJobId={activeJob.id}
                         nickName={nickName}
+                        colorScheme={colorScheme}
                       />
                     )
                   );
@@ -164,6 +168,7 @@ function RecruitmentPage({
                 jobOfferings={jobOfferings}
                 setJobOfferings={setJobOfferings}
                 activeJobId={activeJob.id}
+                colorScheme={colorScheme}
               />
             </Container>
           )}

@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import colorPicker from "../testData/colorPicker";
 import Modal from "react-modal";
 import JobOfferPreview from "./Modal/JobOfferPreview";
+import StyledButton from "./StyledButton"
 
 function JobOfferCard({
   index,
@@ -13,7 +14,8 @@ function JobOfferCard({
   setActiveJob,
   adminLoggedIn,
   candidateLoggedIn,
-  activeCandidate,
+  activeCandidate, 
+  colorScheme
 }) {
   const navigate = useNavigate();
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -103,9 +105,10 @@ function JobOfferCard({
           <StyledButton
             onClick={() => setJobToWorkWith(jobOfferings[index])}
             variant="primary"
-          >
-            {btnText}
-          </StyledButton>
+            input={btnText}
+          />
+            
+
         </BtnContainer>
         <CadnidateInfoDiv>
           <PNew show={adminLoggedIn}>
@@ -122,17 +125,14 @@ function JobOfferCard({
         style={customStyles}
         contentLabel="JobOffer modal"
       >
-        <JobOfferPreview jobOffer={jobOfferings[index]} />
+        <JobOfferPreview jobOffer={jobOfferings[index]}colorScheme={colorScheme} />
         <BtnModalContainer>
           <StyledButton
             onClick={() => setJobToWorkWith(jobOfferings[index])}
             variant="primary"
-          >
-            {btnText}
-          </StyledButton>
-          <StyledButton onClick={closeModal} variant="primary">
-            {"Close"}
-          </StyledButton>
+            input={btnText}
+          />
+          <StyledButton onClick={closeModal} variant="primary" input={"Close"}/>
         </BtnModalContainer>
       </Modal>
     </CardDiv>
@@ -224,30 +224,4 @@ const BtnModalContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 5%;
-`;
-
-const StyledButton = styled.button`
-    margin:4px;
-    width: 140px;
-    height: 45px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: ${colorPicker.text};
-    background-color: ${colorPicker.third};
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px ${colorPicker.third};
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    &:hover {
-        background-color: ${colorPicker.fourth};
-        box-shadow: 0px 15px 20px ${colorPicker.fourth};
-        color: ${colorPicker.text};
-        transform: translateY(-3px);
-    }
-    
 `;

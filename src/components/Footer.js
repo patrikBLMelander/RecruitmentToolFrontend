@@ -4,7 +4,7 @@ import colorPicker from '../testData/colorPicker';
 
 
 
- function Footer () {
+ function Footer ({colorScheme}) {
 
     return (
     <Container>

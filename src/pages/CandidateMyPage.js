@@ -19,7 +19,7 @@ import Modal from "react-modal";
 
 
 
-function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, setActiveJob, activeCandidate, setActiveCandidate, setCandidateState, candidateState, setAdminLoggedIn, setCandidateLoggedIn }) {
+function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, setActiveJob, activeCandidate, setActiveCandidate, setCandidateState, candidateState, setAdminLoggedIn, setCandidateLoggedIn, colorScheme }) {
 
 
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -312,8 +312,8 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
 
     return (
         <div>
-            <Navbar setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} />
-            <Header activeJob={activeJob} />
+            <Navbar colorScheme={colorScheme} setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} />
+            <Header activeJob={activeJob}colorScheme={colorScheme} />
 
             <Container>
                 <InnerContainer>
@@ -326,7 +326,7 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                                 This will be the first impression of you, write something nice ;)
                             </Form.Control.Feedback>
                         </Form.Group>
-                        <StyledButton variant="success" type="submit" input={"Save"} />
+                        <StyledButton variant="success" type="submit" input={"Save"}/>
                     </Form>
                     {/* FORM TO JOB EXPERIENCE */}
                     <Form noValidate validated={validated} onSubmit={addEmployment}>
@@ -364,7 +364,7 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                                 Write about the employment
                             </Form.Control.Feedback>
                         </Form.Group>
-                        <StyledButton variant="success" type="submit" input={"Add Job"} />
+                        <StyledButton variant="success" type="submit" input={"Add Job"}colorScheme={colorScheme}  />
                     </Form>
 
                     {/* FORM TO EDUCATION */}
@@ -403,7 +403,7 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                                 Write about the education
                             </Form.Control.Feedback>
                         </Form.Group>
-                        <StyledButton variant="success" type="submit" input={"Add Education"} />
+                        <StyledButton variant="success" type="submit" input={"Add Education"} colorScheme={colorScheme} />
                     </Form>
 
                     {/* FORM TO PERSONALITY */}
@@ -498,13 +498,20 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
 
 
                     <SeperatorDiv />
-                    <ModalButton onClick={openModal}>Resume</ModalButton>
+                    <StyledButton onClick={openModal}input={"My Resume"}></StyledButton>
 
                 </InnerContainer>
                 <Modal
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}
-                    style={customStyles}
+                    style={{
+                        backgroundColor: colorPicker.primary,
+                        position: "absolute",
+                        width: "70%",
+                        height: "80%",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",}}
                     contentLabel="CV modal"
                 >
                     <ModalContainer>
@@ -516,10 +523,11 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                             setActiveCandidate={setActiveCandidate}
                             candidateState={candidateState}
                             setCandidateState={setCandidateState}
+                            colorScheme={colorScheme}
                         />
                     </ModalContainer>
                     <BtnModalContainer>
-                        <ModalButton onClick={closeModal}>Close</ModalButton>
+                        <StyledButton onClick={closeModal}input={"Close"}></StyledButton>
                     </BtnModalContainer>
                 </Modal>
             </Container>
@@ -616,41 +624,9 @@ const BtnModalContainer = styled.div`
 
 const customStyles = {
     content: {
-        backgroundColor: colorPicker.primary,
-        position: "absolute",
-        width: "70%",
-        height: "80%",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
+
     },
 };
-
-const ModalButton = styled.button`
-    margin:4px;
-    width: 140px;
-    height: 45px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: ${colorPicker.text};
-    background-color: ${colorPicker.secondary};
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px ${colorPicker.third};
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    &:hover {
-        background-color: ${colorPicker.fourth};
-        box-shadow: 0px 15px 20px ${colorPicker.fourth};
-        color: ${colorPicker.text}
-        transform: translateY(-7px);
-    }
-    
-`;
 
 const CompetenceCol = styled.div`
     width: 55%;

@@ -8,19 +8,19 @@ import JobOfferCard from '../components/JobOfferCard';
 
 
 
-function CandidateProcesses({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn , setAdminLoggedIn, setCandidateLoggedIn, activeCandidate}) {
+function CandidateProcesses({jobOfferings, activeJob, setActiveJob, adminLoggedIn, candidateLoggedIn , setAdminLoggedIn, setCandidateLoggedIn, activeCandidate, colorScheme}) {
 
 
     return(
         <div>
-        <Navbar setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
-        <Header activeJob={activeJob}/>
+        <Navbar colorScheme={colorScheme}setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn}/>
+        <Header activeJob={activeJob}colorScheme={colorScheme}/>
         <Container>
         <H3>{activeCandidate.firstName} {activeCandidate.lastName} Here's your active processes</H3>
             <JobCardDiv>
                 {jobOfferings.map((jobOfferingsInMap, index) =>{
                     return(
-                        <JobOfferCard key={jobOfferingsInMap.id} index={index} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
+                        <JobOfferCard colorScheme={colorScheme} key={jobOfferingsInMap.id} index={index} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn}candidateLoggedIn={candidateLoggedIn}/>
                     )
                    })}
             </JobCardDiv>

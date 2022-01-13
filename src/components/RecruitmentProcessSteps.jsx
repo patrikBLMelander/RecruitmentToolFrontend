@@ -15,7 +15,8 @@ function RecruitmentProcessStep({
   candidates,
   candidateState,
   setCandidateState,
-  nickName
+  nickName, 
+  colorScheme
 }) {
   return (
     <Draggable draggableId={id} index={index}>
@@ -39,6 +40,7 @@ function RecruitmentProcessStep({
                       setCandidateState={setCandidateState}
                       activeJobId={activeJobId}
                       nickName={nickName}
+                      colorScheme={colorScheme}
                     />
                   );
                 })}
@@ -53,6 +55,7 @@ function RecruitmentProcessStep({
             setJobOfferings={setJobOfferings}
             candidates={candidates.length}
             activeJobId={activeJobId}
+            colorScheme={colorScheme}
           ></RemoveBtn>
         </Container>
       )}

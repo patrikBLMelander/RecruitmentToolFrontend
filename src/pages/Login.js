@@ -12,7 +12,7 @@ import StyledButton from '../components/StyledButton';
 import Footer from '../components/Footer';
 
 
-function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdminLoggedIn, candidateLoggedIn, adminLoggedIn}) {
+function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdminLoggedIn, candidateLoggedIn, adminLoggedIn, colorScheme}) {
     const [validated, setValidated] = useState(false);
     const Navigate = useNavigate();
     let succeessfulLogin = false;
@@ -127,7 +127,7 @@ function Login({candidateState, setActiveCandidate, setCandidateLoggedIn, setAdm
                         </Col>
                     </Row>
                     <BtnContainer>
-                        <StyledButton variant="success" type="submit" className="ms-5" input={"login"}/>
+                        <StyledButton type="submit" className="ms-5" input={"login"} colorScheme={colorScheme}/>
                     </BtnContainer>
                 </Form>
             </InnerContainer>
