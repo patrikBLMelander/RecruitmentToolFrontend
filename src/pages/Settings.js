@@ -125,6 +125,10 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
         })
     }
 
+    function changPassword(){
+
+    } 
+
 
     return (
         <div>
@@ -132,91 +136,92 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
             <Header activeJob={activeJob} />
             <Container>
                 <H3>Settings</H3>
-                <AdjustCandidateNameDiv>
-                    <H5>How do you want your Candidates to be shown?</H5>
-                    <form>
-                        <RadioDiv>
-                            <label>
-                                <input type="radio" value="option1"
-                                    checked={radioButtonsName[0]}
-                                    onChange={handleAnimalChange} />
-                                Animals
-                            </label>
-                        </RadioDiv>
-                        <RadioDiv>
-                            <label>
-                                <input type="radio" value="option2"
-                                    checked={radioButtonsName[1]}
-                                    onChange={handleCountryChange} />
-                                Cities
-                            </label>
-                        </RadioDiv>
-                        <RadioDiv>
-                            <label>
-                                <input type="radio" value="option3"
-                                    checked={radioButtonsName[2]}
-                                    onChange={handleCitiesChange} />
-                                Counties
-                            </label>
-                        </RadioDiv>
-                    </form>
-                </AdjustCandidateNameDiv>
+                <RadioDiv>
+                    <AdjustCandidateNameDiv>
+                        <H5>How do you want your Candidates to be shown?</H5>
+                        <form>
+                            <RadioCol>
+                                <label>
+                                    <input type="radio" value="option1"
+                                        checked={radioButtonsName[0]}
+                                        onChange={handleAnimalChange} />
+                                    Animals
+                                </label>
+                            </RadioCol>
+                            <RadioCol>
+                                <label>
+                                    <input type="radio" value="option2"
+                                        checked={radioButtonsName[1]}
+                                        onChange={handleCountryChange} />
+                                    Cities
+                                </label>
+                            </RadioCol>
+                            <RadioCol>
+                                <label>
+                                    <input type="radio" value="option3"
+                                        checked={radioButtonsName[2]}
+                                        onChange={handleCitiesChange} />
+                                    Counties
+                                </label>
+                            </RadioCol>
+                        </form>
+                    </AdjustCandidateNameDiv>
 
-                <AdjustColorDiv>
-                    <H5>Choose ColorScheme</H5>
-                    <form>
-                        <RadioDiv>
-                            <label>
-                                <input type="radio" value="option1"
-                                    checked={radioButtonsColor[0]}
-                                    onChange={handleColor1Change} />
-                                Steal
-                            </label>
-                        </RadioDiv>
-                        <RadioDiv>
-                            <label>
-                                <input type="radio" value="option2"
-                                    checked={radioButtonsColor[1]}
-                                    onChange={handleColor2Change} />
-                                Dark Blue
-                            </label>
-                        </RadioDiv>
-                        <RadioDiv>
-                            <label>
-                                <input type="radio" value="option3"
-                                    checked={radioButtonsColor[2]}
-                                    onChange={handleColor3Change} />
-                                Green/Nature
-                            </label>
-                        </RadioDiv>
-                        <RadioDiv>
-                            <label>
-                                <input type="radio" value="option3"
-                                    checked={radioButtonsColor[3]}
-                                    onChange={handleColor4Change} />
-                                Dark/Green
-                            </label>
-                        </RadioDiv>
-                        <RadioDiv>
-                            <label>
-                                <input type="radio" value="option3"
-                                    checked={radioButtonsColor[4]}
-                                    onChange={handleColor5Change} />
-                                Brown
-                            </label>
-                        </RadioDiv>
-                        <RadioDiv>
-                            <label>
-                                <input type="radio" value="option3"
-                                    checked={radioButtonsColor[5]}
-                                    onChange={handleColor6Change} />
-                                Pink
-                            </label>
-                        </RadioDiv>
-                    </form>
+                    <AdjustColorDiv>
+                        <H5>Choose ColorScheme</H5>
+                        <form>
+                            <RadioCol>
+                                <label>
+                                    <input type="radio" value="option1"
+                                        checked={radioButtonsColor[0]}
+                                        onChange={handleColor1Change} />
+                                    Steal
+                                </label>
+                            </RadioCol>
+                            <RadioCol>
+                                <label>
+                                    <input type="radio" value="option2"
+                                        checked={radioButtonsColor[1]}
+                                        onChange={handleColor2Change} />
+                                    Dark Blue
+                                </label>
+                            </RadioCol>
+                            <RadioCol>
+                                <label>
+                                    <input type="radio" value="option3"
+                                        checked={radioButtonsColor[2]}
+                                        onChange={handleColor3Change} />
+                                    Green/Nature
+                                </label>
+                            </RadioCol>
+                            <RadioCol>
+                                <label>
+                                    <input type="radio" value="option3"
+                                        checked={radioButtonsColor[3]}
+                                        onChange={handleColor4Change} />
+                                    Dark/Green
+                                </label>
+                            </RadioCol>
+                            <RadioCol>
+                                <label>
+                                    <input type="radio" value="option3"
+                                        checked={radioButtonsColor[4]}
+                                        onChange={handleColor5Change} />
+                                    Brown
+                                </label>
+                            </RadioCol>
+                            <RadioCol>
+                                <label>
+                                    <input type="radio" value="option3"
+                                        checked={radioButtonsColor[5]}
+                                        onChange={handleColor6Change} />
+                                    Pink
+                                </label>
+                            </RadioCol>
+                        </form>
 
-                </AdjustColorDiv>
-
+                    </AdjustColorDiv>
+                </RadioDiv>
                 <AddRecruiterDiv>
                     <H5>Add Recruiter</H5>
                     <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -277,17 +282,38 @@ function Settings({ jobOfferings, activeJob, adminLoggedIn, candidateLoggedIn, s
                 })}
                 </ul>
                 </RemoveRecruiterDiv>
-
-                <ToDoDiv>
-                    <h1>To Do</h1>
-                    <ul>
-                        <li>Change Password</li>
-                    </ul>
-                </ToDoDiv>
-
-
-
-
+                <ChangePasswordDiv>
+                    <H5>Change Password</H5>
+                    <Form noValidate validated={validated} onSubmit={changPassword}>
+                        <ChangePasswordRow>
+                            <ChangePasswordCol>
+                                <FloatingLabel controlId="oldPassword" label="Old Password">
+                                    <Form.Control required type="password" placeholder='""' autoComplete={false} />
+                                    <Form.Control.Feedback type="invalid">
+                                        You need your old password to change password!
+                                    </Form.Control.Feedback>
+                                </FloatingLabel>
+                            </ChangePasswordCol>
+                            <ChangePasswordCol>
+                                <FloatingLabel controlId="newPassword" label="New Password">
+                                    <Form.Control required type="password" placeholder='""' />
+                                    <Form.Control.Feedback type="invalid">
+                                        Everyone have a last name, right?
+                                    </Form.Control.Feedback>
+                                </FloatingLabel>
+                            </ChangePasswordCol>
+                            <ChangePasswordCol>
+                                <FloatingLabel controlId="repeatNewPassword" label="Repeat Password">
+                                    <Form.Control required type="password" placeholder='""' />
+                                    <Form.Control.Feedback type="invalid">
+                                        Everyone have a last name, right?
+                                    </Form.Control.Feedback>
+                                </FloatingLabel>
+                            </ChangePasswordCol>
+                        </ChangePasswordRow>
+                        <StyledButton type="submit" input="Change Password" />
+                    </Form>
+                </ChangePasswordDiv>
             </Container>
             <Footer />
         </div>
@@ -299,14 +325,20 @@ export default Settings;
 const Container = styled.div`
     background-color: ${colorPicker.primary};    
     padding-bottom: 5%;
-    margin-left 160px
+    margin-left 160px;
+    color: ${colorPicker.text};
 `;
 
 const AdjustCandidateNameDiv = styled.div`
 
 `;
-const RadioDiv = styled.div`
+const RadioCol = styled.div`
+    margin-left: 50px;
+`;
 
+const RadioDiv = styled.div`
+    padding-top: 40px;
+    display:flex; 
 `;
 
 
@@ -314,9 +346,7 @@ const AdjustColorDiv = styled.div`
 
 `;
 
-const ToDoDiv = styled.div`
 
-`;
 
 const AddRecruiterDiv = styled.div`
     margin: 10px;
@@ -334,6 +364,17 @@ const RemoveRecruiterDiv = styled.div`
 const OneAdminDiv = styled.div`
     display: flex;
 
+`;
+const ChangePasswordDiv = styled.div`
+    padding-bottom: 50px;
+
+`;
+
+const ChangePasswordRow = styled.div`
+ display: flex;
+`;
+const ChangePasswordCol = styled.div`
+    margin: 10px;
 `;
 
 const H3 = styled.h3`

@@ -59,4 +59,4 @@ const colorPicker =
 
 
 
-export default colorPicker[0];
+export default colorPicker[1];
