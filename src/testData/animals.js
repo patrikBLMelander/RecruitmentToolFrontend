@@ -120,7 +120,7 @@ const animals = [
     "Locust",
     "Loris",
     "Louse",
-    "Lyrebird",
+    "No matching candidate on this competence",
     "Magpie",
     "Mallard",
     "Manatee",
