@@ -27,9 +27,9 @@ function ApplicantCardModal({
       }
     })
   );
-
   const [modalIsOpen, setIsOpen] = useState(false);
-
+  
+  
   const handleRating = (rate) => {
     setRating(rate);
     let newCandidateState = candidateState;

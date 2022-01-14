@@ -47,7 +47,7 @@ const candidateTestData = [
     education: [{id:'education-1',title: 'Samhäll Pedagogik', period:'Aug 2017 – Mars 2020', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet tempor tellus et ultrices. Nulla finibus, erat in scelerisque egestas, est erat tristique tortor, a semper ante augue sed ipsum. Maecenas mollis justo tellus, ac blandit leo egestas quis. Vestibulum bibendum faucibus leo. Phasellus vel lacus vel nunc mattis blandit eu ac orci. Donec consequat velit eu magna laoreet, a lacinia nisl eleifend. Sed vitae nibh ac eros pellentesque tempor. Donec a tortor in nunc cursus efficitur.', },
     {id: 'education-2', title: 'Java Developer', period:'Sep 2020 – Maj 2022', description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet tempor tellus et ultrices. Nulla finibus, erat in scelerisque egestas, est erat tristique tortor, a semper ante augue sed ipsum. Maecenas mollis justo tellus, ac blandit leo egestas quis. Vestibulum bibendum faucibus leo. Phasellus vel lacus vel nunc mattis blandit eu ac orci. Donec consequat velit eu magna laoreet, a lacinia nisl eleifend. Sed vitae nibh ac eros pellentesque tempor. Donec a tortor in nunc cursus efficitur.'}
     ],
-    competencies: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-3', name:'HR', years:5},],
+    competencies: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-3', name:'Snickare', years:5},],
     rate: []},
     { id: 'candidate-3', 
     role: "candidate",
@@ -65,7 +65,7 @@ const candidateTestData = [
     education: [{id:'education-1',title: 'Samhäll Pedagogik', period:'Aug 2017 – Mars 2020', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet tempor tellus et ultrices. Nulla finibus, erat in scelerisque egestas, est erat tristique tortor, a semper ante augue sed ipsum. Maecenas mollis justo tellus, ac blandit leo egestas quis. Vestibulum bibendum faucibus leo. Phasellus vel lacus vel nunc mattis blandit eu ac orci. Donec consequat velit eu magna laoreet, a lacinia nisl eleifend. Sed vitae nibh ac eros pellentesque tempor. Donec a tortor in nunc cursus efficitur.', },
     {id: 'education-2', title: 'Java Developer', period:'Sep 2020 – Maj 2022', description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet tempor tellus et ultrices. Nulla finibus, erat in scelerisque egestas, est erat tristique tortor, a semper ante augue sed ipsum. Maecenas mollis justo tellus, ac blandit leo egestas quis. Vestibulum bibendum faucibus leo. Phasellus vel lacus vel nunc mattis blandit eu ac orci. Donec consequat velit eu magna laoreet, a lacinia nisl eleifend. Sed vitae nibh ac eros pellentesque tempor. Donec a tortor in nunc cursus efficitur.'}
     ],
-    competencies: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-3', name:'HR', years:5},],
+    competencies: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-3', name:'Kock', years:5},],
     rate: []},
     { id: 'candidate-4', 
     role: "candidate",
@@ -83,7 +83,7 @@ const candidateTestData = [
     {id: 'education-2', title: 'Java Developer', period:'Sep 2020 – Maj 2022', description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet tempor tellus et ultrices. Nulla finibus, erat in scelerisque egestas, est erat tristique tortor, a semper ante augue sed ipsum. Maecenas mollis justo tellus, ac blandit leo egestas quis. Vestibulum bibendum faucibus leo. Phasellus vel lacus vel nunc mattis blandit eu ac orci. Donec consequat velit eu magna laoreet, a lacinia nisl eleifend. Sed vitae nibh ac eros pellentesque tempor. Donec a tortor in nunc cursus efficitur.'}
     ],
     personality: [{id:'personality-1', name:'Openness', value:20}, {id:'personality-2', name:'Conscintiousness', value:60},{id:'personality-3', name:'Extroversion', value:50},{id:'personality-4', name:'Agreableness', value:70},{id:'personality-5', name:'Neuroticism', value:80},],
-    competencies: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-3', name:'HR', years:5},],
+    competencies: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-3', name:'Butikschef', years:5},],
     rate: []},
     { id: 'candidate-5', 
     role: "candidate",
@@ -101,7 +101,7 @@ const candidateTestData = [
     {id: 'education-2', title: 'Java Developer', period:'Sep 2020 – Maj 2022', description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet tempor tellus et ultrices. Nulla finibus, erat in scelerisque egestas, est erat tristique tortor, a semper ante augue sed ipsum. Maecenas mollis justo tellus, ac blandit leo egestas quis. Vestibulum bibendum faucibus leo. Phasellus vel lacus vel nunc mattis blandit eu ac orci. Donec consequat velit eu magna laoreet, a lacinia nisl eleifend. Sed vitae nibh ac eros pellentesque tempor. Donec a tortor in nunc cursus efficitur.'}
     ],
     personality: [{id:'personality-1', name:'Openness', value:20}, {id:'personality-2', name:'Conscintiousness', value:60},{id:'personality-3', name:'Extroversion', value:50},{id:'personality-4', name:'Agreableness', value:70},{id:'personality-5', name:'Neuroticism', value:80},],
-    competencies: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-3', name:'HR', years:5},],
+    competencies: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-3', name:'Läkare', years:5},],
     rate: []},
     { id: 'candidate-6', 
     role: "candidate",
@@ -119,7 +119,7 @@ const candidateTestData = [
     {id: 'education-2', title: 'Java Developer', period:'Sep 2020 – Maj 2022', description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet tempor tellus et ultrices. Nulla finibus, erat in scelerisque egestas, est erat tristique tortor, a semper ante augue sed ipsum. Maecenas mollis justo tellus, ac blandit leo egestas quis. Vestibulum bibendum faucibus leo. Phasellus vel lacus vel nunc mattis blandit eu ac orci. Donec consequat velit eu magna laoreet, a lacinia nisl eleifend. Sed vitae nibh ac eros pellentesque tempor. Donec a tortor in nunc cursus efficitur.'}
     ],
     personality: [{id:'personality-1', name:'Openness', value:20}, {id:'personality-2', name:'Conscintiousness', value:60},{id:'personality-3', name:'Extroversion', value:50},{id:'personality-4', name:'Agreableness', value:70},{id:'personality-5', name:'Neuroticism', value:80},],
-    competencies: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-3', name:'HR', years:5},],
+    competencies: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-3', name:'Designer', years:5},],
     rate: []},
     { id: 'candidate-7', 
     role: "candidate",
@@ -137,13 +137,13 @@ const candidateTestData = [
     {id: 'education-2', title: 'Java Developer', period:'Sep 2020 – Maj 2022', description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet tempor tellus et ultrices. Nulla finibus, erat in scelerisque egestas, est erat tristique tortor, a semper ante augue sed ipsum. Maecenas mollis justo tellus, ac blandit leo egestas quis. Vestibulum bibendum faucibus leo. Phasellus vel lacus vel nunc mattis blandit eu ac orci. Donec consequat velit eu magna laoreet, a lacinia nisl eleifend. Sed vitae nibh ac eros pellentesque tempor. Donec a tortor in nunc cursus efficitur.'}
     ],
     personality: [{id:'personality-1', name:'Openness', value:20}, {id:'personality-2', name:'Conscintiousness', value:60},{id:'personality-3', name:'Extroversion', value:50},{id:'personality-4', name:'Agreableness', value:70},{id:'personality-5', name:'Neuroticism', value:80},],
-    competencies: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-3', name:'HR', years:5},],
+    competencies: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-3', name:'Psykolog', years:5},],
     rate: []},
     { id: 'candidate-8', 
     role: "candidate",
     nickName: 88, 
-    firstName: "Patrik",
-    lastName: "Melander",
+    firstName: "Christian",
+    lastName: "Stulen",
     email: "testmail8@gmail.com",
     password: "1234",
     phone: "0704011119",
@@ -155,12 +155,12 @@ const candidateTestData = [
     {id: 'education-2', title: 'Java Developer', period:'Sep 2020 – Maj 2022', description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet tempor tellus et ultrices. Nulla finibus, erat in scelerisque egestas, est erat tristique tortor, a semper ante augue sed ipsum. Maecenas mollis justo tellus, ac blandit leo egestas quis. Vestibulum bibendum faucibus leo. Phasellus vel lacus vel nunc mattis blandit eu ac orci. Donec consequat velit eu magna laoreet, a lacinia nisl eleifend. Sed vitae nibh ac eros pellentesque tempor. Donec a tortor in nunc cursus efficitur.'}
     ],
     personality: [{id:'personality-1', name:'Openness', value:20}, {id:'personality-2', name:'Conscintiousness', value:60},{id:'personality-3', name:'Extroversion', value:50},{id:'personality-4', name:'Agreableness', value:70},{id:'personality-5', name:'Neuroticism', value:80},],
-    competencies: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-3', name:'HR', years:5},],
+    competencies: [{id:'competence-1', name:'Testare', years:2}, {id:'competence-2', name:'JavaScript', years:1},],
     rate: []},
     { id: 'candidate-9', 
     role: "candidate",
     nickName: 99, 
-    firstName: "Patrik",
+    firstName: "Jessica",
     lastName: "Melander",
     email: "testmail9@gmail.com",
     password: "1234",
@@ -173,7 +173,7 @@ const candidateTestData = [
     {id: 'education-2', title: 'Java Developer', period:'Sep 2020 – Maj 2022', description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet tempor tellus et ultrices. Nulla finibus, erat in scelerisque egestas, est erat tristique tortor, a semper ante augue sed ipsum. Maecenas mollis justo tellus, ac blandit leo egestas quis. Vestibulum bibendum faucibus leo. Phasellus vel lacus vel nunc mattis blandit eu ac orci. Donec consequat velit eu magna laoreet, a lacinia nisl eleifend. Sed vitae nibh ac eros pellentesque tempor. Donec a tortor in nunc cursus efficitur.'}
     ],
     personality: [{id:'personality-1', name:'Openness', value:20}, {id:'personality-2', name:'Conscintiousness', value:60},{id:'personality-3', name:'Extroversion', value:50},{id:'personality-4', name:'Agreableness', value:70},{id:'personality-5', name:'Neuroticism', value:80},],
-    competencies: [{id:'competence-1', name:'Java', years:3}, {id:'competence-2', name:'JavaScript', years:1},{id:'competence-3', name:'HR', years:5},],
+    competencies: [{id:'competence-1', name:'Skidlärare', years:3}, {id:'competence-2', name:'Rekryterare', years:1},{id:'competence-3', name:'HR', years:5},],
     rate: []},
 ]
 
