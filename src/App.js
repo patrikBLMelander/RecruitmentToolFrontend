@@ -160,6 +160,7 @@ function App() {
                 candidateLoggedIn={candidateLoggedIn}
                 setCandidateLoggedIn={setCandidateLoggedIn}
                 candidateState={candidateState}
+                nickName={nickName}
               />
             }
           />

@@ -17,7 +17,7 @@ function CandidateSearch({
   candidateState,
   setCandidateState,
   setActiveJob,
-  setNickName,
+  nickName,
   setColorscheme,
   colorScheme,
   jobOfferings,
@@ -31,7 +31,7 @@ function CandidateSearch({
     if (event.currentTarget.checkValidity() === false) {
       event.stopPropagation();
     }else{
-        setSearchResult([{firstName: "No matching candidate on this competence"}]);
+        setSearchResult([{nickName: 121}]);
         const CompetenceToSearch = event.currentTarget.competence.value;
         const YearsToSearch = event.currentTarget.years.value;
         let newSearchResult= [];
@@ -100,7 +100,7 @@ function CandidateSearch({
           {searchResult.map(candidate =>{
               return(
              <div>
-                  <p>{candidate.firstName}</p>
+                  <p>{nickName[candidate.nickName]}</p>
               </div>)
           })}
         </RadioDiv>

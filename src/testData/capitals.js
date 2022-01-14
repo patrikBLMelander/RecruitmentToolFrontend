@@ -1,6 +1,5 @@
 const Capitals =
-[
-    "Tokyo-Yokohama",
+[   "Tokyo-Yokohama",
     "Jakarta",
     "Delhi",
     "Manila",
@@ -120,6 +119,7 @@ const Capitals =
     "Montréal",
     "Dakar",
     "Athens",
+    "No matching candidate on this competence",
 ];
 
     export default Capitals;
