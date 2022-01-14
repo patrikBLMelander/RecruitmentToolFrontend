@@ -48,8 +48,6 @@ function CandidateSearch({
             noMatch=false
           }
         });
-        console.log(noMatch)
-
       });
       if(noMatch) {
         Swal.fire({
