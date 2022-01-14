@@ -14,6 +14,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import candidateTestData from "./testData/candidateTestData";
 import Main from "./pages/Main";
 import DarkGreen from "./testData/colorSchemas/darkGreen";
+import CandidateSettings from "./pages/CandidateSettings";
 
 function App() {
   const [jobOfferings, setJobOfferings] = useState(jobOfferingsTestData);
@@ -180,6 +181,26 @@ function App() {
                 setAdminLoggedIn={setAdminLoggedIn}
                 candidateLoggedIn={candidateLoggedIn}
                 setCandidateLoggedIn={setCandidateLoggedIn}
+              />
+            }
+          />
+          <Route
+            path="/candidate/settings"
+            element={
+              <CandidateSettings
+                colorScheme={colorScheme}
+                setColorscheme={setColorscheme}
+                setNickName={setNickName}
+                setCandidateState={setCandidateState}
+                candidateState={candidateState}
+                jobOfferings={jobOfferings}
+                activeJob={activeJob}
+                adminLoggedIn={adminLoggedIn}
+                setActiveJob={setActiveJob}
+                setAdminLoggedIn={setAdminLoggedIn}
+                candidateLoggedIn={candidateLoggedIn}
+                setCandidateLoggedIn={setCandidateLoggedIn}
+                activeCandidate={activeCandidate}
               />
             }
           />

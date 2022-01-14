@@ -89,6 +89,11 @@ function Navbar({
             <StyledAddressCardBtn inputColor={colorScheme} />
           </h1>
         </Link>
+        <Link to="/candidate/settings">
+          <h1>
+            <StyledSettingsBtn inputColor={colorScheme} />
+          </h1>
+        </Link>
 
         <a onClick={logOut}>
           <h1>
