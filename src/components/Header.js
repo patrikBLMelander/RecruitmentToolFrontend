@@ -1,48 +1,39 @@
-import React from 'react';
-import styled from 'styled-components'
-import logo from '../logoipsum-logo-16.svg'
-import colorPicker from '../testData/colorPicker';
+import React from "react";
+import styled from "styled-components";
+import logo from "../logoipsum-logo-16.svg";
 
-
-
- function Header ({activeJob, loggedIn}) {
-
-    return (
-    <Container>
-        <Img src={logo} alt="React Logo" />
-        <H3>{activeJob.title}</H3>
+function Header({ activeJob, colorScheme }) {
+  return (
+    <Container inputColor={colorScheme}>
+      <Img src={logo} alt="React Logo" />
+      <H3>{activeJob.title}</H3>
     </Container>
-    )
-       
+  );
 }
 
-export default Header
-
+export default Header;
 
 const Container = styled.div`
-    display: flex;
-    background-color: ${colorPicker.primary};
-    hight: 400;
-    padding-top: 16px;
-    margin-top: 0;
-    overflow: hidden;
-    margin-bottom: 0px;
+  display: flex;
+  background-color: ${(props) => props.inputColor.primary};
+  color: ${(props) => props.inputColor.text};
+  hight: 400;
+  padding-top: 16px;
+  margin-top: 0;
+  overflow: hidden;
+  margin-bottom: 0px;
 `;
 
 const H3 = styled.h3`
-    display: flex;
-    color: ${colorPicker.text};
-    margin-top: 20px;
-    margin-left: 50px;
-    margin-right: 400px;
-    font-family: 'Roboto', sans-serif; 
+  display: flex;
+  margin-top: 20px;
+  margin-left: 50px;
+  margin-right: 400px;
+  font-family: "Roboto", sans-serif;
 `;
 
 const Img = styled.img`
-    display: flex;
-    margin-left: 210px;
-    margin-right: 400px;
-
-
+  display: flex;
+  margin-left: 210px;
+  margin-right: 400px;
 `;
-

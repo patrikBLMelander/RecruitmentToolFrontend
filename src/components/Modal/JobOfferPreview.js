@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import colorPicker from "../../testData/colorPicker";
 
-function JobOfferPreview({ jobOffer }) {
+function JobOfferPreview({ jobOffer, colorScheme }) {
   let toRender;
 
   if (jobOffer === "") {
@@ -10,10 +9,10 @@ function JobOfferPreview({ jobOffer }) {
     toRender = <div></div>;
   } else {
     toRender = (
-      <Container>
-        <LeftDiv>
+      <Container inputColor={colorScheme}>
+        <LeftDiv inputColor={colorScheme}>
           <StyledImg src={jobOffer.imageUrl}></StyledImg>
-          <ContactInfo>
+          <ContactInfo inputColor={colorScheme}>
             <H5>Contact</H5>
             <p>Patrik Melander</p>
             <p>Tel: 0704 01 11 19</p>
@@ -37,7 +36,7 @@ function JobOfferPreview({ jobOffer }) {
         </LeftDiv>
         <RightDiv>
           <Title>{jobOffer.title}</Title>
-          <Preview>{jobOffer.preview} </Preview>
+          <Preview inputColor={colorScheme}>{jobOffer.preview} </Preview>
           <H5>About the Company</H5>
           <p>{jobOffer.companyDescription} </p>
           <H5>Your Role</H5>
@@ -52,19 +51,19 @@ function JobOfferPreview({ jobOffer }) {
 export default JobOfferPreview;
 
 const Container = styled.div`
-  color: ${colorPicker.text};
+  color: ${(props) => props.inputColor.text};
   font-family: "Roboto", sans-serif;
   text-align: center;
-  background-color: ${colorPicker.primary};
+  background-color: ${(props) => props.inputColor.primary};
   width: 100%;
   display: flex;
   border-style: double;
-  border-color: ${colorPicker.text};
+  border-color: ${(props) => props.inputColor.text};
 `;
 const LeftDiv = styled.div`
   width: 25%;
   border-right: solid;
-  border-color: ${colorPicker.secondary};
+  border-color: ${(props) => props.inputColor.secondary};
   padding: 5px;
   margin: 5px;
 `;
@@ -75,13 +74,13 @@ const RightDiv = styled.div`
 
 const Preview = styled.div`
   border-bottom: solid;
-  border-color: ${colorPicker.secondary};
+  border-color: ${(props) => props.inputColor.secondary};
 `;
 
 const ContactInfo = styled.div`
   border-bottom: solid;
   border-top: solid;
-  border-color: ${colorPicker.secondary};
+  border-color: ${(props) => props.inputColor.secondary};
 `;
 const Title = styled.h1`
   margin-right: 15px;

@@ -5,7 +5,6 @@ import RecruitmentProcessSteps from "../components/RecruitmentProcessSteps";
 import AddListBtn from "../components/AddListBtn";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
-import colorPicker from "../testData/colorPicker";
 import Footer from "../components/Footer";
 
 function RecruitmentPage({
@@ -19,8 +18,9 @@ function RecruitmentPage({
   candidateLoggedIn,
   setAdminLoggedIn,
   setCandidateLoggedIn,
+  nickName,
+  colorScheme,
 }) {
-
   const onDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
     jobOfferings.map((jobOfferingInMap, index) => {
@@ -125,8 +125,9 @@ function RecruitmentPage({
         adminLoggedIn={adminLoggedIn}
         candidateLoggedIn={candidateLoggedIn}
         setActiveJob={setActiveJob}
+        colorScheme={colorScheme}
       />
-      <Header activeJob={activeJob} />
+      <Header activeJob={activeJob} colorScheme={colorScheme} />
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable
           droppableId="all-columns"
@@ -134,7 +135,11 @@ function RecruitmentPage({
           type="column"
         >
           {(provided) => (
-            <Container {...provided.droppableProps} ref={provided.innerRef}>
+            <Container
+              inputColor={colorScheme}
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
               {jobOfferings.map((jobOfferingsInMap, index) => {
                 if (jobOfferingsInMap.id === activeJob.id) {
                   return jobOfferingsInMap.recruitmentSteps.map(
@@ -150,6 +155,8 @@ function RecruitmentPage({
                         candidateState={candidateState}
                         setCandidateState={setCandidateState}
                         activeJobId={activeJob.id}
+                        nickName={nickName}
+                        colorScheme={colorScheme}
                       />
                     )
                   );
@@ -162,12 +169,13 @@ function RecruitmentPage({
                 jobOfferings={jobOfferings}
                 setJobOfferings={setJobOfferings}
                 activeJobId={activeJob.id}
+                colorScheme={colorScheme}
               />
             </Container>
           )}
         </Droppable>
       </DragDropContext>
-      <Footer />
+      <Footer colorScheme={colorScheme} />
     </div>
   );
 }
@@ -175,7 +183,7 @@ function RecruitmentPage({
 export default RecruitmentPage;
 
 const Container = styled.div`
-  background-color: ${colorPicker.primary};
+  background-color: ${(props) => props.inputColor.primary};
   display: flex;
   position: fixed;
   z-index: 0;

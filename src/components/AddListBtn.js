@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import colorPicker from "../testData/colorPicker";
 import StyledButton from "./StyledButton";
 
 let counter = 5;
 let newId = "recruitmentStep-" + counter;
 
-function AddListBtn({ jobOfferings, setJobOfferings, activeJobId }) {
+function AddListBtn({
+  jobOfferings,
+  setJobOfferings,
+  activeJobId,
+  colorScheme,
+}) {
   const [value, setvalue] = useState("");
 
   const handleChange = (event) => {
     setvalue(event.target.value);
   };
 
-  const addList = (event) => {
-    event.preventDefault();
+  const addList = () => {
     counter = counter + 1;
     newId = "recruitmentStep-" + counter;
 
@@ -33,20 +36,25 @@ function AddListBtn({ jobOfferings, setJobOfferings, activeJobId }) {
   };
 
   return (
-    <form onSubmit={addList}>
-      <Input value={value} onChange={handleChange} placeholder="Title" />
+    <div>
+      <Input
+        inputColor={colorScheme}
+        value={value}
+        onChange={handleChange}
+        placeholder="Title"
+      />
       <br />
-      <StyledButton type="submit" input="Add" />
-    </form>
+      <StyledButton input="Add" colorScheme={colorScheme} onClick={addList} />
+    </div>
   );
 }
 
 export default AddListBtn;
 
 const Input = styled.input`
-  color: ${colorPicker.fifth};
+  color: ${(props) => props.inputColor.fifth};
   font-size: 1em;
-  border: 2px solid ${colorPicker.fifth};
+  border: 2px solid ${(props) => props.inputColor.fifth};
   border-radius: 3px;
   margin: 0.5em;
   padding: 0.5em;

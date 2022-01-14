@@ -9,7 +9,6 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Swal from 'sweetalert2';
 import Resume from '../components/Resume';
-import colorPicker from '../testData/colorPicker';
 import Footer from '../components/Footer';
 import StyledButton from '../components/StyledButton';
 import Slider from '@mui/material/Slider';
@@ -19,7 +18,7 @@ import Modal from "react-modal";
 
 
 
-function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, activeCandidate, setActiveCandidate, setCandidateState, candidateState, setAdminLoggedIn, setCandidateLoggedIn }) {
+function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, setActiveJob, activeCandidate, setActiveCandidate, setCandidateState, candidateState, setAdminLoggedIn, setCandidateLoggedIn, colorScheme, nickName }) {
 
 
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -312,10 +311,10 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
 
     return (
         <div>
-            <Navbar setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} />
-            <Header activeJob={activeJob} />
+            <Navbar colorScheme={colorScheme} setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} />
+            <Header activeJob={activeJob} colorScheme={colorScheme} />
 
-            <Container>
+            <Container inputColor={colorScheme}>
                 <InnerContainer>
                     {/* FORM TO PERSONAL DESCRIPTION*/}
                     <Form noValidate validated={validated} onSubmit={SavePresentation}>
@@ -326,7 +325,7 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                                 This will be the first impression of you, write something nice ;)
                             </Form.Control.Feedback>
                         </Form.Group>
-                        <StyledButton variant="success" type="submit" input={"Save"} />
+                        <StyledButton variant="success" type="submit" input={"Save"} colorScheme={colorScheme} />
                     </Form>
                     {/* FORM TO JOB EXPERIENCE */}
                     <Form noValidate validated={validated} onSubmit={addEmployment}>
@@ -364,7 +363,7 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                                 Write about the employment
                             </Form.Control.Feedback>
                         </Form.Group>
-                        <StyledButton variant="success" type="submit" input={"Add Job"} />
+                        <StyledButton variant="success" type="submit" input={"Add Job"} colorScheme={colorScheme} />
                     </Form>
 
                     {/* FORM TO EDUCATION */}
@@ -403,7 +402,7 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                                 Write about the education
                             </Form.Control.Feedback>
                         </Form.Group>
-                        <StyledButton variant="success" type="submit" input={"Add Education"} />
+                        <StyledButton variant="success" type="submit" input={"Add Education"} colorScheme={colorScheme} />
                     </Form>
 
                     {/* FORM TO PERSONALITY */}
@@ -466,7 +465,7 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                                     value={neuroticism}
                                     onChange={handleNeuroticismChange}
                                 />
-                                <StyledButton type="submit" input={"Save Personality"} />
+                                <StyledButton type="submit" input={"Save Personality"} colorScheme={colorScheme} />
                             </TraitDiv>
 
                         </PersonalityDiv>
@@ -491,21 +490,30 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                                 </FloatingLabel>
                             </YearCol>
                             <BtnCol>
-                                <StyledButton type="submit" input={"Save Competence"} />
+                                <StyledButton type="submit" input={"Save Competence"} colorScheme={colorScheme} />
                             </BtnCol>
                         </CompetenceDiv>
                     </Form>
 
 
                     <SeperatorDiv />
-                    <ModalButton onClick={openModal}>Resume</ModalButton>
+                    <StyledButton onClick={openModal} input={"My Resume"} colorScheme={colorScheme} />
 
                 </InnerContainer>
                 <Modal
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}
-                    style={customStyles}
+                    style={{
+                        content: {
+                        backgroundColor: colorScheme.primary,
+                        position: "absolute",
+                        width: "70%",
+                        height: "80%",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)"}}}
                     contentLabel="CV modal"
+                    inputColor={colorScheme}
                 >
                     <ModalContainer>
                         <Resume
@@ -516,15 +524,17 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                             setActiveCandidate={setActiveCandidate}
                             candidateState={candidateState}
                             setCandidateState={setCandidateState}
+                            colorScheme={colorScheme}
+                            nickName={nickName}
                         />
                     </ModalContainer>
                     <BtnModalContainer>
-                        <ModalButton onClick={closeModal}>Close</ModalButton>
+                        <StyledButton onClick={closeModal} input={"Close"} colorScheme={colorScheme}></StyledButton>
                     </BtnModalContainer>
                 </Modal>
             </Container>
 
-            <Footer />
+            <Footer colorScheme={colorScheme} />
         </div>
     )
 
@@ -538,7 +548,8 @@ const ModalContainer = styled.div`
 const Container = styled.div`
     font-family: 'Roboto', sans-serif; 
     text-align: center;
-    background-color: ${colorPicker.primary};
+    background-color: ${props => props.inputColor.primary};
+    color: ${props => props.inputColor.text};
     height: 100%;
     width: 100%;
     z-index: 1,
@@ -549,7 +560,6 @@ const Container = styled.div`
 `;
 
 const InnerContainer = styled.div`
-    color: ${colorPicker.text};
     font-family: 'Roboto', sans-serif; 
     justify-content: center;
     margin-top: 10%;
@@ -559,7 +569,6 @@ const InnerContainer = styled.div`
 `;
 
 const PersonalityDiv = styled.div`
-color: ${colorPicker.text};
 font-family: 'Roboto', sans-serif; 
 justify-content: center;
 margin-left:10%;
@@ -568,14 +577,12 @@ margin-right:10%;
 `;
 
 const TraitDiv = styled.div`
-color: ${colorPicker.text};
 font-family: 'Roboto', sans-serif; 
 justify-content: center;
 margin-bottom: 10%;
 `;
 
 const TraitText = styled.div`
-color: ${colorPicker.text};
 font-family: 'Roboto', sans-serif; 
 display:flex;
 justify-content: space-between;
@@ -599,12 +606,10 @@ const SeperatorDiv = styled.div`
 `;
 const H4 = styled.h4`
     font-family: 'Roboto', sans-serif; 
-    color: ${colorPicker.text};
     margin-top: 7%;
 `;
 const H5 = styled.h5`
     font-family: 'Roboto', sans-serif; 
-    color: ${colorPicker.text};
 `;
 
 const BtnModalContainer = styled.div`
@@ -612,44 +617,6 @@ const BtnModalContainer = styled.div`
     align-items: center;
     justify-content: center;
     margin-top: 5%;
-`;
-
-const customStyles = {
-    content: {
-        backgroundColor: colorPicker.primary,
-        position: "absolute",
-        width: "70%",
-        height: "80%",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-    },
-};
-
-const ModalButton = styled.button`
-    margin:4px;
-    width: 140px;
-    height: 45px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: ${colorPicker.text};
-    background-color: ${colorPicker.secondary};
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px ${colorPicker.third};
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    &:hover {
-        background-color: ${colorPicker.fourth};
-        box-shadow: 0px 15px 20px ${colorPicker.fourth};
-        color: ${colorPicker.text}
-        transform: translateY(-7px);
-    }
-    
 `;
 
 const CompetenceCol = styled.div`
