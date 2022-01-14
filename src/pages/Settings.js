@@ -13,7 +13,7 @@ import Countries from "../testData/countries";
 import Cities from "../testData/capitals";
 import Steal from "../testData/colorSchemas/steal";
 import DarkBlue from "../testData/colorSchemas/darkBlue";
-import Brown from "../testData/colorSchemas/brown";
+import Brown from "../testData/colorSchemas/lightPink";
 import DarkGreen from "../testData/colorSchemas/darkGreen";
 import PinkPurple from "../testData/colorSchemas/pinkPurple";
 import GreenNature from "../testData/colorSchemas/greenNature";
