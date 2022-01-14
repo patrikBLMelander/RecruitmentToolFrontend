@@ -9,7 +9,6 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Swal from 'sweetalert2';
 import Resume from '../components/Resume';
-import colorPicker from '../testData/colorPicker';
 import Footer from '../components/Footer';
 import StyledButton from '../components/StyledButton';
 import Slider from '@mui/material/Slider';
@@ -19,7 +18,7 @@ import Modal from "react-modal";
 
 
 
-function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, setActiveJob, activeCandidate, setActiveCandidate, setCandidateState, candidateState, setAdminLoggedIn, setCandidateLoggedIn, colorScheme }) {
+function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activeJob, setActiveJob, activeCandidate, setActiveCandidate, setCandidateState, candidateState, setAdminLoggedIn, setCandidateLoggedIn, colorScheme, nickName }) {
 
 
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -313,7 +312,7 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
     return (
         <div>
             <Navbar colorScheme={colorScheme} setActiveJob={setActiveJob} setAdminLoggedIn={setAdminLoggedIn} setCandidateLoggedIn={setCandidateLoggedIn} jobOfferings={jobOfferings} adminLoggedIn={adminLoggedIn} candidateLoggedIn={candidateLoggedIn} />
-            <Header activeJob={activeJob}colorScheme={colorScheme} />
+            <Header activeJob={activeJob} colorScheme={colorScheme} />
 
             <Container inputColor={colorScheme}>
                 <InnerContainer>
@@ -326,7 +325,7 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                                 This will be the first impression of you, write something nice ;)
                             </Form.Control.Feedback>
                         </Form.Group>
-                        <StyledButton variant="success" type="submit" input={"Save"} colorScheme={colorScheme}/>
+                        <StyledButton variant="success" type="submit" input={"Save"} colorScheme={colorScheme} />
                     </Form>
                     {/* FORM TO JOB EXPERIENCE */}
                     <Form noValidate validated={validated} onSubmit={addEmployment}>
@@ -364,7 +363,7 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                                 Write about the employment
                             </Form.Control.Feedback>
                         </Form.Group>
-                        <StyledButton variant="success" type="submit" input={"Add Job"} colorScheme={colorScheme}  />
+                        <StyledButton variant="success" type="submit" input={"Add Job"} colorScheme={colorScheme} />
                     </Form>
 
                     {/* FORM TO EDUCATION */}
@@ -494,17 +493,25 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                                 <StyledButton type="submit" input={"Save Competence"} colorScheme={colorScheme} />
                             </BtnCol>
                         </CompetenceDiv>
-                    </Form> 
+                    </Form>
 
 
                     <SeperatorDiv />
-                    <StyledButton onClick={openModal}input={"My Resume"} colorScheme={colorScheme}/>
+                    <StyledButton onClick={openModal} input={"My Resume"} colorScheme={colorScheme} />
 
                 </InnerContainer>
                 <Modal
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}
-                    style={customStyles}
+                    style={{
+                        content: {
+                        backgroundColor: colorScheme.primary,
+                        position: "absolute",
+                        width: "70%",
+                        height: "80%",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)"}}}
                     contentLabel="CV modal"
                     inputColor={colorScheme}
                 >
@@ -518,15 +525,16 @@ function CandidateMyPage({ jobOfferings, adminLoggedIn, candidateLoggedIn, activ
                             candidateState={candidateState}
                             setCandidateState={setCandidateState}
                             colorScheme={colorScheme}
+                            nickName={nickName}
                         />
                     </ModalContainer>
                     <BtnModalContainer>
-                        <StyledButton onClick={closeModal}input={"Close"}colorScheme={colorScheme}></StyledButton>
+                        <StyledButton onClick={closeModal} input={"Close"} colorScheme={colorScheme}></StyledButton>
                     </BtnModalContainer>
                 </Modal>
             </Container>
 
-            <Footer colorScheme={colorScheme}/>
+            <Footer colorScheme={colorScheme} />
         </div>
     )
 
@@ -610,19 +618,6 @@ const BtnModalContainer = styled.div`
     justify-content: center;
     margin-top: 5%;
 `;
-
-const customStyles = {
-    content: {
-        backgroundColor: "rgba(0,0,0,.0001)",
-        position: "absolute",
-        width: "70%",
-        height: "80%",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-
-    },
-};
 
 const CompetenceCol = styled.div`
     width: 55%;

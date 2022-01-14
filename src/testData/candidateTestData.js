@@ -5,7 +5,7 @@ const candidateTestData = [
     firstName: "Patrik",
     lastName: "Melander",
     email: "admin@gmail.com",
-    password: "12345",
+    password: "Test",
     phone: "0704011119",
     presentation: '',
     experience: [],    

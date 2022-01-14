@@ -3,8 +3,7 @@ import Modal from "react-modal";
 import styled from "styled-components";
 import { Rating } from "react-simple-star-rating";
 import Resume from "../Resume";
-import colorPicker from "../../testData/colorPicker";
-import StyledButton from "../StyledButton"
+import StyledButton from "../StyledButton";
 
 let newId;
 let counter = 0;
@@ -17,7 +16,7 @@ function ApplicantCardModal({
   setCandidateState,
   activeJobId,
   nickName,
-  colorScheme
+  colorScheme,
 }) {
   const [rating, setRating] = useState(
     candidate.rate.map((rateInMap) => {
@@ -72,6 +71,10 @@ function ApplicantCardModal({
     setIsOpen(false);
   }
 
+  function ContactCandidate(){
+    console.log("Kontakta")
+  }
+
   return (
     <div>
       <div>
@@ -87,15 +90,17 @@ function ApplicantCardModal({
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        style={{content: {
-          backgroundColor: colorScheme.primary,
-          position: "absolute",
-          width: "55%",
-          height: "80%",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-        }}}
+        style={{
+          content: {
+            backgroundColor: colorScheme.primary,
+            position: "absolute",
+            width: "55%",
+            height: "80%",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          },
+        }}
         contentLabel="CV modal"
       >
         <Container>
@@ -105,10 +110,12 @@ function ApplicantCardModal({
             candidateView={false}
             activeCandidate={candidate}
             colorScheme={colorScheme}
+            nickName={nickName}
           />
         </Container>
         <BtnModalContainer>
-          <StyledButton onClick={closeModal}>Close</StyledButton>
+          <StyledButton onClick={closeModal} input={"Close"} colorScheme={colorScheme} />
+          <StyledButton onClick={ContactCandidate} input={"Contact"} colorScheme={colorScheme} />
         </BtnModalContainer>
       </Modal>
     </div>

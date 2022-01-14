@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import colorPicker from "../../testData/colorPicker";
 
 function JobOfferPreview({ jobOffer, colorScheme }) {
   let toRender;
@@ -52,19 +51,19 @@ function JobOfferPreview({ jobOffer, colorScheme }) {
 export default JobOfferPreview;
 
 const Container = styled.div`
-  color: ${props => props.inputColor.text};
+  color: ${(props) => props.inputColor.text};
   font-family: "Roboto", sans-serif;
   text-align: center;
-  background-color: ${props => props.inputColor.primary};
+  background-color: ${(props) => props.inputColor.primary};
   width: 100%;
   display: flex;
   border-style: double;
-  border-color: ${props => props.inputColor.text};
+  border-color: ${(props) => props.inputColor.text};
 `;
 const LeftDiv = styled.div`
   width: 25%;
   border-right: solid;
-  border-color: ${props => props.inputColor.secondary};
+  border-color: ${(props) => props.inputColor.secondary};
   padding: 5px;
   margin: 5px;
 `;
@@ -75,13 +74,13 @@ const RightDiv = styled.div`
 
 const Preview = styled.div`
   border-bottom: solid;
-  border-color: ${props => props.inputColor.secondary};
+  border-color: ${(props) => props.inputColor.secondary};
 `;
 
 const ContactInfo = styled.div`
   border-bottom: solid;
   border-top: solid;
-  border-color: ${props => props.inputColor.secondary};
+  border-color: ${(props) => props.inputColor.secondary};
 `;
 const Title = styled.h1`
   margin-right: 15px;

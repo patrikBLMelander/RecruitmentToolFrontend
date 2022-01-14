@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import CandidateCard from "./CandidateCard";
 import RemoveBtn from "./RemoveList";
-import colorPicker from "../testData/colorPicker";
 
 function RecruitmentProcessStep({
   index,
@@ -15,13 +14,17 @@ function RecruitmentProcessStep({
   candidates,
   candidateState,
   setCandidateState,
-  nickName, 
-  colorScheme
+  nickName,
+  colorScheme,
 }) {
   return (
     <Draggable draggableId={id} index={index}>
       {(provided) => (
-        <Container inputColor={colorScheme} {...provided.draggableProps} ref={provided.innerRef}>
+        <Container
+          inputColor={colorScheme}
+          {...provided.draggableProps}
+          ref={provided.innerRef}
+        >
           <Title {...provided.dragHandleProps}>{title}</Title>
           <Droppable droppableId={id} type="task">
             {(provided, snapshot) => (
@@ -51,14 +54,14 @@ function RecruitmentProcessStep({
             )}
           </Droppable>
           <RemoveBtnDiv>
-          <RemoveBtn
-            id={id}
-            jobOfferings={jobOfferings}
-            setJobOfferings={setJobOfferings}
-            candidates={candidates.length}
-            activeJobId={activeJobId}
-            colorScheme={colorScheme}
-          />
+            <RemoveBtn
+              id={id}
+              jobOfferings={jobOfferings}
+              setJobOfferings={setJobOfferings}
+              candidates={candidates.length}
+              activeJobId={activeJobId}
+              colorScheme={colorScheme}
+            />
           </RemoveBtnDiv>
         </Container>
       )}
@@ -70,11 +73,11 @@ export default RecruitmentProcessStep;
 
 const Container = styled.div`
   margin: 8px;
-  border: 1px solid ${props => props.inputColor.fifth};
-  background-color: ${props => props.inputColor.secondary};
+  border: 1px solid ${(props) => props.inputColor.fifth};
+  background-color: ${(props) => props.inputColor.secondary};
   border-radius: 20px;
-  color: ${props => props.inputColor.text};
-  box-shadow: 0px 8px 15px ${props => props.inputColor.secondary};
+  color: ${(props) => props.inputColor.text};
+  box-shadow: 0px 8px 15px ${(props) => props.inputColor.secondary};
   width: 220px;
   display: flex;
   flex-direction: column;
@@ -94,5 +97,5 @@ const CandidateCardList = styled.div`
 const RemoveBtnDiv = styled.div`
   display: flex;
   margin: 8px;
-  justify-content:center;
+  justify-content: center;
 `;
