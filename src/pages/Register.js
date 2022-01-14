@@ -30,7 +30,6 @@ function Registrer({
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
-    console.log(form.termsAndConditions.value);
     if (form.checkValidity() === false) {
       event.stopPropagation();
     } else {

@@ -159,6 +159,7 @@ function App() {
                 setAdminLoggedIn={setAdminLoggedIn}
                 candidateLoggedIn={candidateLoggedIn}
                 setCandidateLoggedIn={setCandidateLoggedIn}
+                candidateState={candidateState}
               />
             }
           />
