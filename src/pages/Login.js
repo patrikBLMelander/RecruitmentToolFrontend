@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import styled from "styled-components";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
@@ -9,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import StyledButton from "../components/StyledButton";
 import Footer from "../components/Footer";
+import endpoints from "../API/endpoints";
+import requests from "../API/requests";
 
 function Login({
   candidateState,
@@ -47,6 +48,7 @@ function Login({
     if (form.checkValidity() === false) {
       event.stopPropagation();
     } else {
+
       //check CandidateLogin, this will be done properly in backend later
       candidateState.map((candidateInMap) => {
         if (

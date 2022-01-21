@@ -1,4 +1,4 @@
-function  AddEducationRequest (userId, title, startDate, endDate, description) {
+function  AddExperienceRequest (userId, title, startDate, endDate, description) {
     return(
     {
         userId,
