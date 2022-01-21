@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import RecruitmentProcessSteps from "../components/RecruitmentProcessSteps";
@@ -21,6 +21,11 @@ function RecruitmentPage({
   nickName,
   colorScheme,
 }) {
+
+  useEffect(() => {
+    return()=>{//Lägg kod för att spara till databas
+    }
+  })
   const onDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
     jobOfferings.map((jobOfferingInMap, index) => {
